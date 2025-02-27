@@ -1,0 +1,12 @@
+# https://openapi-generator.tech/docs/generators/php/
+# https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator/src/main/resources/php
+
+generatorName: php
+infoUrl: https://docs.oursprivacy.com
+composerPackageName: oursprivacy/ingest-sdk
+developerOrganization: oursprivacy
+developerOrganizationUrl: https://oursprivacy.com
+
+infoEmail: support@oursprivacy.com
+artifactUrl: https://docs.oursprivacy.com
+licenseName: MIT

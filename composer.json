@@ -1,7 +1,7 @@
 {
     "name": "oursprivacy/ingest-sdk",
     "description": "The Ours Server-Side REST API",
-    "version": "1.0.0",
+    "version": "v1.0.0",
     "keywords": [
         "openapitools",
         "openapi-generator",

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-# 1. Show current version from package.json
-CURRENT_VERSION=$(node -p "require('./package.json').version")
+# 1. Show current version from composer.json (fallback to 0.0.0 if not defined)
+CURRENT_VERSION=$(php -r "echo json_decode(file_get_contents('composer.json'), true)['version'] ?? '1.0.0';")
 echo "Current version is: $CURRENT_VERSION"
 
 # 2. Prompt for the next version
@@ -12,16 +12,17 @@ read -rp "Enter the next version (e.g., 1.0.1): " NEXT_VERSION
 echo "Enter release notes (press ENTER, then CTRL+D when done):"
 RELEASE_NOTES=$(cat)
 
-# 4. Update package.json with the new version
-node <<EOF
-const fs = require('fs');
-const path = 'package.json';
-const pkg = JSON.parse(fs.readFileSync(path, 'utf8'));
-pkg.version = '${NEXT_VERSION}';
-fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\\n');
+# 4. Update composer.json with the new version using inline PHP
+php <<EOF
+<?php
+\$composerFile = 'composer.json';
+\$data = json_decode(file_get_contents(\$composerFile), true);
+\$data['version'] = '${NEXT_VERSION}';
+file_put_contents(\$composerFile, json_encode(\$data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . "\n");
+?>
 EOF
 
-echo "Updated package.json to version ${NEXT_VERSION}"
+echo "Updated composer.json to version ${NEXT_VERSION}"
 
 # 5. Update or create CHANGELOG.md
 if [ ! -f CHANGELOG.md ]; then
@@ -36,7 +37,7 @@ fi
 } >> CHANGELOG.md
 
 # 6. Commit changes and create a Git tag with the release notes
-git add package.json CHANGELOG.md
+git add composer.json CHANGELOG.md
 git commit -m "chore: release v${NEXT_VERSION}
 
 ${RELEASE_NOTES}"
@@ -46,8 +47,5 @@ git tag -a "v${NEXT_VERSION}" -m "${RELEASE_NOTES}"
 git push origin main
 git push origin "v${NEXT_VERSION}"
 
-# 8. Publish to npm
-echo "Publishing to npm..."
-npm publish
-
-echo "Release v${NEXT_VERSION} published successfully!"
+# 8. Packagist Reminder
+echo "Release v${NEXT_VERSION} is ready!"

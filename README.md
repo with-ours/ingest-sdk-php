@@ -43,7 +43,7 @@ Parameters with a default value must be set by name.
 
 use OursPrivacy\Client;
 
-$client = new Client(apiKey: getenv("OURS_PRIVACY_API_KEY") ?: "My API Key");
+$client = new Client();
 
 $response = $client->track->event(token: "REPLACE_ME", event: "REPLACE_ME");
 

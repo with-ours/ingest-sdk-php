@@ -102,9 +102,6 @@ abstract class BaseClient
         return Util::decodeContent($rsp);
     }
 
-    /** @return array<string, string> */
-    abstract protected function authHeaders(): array;
-
     /**
      * @internal
      *
@@ -148,7 +145,6 @@ abstract class BaseClient
 
         /** @var array<string, string|list<string>|null> $mergedHeaders */
         $mergedHeaders = [...$this->headers,
-            ...$this->authHeaders(),
             ...$headers,
             ...($options->extraHeaders ?? []), ];
 

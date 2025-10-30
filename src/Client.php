@@ -12,8 +12,6 @@ use OursPrivacy\Services\VisitorService;
 
 class Client extends BaseClient
 {
-    public string $apiKey;
-
     public bool $baseUrlOverridden;
 
     /**
@@ -26,10 +24,8 @@ class Client extends BaseClient
      */
     public VisitorService $visitor;
 
-    public function __construct(?string $apiKey = null, ?string $baseUrl = null)
+    public function __construct(?string $baseUrl = null)
     {
-        $this->apiKey = (string) ($apiKey ?? getenv('OURS_PRIVACY_API_KEY'));
-
         $this->baseUrlOverridden = !is_null($baseUrl);
 
         $baseUrl ??= getenv(
@@ -53,15 +49,5 @@ class Client extends BaseClient
 
         $this->track = new TrackService($this);
         $this->visitor = new VisitorService($this);
-    }
-
-    /** @return array<string, string> */
-    protected function authHeaders(): array
-    {
-        if (!$this->apiKey) {
-            return [];
-        }
-
-        return ['Authorization' => "Bearer {$this->apiKey}"];
     }
 }

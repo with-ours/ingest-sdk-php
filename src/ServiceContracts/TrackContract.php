@@ -6,9 +6,9 @@ namespace OursPrivacy\ServiceContracts;
 
 use OursPrivacy\Core\Exceptions\APIException;
 use OursPrivacy\RequestOptions;
-use OursPrivacy\Track\TrackCreateEventParams\DefaultProperties;
-use OursPrivacy\Track\TrackCreateEventParams\UserProperties;
-use OursPrivacy\Track\TrackNewEventResponse;
+use OursPrivacy\Track\TrackEventParams\DefaultProperties;
+use OursPrivacy\Track\TrackEventParams\UserProperties;
+use OursPrivacy\Track\TrackEventResponse;
 
 use const OursPrivacy\Core\OMIT as omit;
 
@@ -31,7 +31,7 @@ interface TrackContract
      *
      * @throws APIException
      */
-    public function createEvent(
+    public function event(
         $token,
         $event,
         $defaultProperties = omit,
@@ -43,7 +43,7 @@ interface TrackContract
         $userID = omit,
         $userProperties = omit,
         ?RequestOptions $requestOptions = null,
-    ): TrackNewEventResponse;
+    ): TrackEventResponse;
 
     /**
      * @api
@@ -52,8 +52,8 @@ interface TrackContract
      *
      * @throws APIException
      */
-    public function createEventRaw(
+    public function eventRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): TrackNewEventResponse;
+    ): TrackEventResponse;
 }

@@ -8,10 +8,10 @@ use OursPrivacy\Client;
 use OursPrivacy\Core\Exceptions\APIException;
 use OursPrivacy\RequestOptions;
 use OursPrivacy\ServiceContracts\TrackContract;
-use OursPrivacy\Track\TrackCreateEventParams;
-use OursPrivacy\Track\TrackCreateEventParams\DefaultProperties;
-use OursPrivacy\Track\TrackCreateEventParams\UserProperties;
-use OursPrivacy\Track\TrackNewEventResponse;
+use OursPrivacy\Track\TrackEventParams;
+use OursPrivacy\Track\TrackEventParams\DefaultProperties;
+use OursPrivacy\Track\TrackEventParams\UserProperties;
+use OursPrivacy\Track\TrackEventResponse;
 
 use const OursPrivacy\Core\OMIT as omit;
 
@@ -41,7 +41,7 @@ final class TrackService implements TrackContract
      *
      * @throws APIException
      */
-    public function createEvent(
+    public function event(
         $token,
         $event,
         $defaultProperties = omit,
@@ -53,7 +53,7 @@ final class TrackService implements TrackContract
         $userID = omit,
         $userProperties = omit,
         ?RequestOptions $requestOptions = null,
-    ): TrackNewEventResponse {
+    ): TrackEventResponse {
         $params = [
             'token' => $token,
             'event' => $event,
@@ -67,7 +67,7 @@ final class TrackService implements TrackContract
             'userProperties' => $userProperties,
         ];
 
-        return $this->createEventRaw($params, $requestOptions);
+        return $this->eventRaw($params, $requestOptions);
     }
 
     /**
@@ -77,11 +77,11 @@ final class TrackService implements TrackContract
      *
      * @throws APIException
      */
-    public function createEventRaw(
+    public function eventRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): TrackNewEventResponse {
-        [$parsed, $options] = TrackCreateEventParams::parseRequest(
+    ): TrackEventResponse {
+        [$parsed, $options] = TrackEventParams::parseRequest(
             $params,
             $requestOptions
         );
@@ -95,7 +95,7 @@ final class TrackService implements TrackContract
             path: $path,
             body: (object) $parsed,
             options: $options,
-            convert: TrackNewEventResponse::class,
+            convert: TrackEventResponse::class,
         );
     }
 }

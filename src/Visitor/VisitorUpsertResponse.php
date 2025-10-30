@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OursPrivacy\Track;
+namespace OursPrivacy\Visitor;
 
 use OursPrivacy\Core\Attributes\Api;
 use OursPrivacy\Core\Concerns\SdkModel;
@@ -11,11 +11,11 @@ use OursPrivacy\Core\Contracts\BaseModel;
 use OursPrivacy\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type TrackNewEventResponseShape = array{success: bool}
+ * @phpstan-type VisitorUpsertResponseShape = array{success: bool}
  */
-final class TrackNewEventResponse implements BaseModel, ResponseConverter
+final class VisitorUpsertResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<TrackNewEventResponseShape> */
+    /** @use SdkModel<VisitorUpsertResponseShape> */
     use SdkModel;
 
     use SdkResponse;
@@ -24,17 +24,17 @@ final class TrackNewEventResponse implements BaseModel, ResponseConverter
     public bool $success;
 
     /**
-     * `new TrackNewEventResponse()` is missing required properties by the API.
+     * `new VisitorUpsertResponse()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * TrackNewEventResponse::with(success: ...)
+     * VisitorUpsertResponse::with(success: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new TrackNewEventResponse)->withSuccess(...)
+     * (new VisitorUpsertResponse)->withSuccess(...)
      * ```
      */
     public function __construct()

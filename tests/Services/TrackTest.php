@@ -27,25 +27,25 @@ final class TrackTest extends TestCase
     }
 
     #[Test]
-    public function testCreateEvent(): void
+    public function testEvent(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->track->createEvent(token: 'x', event: 'x');
+        $result = $this->client->track->event(token: 'x', event: 'x');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testCreateEventWithOptionalParams(): void
+    public function testEventWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->track->createEvent(token: 'x', event: 'x');
+        $result = $this->client->track->event(token: 'x', event: 'x');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -7,8 +7,8 @@ namespace OursPrivacy;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use OursPrivacy\Core\BaseClient;
-use OursPrivacy\Services\IdentifyService;
 use OursPrivacy\Services\TrackService;
+use OursPrivacy\Services\VisitorService;
 
 class Client extends BaseClient
 {
@@ -24,7 +24,7 @@ class Client extends BaseClient
     /**
      * @api
      */
-    public IdentifyService $identify;
+    public VisitorService $visitor;
 
     public function __construct(?string $apiKey = null, ?string $baseUrl = null)
     {
@@ -52,7 +52,7 @@ class Client extends BaseClient
         );
 
         $this->track = new TrackService($this);
-        $this->identify = new IdentifyService($this);
+        $this->visitor = new VisitorService($this);
     }
 
     /** @return array<string, string> */

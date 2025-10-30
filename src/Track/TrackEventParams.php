@@ -9,15 +9,15 @@ use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Concerns\SdkParams;
 use OursPrivacy\Core\Contracts\BaseModel;
 use OursPrivacy\Core\Conversion\MapOf;
-use OursPrivacy\Track\TrackCreateEventParams\DefaultProperties;
-use OursPrivacy\Track\TrackCreateEventParams\UserProperties;
+use OursPrivacy\Track\TrackEventParams\DefaultProperties;
+use OursPrivacy\Track\TrackEventParams\UserProperties;
 
 /**
  * Track events from your server. Please include at least one of: userId, externalId, or email. These properties help us associate events with existing users. For all fields, null values unset the property and undefined values do not unset existing properties.
  *
- * @see OursPrivacy\Track->createEvent
+ * @see OursPrivacy\Track->event
  *
- * @phpstan-type TrackCreateEventParamsShape = array{
+ * @phpstan-type TrackEventParamsShape = array{
  *   token: string,
  *   event: string,
  *   defaultProperties?: DefaultProperties|null,
@@ -30,9 +30,9 @@ use OursPrivacy\Track\TrackCreateEventParams\UserProperties;
  *   userProperties?: UserProperties|null,
  * }
  */
-final class TrackCreateEventParams implements BaseModel
+final class TrackEventParams implements BaseModel
 {
-    /** @use SdkModel<TrackCreateEventParamsShape> */
+    /** @use SdkModel<TrackEventParamsShape> */
     use SdkModel;
     use SdkParams;
 
@@ -103,17 +103,17 @@ final class TrackCreateEventParams implements BaseModel
     public ?UserProperties $userProperties;
 
     /**
-     * `new TrackCreateEventParams()` is missing required properties by the API.
+     * `new TrackEventParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * TrackCreateEventParams::with(token: ..., event: ...)
+     * TrackEventParams::with(token: ..., event: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new TrackCreateEventParams)->withToken(...)->withEvent(...)
+     * (new TrackEventParams)->withToken(...)->withEvent(...)
      * ```
      */
     public function __construct()

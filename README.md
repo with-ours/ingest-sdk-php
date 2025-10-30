@@ -13,6 +13,8 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
+The REST API documentation can be found on [docs.oursprivacy.com](https://docs.oursprivacy.com).
+
 ## Installation
 
 To use this package, install via Composer by adding the following to your application's `composer.json`:
@@ -43,9 +45,7 @@ use OursPrivacy\Client;
 
 $client = new Client(apiKey: getenv("OURS_PRIVACY_API_KEY") ?: "My API Key");
 
-$response = $client->track->createEvent(
-  token: "REPLACE_ME", event: "REPLACE_ME"
-);
+$response = $client->track->event(token: "REPLACE_ME", event: "REPLACE_ME");
 
 var_dump($response->success);
 ```
@@ -67,9 +67,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 use OursPrivacy\Core\Exceptions\APIConnectionException;
 
 try {
-  $response = $client->track->createEvent(
-    token: "REPLACE_ME", event: "REPLACE_ME"
-  );
+  $response = $client->track->event(token: "REPLACE_ME", event: "REPLACE_ME");
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
   var_dump($e->getPrevious());
@@ -115,7 +113,7 @@ use OursPrivacy\RequestOptions;
 $client = new Client(maxRetries: 0);
 
 // Or, configure per-request:
-$result = $client->track->createEvent(
+$result = $client->track->event(
   token: "REPLACE_ME",
   event: "REPLACE_ME",
   requestOptions: RequestOptions::with(maxRetries: 5),
@@ -137,7 +135,7 @@ Note: the `extra*` parameters of the same name overrides the documented paramete
 
 use OursPrivacy\RequestOptions;
 
-$response = $client->track->createEvent(
+$response = $client->track->event(
   token: "REPLACE_ME",
   event: "REPLACE_ME",
   requestOptions: RequestOptions::with(

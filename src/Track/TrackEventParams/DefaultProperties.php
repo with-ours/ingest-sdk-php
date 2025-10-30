@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OursPrivacy\Identify\IdentifyCreateOrUpdateParams;
+namespace OursPrivacy\Track\TrackEventParams;
 
 use OursPrivacy\Core\Attributes\Api;
 use OursPrivacy\Core\Concerns\SdkModel;

@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace OursPrivacy\ServiceContracts;
 
 use OursPrivacy\Core\Exceptions\APIException;
-use OursPrivacy\Identify\IdentifyCreateOrUpdateParams\DefaultProperties;
-use OursPrivacy\Identify\IdentifyCreateOrUpdateParams\UserProperties;
-use OursPrivacy\Identify\IdentifyNewOrUpdateResponse;
 use OursPrivacy\RequestOptions;
+use OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties;
+use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
+use OursPrivacy\Visitor\VisitorUpsertResponse;
 
 use const OursPrivacy\Core\OMIT as omit;
 
-interface IdentifyContract
+interface VisitorContract
 {
     /**
      * @api
@@ -26,7 +26,7 @@ interface IdentifyContract
      *
      * @throws APIException
      */
-    public function createOrUpdate(
+    public function upsert(
         $token,
         $userProperties,
         $defaultProperties = omit,
@@ -34,7 +34,7 @@ interface IdentifyContract
         $externalID = omit,
         $userID = omit,
         ?RequestOptions $requestOptions = null,
-    ): IdentifyNewOrUpdateResponse;
+    ): VisitorUpsertResponse;
 
     /**
      * @api
@@ -43,8 +43,8 @@ interface IdentifyContract
      *
      * @throws APIException
      */
-    public function createOrUpdateRaw(
+    public function upsertRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): IdentifyNewOrUpdateResponse;
+    ): VisitorUpsertResponse;
 }

@@ -6,16 +6,16 @@ namespace OursPrivacy\Services;
 
 use OursPrivacy\Client;
 use OursPrivacy\Core\Exceptions\APIException;
-use OursPrivacy\Identify\IdentifyCreateOrUpdateParams;
-use OursPrivacy\Identify\IdentifyCreateOrUpdateParams\DefaultProperties;
-use OursPrivacy\Identify\IdentifyCreateOrUpdateParams\UserProperties;
-use OursPrivacy\Identify\IdentifyNewOrUpdateResponse;
 use OursPrivacy\RequestOptions;
-use OursPrivacy\ServiceContracts\IdentifyContract;
+use OursPrivacy\ServiceContracts\VisitorContract;
+use OursPrivacy\Visitor\VisitorUpsertParams;
+use OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties;
+use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
+use OursPrivacy\Visitor\VisitorUpsertResponse;
 
 use const OursPrivacy\Core\OMIT as omit;
 
-final class IdentifyService implements IdentifyContract
+final class VisitorService implements VisitorContract
 {
     /**
      * @internal
@@ -36,7 +36,7 @@ final class IdentifyService implements IdentifyContract
      *
      * @throws APIException
      */
-    public function createOrUpdate(
+    public function upsert(
         $token,
         $userProperties,
         $defaultProperties = omit,
@@ -44,7 +44,7 @@ final class IdentifyService implements IdentifyContract
         $externalID = omit,
         $userID = omit,
         ?RequestOptions $requestOptions = null,
-    ): IdentifyNewOrUpdateResponse {
+    ): VisitorUpsertResponse {
         $params = [
             'token' => $token,
             'userProperties' => $userProperties,
@@ -54,7 +54,7 @@ final class IdentifyService implements IdentifyContract
             'userID' => $userID,
         ];
 
-        return $this->createOrUpdateRaw($params, $requestOptions);
+        return $this->upsertRaw($params, $requestOptions);
     }
 
     /**
@@ -64,11 +64,11 @@ final class IdentifyService implements IdentifyContract
      *
      * @throws APIException
      */
-    public function createOrUpdateRaw(
+    public function upsertRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): IdentifyNewOrUpdateResponse {
-        [$parsed, $options] = IdentifyCreateOrUpdateParams::parseRequest(
+    ): VisitorUpsertResponse {
+        [$parsed, $options] = VisitorUpsertParams::parseRequest(
             $params,
             $requestOptions
         );
@@ -82,7 +82,7 @@ final class IdentifyService implements IdentifyContract
             path: $path,
             body: (object) $parsed,
             options: $options,
-            convert: IdentifyNewOrUpdateResponse::class,
+            convert: VisitorUpsertResponse::class,
         );
     }
 }

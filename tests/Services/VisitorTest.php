@@ -3,7 +3,7 @@
 namespace Tests\Services;
 
 use OursPrivacy\Client;
-use OursPrivacy\Identify\IdentifyCreateOrUpdateParams\UserProperties;
+use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -13,7 +13,7 @@ use Tests\UnsupportedMockTests;
  * @internal
  */
 #[CoversNothing]
-final class IdentifyTest extends TestCase
+final class VisitorTest extends TestCase
 {
     protected Client $client;
 
@@ -28,13 +28,13 @@ final class IdentifyTest extends TestCase
     }
 
     #[Test]
-    public function testCreateOrUpdate(): void
+    public function testUpsert(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->identify->createOrUpdate(
+        $result = $this->client->visitor->upsert(
             token: 'x',
             userProperties: (new UserProperties)
         );
@@ -43,13 +43,13 @@ final class IdentifyTest extends TestCase
     }
 
     #[Test]
-    public function testCreateOrUpdateWithOptionalParams(): void
+    public function testUpsertWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->identify->createOrUpdate(
+        $result = $this->client->visitor->upsert(
             token: 'x',
             userProperties: (new UserProperties)
                 ->withAdID('ad_id')

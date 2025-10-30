@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OursPrivacy\Track\TrackCreateEventParams;
+namespace OursPrivacy\Visitor\VisitorUpsertParams;
 
 use OursPrivacy\Core\Attributes\Api;
 use OursPrivacy\Core\Concerns\SdkModel;

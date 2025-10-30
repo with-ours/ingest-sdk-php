@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace OursPrivacy\Identify;
+namespace OursPrivacy\Visitor;
 
 use OursPrivacy\Core\Attributes\Api;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Concerns\SdkParams;
 use OursPrivacy\Core\Contracts\BaseModel;
-use OursPrivacy\Identify\IdentifyCreateOrUpdateParams\DefaultProperties;
-use OursPrivacy\Identify\IdentifyCreateOrUpdateParams\UserProperties;
+use OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties;
+use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
 
 /**
  * Define visitor properties on an existing visitor or create a new visitor. Note: This does not fire an event. If you want to fire an event, use the track method and include properties for the visitor.
  *
- * @see OursPrivacy\Identify->createOrUpdate
+ * @see OursPrivacy\Visitor->upsert
  *
- * @phpstan-type IdentifyCreateOrUpdateParamsShape = array{
+ * @phpstan-type VisitorUpsertParamsShape = array{
  *   token: string,
  *   userProperties: UserProperties,
  *   defaultProperties?: DefaultProperties|null,
@@ -25,9 +25,9 @@ use OursPrivacy\Identify\IdentifyCreateOrUpdateParams\UserProperties;
  *   userID?: string|null,
  * }
  */
-final class IdentifyCreateOrUpdateParams implements BaseModel
+final class VisitorUpsertParams implements BaseModel
 {
-    /** @use SdkModel<IdentifyCreateOrUpdateParamsShape> */
+    /** @use SdkModel<VisitorUpsertParamsShape> */
     use SdkModel;
     use SdkParams;
 
@@ -68,17 +68,17 @@ final class IdentifyCreateOrUpdateParams implements BaseModel
     public ?string $userID;
 
     /**
-     * `new IdentifyCreateOrUpdateParams()` is missing required properties by the API.
+     * `new VisitorUpsertParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * IdentifyCreateOrUpdateParams::with(token: ..., userProperties: ...)
+     * VisitorUpsertParams::with(token: ..., userProperties: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new IdentifyCreateOrUpdateParams)->withToken(...)->withUserProperties(...)
+     * (new VisitorUpsertParams)->withToken(...)->withUserProperties(...)
      * ```
      */
     public function __construct()

@@ -28,7 +28,7 @@
     "sort-packages": true
   },
   "description": "Ours Privacy PHP SDK",
-  "name": "org-placeholder/ours-privacy",
+  "name": "oursprivacy/ingest-sdk",
   "require": {
     "php": "^8.1",
     "php-http/discovery": "^1",

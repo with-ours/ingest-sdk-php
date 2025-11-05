@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0 (2025-11-05)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* **api:** manual updates ([e2e8810](https://github.com/with-ours/ingest-sdk-php/commit/e2e8810d1b871b77aa42b38aab8c1f7649d22090))
+
 ## 0.1.0 (2025-11-05)
 
 Full Changelog: [v0.0.1...v0.1.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.0.1...v0.1.0)

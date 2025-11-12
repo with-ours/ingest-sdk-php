@@ -3,7 +3,6 @@
 namespace Tests\Services;
 
 use OursPrivacy\Client;
-use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -34,10 +33,9 @@ final class VisitorTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->visitor->upsert(
-            token: 'x',
-            userProperties: (new UserProperties)
-        );
+        $result = $this->client->visitor->upsert([
+            'token' => 'x', 'userProperties' => [],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -49,60 +47,61 @@ final class VisitorTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->visitor->upsert(
-            token: 'x',
-            userProperties: (new UserProperties)
-                ->withAdID('ad_id')
-                ->withAdsetID('adset_id')
-                ->withCampaignID('campaign_id')
-                ->withCity('city')
-                ->withClickid('clickid')
-                ->withClid('clid')
-                ->withCompanyName('company_name')
-                ->withConsent(['foo' => 'bar'])
-                ->withCountry('country')
-                ->withCustomProperties(['foo' => 'bar'])
-                ->withDateOfBirth('date_of_birth')
-                ->withDclid('dclid')
-                ->withEmail('email')
-                ->withEpik('epik')
-                ->withExternalID('external_id')
-                ->withFbc('fbc')
-                ->withFbclid('fbclid')
-                ->withFbp('fbp')
-                ->withFirstName('first_name')
-                ->withGadSource('gad_source')
-                ->withGbraid('gbraid')
-                ->withGclid('gclid')
-                ->withGender('gender')
-                ->withIP('ip')
-                ->withIsBot((object) [])
-                ->withJobTitle('job_title')
-                ->withLastName('last_name')
-                ->withLiFatID('li_fat_id')
-                ->withMsclkid('msclkid')
-                ->withNdclid('ndclid')
-                ->withPhoneNumber((object) [])
-                ->withQclid('qclid')
-                ->withRdtCid('rdt_cid')
-                ->withReferrer('referrer')
-                ->withSacid('sacid')
-                ->withSccid('sccid')
-                ->withSid('sid')
-                ->withState('state')
-                ->withTtclid('ttclid')
-                ->withTwclid('twclid')
-                ->withUserAgent('user_agent')
-                ->withUserAgentFullList('user_agent_full_list')
-                ->withUtmCampaign('utm_campaign')
-                ->withUtmContent('utm_content')
-                ->withUtmMedium('utm_medium')
-                ->withUtmName('utm_name')
-                ->withUtmSource('utm_source')
-                ->withUtmTerm('utm_term')
-                ->withWbraid('wbraid')
-                ->withZip((object) []),
-        );
+        $result = $this->client->visitor->upsert([
+            'token' => 'x',
+            'userProperties' => [
+                'ad_id' => 'ad_id',
+                'adset_id' => 'adset_id',
+                'campaign_id' => 'campaign_id',
+                'city' => 'city',
+                'clickid' => 'clickid',
+                'clid' => 'clid',
+                'company_name' => 'company_name',
+                'consent' => ['foo' => 'bar'],
+                'country' => 'country',
+                'custom_properties' => ['foo' => 'bar'],
+                'date_of_birth' => 'date_of_birth',
+                'dclid' => 'dclid',
+                'email' => 'email',
+                'epik' => 'epik',
+                'external_id' => 'external_id',
+                'fbc' => 'fbc',
+                'fbclid' => 'fbclid',
+                'fbp' => 'fbp',
+                'first_name' => 'first_name',
+                'gad_source' => 'gad_source',
+                'gbraid' => 'gbraid',
+                'gclid' => 'gclid',
+                'gender' => 'gender',
+                'ip' => 'ip',
+                'is_bot' => [],
+                'job_title' => 'job_title',
+                'last_name' => 'last_name',
+                'li_fat_id' => 'li_fat_id',
+                'msclkid' => 'msclkid',
+                'ndclid' => 'ndclid',
+                'phone_number' => [],
+                'qclid' => 'qclid',
+                'rdt_cid' => 'rdt_cid',
+                'referrer' => 'referrer',
+                'sacid' => 'sacid',
+                'sccid' => 'sccid',
+                'sid' => 'sid',
+                'state' => 'state',
+                'ttclid' => 'ttclid',
+                'twclid' => 'twclid',
+                'user_agent' => 'user_agent',
+                'user_agent_full_list' => 'user_agent_full_list',
+                'utm_campaign' => 'utm_campaign',
+                'utm_content' => 'utm_content',
+                'utm_medium' => 'utm_medium',
+                'utm_name' => 'utm_name',
+                'utm_source' => 'utm_source',
+                'utm_term' => 'utm_term',
+                'wbraid' => 'wbraid',
+                'zip' => [],
+            ],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

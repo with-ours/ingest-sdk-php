@@ -21,8 +21,8 @@ use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
  *   userProperties: UserProperties,
  *   defaultProperties?: DefaultProperties|null,
  *   email?: string|null,
- *   externalID?: string|null,
- *   userID?: string|null,
+ *   externalId?: string|null,
+ *   userId?: string|null,
  * }
  */
 final class VisitorUpsertParams implements BaseModel
@@ -58,14 +58,14 @@ final class VisitorUpsertParams implements BaseModel
     /**
      * The externalId (the ID in your system) of a user. We will associate this event with the user or create a user. If included in the request, email lookup is ignored.
      */
-    #[Api('externalId', nullable: true, optional: true)]
-    public ?string $externalID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $externalId;
 
     /**
      * The Ours user id stored in local storage and cookies on your web properties. If userId is included in the request, we do not lookup the user by email or externalId.
      */
-    #[Api('userId', nullable: true, optional: true)]
-    public ?string $userID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $userId;
 
     /**
      * `new VisitorUpsertParams()` is missing required properties by the API.
@@ -96,8 +96,8 @@ final class VisitorUpsertParams implements BaseModel
         UserProperties $userProperties,
         ?DefaultProperties $defaultProperties = null,
         ?string $email = null,
-        ?string $externalID = null,
-        ?string $userID = null,
+        ?string $externalId = null,
+        ?string $userId = null,
     ): self {
         $obj = new self;
 
@@ -106,8 +106,8 @@ final class VisitorUpsertParams implements BaseModel
 
         null !== $defaultProperties && $obj->defaultProperties = $defaultProperties;
         null !== $email && $obj->email = $email;
-        null !== $externalID && $obj->externalID = $externalID;
-        null !== $userID && $obj->userID = $userID;
+        null !== $externalId && $obj->externalId = $externalId;
+        null !== $userId && $obj->userId = $userId;
 
         return $obj;
     }
@@ -163,7 +163,7 @@ final class VisitorUpsertParams implements BaseModel
     public function withExternalID(?string $externalID): self
     {
         $obj = clone $this;
-        $obj->externalID = $externalID;
+        $obj->externalId = $externalID;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class VisitorUpsertParams implements BaseModel
     public function withUserID(?string $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }

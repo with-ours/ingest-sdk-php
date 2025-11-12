@@ -33,7 +33,7 @@ final class TrackTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->track->event(token: 'x', event: 'x');
+        $result = $this->client->track->event(['token' => 'x', 'event' => 'x']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -45,7 +45,7 @@ final class TrackTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->track->event(token: 'x', event: 'x');
+        $result = $this->client->track->event(['token' => 'x', 'event' => 'x']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

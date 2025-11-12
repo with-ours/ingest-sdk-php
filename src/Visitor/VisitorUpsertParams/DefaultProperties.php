@@ -13,52 +13,52 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *
  * @phpstan-type DefaultPropertiesShape = array{
  *   activeDuration?: float|null,
- *   adID?: string|null,
- *   adsetID?: string|null,
- *   browserLanguage?: string|null,
- *   browserName?: string|null,
- *   browserVersion?: string|null,
- *   campaignID?: string|null,
+ *   ad_id?: string|null,
+ *   adset_id?: string|null,
+ *   browser_language?: string|null,
+ *   browser_name?: string|null,
+ *   browser_version?: string|null,
+ *   campaign_id?: string|null,
  *   clickid?: string|null,
  *   clid?: string|null,
- *   cpuArchitecture?: string|null,
- *   currentURL?: string|null,
+ *   cpu_architecture?: string|null,
+ *   current_url?: string|null,
  *   dclid?: string|null,
- *   deviceModel?: string|null,
- *   deviceType?: string|null,
- *   deviceVendor?: string|null,
+ *   device_model?: string|null,
+ *   device_type?: string|null,
+ *   device_vendor?: string|null,
  *   duration?: float|null,
  *   encoding?: string|null,
- *   engineName?: string|null,
- *   engineVersion?: string|null,
+ *   engine_name?: string|null,
+ *   engine_version?: string|null,
  *   epik?: string|null,
  *   fbc?: string|null,
  *   fbclid?: string|null,
  *   fbp?: string|null,
  *   fv?: bool|null,
- *   gadSource?: string|null,
+ *   gad_source?: string|null,
  *   gbraid?: string|null,
  *   gclid?: string|null,
  *   host?: string|null,
  *   iframe?: bool|null,
  *   ip?: string|null,
- *   isBot?: mixed,
- *   liFatID?: string|null,
+ *   is_bot?: mixed,
+ *   li_fat_id?: string|null,
  *   msclkid?: string|null,
  *   ndclid?: string|null,
- *   newS?: bool|null,
- *   osName?: string|null,
- *   osVersion?: string|null,
- *   pageHash?: float|null,
+ *   new_s?: bool|null,
+ *   os_name?: string|null,
+ *   os_version?: string|null,
+ *   page_hash?: float|null,
  *   pathname?: string|null,
  *   qclid?: string|null,
- *   rdtCid?: string|null,
- *   receivedAt?: string|null,
+ *   rdt_cid?: string|null,
+ *   received_at?: string|null,
  *   referrer?: string|null,
  *   sacid?: string|null,
  *   sccid?: string|null,
- *   screenHeight?: float|null,
- *   screenWidth?: float|null,
+ *   screen_height?: float|null,
+ *   screen_width?: float|null,
  *   sessionCount?: float|null,
  *   sid?: string|null,
  *   sr?: string|null,
@@ -66,13 +66,13 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   ttclid?: string|null,
  *   twclid?: string|null,
  *   uafvl?: string|null,
- *   userAgent?: string|null,
- *   utmCampaign?: string|null,
- *   utmContent?: string|null,
- *   utmMedium?: string|null,
- *   utmName?: string|null,
- *   utmSource?: string|null,
- *   utmTerm?: string|null,
+ *   user_agent?: string|null,
+ *   utm_campaign?: string|null,
+ *   utm_content?: string|null,
+ *   utm_medium?: string|null,
+ *   utm_name?: string|null,
+ *   utm_source?: string|null,
+ *   utm_term?: string|null,
  *   version?: string|null,
  *   wbraid?: string|null,
  *   webview?: bool|null,
@@ -92,38 +92,38 @@ final class DefaultProperties implements BaseModel
     /**
      * The ad id for detected in the session. This is set by the web sdk automatically.
      */
-    #[Api('ad_id', nullable: true, optional: true)]
-    public ?string $adID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $ad_id;
 
     /**
      * The adset id for detected in the session. This is set by the web sdk automatically.
      */
-    #[Api('adset_id', nullable: true, optional: true)]
-    public ?string $adsetID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $adset_id;
 
     /**
      * The language of the browser. Ex: en-US.
      */
-    #[Api('browser_language', nullable: true, optional: true)]
-    public ?string $browserLanguage;
+    #[Api(nullable: true, optional: true)]
+    public ?string $browser_language;
 
     /**
      * The name of the browser. Ex: Chrome.
      */
-    #[Api('browser_name', nullable: true, optional: true)]
-    public ?string $browserName;
+    #[Api(nullable: true, optional: true)]
+    public ?string $browser_name;
 
     /**
      * The version of the browser. Ex: 114.0.
      */
-    #[Api('browser_version', nullable: true, optional: true)]
-    public ?string $browserVersion;
+    #[Api(nullable: true, optional: true)]
+    public ?string $browser_version;
 
     /**
      * The campaign id for detected in the session. This is set by the web sdk automatically.
      */
-    #[Api('campaign_id', nullable: true, optional: true)]
-    public ?string $campaignID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $campaign_id;
 
     /**
      * The Click ID. Ex: clickid123.
@@ -140,14 +140,14 @@ final class DefaultProperties implements BaseModel
     /**
      * The architecture of the CPU. Ex: x64.
      */
-    #[Api('cpu_architecture', nullable: true, optional: true)]
-    public ?string $cpuArchitecture;
+    #[Api(nullable: true, optional: true)]
+    public ?string $cpu_architecture;
 
     /**
      * The full url (including query params) of the current page.
      */
-    #[Api('current_url', nullable: true, optional: true)]
-    public ?string $currentURL;
+    #[Api(nullable: true, optional: true)]
+    public ?string $current_url;
 
     /**
      * The DoubleClick Click ID. Ex: dclid123.
@@ -158,20 +158,20 @@ final class DefaultProperties implements BaseModel
     /**
      * The model of the device. Ex: iPhone 13.
      */
-    #[Api('device_model', nullable: true, optional: true)]
-    public ?string $deviceModel;
+    #[Api(nullable: true, optional: true)]
+    public ?string $device_model;
 
     /**
      * The type of device the user is using. Ex: mobile.
      */
-    #[Api('device_type', nullable: true, optional: true)]
-    public ?string $deviceType;
+    #[Api(nullable: true, optional: true)]
+    public ?string $device_type;
 
     /**
      * The vendor of the device. Ex: Apple.
      */
-    #[Api('device_vendor', nullable: true, optional: true)]
-    public ?string $deviceVendor;
+    #[Api(nullable: true, optional: true)]
+    public ?string $device_vendor;
 
     /**
      * The time in milliseconds since the page was loaded // script was loaded.
@@ -188,14 +188,14 @@ final class DefaultProperties implements BaseModel
     /**
      * The name of the browser engine. Ex: Blink.
      */
-    #[Api('engine_name', nullable: true, optional: true)]
-    public ?string $engineName;
+    #[Api(nullable: true, optional: true)]
+    public ?string $engine_name;
 
     /**
      * The version of the browser engine. Ex: 114.0.
      */
-    #[Api('engine_version', nullable: true, optional: true)]
-    public ?string $engineVersion;
+    #[Api(nullable: true, optional: true)]
+    public ?string $engine_version;
 
     /**
      * The Pinterest Click ID. Ex: epik456.
@@ -230,8 +230,8 @@ final class DefaultProperties implements BaseModel
     /**
      * The Google Ad Source. Ex: google.
      */
-    #[Api('gad_source', nullable: true, optional: true)]
-    public ?string $gadSource;
+    #[Api(nullable: true, optional: true)]
+    public ?string $gad_source;
 
     /**
      * The Google Braid ID. Ex: gbraid123.
@@ -266,14 +266,14 @@ final class DefaultProperties implements BaseModel
     /**
      * Whether we have detected that the user is a bot. This is set automatically by the Ours server primarily for events tracked through the web SDK.
      */
-    #[Api('is_bot', optional: true)]
-    public mixed $isBot;
+    #[Api(optional: true)]
+    public mixed $is_bot;
 
     /**
      * The LinkedIn Click ID. Ex: li_fat_id123.
      */
-    #[Api('li_fat_id', nullable: true, optional: true)]
-    public ?string $liFatID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $li_fat_id;
 
     /**
      * The Microsoft Click ID. Ex: msclkid123.
@@ -290,26 +290,26 @@ final class DefaultProperties implements BaseModel
     /**
      * Deprecated.
      */
-    #[Api('new_s', nullable: true, optional: true)]
-    public ?bool $newS;
+    #[Api(nullable: true, optional: true)]
+    public ?bool $new_s;
 
     /**
      * The name of the operating system. Ex: Windows.
      */
-    #[Api('os_name', nullable: true, optional: true)]
-    public ?string $osName;
+    #[Api(nullable: true, optional: true)]
+    public ?string $os_name;
 
     /**
      * The version of the operating system. Ex: 10.0.
      */
-    #[Api('os_version', nullable: true, optional: true)]
-    public ?string $osVersion;
+    #[Api(nullable: true, optional: true)]
+    public ?string $os_version;
 
     /**
      * A random set of numbers for the page load.
      */
-    #[Api('page_hash', nullable: true, optional: true)]
-    public ?float $pageHash;
+    #[Api(nullable: true, optional: true)]
+    public ?float $page_hash;
 
     /**
      * The pathname of the current page. Ex: /home.
@@ -326,14 +326,14 @@ final class DefaultProperties implements BaseModel
     /**
      * The Reddit Click ID. Ex: rdt_cid123.
      */
-    #[Api('rdt_cid', nullable: true, optional: true)]
-    public ?string $rdtCid;
+    #[Api(nullable: true, optional: true)]
+    public ?string $rdt_cid;
 
     /**
      * The time the event was received by an Ours server in ISO format.
      */
-    #[Api('received_at', nullable: true, optional: true)]
-    public ?string $receivedAt;
+    #[Api(nullable: true, optional: true)]
+    public ?string $received_at;
 
     /**
      * The referrer URL of the current page.
@@ -356,14 +356,14 @@ final class DefaultProperties implements BaseModel
     /**
      * The height of the screen. Ex: 1080.
      */
-    #[Api('screen_height', nullable: true, optional: true)]
-    public ?float $screenHeight;
+    #[Api(nullable: true, optional: true)]
+    public ?float $screen_height;
 
     /**
      * The width of the screen. Ex: 1920.
      */
-    #[Api('screen_width', nullable: true, optional: true)]
-    public ?float $screenWidth;
+    #[Api(nullable: true, optional: true)]
+    public ?float $screen_width;
 
     /**
      * The number of sessions the user has had. Ex: 3.
@@ -407,44 +407,44 @@ final class DefaultProperties implements BaseModel
     /**
      * The user agent of the browser.
      */
-    #[Api('user_agent', nullable: true, optional: true)]
-    public ?string $userAgent;
+    #[Api(nullable: true, optional: true)]
+    public ?string $user_agent;
 
     /**
      * The UTM Campaign. The web SDK automatically captures this from the query params.
      */
-    #[Api('utm_campaign', nullable: true, optional: true)]
-    public ?string $utmCampaign;
+    #[Api(nullable: true, optional: true)]
+    public ?string $utm_campaign;
 
     /**
      * The UTM Content. The web SDK automatically captures this from the query params.
      */
-    #[Api('utm_content', nullable: true, optional: true)]
-    public ?string $utmContent;
+    #[Api(nullable: true, optional: true)]
+    public ?string $utm_content;
 
     /**
      * The UTM Medium. The web SDK automatically captures this from the query params.
      */
-    #[Api('utm_medium', nullable: true, optional: true)]
-    public ?string $utmMedium;
+    #[Api(nullable: true, optional: true)]
+    public ?string $utm_medium;
 
     /**
      * The UTM Name. The web SDK automatically captures this from the query params.
      */
-    #[Api('utm_name', nullable: true, optional: true)]
-    public ?string $utmName;
+    #[Api(nullable: true, optional: true)]
+    public ?string $utm_name;
 
     /**
      * The UTM Source. The web SDK automatically captures this from the query params.
      */
-    #[Api('utm_source', nullable: true, optional: true)]
-    public ?string $utmSource;
+    #[Api(nullable: true, optional: true)]
+    public ?string $utm_source;
 
     /**
      * The UTM Term. The web SDK automatically captures this from the query params.
      */
-    #[Api('utm_term', nullable: true, optional: true)]
-    public ?string $utmTerm;
+    #[Api(nullable: true, optional: true)]
+    public ?string $utm_term;
 
     /**
      * The version of the web SDK.
@@ -476,52 +476,52 @@ final class DefaultProperties implements BaseModel
      */
     public static function with(
         ?float $activeDuration = null,
-        ?string $adID = null,
-        ?string $adsetID = null,
-        ?string $browserLanguage = null,
-        ?string $browserName = null,
-        ?string $browserVersion = null,
-        ?string $campaignID = null,
+        ?string $ad_id = null,
+        ?string $adset_id = null,
+        ?string $browser_language = null,
+        ?string $browser_name = null,
+        ?string $browser_version = null,
+        ?string $campaign_id = null,
         ?string $clickid = null,
         ?string $clid = null,
-        ?string $cpuArchitecture = null,
-        ?string $currentURL = null,
+        ?string $cpu_architecture = null,
+        ?string $current_url = null,
         ?string $dclid = null,
-        ?string $deviceModel = null,
-        ?string $deviceType = null,
-        ?string $deviceVendor = null,
+        ?string $device_model = null,
+        ?string $device_type = null,
+        ?string $device_vendor = null,
         ?float $duration = null,
         ?string $encoding = null,
-        ?string $engineName = null,
-        ?string $engineVersion = null,
+        ?string $engine_name = null,
+        ?string $engine_version = null,
         ?string $epik = null,
         ?string $fbc = null,
         ?string $fbclid = null,
         ?string $fbp = null,
         ?bool $fv = null,
-        ?string $gadSource = null,
+        ?string $gad_source = null,
         ?string $gbraid = null,
         ?string $gclid = null,
         ?string $host = null,
         ?bool $iframe = null,
         ?string $ip = null,
-        mixed $isBot = null,
-        ?string $liFatID = null,
+        mixed $is_bot = null,
+        ?string $li_fat_id = null,
         ?string $msclkid = null,
         ?string $ndclid = null,
-        ?bool $newS = null,
-        ?string $osName = null,
-        ?string $osVersion = null,
-        ?float $pageHash = null,
+        ?bool $new_s = null,
+        ?string $os_name = null,
+        ?string $os_version = null,
+        ?float $page_hash = null,
         ?string $pathname = null,
         ?string $qclid = null,
-        ?string $rdtCid = null,
-        ?string $receivedAt = null,
+        ?string $rdt_cid = null,
+        ?string $received_at = null,
         ?string $referrer = null,
         ?string $sacid = null,
         ?string $sccid = null,
-        ?float $screenHeight = null,
-        ?float $screenWidth = null,
+        ?float $screen_height = null,
+        ?float $screen_width = null,
         ?float $sessionCount = null,
         ?string $sid = null,
         ?string $sr = null,
@@ -529,13 +529,13 @@ final class DefaultProperties implements BaseModel
         ?string $ttclid = null,
         ?string $twclid = null,
         ?string $uafvl = null,
-        ?string $userAgent = null,
-        ?string $utmCampaign = null,
-        ?string $utmContent = null,
-        ?string $utmMedium = null,
-        ?string $utmName = null,
-        ?string $utmSource = null,
-        ?string $utmTerm = null,
+        ?string $user_agent = null,
+        ?string $utm_campaign = null,
+        ?string $utm_content = null,
+        ?string $utm_medium = null,
+        ?string $utm_name = null,
+        ?string $utm_source = null,
+        ?string $utm_term = null,
         ?string $version = null,
         ?string $wbraid = null,
         ?bool $webview = null,
@@ -543,52 +543,52 @@ final class DefaultProperties implements BaseModel
         $obj = new self;
 
         null !== $activeDuration && $obj->activeDuration = $activeDuration;
-        null !== $adID && $obj->adID = $adID;
-        null !== $adsetID && $obj->adsetID = $adsetID;
-        null !== $browserLanguage && $obj->browserLanguage = $browserLanguage;
-        null !== $browserName && $obj->browserName = $browserName;
-        null !== $browserVersion && $obj->browserVersion = $browserVersion;
-        null !== $campaignID && $obj->campaignID = $campaignID;
+        null !== $ad_id && $obj->ad_id = $ad_id;
+        null !== $adset_id && $obj->adset_id = $adset_id;
+        null !== $browser_language && $obj->browser_language = $browser_language;
+        null !== $browser_name && $obj->browser_name = $browser_name;
+        null !== $browser_version && $obj->browser_version = $browser_version;
+        null !== $campaign_id && $obj->campaign_id = $campaign_id;
         null !== $clickid && $obj->clickid = $clickid;
         null !== $clid && $obj->clid = $clid;
-        null !== $cpuArchitecture && $obj->cpuArchitecture = $cpuArchitecture;
-        null !== $currentURL && $obj->currentURL = $currentURL;
+        null !== $cpu_architecture && $obj->cpu_architecture = $cpu_architecture;
+        null !== $current_url && $obj->current_url = $current_url;
         null !== $dclid && $obj->dclid = $dclid;
-        null !== $deviceModel && $obj->deviceModel = $deviceModel;
-        null !== $deviceType && $obj->deviceType = $deviceType;
-        null !== $deviceVendor && $obj->deviceVendor = $deviceVendor;
+        null !== $device_model && $obj->device_model = $device_model;
+        null !== $device_type && $obj->device_type = $device_type;
+        null !== $device_vendor && $obj->device_vendor = $device_vendor;
         null !== $duration && $obj->duration = $duration;
         null !== $encoding && $obj->encoding = $encoding;
-        null !== $engineName && $obj->engineName = $engineName;
-        null !== $engineVersion && $obj->engineVersion = $engineVersion;
+        null !== $engine_name && $obj->engine_name = $engine_name;
+        null !== $engine_version && $obj->engine_version = $engine_version;
         null !== $epik && $obj->epik = $epik;
         null !== $fbc && $obj->fbc = $fbc;
         null !== $fbclid && $obj->fbclid = $fbclid;
         null !== $fbp && $obj->fbp = $fbp;
         null !== $fv && $obj->fv = $fv;
-        null !== $gadSource && $obj->gadSource = $gadSource;
+        null !== $gad_source && $obj->gad_source = $gad_source;
         null !== $gbraid && $obj->gbraid = $gbraid;
         null !== $gclid && $obj->gclid = $gclid;
         null !== $host && $obj->host = $host;
         null !== $iframe && $obj->iframe = $iframe;
         null !== $ip && $obj->ip = $ip;
-        null !== $isBot && $obj->isBot = $isBot;
-        null !== $liFatID && $obj->liFatID = $liFatID;
+        null !== $is_bot && $obj->is_bot = $is_bot;
+        null !== $li_fat_id && $obj->li_fat_id = $li_fat_id;
         null !== $msclkid && $obj->msclkid = $msclkid;
         null !== $ndclid && $obj->ndclid = $ndclid;
-        null !== $newS && $obj->newS = $newS;
-        null !== $osName && $obj->osName = $osName;
-        null !== $osVersion && $obj->osVersion = $osVersion;
-        null !== $pageHash && $obj->pageHash = $pageHash;
+        null !== $new_s && $obj->new_s = $new_s;
+        null !== $os_name && $obj->os_name = $os_name;
+        null !== $os_version && $obj->os_version = $os_version;
+        null !== $page_hash && $obj->page_hash = $page_hash;
         null !== $pathname && $obj->pathname = $pathname;
         null !== $qclid && $obj->qclid = $qclid;
-        null !== $rdtCid && $obj->rdtCid = $rdtCid;
-        null !== $receivedAt && $obj->receivedAt = $receivedAt;
+        null !== $rdt_cid && $obj->rdt_cid = $rdt_cid;
+        null !== $received_at && $obj->received_at = $received_at;
         null !== $referrer && $obj->referrer = $referrer;
         null !== $sacid && $obj->sacid = $sacid;
         null !== $sccid && $obj->sccid = $sccid;
-        null !== $screenHeight && $obj->screenHeight = $screenHeight;
-        null !== $screenWidth && $obj->screenWidth = $screenWidth;
+        null !== $screen_height && $obj->screen_height = $screen_height;
+        null !== $screen_width && $obj->screen_width = $screen_width;
         null !== $sessionCount && $obj->sessionCount = $sessionCount;
         null !== $sid && $obj->sid = $sid;
         null !== $sr && $obj->sr = $sr;
@@ -596,13 +596,13 @@ final class DefaultProperties implements BaseModel
         null !== $ttclid && $obj->ttclid = $ttclid;
         null !== $twclid && $obj->twclid = $twclid;
         null !== $uafvl && $obj->uafvl = $uafvl;
-        null !== $userAgent && $obj->userAgent = $userAgent;
-        null !== $utmCampaign && $obj->utmCampaign = $utmCampaign;
-        null !== $utmContent && $obj->utmContent = $utmContent;
-        null !== $utmMedium && $obj->utmMedium = $utmMedium;
-        null !== $utmName && $obj->utmName = $utmName;
-        null !== $utmSource && $obj->utmSource = $utmSource;
-        null !== $utmTerm && $obj->utmTerm = $utmTerm;
+        null !== $user_agent && $obj->user_agent = $user_agent;
+        null !== $utm_campaign && $obj->utm_campaign = $utm_campaign;
+        null !== $utm_content && $obj->utm_content = $utm_content;
+        null !== $utm_medium && $obj->utm_medium = $utm_medium;
+        null !== $utm_name && $obj->utm_name = $utm_name;
+        null !== $utm_source && $obj->utm_source = $utm_source;
+        null !== $utm_term && $obj->utm_term = $utm_term;
         null !== $version && $obj->version = $version;
         null !== $wbraid && $obj->wbraid = $wbraid;
         null !== $webview && $obj->webview = $webview;
@@ -627,7 +627,7 @@ final class DefaultProperties implements BaseModel
     public function withAdID(?string $adID): self
     {
         $obj = clone $this;
-        $obj->adID = $adID;
+        $obj->ad_id = $adID;
 
         return $obj;
     }
@@ -638,7 +638,7 @@ final class DefaultProperties implements BaseModel
     public function withAdsetID(?string $adsetID): self
     {
         $obj = clone $this;
-        $obj->adsetID = $adsetID;
+        $obj->adset_id = $adsetID;
 
         return $obj;
     }
@@ -649,7 +649,7 @@ final class DefaultProperties implements BaseModel
     public function withBrowserLanguage(?string $browserLanguage): self
     {
         $obj = clone $this;
-        $obj->browserLanguage = $browserLanguage;
+        $obj->browser_language = $browserLanguage;
 
         return $obj;
     }
@@ -660,7 +660,7 @@ final class DefaultProperties implements BaseModel
     public function withBrowserName(?string $browserName): self
     {
         $obj = clone $this;
-        $obj->browserName = $browserName;
+        $obj->browser_name = $browserName;
 
         return $obj;
     }
@@ -671,7 +671,7 @@ final class DefaultProperties implements BaseModel
     public function withBrowserVersion(?string $browserVersion): self
     {
         $obj = clone $this;
-        $obj->browserVersion = $browserVersion;
+        $obj->browser_version = $browserVersion;
 
         return $obj;
     }
@@ -682,7 +682,7 @@ final class DefaultProperties implements BaseModel
     public function withCampaignID(?string $campaignID): self
     {
         $obj = clone $this;
-        $obj->campaignID = $campaignID;
+        $obj->campaign_id = $campaignID;
 
         return $obj;
     }
@@ -715,7 +715,7 @@ final class DefaultProperties implements BaseModel
     public function withCPUArchitecture(?string $cpuArchitecture): self
     {
         $obj = clone $this;
-        $obj->cpuArchitecture = $cpuArchitecture;
+        $obj->cpu_architecture = $cpuArchitecture;
 
         return $obj;
     }
@@ -726,7 +726,7 @@ final class DefaultProperties implements BaseModel
     public function withCurrentURL(?string $currentURL): self
     {
         $obj = clone $this;
-        $obj->currentURL = $currentURL;
+        $obj->current_url = $currentURL;
 
         return $obj;
     }
@@ -748,7 +748,7 @@ final class DefaultProperties implements BaseModel
     public function withDeviceModel(?string $deviceModel): self
     {
         $obj = clone $this;
-        $obj->deviceModel = $deviceModel;
+        $obj->device_model = $deviceModel;
 
         return $obj;
     }
@@ -759,7 +759,7 @@ final class DefaultProperties implements BaseModel
     public function withDeviceType(?string $deviceType): self
     {
         $obj = clone $this;
-        $obj->deviceType = $deviceType;
+        $obj->device_type = $deviceType;
 
         return $obj;
     }
@@ -770,7 +770,7 @@ final class DefaultProperties implements BaseModel
     public function withDeviceVendor(?string $deviceVendor): self
     {
         $obj = clone $this;
-        $obj->deviceVendor = $deviceVendor;
+        $obj->device_vendor = $deviceVendor;
 
         return $obj;
     }
@@ -803,7 +803,7 @@ final class DefaultProperties implements BaseModel
     public function withEngineName(?string $engineName): self
     {
         $obj = clone $this;
-        $obj->engineName = $engineName;
+        $obj->engine_name = $engineName;
 
         return $obj;
     }
@@ -814,7 +814,7 @@ final class DefaultProperties implements BaseModel
     public function withEngineVersion(?string $engineVersion): self
     {
         $obj = clone $this;
-        $obj->engineVersion = $engineVersion;
+        $obj->engine_version = $engineVersion;
 
         return $obj;
     }
@@ -880,7 +880,7 @@ final class DefaultProperties implements BaseModel
     public function withGadSource(?string $gadSource): self
     {
         $obj = clone $this;
-        $obj->gadSource = $gadSource;
+        $obj->gad_source = $gadSource;
 
         return $obj;
     }
@@ -946,7 +946,7 @@ final class DefaultProperties implements BaseModel
     public function withIsBot(mixed $isBot): self
     {
         $obj = clone $this;
-        $obj->isBot = $isBot;
+        $obj->is_bot = $isBot;
 
         return $obj;
     }
@@ -957,7 +957,7 @@ final class DefaultProperties implements BaseModel
     public function withLiFatID(?string $liFatID): self
     {
         $obj = clone $this;
-        $obj->liFatID = $liFatID;
+        $obj->li_fat_id = $liFatID;
 
         return $obj;
     }
@@ -990,7 +990,7 @@ final class DefaultProperties implements BaseModel
     public function withNewS(?bool $newS): self
     {
         $obj = clone $this;
-        $obj->newS = $newS;
+        $obj->new_s = $newS;
 
         return $obj;
     }
@@ -1001,7 +1001,7 @@ final class DefaultProperties implements BaseModel
     public function withOsName(?string $osName): self
     {
         $obj = clone $this;
-        $obj->osName = $osName;
+        $obj->os_name = $osName;
 
         return $obj;
     }
@@ -1012,7 +1012,7 @@ final class DefaultProperties implements BaseModel
     public function withOsVersion(?string $osVersion): self
     {
         $obj = clone $this;
-        $obj->osVersion = $osVersion;
+        $obj->os_version = $osVersion;
 
         return $obj;
     }
@@ -1023,7 +1023,7 @@ final class DefaultProperties implements BaseModel
     public function withPageHash(?float $pageHash): self
     {
         $obj = clone $this;
-        $obj->pageHash = $pageHash;
+        $obj->page_hash = $pageHash;
 
         return $obj;
     }
@@ -1056,7 +1056,7 @@ final class DefaultProperties implements BaseModel
     public function withRdtCid(?string $rdtCid): self
     {
         $obj = clone $this;
-        $obj->rdtCid = $rdtCid;
+        $obj->rdt_cid = $rdtCid;
 
         return $obj;
     }
@@ -1067,7 +1067,7 @@ final class DefaultProperties implements BaseModel
     public function withReceivedAt(?string $receivedAt): self
     {
         $obj = clone $this;
-        $obj->receivedAt = $receivedAt;
+        $obj->received_at = $receivedAt;
 
         return $obj;
     }
@@ -1111,7 +1111,7 @@ final class DefaultProperties implements BaseModel
     public function withScreenHeight(?float $screenHeight): self
     {
         $obj = clone $this;
-        $obj->screenHeight = $screenHeight;
+        $obj->screen_height = $screenHeight;
 
         return $obj;
     }
@@ -1122,7 +1122,7 @@ final class DefaultProperties implements BaseModel
     public function withScreenWidth(?float $screenWidth): self
     {
         $obj = clone $this;
-        $obj->screenWidth = $screenWidth;
+        $obj->screen_width = $screenWidth;
 
         return $obj;
     }
@@ -1207,7 +1207,7 @@ final class DefaultProperties implements BaseModel
     public function withUserAgent(?string $userAgent): self
     {
         $obj = clone $this;
-        $obj->userAgent = $userAgent;
+        $obj->user_agent = $userAgent;
 
         return $obj;
     }
@@ -1218,7 +1218,7 @@ final class DefaultProperties implements BaseModel
     public function withUtmCampaign(?string $utmCampaign): self
     {
         $obj = clone $this;
-        $obj->utmCampaign = $utmCampaign;
+        $obj->utm_campaign = $utmCampaign;
 
         return $obj;
     }
@@ -1229,7 +1229,7 @@ final class DefaultProperties implements BaseModel
     public function withUtmContent(?string $utmContent): self
     {
         $obj = clone $this;
-        $obj->utmContent = $utmContent;
+        $obj->utm_content = $utmContent;
 
         return $obj;
     }
@@ -1240,7 +1240,7 @@ final class DefaultProperties implements BaseModel
     public function withUtmMedium(?string $utmMedium): self
     {
         $obj = clone $this;
-        $obj->utmMedium = $utmMedium;
+        $obj->utm_medium = $utmMedium;
 
         return $obj;
     }
@@ -1251,7 +1251,7 @@ final class DefaultProperties implements BaseModel
     public function withUtmName(?string $utmName): self
     {
         $obj = clone $this;
-        $obj->utmName = $utmName;
+        $obj->utm_name = $utmName;
 
         return $obj;
     }
@@ -1262,7 +1262,7 @@ final class DefaultProperties implements BaseModel
     public function withUtmSource(?string $utmSource): self
     {
         $obj = clone $this;
-        $obj->utmSource = $utmSource;
+        $obj->utm_source = $utmSource;
 
         return $obj;
     }
@@ -1273,7 +1273,7 @@ final class DefaultProperties implements BaseModel
     public function withUtmTerm(?string $utmTerm): self
     {
         $obj = clone $this;
-        $obj->utmTerm = $utmTerm;
+        $obj->utm_term = $utmTerm;
 
         return $obj;
     }

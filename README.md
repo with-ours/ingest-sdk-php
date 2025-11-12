@@ -37,7 +37,9 @@ use OursPrivacy\Client;
 
 $client = new Client();
 
-$response = $client->track->event(token: "REPLACE_ME", event: "REPLACE_ME");
+$response = $client->track->event([
+  "token" => "REPLACE_ME", "event" => "REPLACE_ME"
+]);
 
 var_dump($response->success);
 ```
@@ -59,7 +61,9 @@ When the library is unable to connect to the API, or if the API returns a non-su
 use OursPrivacy\Core\Exceptions\APIConnectionException;
 
 try {
-  $response = $client->track->event(token: "REPLACE_ME", event: "REPLACE_ME");
+  $response = $client->track->event([
+    "token" => "REPLACE_ME", "event" => "REPLACE_ME"
+  ]);
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
   var_dump($e->getPrevious());
@@ -106,9 +110,8 @@ $client = new Client(maxRetries: 0);
 
 // Or, configure per-request:
 $result = $client->track->event(
-  token: "REPLACE_ME",
-  event: "REPLACE_ME",
-  requestOptions: RequestOptions::with(maxRetries: 5),
+  ["token" => "REPLACE_ME", "event" => "REPLACE_ME"],
+  RequestOptions::with(maxRetries: 5),
 );
 ```
 
@@ -128,16 +131,13 @@ Note: the `extra*` parameters of the same name overrides the documented paramete
 use OursPrivacy\RequestOptions;
 
 $response = $client->track->event(
-  token: "REPLACE_ME",
-  event: "REPLACE_ME",
-  requestOptions: RequestOptions::with(
+  ["token" => "REPLACE_ME", "event" => "REPLACE_ME"],
+  RequestOptions::with(
     extraQueryParams: ["my_query_parameter" => "value"],
     extraBodyParams: ["my_body_parameter" => "value"],
     extraHeaders: ["my-header" => "value"],
   ),
 );
-
-var_dump($response["my_undocumented_property"]);
 ```
 
 #### Undocumented request params

@@ -14,7 +14,7 @@ use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
 /**
  * Define visitor properties on an existing visitor or create a new visitor. Note: This does not fire an event. If you want to fire an event, use the track method and include properties for the visitor.
  *
- * @see OursPrivacy\Visitor->upsert
+ * @see OursPrivacy\Services\VisitorService::upsert()
  *
  * @phpstan-type VisitorUpsertParamsShape = array{
  *   token: string,

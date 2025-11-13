@@ -15,7 +15,7 @@ use OursPrivacy\Track\TrackEventParams\UserProperties;
 /**
  * Track events from your server. Please include at least one of: userId, externalId, or email. These properties help us associate events with existing users. For all fields, null values unset the property and undefined values do not unset existing properties.
  *
- * @see OursPrivacy\Track->event
+ * @see OursPrivacy\Services\TrackService::event()
  *
  * @phpstan-type TrackEventParamsShape = array{
  *   token: string,

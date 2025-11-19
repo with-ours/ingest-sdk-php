@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.3.0 (2025-11-19)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.2.0...v0.3.0)
+
+### ⚠ BREAKING CHANGES
+
+* **client:** redesign methods
+
+### Features
+
+* **api:** manual updates ([c83ad63](https://github.com/with-ours/ingest-sdk-php/commit/c83ad6378b03d78dd3fe121284edbcd6632b96d9))
+* **client:** redesign methods ([08982ca](https://github.com/with-ours/ingest-sdk-php/commit/08982cab3ceb6e223b928e3f2052aab5bd00f5fc))
+
+
+### Bug Fixes
+
+* rename invalid types ([bce1a32](https://github.com/with-ours/ingest-sdk-php/commit/bce1a323309bf5e5ffa76834e124e9dbe77cc8f4))
+
+
+### Chores
+
+* **internal:** codegen related update ([52de7b6](https://github.com/with-ours/ingest-sdk-php/commit/52de7b692f40dd2b108a2553055b963b189ce155))
+
 ## 0.2.0 (2025-11-05)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.1.0...v0.2.0)

@@ -13,39 +13,39 @@ use OursPrivacy\Core\Conversion\MapOf;
  * Properties to set on the visitor. (optional) You can also update these properties via the identify endpoint.
  *
  * @phpstan-type UserPropertiesShape = array{
- *   adID?: string|null,
- *   adsetID?: string|null,
- *   campaignID?: string|null,
+ *   ad_id?: string|null,
+ *   adset_id?: string|null,
+ *   campaign_id?: string|null,
  *   city?: string|null,
  *   clickid?: string|null,
  *   clid?: string|null,
- *   companyName?: string|null,
- *   consent?: array<string, mixed>|null,
+ *   company_name?: string|null,
+ *   consent?: array<string,mixed>|null,
  *   country?: string|null,
- *   customProperties?: array<string, mixed>|null,
- *   dateOfBirth?: string|null,
+ *   custom_properties?: array<string,mixed>|null,
+ *   date_of_birth?: string|null,
  *   dclid?: string|null,
  *   email?: string|null,
  *   epik?: string|null,
- *   externalID?: string|null,
+ *   external_id?: string|null,
  *   fbc?: string|null,
  *   fbclid?: string|null,
  *   fbp?: string|null,
- *   firstName?: string|null,
- *   gadSource?: string|null,
+ *   first_name?: string|null,
+ *   gad_source?: string|null,
  *   gbraid?: string|null,
  *   gclid?: string|null,
  *   gender?: string|null,
  *   ip?: string|null,
- *   isBot?: mixed,
- *   jobTitle?: string|null,
- *   lastName?: string|null,
- *   liFatID?: string|null,
+ *   is_bot?: mixed,
+ *   job_title?: string|null,
+ *   last_name?: string|null,
+ *   li_fat_id?: string|null,
  *   msclkid?: string|null,
  *   ndclid?: string|null,
- *   phoneNumber?: mixed,
+ *   phone_number?: mixed,
  *   qclid?: string|null,
- *   rdtCid?: string|null,
+ *   rdt_cid?: string|null,
  *   referrer?: string|null,
  *   sacid?: string|null,
  *   sccid?: string|null,
@@ -53,14 +53,14 @@ use OursPrivacy\Core\Conversion\MapOf;
  *   state?: string|null,
  *   ttclid?: string|null,
  *   twclid?: string|null,
- *   userAgent?: string|null,
- *   userAgentFullList?: string|null,
- *   utmCampaign?: string|null,
- *   utmContent?: string|null,
- *   utmMedium?: string|null,
- *   utmName?: string|null,
- *   utmSource?: string|null,
- *   utmTerm?: string|null,
+ *   user_agent?: string|null,
+ *   user_agent_full_list?: string|null,
+ *   utm_campaign?: string|null,
+ *   utm_content?: string|null,
+ *   utm_medium?: string|null,
+ *   utm_name?: string|null,
+ *   utm_source?: string|null,
+ *   utm_term?: string|null,
  *   wbraid?: string|null,
  *   zip?: mixed,
  * }
@@ -70,14 +70,14 @@ final class UserProperties implements BaseModel
     /** @use SdkModel<UserPropertiesShape> */
     use SdkModel;
 
-    #[Api('ad_id', nullable: true, optional: true)]
-    public ?string $adID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $ad_id;
 
-    #[Api('adset_id', nullable: true, optional: true)]
-    public ?string $adsetID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $adset_id;
 
-    #[Api('campaign_id', nullable: true, optional: true)]
-    public ?string $campaignID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $campaign_id;
 
     #[Api(nullable: true, optional: true)]
     public ?string $city;
@@ -88,10 +88,10 @@ final class UserProperties implements BaseModel
     #[Api(nullable: true, optional: true)]
     public ?string $clid;
 
-    #[Api('company_name', nullable: true, optional: true)]
-    public ?string $companyName;
+    #[Api(nullable: true, optional: true)]
+    public ?string $company_name;
 
-    /** @var array<string, mixed>|null $consent */
+    /** @var array<string,mixed>|null $consent */
     #[Api(
         type: new MapOf('mixed', nullable: true),
         nullable: true,
@@ -102,17 +102,16 @@ final class UserProperties implements BaseModel
     #[Api(nullable: true, optional: true)]
     public ?string $country;
 
-    /** @var array<string, mixed>|null $customProperties */
+    /** @var array<string,mixed>|null $custom_properties */
     #[Api(
-        'custom_properties',
         type: new MapOf('mixed', nullable: true),
         nullable: true,
-        optional: true,
+        optional: true
     )]
-    public ?array $customProperties;
+    public ?array $custom_properties;
 
-    #[Api('date_of_birth', nullable: true, optional: true)]
-    public ?string $dateOfBirth;
+    #[Api(nullable: true, optional: true)]
+    public ?string $date_of_birth;
 
     #[Api(nullable: true, optional: true)]
     public ?string $dclid;
@@ -123,8 +122,8 @@ final class UserProperties implements BaseModel
     #[Api(nullable: true, optional: true)]
     public ?string $epik;
 
-    #[Api('external_id', nullable: true, optional: true)]
-    public ?string $externalID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $external_id;
 
     #[Api(nullable: true, optional: true)]
     public ?string $fbc;
@@ -135,11 +134,11 @@ final class UserProperties implements BaseModel
     #[Api(nullable: true, optional: true)]
     public ?string $fbp;
 
-    #[Api('first_name', nullable: true, optional: true)]
-    public ?string $firstName;
+    #[Api(nullable: true, optional: true)]
+    public ?string $first_name;
 
-    #[Api('gad_source', nullable: true, optional: true)]
-    public ?string $gadSource;
+    #[Api(nullable: true, optional: true)]
+    public ?string $gad_source;
 
     #[Api(nullable: true, optional: true)]
     public ?string $gbraid;
@@ -156,17 +155,17 @@ final class UserProperties implements BaseModel
     #[Api(nullable: true, optional: true)]
     public ?string $ip;
 
-    #[Api('is_bot', optional: true)]
-    public mixed $isBot;
+    #[Api(optional: true)]
+    public mixed $is_bot;
 
-    #[Api('job_title', nullable: true, optional: true)]
-    public ?string $jobTitle;
+    #[Api(nullable: true, optional: true)]
+    public ?string $job_title;
 
-    #[Api('last_name', nullable: true, optional: true)]
-    public ?string $lastName;
+    #[Api(nullable: true, optional: true)]
+    public ?string $last_name;
 
-    #[Api('li_fat_id', nullable: true, optional: true)]
-    public ?string $liFatID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $li_fat_id;
 
     #[Api(nullable: true, optional: true)]
     public ?string $msclkid;
@@ -174,14 +173,14 @@ final class UserProperties implements BaseModel
     #[Api(nullable: true, optional: true)]
     public ?string $ndclid;
 
-    #[Api('phone_number', optional: true)]
-    public mixed $phoneNumber;
+    #[Api(optional: true)]
+    public mixed $phone_number;
 
     #[Api(nullable: true, optional: true)]
     public ?string $qclid;
 
-    #[Api('rdt_cid', nullable: true, optional: true)]
-    public ?string $rdtCid;
+    #[Api(nullable: true, optional: true)]
+    public ?string $rdt_cid;
 
     #[Api(nullable: true, optional: true)]
     public ?string $referrer;
@@ -204,29 +203,29 @@ final class UserProperties implements BaseModel
     #[Api(nullable: true, optional: true)]
     public ?string $twclid;
 
-    #[Api('user_agent', nullable: true, optional: true)]
-    public ?string $userAgent;
+    #[Api(nullable: true, optional: true)]
+    public ?string $user_agent;
 
-    #[Api('user_agent_full_list', nullable: true, optional: true)]
-    public ?string $userAgentFullList;
+    #[Api(nullable: true, optional: true)]
+    public ?string $user_agent_full_list;
 
-    #[Api('utm_campaign', nullable: true, optional: true)]
-    public ?string $utmCampaign;
+    #[Api(nullable: true, optional: true)]
+    public ?string $utm_campaign;
 
-    #[Api('utm_content', nullable: true, optional: true)]
-    public ?string $utmContent;
+    #[Api(nullable: true, optional: true)]
+    public ?string $utm_content;
 
-    #[Api('utm_medium', nullable: true, optional: true)]
-    public ?string $utmMedium;
+    #[Api(nullable: true, optional: true)]
+    public ?string $utm_medium;
 
-    #[Api('utm_name', nullable: true, optional: true)]
-    public ?string $utmName;
+    #[Api(nullable: true, optional: true)]
+    public ?string $utm_name;
 
-    #[Api('utm_source', nullable: true, optional: true)]
-    public ?string $utmSource;
+    #[Api(nullable: true, optional: true)]
+    public ?string $utm_source;
 
-    #[Api('utm_term', nullable: true, optional: true)]
-    public ?string $utmTerm;
+    #[Api(nullable: true, optional: true)]
+    public ?string $utm_term;
 
     #[Api(nullable: true, optional: true)]
     public ?string $wbraid;
@@ -244,43 +243,43 @@ final class UserProperties implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, mixed>|null $consent
-     * @param array<string, mixed>|null $customProperties
+     * @param array<string,mixed>|null $consent
+     * @param array<string,mixed>|null $custom_properties
      */
     public static function with(
-        ?string $adID = null,
-        ?string $adsetID = null,
-        ?string $campaignID = null,
+        ?string $ad_id = null,
+        ?string $adset_id = null,
+        ?string $campaign_id = null,
         ?string $city = null,
         ?string $clickid = null,
         ?string $clid = null,
-        ?string $companyName = null,
+        ?string $company_name = null,
         ?array $consent = null,
         ?string $country = null,
-        ?array $customProperties = null,
-        ?string $dateOfBirth = null,
+        ?array $custom_properties = null,
+        ?string $date_of_birth = null,
         ?string $dclid = null,
         ?string $email = null,
         ?string $epik = null,
-        ?string $externalID = null,
+        ?string $external_id = null,
         ?string $fbc = null,
         ?string $fbclid = null,
         ?string $fbp = null,
-        ?string $firstName = null,
-        ?string $gadSource = null,
+        ?string $first_name = null,
+        ?string $gad_source = null,
         ?string $gbraid = null,
         ?string $gclid = null,
         ?string $gender = null,
         ?string $ip = null,
-        mixed $isBot = null,
-        ?string $jobTitle = null,
-        ?string $lastName = null,
-        ?string $liFatID = null,
+        mixed $is_bot = null,
+        ?string $job_title = null,
+        ?string $last_name = null,
+        ?string $li_fat_id = null,
         ?string $msclkid = null,
         ?string $ndclid = null,
-        mixed $phoneNumber = null,
+        mixed $phone_number = null,
         ?string $qclid = null,
-        ?string $rdtCid = null,
+        ?string $rdt_cid = null,
         ?string $referrer = null,
         ?string $sacid = null,
         ?string $sccid = null,
@@ -288,52 +287,52 @@ final class UserProperties implements BaseModel
         ?string $state = null,
         ?string $ttclid = null,
         ?string $twclid = null,
-        ?string $userAgent = null,
-        ?string $userAgentFullList = null,
-        ?string $utmCampaign = null,
-        ?string $utmContent = null,
-        ?string $utmMedium = null,
-        ?string $utmName = null,
-        ?string $utmSource = null,
-        ?string $utmTerm = null,
+        ?string $user_agent = null,
+        ?string $user_agent_full_list = null,
+        ?string $utm_campaign = null,
+        ?string $utm_content = null,
+        ?string $utm_medium = null,
+        ?string $utm_name = null,
+        ?string $utm_source = null,
+        ?string $utm_term = null,
         ?string $wbraid = null,
         mixed $zip = null,
     ): self {
         $obj = new self;
 
-        null !== $adID && $obj->adID = $adID;
-        null !== $adsetID && $obj->adsetID = $adsetID;
-        null !== $campaignID && $obj->campaignID = $campaignID;
+        null !== $ad_id && $obj->ad_id = $ad_id;
+        null !== $adset_id && $obj->adset_id = $adset_id;
+        null !== $campaign_id && $obj->campaign_id = $campaign_id;
         null !== $city && $obj->city = $city;
         null !== $clickid && $obj->clickid = $clickid;
         null !== $clid && $obj->clid = $clid;
-        null !== $companyName && $obj->companyName = $companyName;
+        null !== $company_name && $obj->company_name = $company_name;
         null !== $consent && $obj->consent = $consent;
         null !== $country && $obj->country = $country;
-        null !== $customProperties && $obj->customProperties = $customProperties;
-        null !== $dateOfBirth && $obj->dateOfBirth = $dateOfBirth;
+        null !== $custom_properties && $obj->custom_properties = $custom_properties;
+        null !== $date_of_birth && $obj->date_of_birth = $date_of_birth;
         null !== $dclid && $obj->dclid = $dclid;
         null !== $email && $obj->email = $email;
         null !== $epik && $obj->epik = $epik;
-        null !== $externalID && $obj->externalID = $externalID;
+        null !== $external_id && $obj->external_id = $external_id;
         null !== $fbc && $obj->fbc = $fbc;
         null !== $fbclid && $obj->fbclid = $fbclid;
         null !== $fbp && $obj->fbp = $fbp;
-        null !== $firstName && $obj->firstName = $firstName;
-        null !== $gadSource && $obj->gadSource = $gadSource;
+        null !== $first_name && $obj->first_name = $first_name;
+        null !== $gad_source && $obj->gad_source = $gad_source;
         null !== $gbraid && $obj->gbraid = $gbraid;
         null !== $gclid && $obj->gclid = $gclid;
         null !== $gender && $obj->gender = $gender;
         null !== $ip && $obj->ip = $ip;
-        null !== $isBot && $obj->isBot = $isBot;
-        null !== $jobTitle && $obj->jobTitle = $jobTitle;
-        null !== $lastName && $obj->lastName = $lastName;
-        null !== $liFatID && $obj->liFatID = $liFatID;
+        null !== $is_bot && $obj->is_bot = $is_bot;
+        null !== $job_title && $obj->job_title = $job_title;
+        null !== $last_name && $obj->last_name = $last_name;
+        null !== $li_fat_id && $obj->li_fat_id = $li_fat_id;
         null !== $msclkid && $obj->msclkid = $msclkid;
         null !== $ndclid && $obj->ndclid = $ndclid;
-        null !== $phoneNumber && $obj->phoneNumber = $phoneNumber;
+        null !== $phone_number && $obj->phone_number = $phone_number;
         null !== $qclid && $obj->qclid = $qclid;
-        null !== $rdtCid && $obj->rdtCid = $rdtCid;
+        null !== $rdt_cid && $obj->rdt_cid = $rdt_cid;
         null !== $referrer && $obj->referrer = $referrer;
         null !== $sacid && $obj->sacid = $sacid;
         null !== $sccid && $obj->sccid = $sccid;
@@ -341,14 +340,14 @@ final class UserProperties implements BaseModel
         null !== $state && $obj->state = $state;
         null !== $ttclid && $obj->ttclid = $ttclid;
         null !== $twclid && $obj->twclid = $twclid;
-        null !== $userAgent && $obj->userAgent = $userAgent;
-        null !== $userAgentFullList && $obj->userAgentFullList = $userAgentFullList;
-        null !== $utmCampaign && $obj->utmCampaign = $utmCampaign;
-        null !== $utmContent && $obj->utmContent = $utmContent;
-        null !== $utmMedium && $obj->utmMedium = $utmMedium;
-        null !== $utmName && $obj->utmName = $utmName;
-        null !== $utmSource && $obj->utmSource = $utmSource;
-        null !== $utmTerm && $obj->utmTerm = $utmTerm;
+        null !== $user_agent && $obj->user_agent = $user_agent;
+        null !== $user_agent_full_list && $obj->user_agent_full_list = $user_agent_full_list;
+        null !== $utm_campaign && $obj->utm_campaign = $utm_campaign;
+        null !== $utm_content && $obj->utm_content = $utm_content;
+        null !== $utm_medium && $obj->utm_medium = $utm_medium;
+        null !== $utm_name && $obj->utm_name = $utm_name;
+        null !== $utm_source && $obj->utm_source = $utm_source;
+        null !== $utm_term && $obj->utm_term = $utm_term;
         null !== $wbraid && $obj->wbraid = $wbraid;
         null !== $zip && $obj->zip = $zip;
 
@@ -358,7 +357,7 @@ final class UserProperties implements BaseModel
     public function withAdID(?string $adID): self
     {
         $obj = clone $this;
-        $obj->adID = $adID;
+        $obj->ad_id = $adID;
 
         return $obj;
     }
@@ -366,7 +365,7 @@ final class UserProperties implements BaseModel
     public function withAdsetID(?string $adsetID): self
     {
         $obj = clone $this;
-        $obj->adsetID = $adsetID;
+        $obj->adset_id = $adsetID;
 
         return $obj;
     }
@@ -374,7 +373,7 @@ final class UserProperties implements BaseModel
     public function withCampaignID(?string $campaignID): self
     {
         $obj = clone $this;
-        $obj->campaignID = $campaignID;
+        $obj->campaign_id = $campaignID;
 
         return $obj;
     }
@@ -406,13 +405,13 @@ final class UserProperties implements BaseModel
     public function withCompanyName(?string $companyName): self
     {
         $obj = clone $this;
-        $obj->companyName = $companyName;
+        $obj->company_name = $companyName;
 
         return $obj;
     }
 
     /**
-     * @param array<string, mixed>|null $consent
+     * @param array<string,mixed>|null $consent
      */
     public function withConsent(?array $consent): self
     {
@@ -431,12 +430,12 @@ final class UserProperties implements BaseModel
     }
 
     /**
-     * @param array<string, mixed>|null $customProperties
+     * @param array<string,mixed>|null $customProperties
      */
     public function withCustomProperties(?array $customProperties): self
     {
         $obj = clone $this;
-        $obj->customProperties = $customProperties;
+        $obj->custom_properties = $customProperties;
 
         return $obj;
     }
@@ -444,7 +443,7 @@ final class UserProperties implements BaseModel
     public function withDateOfBirth(?string $dateOfBirth): self
     {
         $obj = clone $this;
-        $obj->dateOfBirth = $dateOfBirth;
+        $obj->date_of_birth = $dateOfBirth;
 
         return $obj;
     }
@@ -476,7 +475,7 @@ final class UserProperties implements BaseModel
     public function withExternalID(?string $externalID): self
     {
         $obj = clone $this;
-        $obj->externalID = $externalID;
+        $obj->external_id = $externalID;
 
         return $obj;
     }
@@ -508,7 +507,7 @@ final class UserProperties implements BaseModel
     public function withFirstName(?string $firstName): self
     {
         $obj = clone $this;
-        $obj->firstName = $firstName;
+        $obj->first_name = $firstName;
 
         return $obj;
     }
@@ -516,7 +515,7 @@ final class UserProperties implements BaseModel
     public function withGadSource(?string $gadSource): self
     {
         $obj = clone $this;
-        $obj->gadSource = $gadSource;
+        $obj->gad_source = $gadSource;
 
         return $obj;
     }
@@ -559,7 +558,7 @@ final class UserProperties implements BaseModel
     public function withIsBot(mixed $isBot): self
     {
         $obj = clone $this;
-        $obj->isBot = $isBot;
+        $obj->is_bot = $isBot;
 
         return $obj;
     }
@@ -567,7 +566,7 @@ final class UserProperties implements BaseModel
     public function withJobTitle(?string $jobTitle): self
     {
         $obj = clone $this;
-        $obj->jobTitle = $jobTitle;
+        $obj->job_title = $jobTitle;
 
         return $obj;
     }
@@ -575,7 +574,7 @@ final class UserProperties implements BaseModel
     public function withLastName(?string $lastName): self
     {
         $obj = clone $this;
-        $obj->lastName = $lastName;
+        $obj->last_name = $lastName;
 
         return $obj;
     }
@@ -583,7 +582,7 @@ final class UserProperties implements BaseModel
     public function withLiFatID(?string $liFatID): self
     {
         $obj = clone $this;
-        $obj->liFatID = $liFatID;
+        $obj->li_fat_id = $liFatID;
 
         return $obj;
     }
@@ -607,7 +606,7 @@ final class UserProperties implements BaseModel
     public function withPhoneNumber(mixed $phoneNumber): self
     {
         $obj = clone $this;
-        $obj->phoneNumber = $phoneNumber;
+        $obj->phone_number = $phoneNumber;
 
         return $obj;
     }
@@ -623,7 +622,7 @@ final class UserProperties implements BaseModel
     public function withRdtCid(?string $rdtCid): self
     {
         $obj = clone $this;
-        $obj->rdtCid = $rdtCid;
+        $obj->rdt_cid = $rdtCid;
 
         return $obj;
     }
@@ -687,7 +686,7 @@ final class UserProperties implements BaseModel
     public function withUserAgent(?string $userAgent): self
     {
         $obj = clone $this;
-        $obj->userAgent = $userAgent;
+        $obj->user_agent = $userAgent;
 
         return $obj;
     }
@@ -695,7 +694,7 @@ final class UserProperties implements BaseModel
     public function withUserAgentFullList(?string $userAgentFullList): self
     {
         $obj = clone $this;
-        $obj->userAgentFullList = $userAgentFullList;
+        $obj->user_agent_full_list = $userAgentFullList;
 
         return $obj;
     }
@@ -703,7 +702,7 @@ final class UserProperties implements BaseModel
     public function withUtmCampaign(?string $utmCampaign): self
     {
         $obj = clone $this;
-        $obj->utmCampaign = $utmCampaign;
+        $obj->utm_campaign = $utmCampaign;
 
         return $obj;
     }
@@ -711,7 +710,7 @@ final class UserProperties implements BaseModel
     public function withUtmContent(?string $utmContent): self
     {
         $obj = clone $this;
-        $obj->utmContent = $utmContent;
+        $obj->utm_content = $utmContent;
 
         return $obj;
     }
@@ -719,7 +718,7 @@ final class UserProperties implements BaseModel
     public function withUtmMedium(?string $utmMedium): self
     {
         $obj = clone $this;
-        $obj->utmMedium = $utmMedium;
+        $obj->utm_medium = $utmMedium;
 
         return $obj;
     }
@@ -727,7 +726,7 @@ final class UserProperties implements BaseModel
     public function withUtmName(?string $utmName): self
     {
         $obj = clone $this;
-        $obj->utmName = $utmName;
+        $obj->utm_name = $utmName;
 
         return $obj;
     }
@@ -735,7 +734,7 @@ final class UserProperties implements BaseModel
     public function withUtmSource(?string $utmSource): self
     {
         $obj = clone $this;
-        $obj->utmSource = $utmSource;
+        $obj->utm_source = $utmSource;
 
         return $obj;
     }
@@ -743,7 +742,7 @@ final class UserProperties implements BaseModel
     public function withUtmTerm(?string $utmTerm): self
     {
         $obj = clone $this;
-        $obj->utmTerm = $utmTerm;
+        $obj->utm_term = $utmTerm;
 
         return $obj;
     }

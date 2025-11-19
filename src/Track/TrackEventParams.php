@@ -15,18 +15,18 @@ use OursPrivacy\Track\TrackEventParams\UserProperties;
 /**
  * Track events from your server. Please include at least one of: userId, externalId, or email. These properties help us associate events with existing users. For all fields, null values unset the property and undefined values do not unset existing properties.
  *
- * @see OursPrivacy\Track->event
+ * @see OursPrivacy\Services\TrackService::event()
  *
  * @phpstan-type TrackEventParamsShape = array{
  *   token: string,
  *   event: string,
  *   defaultProperties?: DefaultProperties|null,
- *   distinctID?: string|null,
+ *   distinctId?: string|null,
  *   email?: string|null,
- *   eventProperties?: array<string, mixed>|null,
- *   externalID?: string|null,
+ *   eventProperties?: array<string,mixed>|null,
+ *   externalId?: string|null,
  *   time?: float|null,
- *   userID?: string|null,
+ *   userId?: string|null,
  *   userProperties?: UserProperties|null,
  * }
  */
@@ -57,8 +57,8 @@ final class TrackEventParams implements BaseModel
     /**
      * A unique identifier for the event. This helps prevent duplicate events.
      */
-    #[Api('distinctId', nullable: true, optional: true)]
-    public ?string $distinctID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $distinctId;
 
     /**
      * The email address of a user. We will associate this event with the user or create a user. Used for lookup if externalId and userId are not included in the request.
@@ -69,7 +69,7 @@ final class TrackEventParams implements BaseModel
     /**
      * Any additional event properties you want to pass along.
      *
-     * @var array<string, mixed>|null $eventProperties
+     * @var array<string,mixed>|null $eventProperties
      */
     #[Api(
         type: new MapOf('mixed', nullable: true),
@@ -81,8 +81,8 @@ final class TrackEventParams implements BaseModel
     /**
      * The externalId (the ID in your system) of a user. We will associate this event with the user or create a user. If included in the request, email lookup is ignored.
      */
-    #[Api('externalId', nullable: true, optional: true)]
-    public ?string $externalID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $externalId;
 
     /**
      * The time at which the event occurred in milliseconds since UTC epoch. The time must be in the past and within the last 7 days.
@@ -93,8 +93,8 @@ final class TrackEventParams implements BaseModel
     /**
      * The Ours user id stored in local storage and cookies on your web properties. If userId is included in the request, we do not lookup the user by email or externalId.
      */
-    #[Api('userId', nullable: true, optional: true)]
-    public ?string $userID;
+    #[Api(nullable: true, optional: true)]
+    public ?string $userId;
 
     /**
      * Properties to set on the visitor. (optional) You can also update these properties via the identify endpoint.
@@ -126,18 +126,18 @@ final class TrackEventParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, mixed>|null $eventProperties
+     * @param array<string,mixed>|null $eventProperties
      */
     public static function with(
         string $token,
         string $event,
         ?DefaultProperties $defaultProperties = null,
-        ?string $distinctID = null,
+        ?string $distinctId = null,
         ?string $email = null,
         ?array $eventProperties = null,
-        ?string $externalID = null,
+        ?string $externalId = null,
         ?float $time = null,
-        ?string $userID = null,
+        ?string $userId = null,
         ?UserProperties $userProperties = null,
     ): self {
         $obj = new self;
@@ -146,12 +146,12 @@ final class TrackEventParams implements BaseModel
         $obj->event = $event;
 
         null !== $defaultProperties && $obj->defaultProperties = $defaultProperties;
-        null !== $distinctID && $obj->distinctID = $distinctID;
+        null !== $distinctId && $obj->distinctId = $distinctId;
         null !== $email && $obj->email = $email;
         null !== $eventProperties && $obj->eventProperties = $eventProperties;
-        null !== $externalID && $obj->externalID = $externalID;
+        null !== $externalId && $obj->externalId = $externalId;
         null !== $time && $obj->time = $time;
-        null !== $userID && $obj->userID = $userID;
+        null !== $userId && $obj->userId = $userId;
         null !== $userProperties && $obj->userProperties = $userProperties;
 
         return $obj;
@@ -197,7 +197,7 @@ final class TrackEventParams implements BaseModel
     public function withDistinctID(?string $distinctID): self
     {
         $obj = clone $this;
-        $obj->distinctID = $distinctID;
+        $obj->distinctId = $distinctID;
 
         return $obj;
     }
@@ -216,7 +216,7 @@ final class TrackEventParams implements BaseModel
     /**
      * Any additional event properties you want to pass along.
      *
-     * @param array<string, mixed>|null $eventProperties
+     * @param array<string,mixed>|null $eventProperties
      */
     public function withEventProperties(?array $eventProperties): self
     {
@@ -232,7 +232,7 @@ final class TrackEventParams implements BaseModel
     public function withExternalID(?string $externalID): self
     {
         $obj = clone $this;
-        $obj->externalID = $externalID;
+        $obj->externalId = $externalID;
 
         return $obj;
     }
@@ -254,7 +254,7 @@ final class TrackEventParams implements BaseModel
     public function withUserID(?string $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }

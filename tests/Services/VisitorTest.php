@@ -85,6 +85,7 @@ final class VisitorTest extends TestCase
                 'qclid' => 'qclid',
                 'rdt_cid' => 'rdt_cid',
                 'referrer' => 'referrer',
+                'referring_domain' => 'referring_domain',
                 'sacid' => 'sacid',
                 'sccid' => 'sccid',
                 'sid' => 'sid',

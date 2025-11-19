@@ -56,6 +56,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   rdt_cid?: string|null,
  *   received_at?: string|null,
  *   referrer?: string|null,
+ *   referring_domain?: string|null,
  *   sacid?: string|null,
  *   sccid?: string|null,
  *   screen_height?: float|null,
@@ -349,6 +350,12 @@ final class DefaultProperties implements BaseModel
     public ?string $referrer;
 
     /**
+     * The referring domain of the current page.
+     */
+    #[Api(nullable: true, optional: true)]
+    public ?string $referring_domain;
+
+    /**
      * The StackAdapt Tracking ID. Ex: sacid123.
      */
     #[Api(nullable: true, optional: true)]
@@ -526,6 +533,7 @@ final class DefaultProperties implements BaseModel
         ?string $rdt_cid = null,
         ?string $received_at = null,
         ?string $referrer = null,
+        ?string $referring_domain = null,
         ?string $sacid = null,
         ?string $sccid = null,
         ?float $screen_height = null,
@@ -594,6 +602,7 @@ final class DefaultProperties implements BaseModel
         null !== $rdt_cid && $obj->rdt_cid = $rdt_cid;
         null !== $received_at && $obj->received_at = $received_at;
         null !== $referrer && $obj->referrer = $referrer;
+        null !== $referring_domain && $obj->referring_domain = $referring_domain;
         null !== $sacid && $obj->sacid = $sacid;
         null !== $sccid && $obj->sccid = $sccid;
         null !== $screen_height && $obj->screen_height = $screen_height;
@@ -1099,6 +1108,17 @@ final class DefaultProperties implements BaseModel
     {
         $obj = clone $this;
         $obj->referrer = $referrer;
+
+        return $obj;
+    }
+
+    /**
+     * The referring domain of the current page.
+     */
+    public function withReferringDomain(?string $referringDomain): self
+    {
+        $obj = clone $this;
+        $obj->referring_domain = $referringDomain;
 
         return $obj;
     }

@@ -48,6 +48,7 @@ use OursPrivacy\Core\Conversion\MapOf;
  *   qclid?: string|null,
  *   rdt_cid?: string|null,
  *   referrer?: string|null,
+ *   referring_domain?: string|null,
  *   sacid?: string|null,
  *   sccid?: string|null,
  *   sid?: string|null,
@@ -190,6 +191,9 @@ final class UserProperties implements BaseModel
     public ?string $referrer;
 
     #[Api(nullable: true, optional: true)]
+    public ?string $referring_domain;
+
+    #[Api(nullable: true, optional: true)]
     public ?string $sacid;
 
     #[Api(nullable: true, optional: true)]
@@ -286,6 +290,7 @@ final class UserProperties implements BaseModel
         ?string $qclid = null,
         ?string $rdt_cid = null,
         ?string $referrer = null,
+        ?string $referring_domain = null,
         ?string $sacid = null,
         ?string $sccid = null,
         ?string $sid = null,
@@ -340,6 +345,7 @@ final class UserProperties implements BaseModel
         null !== $qclid && $obj->qclid = $qclid;
         null !== $rdt_cid && $obj->rdt_cid = $rdt_cid;
         null !== $referrer && $obj->referrer = $referrer;
+        null !== $referring_domain && $obj->referring_domain = $referring_domain;
         null !== $sacid && $obj->sacid = $sacid;
         null !== $sccid && $obj->sccid = $sccid;
         null !== $sid && $obj->sid = $sid;
@@ -645,6 +651,14 @@ final class UserProperties implements BaseModel
     {
         $obj = clone $this;
         $obj->referrer = $referrer;
+
+        return $obj;
+    }
+
+    public function withReferringDomain(?string $referringDomain): self
+    {
+        $obj = clone $this;
+        $obj->referring_domain = $referringDomain;
 
         return $obj;
     }

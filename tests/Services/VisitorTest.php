@@ -74,6 +74,7 @@ final class VisitorTest extends TestCase
                 'gclid' => 'gclid',
                 'gender' => 'gender',
                 'ip' => 'ip',
+                'irclickid' => 'irclickid',
                 'is_bot' => [],
                 'job_title' => 'job_title',
                 'last_name' => 'last_name',

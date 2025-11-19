@@ -37,6 +37,7 @@ use OursPrivacy\Core\Conversion\MapOf;
  *   gclid?: string|null,
  *   gender?: string|null,
  *   ip?: string|null,
+ *   irclickid?: string|null,
  *   is_bot?: mixed,
  *   job_title?: string|null,
  *   last_name?: string|null,
@@ -155,6 +156,9 @@ final class UserProperties implements BaseModel
     #[Api(nullable: true, optional: true)]
     public ?string $ip;
 
+    #[Api(nullable: true, optional: true)]
+    public ?string $irclickid;
+
     #[Api(optional: true)]
     public mixed $is_bot;
 
@@ -271,6 +275,7 @@ final class UserProperties implements BaseModel
         ?string $gclid = null,
         ?string $gender = null,
         ?string $ip = null,
+        ?string $irclickid = null,
         mixed $is_bot = null,
         ?string $job_title = null,
         ?string $last_name = null,
@@ -324,6 +329,7 @@ final class UserProperties implements BaseModel
         null !== $gclid && $obj->gclid = $gclid;
         null !== $gender && $obj->gender = $gender;
         null !== $ip && $obj->ip = $ip;
+        null !== $irclickid && $obj->irclickid = $irclickid;
         null !== $is_bot && $obj->is_bot = $is_bot;
         null !== $job_title && $obj->job_title = $job_title;
         null !== $last_name && $obj->last_name = $last_name;
@@ -551,6 +557,14 @@ final class UserProperties implements BaseModel
     {
         $obj = clone $this;
         $obj->ip = $ip;
+
+        return $obj;
+    }
+
+    public function withIrclickid(?string $irclickid): self
+    {
+        $obj = clone $this;
+        $obj->irclickid = $irclickid;
 
         return $obj;
     }

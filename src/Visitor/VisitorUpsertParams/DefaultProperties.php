@@ -42,6 +42,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   host?: string|null,
  *   iframe?: bool|null,
  *   ip?: string|null,
+ *   irclickid?: string|null,
  *   is_bot?: mixed,
  *   li_fat_id?: string|null,
  *   msclkid?: string|null,
@@ -262,6 +263,12 @@ final class DefaultProperties implements BaseModel
      */
     #[Api(nullable: true, optional: true)]
     public ?string $ip;
+
+    /**
+     * The Impact Click ID. Ex: irclickid123.
+     */
+    #[Api(nullable: true, optional: true)]
+    public ?string $irclickid;
 
     /**
      * Whether we have detected that the user is a bot. This is set automatically by the Ours server primarily for events tracked through the web SDK.
@@ -505,6 +512,7 @@ final class DefaultProperties implements BaseModel
         ?string $host = null,
         ?bool $iframe = null,
         ?string $ip = null,
+        ?string $irclickid = null,
         mixed $is_bot = null,
         ?string $li_fat_id = null,
         ?string $msclkid = null,
@@ -572,6 +580,7 @@ final class DefaultProperties implements BaseModel
         null !== $host && $obj->host = $host;
         null !== $iframe && $obj->iframe = $iframe;
         null !== $ip && $obj->ip = $ip;
+        null !== $irclickid && $obj->irclickid = $irclickid;
         null !== $is_bot && $obj->is_bot = $is_bot;
         null !== $li_fat_id && $obj->li_fat_id = $li_fat_id;
         null !== $msclkid && $obj->msclkid = $msclkid;
@@ -936,6 +945,17 @@ final class DefaultProperties implements BaseModel
     {
         $obj = clone $this;
         $obj->ip = $ip;
+
+        return $obj;
+    }
+
+    /**
+     * The Impact Click ID. Ex: irclickid123.
+     */
+    public function withIrclickid(?string $irclickid): self
+    {
+        $obj = clone $this;
+        $obj->irclickid = $irclickid;
 
         return $obj;
     }

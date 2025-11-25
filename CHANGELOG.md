@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.4.0 (2025-11-25)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** api update ([14062be](https://github.com/with-ours/ingest-sdk-php/commit/14062bec5434e272fddccab6c1ff883829941141))
+* **api:** api update ([55bc6c6](https://github.com/with-ours/ingest-sdk-php/commit/55bc6c64471be5a75a1d65bab27fcaa78e5f4634))
+
+
+### Bug Fixes
+
+* phpStan linter errors ([850047a](https://github.com/with-ours/ingest-sdk-php/commit/850047abdf6c4a770d73d1f7771e2a6514c8ccb2))
+
+
+### Chores
+
+* **client:** refactor error type constructors ([90d41e8](https://github.com/with-ours/ingest-sdk-php/commit/90d41e8baca5cf354781f59172a831feef48e9b8))
+
 ## 0.3.0 (2025-11-19)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.2.0...v0.3.0)

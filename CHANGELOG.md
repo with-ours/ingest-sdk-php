@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.1 (2025-11-27)
+
+Full Changelog: [v0.4.0...v0.4.1](https://github.com/with-ours/ingest-sdk-php/compare/v0.4.0...v0.4.1)
+
+### Chores
+
+* use non-trivial test assertions ([ea6ee8b](https://github.com/with-ours/ingest-sdk-php/commit/ea6ee8bd70f2f09f37e50cccc7f656a174c3a657))
+* use single quote strings ([1b3d9b3](https://github.com/with-ours/ingest-sdk-php/commit/1b3d9b3a06661e308c647a4e3e2fc815e568d287))
+
 ## 0.4.0 (2025-11-25)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.3.0...v0.4.0)

@@ -3,6 +3,7 @@
 namespace Tests\Services;
 
 use OursPrivacy\Client;
+use OursPrivacy\Visitor\VisitorUpsertResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -37,7 +38,8 @@ final class VisitorTest extends TestCase
             'token' => 'x', 'userProperties' => [],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VisitorUpsertResponse::class, $result);
     }
 
     #[Test]
@@ -103,8 +105,80 @@ final class VisitorTest extends TestCase
                 'wbraid' => 'wbraid',
                 'zip' => [],
             ],
+            'defaultProperties' => [
+                'activeDuration' => 0,
+                'ad_id' => 'ad_id',
+                'adset_id' => 'adset_id',
+                'browser_language' => 'browser_language',
+                'browser_name' => 'browser_name',
+                'browser_version' => 'browser_version',
+                'campaign_id' => 'campaign_id',
+                'clickid' => 'clickid',
+                'clid' => 'clid',
+                'cpu_architecture' => 'cpu_architecture',
+                'current_url' => 'current_url',
+                'dclid' => 'dclid',
+                'device_model' => 'device_model',
+                'device_type' => 'device_type',
+                'device_vendor' => 'device_vendor',
+                'duration' => 0,
+                'encoding' => 'encoding',
+                'engine_name' => 'engine_name',
+                'engine_version' => 'engine_version',
+                'epik' => 'epik',
+                'fbc' => 'fbc',
+                'fbclid' => 'fbclid',
+                'fbp' => 'fbp',
+                'fv' => true,
+                'gad_source' => 'gad_source',
+                'gbraid' => 'gbraid',
+                'gclid' => 'gclid',
+                'host' => 'host',
+                'iframe' => true,
+                'ip' => 'ip',
+                'irclickid' => 'irclickid',
+                'is_bot' => [],
+                'li_fat_id' => 'li_fat_id',
+                'msclkid' => 'msclkid',
+                'ndclid' => 'ndclid',
+                'new_s' => true,
+                'os_name' => 'os_name',
+                'os_version' => 'os_version',
+                'page_hash' => 0,
+                'pathname' => 'pathname',
+                'qclid' => 'qclid',
+                'rdt_cid' => 'rdt_cid',
+                'received_at' => 'received_at',
+                'referrer' => 'referrer',
+                'referring_domain' => 'referring_domain',
+                'sacid' => 'sacid',
+                'sccid' => 'sccid',
+                'screen_height' => 0,
+                'screen_width' => 0,
+                'sessionCount' => 0,
+                'sid' => 'sid',
+                'sr' => 'sr',
+                'title' => 'title',
+                'ttclid' => 'ttclid',
+                'twclid' => 'twclid',
+                'uafvl' => 'uafvl',
+                'user_agent' => 'user_agent',
+                'utm_campaign' => 'utm_campaign',
+                'utm_content' => 'utm_content',
+                'utm_medium' => 'utm_medium',
+                'utm_name' => 'utm_name',
+                'utm_source' => 'utm_source',
+                'utm_term' => 'utm_term',
+                'version' => 'version',
+                'wbraid' => 'wbraid',
+                'webview' => true,
+            ],
+            'email' => 'x',
+            'externalId' => 'x',
+            'userId' => 'x',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VisitorUpsertResponse::class, $result);
     }
 }

@@ -38,7 +38,7 @@ use OursPrivacy\Client;
 $client = new Client();
 
 $response = $client->track->event([
-  "token" => "REPLACE_ME", "event" => "REPLACE_ME"
+  'token' => 'REPLACE_ME', 'event' => 'REPLACE_ME'
 ]);
 
 var_dump($response->success);
@@ -62,7 +62,7 @@ use OursPrivacy\Core\Exceptions\APIConnectionException;
 
 try {
   $response = $client->track->event([
-    "token" => "REPLACE_ME", "event" => "REPLACE_ME"
+    'token' => 'REPLACE_ME', 'event' => 'REPLACE_ME'
   ]);
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
@@ -110,7 +110,7 @@ $client = new Client(maxRetries: 0);
 
 // Or, configure per-request:
 $result = $client->track->event(
-  ["token" => "REPLACE_ME", "event" => "REPLACE_ME"],
+  ['token' => 'REPLACE_ME', 'event' => 'REPLACE_ME'],
   RequestOptions::with(maxRetries: 5),
 );
 ```
@@ -131,11 +131,11 @@ Note: the `extra*` parameters of the same name overrides the documented paramete
 use OursPrivacy\RequestOptions;
 
 $response = $client->track->event(
-  ["token" => "REPLACE_ME", "event" => "REPLACE_ME"],
+  ['token' => 'REPLACE_ME', 'event' => 'REPLACE_ME'],
   RequestOptions::with(
-    extraQueryParams: ["my_query_parameter" => "value"],
-    extraBodyParams: ["my_body_parameter" => "value"],
-    extraHeaders: ["my-header" => "value"],
+    extraQueryParams: ['my_query_parameter' => 'value'],
+    extraBodyParams: ['my_body_parameter' => 'value'],
+    extraHeaders: ['my-header' => 'value'],
   ),
 );
 ```

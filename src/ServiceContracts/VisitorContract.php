@@ -20,6 +20,6 @@ interface VisitorContract
      */
     public function upsert(
         array|VisitorUpsertParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): VisitorUpsertResponse;
 }

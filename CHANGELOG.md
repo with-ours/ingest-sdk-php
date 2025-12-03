@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.2 (2025-12-03)
+
+Full Changelog: [v0.4.1...v0.4.2](https://github.com/with-ours/ingest-sdk-php/compare/v0.4.1...v0.4.2)
+
+### Chores
+
+* formatting ([14e3f60](https://github.com/with-ours/ingest-sdk-php/commit/14e3f609d063fb14f2272761ddb355dfda6ea771))
+
 ## 0.4.1 (2025-11-27)
 
 Full Changelog: [v0.4.0...v0.4.1](https://github.com/with-ours/ingest-sdk-php/compare/v0.4.0...v0.4.1)

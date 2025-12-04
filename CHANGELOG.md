@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.3 (2025-12-04)
+
+Full Changelog: [v0.4.2...v0.4.3](https://github.com/with-ours/ingest-sdk-php/compare/v0.4.2...v0.4.3)
+
+### Chores
+
+* be more targeted in suppressing superfluous linter warnings ([a9ea413](https://github.com/with-ours/ingest-sdk-php/commit/a9ea4136093700fa70af96fec00aa3ef946c5311))
+
 ## 0.4.2 (2025-12-03)
 
 Full Changelog: [v0.4.1...v0.4.2](https://github.com/with-ours/ingest-sdk-php/compare/v0.4.1...v0.4.2)

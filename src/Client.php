@@ -44,9 +44,9 @@ class Client extends BaseClient
             headers: [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-                'User-Agent' => sprintf('ours-privacy/PHP %s', '0.4.2'),
+                'User-Agent' => sprintf('ours-privacy/PHP %s', '0.4.3'),
                 'X-Stainless-Lang' => 'php',
-                'X-Stainless-Package-Version' => '0.4.2',
+                'X-Stainless-Package-Version' => '0.4.3',
                 'X-Stainless-OS' => $this->getNormalizedOS(),
                 'X-Stainless-Arch' => $this->getNormalizedArchitecture(),
                 'X-Stainless-Runtime' => 'php',

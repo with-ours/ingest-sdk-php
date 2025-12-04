@@ -170,7 +170,7 @@ final class TrackService implements TrackContract
             ->client
             ->baseUrlOverridden ? 'track' : 'https://api.oursprivacy.com/api/v1/track';
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: $path,

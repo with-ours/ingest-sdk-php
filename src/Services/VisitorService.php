@@ -166,7 +166,7 @@ final class VisitorService implements VisitorContract
             ->client
             ->baseUrlOverridden ? 'identify' : 'https://api.oursprivacy.com/api/v1/identify';
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: $path,

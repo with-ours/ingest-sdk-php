@@ -20,14 +20,134 @@ use OursPrivacy\Track\TrackEventParams\UserProperties;
  * @phpstan-type TrackEventParamsShape = array{
  *   token: string,
  *   event: string,
- *   defaultProperties?: DefaultProperties|null,
+ *   defaultProperties?: null|DefaultProperties|array{
+ *     activeDuration?: float|null,
+ *     ad_id?: string|null,
+ *     adset_id?: string|null,
+ *     browser_language?: string|null,
+ *     browser_name?: string|null,
+ *     browser_version?: string|null,
+ *     campaign_id?: string|null,
+ *     clickid?: string|null,
+ *     clid?: string|null,
+ *     cpu_architecture?: string|null,
+ *     current_url?: string|null,
+ *     dclid?: string|null,
+ *     device_model?: string|null,
+ *     device_type?: string|null,
+ *     device_vendor?: string|null,
+ *     duration?: float|null,
+ *     encoding?: string|null,
+ *     engine_name?: string|null,
+ *     engine_version?: string|null,
+ *     epik?: string|null,
+ *     fbc?: string|null,
+ *     fbclid?: string|null,
+ *     fbp?: string|null,
+ *     fv?: bool|null,
+ *     gad_source?: string|null,
+ *     gbraid?: string|null,
+ *     gclid?: string|null,
+ *     host?: string|null,
+ *     iframe?: bool|null,
+ *     ip?: string|null,
+ *     irclickid?: string|null,
+ *     is_bot?: mixed,
+ *     li_fat_id?: string|null,
+ *     msclkid?: string|null,
+ *     ndclid?: string|null,
+ *     new_s?: bool|null,
+ *     os_name?: string|null,
+ *     os_version?: string|null,
+ *     page_hash?: float|null,
+ *     pathname?: string|null,
+ *     qclid?: string|null,
+ *     rdt_cid?: string|null,
+ *     received_at?: string|null,
+ *     referrer?: string|null,
+ *     referring_domain?: string|null,
+ *     sacid?: string|null,
+ *     sccid?: string|null,
+ *     screen_height?: float|null,
+ *     screen_width?: float|null,
+ *     sessionCount?: float|null,
+ *     sid?: string|null,
+ *     sr?: string|null,
+ *     title?: string|null,
+ *     ttclid?: string|null,
+ *     twclid?: string|null,
+ *     uafvl?: string|null,
+ *     user_agent?: string|null,
+ *     utm_campaign?: string|null,
+ *     utm_content?: string|null,
+ *     utm_medium?: string|null,
+ *     utm_name?: string|null,
+ *     utm_source?: string|null,
+ *     utm_term?: string|null,
+ *     version?: string|null,
+ *     wbraid?: string|null,
+ *     webview?: bool|null,
+ *   },
  *   distinctId?: string|null,
  *   email?: string|null,
  *   eventProperties?: array<string,mixed>|null,
  *   externalId?: string|null,
  *   time?: float|null,
  *   userId?: string|null,
- *   userProperties?: UserProperties|null,
+ *   userProperties?: null|UserProperties|array{
+ *     ad_id?: string|null,
+ *     adset_id?: string|null,
+ *     campaign_id?: string|null,
+ *     city?: string|null,
+ *     clickid?: string|null,
+ *     clid?: string|null,
+ *     company_name?: string|null,
+ *     consent?: array<string,mixed>|null,
+ *     country?: string|null,
+ *     custom_properties?: array<string,mixed>|null,
+ *     date_of_birth?: string|null,
+ *     dclid?: string|null,
+ *     email?: string|null,
+ *     epik?: string|null,
+ *     external_id?: string|null,
+ *     fbc?: string|null,
+ *     fbclid?: string|null,
+ *     fbp?: string|null,
+ *     first_name?: string|null,
+ *     gad_source?: string|null,
+ *     gbraid?: string|null,
+ *     gclid?: string|null,
+ *     gender?: string|null,
+ *     ip?: string|null,
+ *     irclickid?: string|null,
+ *     is_bot?: mixed,
+ *     job_title?: string|null,
+ *     last_name?: string|null,
+ *     li_fat_id?: string|null,
+ *     msclkid?: string|null,
+ *     ndclid?: string|null,
+ *     phone_number?: mixed,
+ *     qclid?: string|null,
+ *     rdt_cid?: string|null,
+ *     referrer?: string|null,
+ *     referring_domain?: string|null,
+ *     sacid?: string|null,
+ *     sccid?: string|null,
+ *     sid?: string|null,
+ *     state?: string|null,
+ *     ttclid?: string|null,
+ *     twclid?: string|null,
+ *     user_agent?: string|null,
+ *     user_agent_full_list?: string|null,
+ *     utm_campaign?: string|null,
+ *     utm_content?: string|null,
+ *     utm_medium?: string|null,
+ *     utm_name?: string|null,
+ *     utm_source?: string|null,
+ *     utm_term?: string|null,
+ *     wbraid?: string|null,
+ *     zip?: mixed,
+ *   },
  * }
  */
 final class TrackEventParams implements BaseModel
@@ -126,33 +246,155 @@ final class TrackEventParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param DefaultProperties|array{
+     *   activeDuration?: float|null,
+     *   ad_id?: string|null,
+     *   adset_id?: string|null,
+     *   browser_language?: string|null,
+     *   browser_name?: string|null,
+     *   browser_version?: string|null,
+     *   campaign_id?: string|null,
+     *   clickid?: string|null,
+     *   clid?: string|null,
+     *   cpu_architecture?: string|null,
+     *   current_url?: string|null,
+     *   dclid?: string|null,
+     *   device_model?: string|null,
+     *   device_type?: string|null,
+     *   device_vendor?: string|null,
+     *   duration?: float|null,
+     *   encoding?: string|null,
+     *   engine_name?: string|null,
+     *   engine_version?: string|null,
+     *   epik?: string|null,
+     *   fbc?: string|null,
+     *   fbclid?: string|null,
+     *   fbp?: string|null,
+     *   fv?: bool|null,
+     *   gad_source?: string|null,
+     *   gbraid?: string|null,
+     *   gclid?: string|null,
+     *   host?: string|null,
+     *   iframe?: bool|null,
+     *   ip?: string|null,
+     *   irclickid?: string|null,
+     *   is_bot?: mixed,
+     *   li_fat_id?: string|null,
+     *   msclkid?: string|null,
+     *   ndclid?: string|null,
+     *   new_s?: bool|null,
+     *   os_name?: string|null,
+     *   os_version?: string|null,
+     *   page_hash?: float|null,
+     *   pathname?: string|null,
+     *   qclid?: string|null,
+     *   rdt_cid?: string|null,
+     *   received_at?: string|null,
+     *   referrer?: string|null,
+     *   referring_domain?: string|null,
+     *   sacid?: string|null,
+     *   sccid?: string|null,
+     *   screen_height?: float|null,
+     *   screen_width?: float|null,
+     *   sessionCount?: float|null,
+     *   sid?: string|null,
+     *   sr?: string|null,
+     *   title?: string|null,
+     *   ttclid?: string|null,
+     *   twclid?: string|null,
+     *   uafvl?: string|null,
+     *   user_agent?: string|null,
+     *   utm_campaign?: string|null,
+     *   utm_content?: string|null,
+     *   utm_medium?: string|null,
+     *   utm_name?: string|null,
+     *   utm_source?: string|null,
+     *   utm_term?: string|null,
+     *   version?: string|null,
+     *   wbraid?: string|null,
+     *   webview?: bool|null,
+     * }|null $defaultProperties
      * @param array<string,mixed>|null $eventProperties
+     * @param UserProperties|array{
+     *   ad_id?: string|null,
+     *   adset_id?: string|null,
+     *   campaign_id?: string|null,
+     *   city?: string|null,
+     *   clickid?: string|null,
+     *   clid?: string|null,
+     *   company_name?: string|null,
+     *   consent?: array<string,mixed>|null,
+     *   country?: string|null,
+     *   custom_properties?: array<string,mixed>|null,
+     *   date_of_birth?: string|null,
+     *   dclid?: string|null,
+     *   email?: string|null,
+     *   epik?: string|null,
+     *   external_id?: string|null,
+     *   fbc?: string|null,
+     *   fbclid?: string|null,
+     *   fbp?: string|null,
+     *   first_name?: string|null,
+     *   gad_source?: string|null,
+     *   gbraid?: string|null,
+     *   gclid?: string|null,
+     *   gender?: string|null,
+     *   ip?: string|null,
+     *   irclickid?: string|null,
+     *   is_bot?: mixed,
+     *   job_title?: string|null,
+     *   last_name?: string|null,
+     *   li_fat_id?: string|null,
+     *   msclkid?: string|null,
+     *   ndclid?: string|null,
+     *   phone_number?: mixed,
+     *   qclid?: string|null,
+     *   rdt_cid?: string|null,
+     *   referrer?: string|null,
+     *   referring_domain?: string|null,
+     *   sacid?: string|null,
+     *   sccid?: string|null,
+     *   sid?: string|null,
+     *   state?: string|null,
+     *   ttclid?: string|null,
+     *   twclid?: string|null,
+     *   user_agent?: string|null,
+     *   user_agent_full_list?: string|null,
+     *   utm_campaign?: string|null,
+     *   utm_content?: string|null,
+     *   utm_medium?: string|null,
+     *   utm_name?: string|null,
+     *   utm_source?: string|null,
+     *   utm_term?: string|null,
+     *   wbraid?: string|null,
+     *   zip?: mixed,
+     * }|null $userProperties
      */
     public static function with(
         string $token,
         string $event,
-        ?DefaultProperties $defaultProperties = null,
+        DefaultProperties|array|null $defaultProperties = null,
         ?string $distinctId = null,
         ?string $email = null,
         ?array $eventProperties = null,
         ?string $externalId = null,
         ?float $time = null,
         ?string $userId = null,
-        ?UserProperties $userProperties = null,
+        UserProperties|array|null $userProperties = null,
     ): self {
         $obj = new self;
 
-        $obj->token = $token;
-        $obj->event = $event;
+        $obj['token'] = $token;
+        $obj['event'] = $event;
 
-        null !== $defaultProperties && $obj->defaultProperties = $defaultProperties;
-        null !== $distinctId && $obj->distinctId = $distinctId;
-        null !== $email && $obj->email = $email;
-        null !== $eventProperties && $obj->eventProperties = $eventProperties;
-        null !== $externalId && $obj->externalId = $externalId;
-        null !== $time && $obj->time = $time;
-        null !== $userId && $obj->userId = $userId;
-        null !== $userProperties && $obj->userProperties = $userProperties;
+        null !== $defaultProperties && $obj['defaultProperties'] = $defaultProperties;
+        null !== $distinctId && $obj['distinctId'] = $distinctId;
+        null !== $email && $obj['email'] = $email;
+        null !== $eventProperties && $obj['eventProperties'] = $eventProperties;
+        null !== $externalId && $obj['externalId'] = $externalId;
+        null !== $time && $obj['time'] = $time;
+        null !== $userId && $obj['userId'] = $userId;
+        null !== $userProperties && $obj['userProperties'] = $userProperties;
 
         return $obj;
     }
@@ -163,7 +405,7 @@ final class TrackEventParams implements BaseModel
     public function withToken(string $token): self
     {
         $obj = clone $this;
-        $obj->token = $token;
+        $obj['token'] = $token;
 
         return $obj;
     }
@@ -174,19 +416,88 @@ final class TrackEventParams implements BaseModel
     public function withEvent(string $event): self
     {
         $obj = clone $this;
-        $obj->event = $event;
+        $obj['event'] = $event;
 
         return $obj;
     }
 
     /**
      * These properties are used throughout the Ours app to pass known values onto destinations.
+     *
+     * @param DefaultProperties|array{
+     *   activeDuration?: float|null,
+     *   ad_id?: string|null,
+     *   adset_id?: string|null,
+     *   browser_language?: string|null,
+     *   browser_name?: string|null,
+     *   browser_version?: string|null,
+     *   campaign_id?: string|null,
+     *   clickid?: string|null,
+     *   clid?: string|null,
+     *   cpu_architecture?: string|null,
+     *   current_url?: string|null,
+     *   dclid?: string|null,
+     *   device_model?: string|null,
+     *   device_type?: string|null,
+     *   device_vendor?: string|null,
+     *   duration?: float|null,
+     *   encoding?: string|null,
+     *   engine_name?: string|null,
+     *   engine_version?: string|null,
+     *   epik?: string|null,
+     *   fbc?: string|null,
+     *   fbclid?: string|null,
+     *   fbp?: string|null,
+     *   fv?: bool|null,
+     *   gad_source?: string|null,
+     *   gbraid?: string|null,
+     *   gclid?: string|null,
+     *   host?: string|null,
+     *   iframe?: bool|null,
+     *   ip?: string|null,
+     *   irclickid?: string|null,
+     *   is_bot?: mixed,
+     *   li_fat_id?: string|null,
+     *   msclkid?: string|null,
+     *   ndclid?: string|null,
+     *   new_s?: bool|null,
+     *   os_name?: string|null,
+     *   os_version?: string|null,
+     *   page_hash?: float|null,
+     *   pathname?: string|null,
+     *   qclid?: string|null,
+     *   rdt_cid?: string|null,
+     *   received_at?: string|null,
+     *   referrer?: string|null,
+     *   referring_domain?: string|null,
+     *   sacid?: string|null,
+     *   sccid?: string|null,
+     *   screen_height?: float|null,
+     *   screen_width?: float|null,
+     *   sessionCount?: float|null,
+     *   sid?: string|null,
+     *   sr?: string|null,
+     *   title?: string|null,
+     *   ttclid?: string|null,
+     *   twclid?: string|null,
+     *   uafvl?: string|null,
+     *   user_agent?: string|null,
+     *   utm_campaign?: string|null,
+     *   utm_content?: string|null,
+     *   utm_medium?: string|null,
+     *   utm_name?: string|null,
+     *   utm_source?: string|null,
+     *   utm_term?: string|null,
+     *   version?: string|null,
+     *   wbraid?: string|null,
+     *   webview?: bool|null,
+     * }|null $defaultProperties
      */
     public function withDefaultProperties(
-        ?DefaultProperties $defaultProperties
+        DefaultProperties|array|null $defaultProperties
     ): self {
         $obj = clone $this;
-        $obj->defaultProperties = $defaultProperties;
+        $obj['defaultProperties'] = $defaultProperties;
 
         return $obj;
     }
@@ -197,7 +508,7 @@ final class TrackEventParams implements BaseModel
     public function withDistinctID(?string $distinctID): self
     {
         $obj = clone $this;
-        $obj->distinctId = $distinctID;
+        $obj['distinctId'] = $distinctID;
 
         return $obj;
     }
@@ -208,7 +519,7 @@ final class TrackEventParams implements BaseModel
     public function withEmail(?string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -221,7 +532,7 @@ final class TrackEventParams implements BaseModel
     public function withEventProperties(?array $eventProperties): self
     {
         $obj = clone $this;
-        $obj->eventProperties = $eventProperties;
+        $obj['eventProperties'] = $eventProperties;
 
         return $obj;
     }
@@ -232,7 +543,7 @@ final class TrackEventParams implements BaseModel
     public function withExternalID(?string $externalID): self
     {
         $obj = clone $this;
-        $obj->externalId = $externalID;
+        $obj['externalId'] = $externalID;
 
         return $obj;
     }
@@ -243,7 +554,7 @@ final class TrackEventParams implements BaseModel
     public function withTime(?float $time): self
     {
         $obj = clone $this;
-        $obj->time = $time;
+        $obj['time'] = $time;
 
         return $obj;
     }
@@ -254,18 +565,74 @@ final class TrackEventParams implements BaseModel
     public function withUserID(?string $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }
 
     /**
      * Properties to set on the visitor. (optional) You can also update these properties via the identify endpoint.
+     *
+     * @param UserProperties|array{
+     *   ad_id?: string|null,
+     *   adset_id?: string|null,
+     *   campaign_id?: string|null,
+     *   city?: string|null,
+     *   clickid?: string|null,
+     *   clid?: string|null,
+     *   company_name?: string|null,
+     *   consent?: array<string,mixed>|null,
+     *   country?: string|null,
+     *   custom_properties?: array<string,mixed>|null,
+     *   date_of_birth?: string|null,
+     *   dclid?: string|null,
+     *   email?: string|null,
+     *   epik?: string|null,
+     *   external_id?: string|null,
+     *   fbc?: string|null,
+     *   fbclid?: string|null,
+     *   fbp?: string|null,
+     *   first_name?: string|null,
+     *   gad_source?: string|null,
+     *   gbraid?: string|null,
+     *   gclid?: string|null,
+     *   gender?: string|null,
+     *   ip?: string|null,
+     *   irclickid?: string|null,
+     *   is_bot?: mixed,
+     *   job_title?: string|null,
+     *   last_name?: string|null,
+     *   li_fat_id?: string|null,
+     *   msclkid?: string|null,
+     *   ndclid?: string|null,
+     *   phone_number?: mixed,
+     *   qclid?: string|null,
+     *   rdt_cid?: string|null,
+     *   referrer?: string|null,
+     *   referring_domain?: string|null,
+     *   sacid?: string|null,
+     *   sccid?: string|null,
+     *   sid?: string|null,
+     *   state?: string|null,
+     *   ttclid?: string|null,
+     *   twclid?: string|null,
+     *   user_agent?: string|null,
+     *   user_agent_full_list?: string|null,
+     *   utm_campaign?: string|null,
+     *   utm_content?: string|null,
+     *   utm_medium?: string|null,
+     *   utm_name?: string|null,
+     *   utm_source?: string|null,
+     *   utm_term?: string|null,
+     *   wbraid?: string|null,
+     *   zip?: mixed,
+     * }|null $userProperties
      */
-    public function withUserProperties(?UserProperties $userProperties): self
-    {
+    public function withUserProperties(
+        UserProperties|array|null $userProperties
+    ): self {
         $obj = clone $this;
-        $obj->userProperties = $userProperties;
+        $obj['userProperties'] = $userProperties;
 
         return $obj;
     }

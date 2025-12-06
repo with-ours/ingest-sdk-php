@@ -310,58 +310,58 @@ final class UserProperties implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $ad_id && $obj->ad_id = $ad_id;
-        null !== $adset_id && $obj->adset_id = $adset_id;
-        null !== $campaign_id && $obj->campaign_id = $campaign_id;
-        null !== $city && $obj->city = $city;
-        null !== $clickid && $obj->clickid = $clickid;
-        null !== $clid && $obj->clid = $clid;
-        null !== $company_name && $obj->company_name = $company_name;
-        null !== $consent && $obj->consent = $consent;
-        null !== $country && $obj->country = $country;
-        null !== $custom_properties && $obj->custom_properties = $custom_properties;
-        null !== $date_of_birth && $obj->date_of_birth = $date_of_birth;
-        null !== $dclid && $obj->dclid = $dclid;
-        null !== $email && $obj->email = $email;
-        null !== $epik && $obj->epik = $epik;
-        null !== $external_id && $obj->external_id = $external_id;
-        null !== $fbc && $obj->fbc = $fbc;
-        null !== $fbclid && $obj->fbclid = $fbclid;
-        null !== $fbp && $obj->fbp = $fbp;
-        null !== $first_name && $obj->first_name = $first_name;
-        null !== $gad_source && $obj->gad_source = $gad_source;
-        null !== $gbraid && $obj->gbraid = $gbraid;
-        null !== $gclid && $obj->gclid = $gclid;
-        null !== $gender && $obj->gender = $gender;
-        null !== $ip && $obj->ip = $ip;
-        null !== $irclickid && $obj->irclickid = $irclickid;
-        null !== $is_bot && $obj->is_bot = $is_bot;
-        null !== $job_title && $obj->job_title = $job_title;
-        null !== $last_name && $obj->last_name = $last_name;
-        null !== $li_fat_id && $obj->li_fat_id = $li_fat_id;
-        null !== $msclkid && $obj->msclkid = $msclkid;
-        null !== $ndclid && $obj->ndclid = $ndclid;
-        null !== $phone_number && $obj->phone_number = $phone_number;
-        null !== $qclid && $obj->qclid = $qclid;
-        null !== $rdt_cid && $obj->rdt_cid = $rdt_cid;
-        null !== $referrer && $obj->referrer = $referrer;
-        null !== $referring_domain && $obj->referring_domain = $referring_domain;
-        null !== $sacid && $obj->sacid = $sacid;
-        null !== $sccid && $obj->sccid = $sccid;
-        null !== $sid && $obj->sid = $sid;
-        null !== $state && $obj->state = $state;
-        null !== $ttclid && $obj->ttclid = $ttclid;
-        null !== $twclid && $obj->twclid = $twclid;
-        null !== $user_agent && $obj->user_agent = $user_agent;
-        null !== $user_agent_full_list && $obj->user_agent_full_list = $user_agent_full_list;
-        null !== $utm_campaign && $obj->utm_campaign = $utm_campaign;
-        null !== $utm_content && $obj->utm_content = $utm_content;
-        null !== $utm_medium && $obj->utm_medium = $utm_medium;
-        null !== $utm_name && $obj->utm_name = $utm_name;
-        null !== $utm_source && $obj->utm_source = $utm_source;
-        null !== $utm_term && $obj->utm_term = $utm_term;
-        null !== $wbraid && $obj->wbraid = $wbraid;
-        null !== $zip && $obj->zip = $zip;
+        null !== $ad_id && $obj['ad_id'] = $ad_id;
+        null !== $adset_id && $obj['adset_id'] = $adset_id;
+        null !== $campaign_id && $obj['campaign_id'] = $campaign_id;
+        null !== $city && $obj['city'] = $city;
+        null !== $clickid && $obj['clickid'] = $clickid;
+        null !== $clid && $obj['clid'] = $clid;
+        null !== $company_name && $obj['company_name'] = $company_name;
+        null !== $consent && $obj['consent'] = $consent;
+        null !== $country && $obj['country'] = $country;
+        null !== $custom_properties && $obj['custom_properties'] = $custom_properties;
+        null !== $date_of_birth && $obj['date_of_birth'] = $date_of_birth;
+        null !== $dclid && $obj['dclid'] = $dclid;
+        null !== $email && $obj['email'] = $email;
+        null !== $epik && $obj['epik'] = $epik;
+        null !== $external_id && $obj['external_id'] = $external_id;
+        null !== $fbc && $obj['fbc'] = $fbc;
+        null !== $fbclid && $obj['fbclid'] = $fbclid;
+        null !== $fbp && $obj['fbp'] = $fbp;
+        null !== $first_name && $obj['first_name'] = $first_name;
+        null !== $gad_source && $obj['gad_source'] = $gad_source;
+        null !== $gbraid && $obj['gbraid'] = $gbraid;
+        null !== $gclid && $obj['gclid'] = $gclid;
+        null !== $gender && $obj['gender'] = $gender;
+        null !== $ip && $obj['ip'] = $ip;
+        null !== $irclickid && $obj['irclickid'] = $irclickid;
+        null !== $is_bot && $obj['is_bot'] = $is_bot;
+        null !== $job_title && $obj['job_title'] = $job_title;
+        null !== $last_name && $obj['last_name'] = $last_name;
+        null !== $li_fat_id && $obj['li_fat_id'] = $li_fat_id;
+        null !== $msclkid && $obj['msclkid'] = $msclkid;
+        null !== $ndclid && $obj['ndclid'] = $ndclid;
+        null !== $phone_number && $obj['phone_number'] = $phone_number;
+        null !== $qclid && $obj['qclid'] = $qclid;
+        null !== $rdt_cid && $obj['rdt_cid'] = $rdt_cid;
+        null !== $referrer && $obj['referrer'] = $referrer;
+        null !== $referring_domain && $obj['referring_domain'] = $referring_domain;
+        null !== $sacid && $obj['sacid'] = $sacid;
+        null !== $sccid && $obj['sccid'] = $sccid;
+        null !== $sid && $obj['sid'] = $sid;
+        null !== $state && $obj['state'] = $state;
+        null !== $ttclid && $obj['ttclid'] = $ttclid;
+        null !== $twclid && $obj['twclid'] = $twclid;
+        null !== $user_agent && $obj['user_agent'] = $user_agent;
+        null !== $user_agent_full_list && $obj['user_agent_full_list'] = $user_agent_full_list;
+        null !== $utm_campaign && $obj['utm_campaign'] = $utm_campaign;
+        null !== $utm_content && $obj['utm_content'] = $utm_content;
+        null !== $utm_medium && $obj['utm_medium'] = $utm_medium;
+        null !== $utm_name && $obj['utm_name'] = $utm_name;
+        null !== $utm_source && $obj['utm_source'] = $utm_source;
+        null !== $utm_term && $obj['utm_term'] = $utm_term;
+        null !== $wbraid && $obj['wbraid'] = $wbraid;
+        null !== $zip && $obj['zip'] = $zip;
 
         return $obj;
     }
@@ -369,7 +369,7 @@ final class UserProperties implements BaseModel
     public function withAdID(?string $adID): self
     {
         $obj = clone $this;
-        $obj->ad_id = $adID;
+        $obj['ad_id'] = $adID;
 
         return $obj;
     }
@@ -377,7 +377,7 @@ final class UserProperties implements BaseModel
     public function withAdsetID(?string $adsetID): self
     {
         $obj = clone $this;
-        $obj->adset_id = $adsetID;
+        $obj['adset_id'] = $adsetID;
 
         return $obj;
     }
@@ -385,7 +385,7 @@ final class UserProperties implements BaseModel
     public function withCampaignID(?string $campaignID): self
     {
         $obj = clone $this;
-        $obj->campaign_id = $campaignID;
+        $obj['campaign_id'] = $campaignID;
 
         return $obj;
     }
@@ -393,7 +393,7 @@ final class UserProperties implements BaseModel
     public function withCity(?string $city): self
     {
         $obj = clone $this;
-        $obj->city = $city;
+        $obj['city'] = $city;
 
         return $obj;
     }
@@ -401,7 +401,7 @@ final class UserProperties implements BaseModel
     public function withClickid(?string $clickid): self
     {
         $obj = clone $this;
-        $obj->clickid = $clickid;
+        $obj['clickid'] = $clickid;
 
         return $obj;
     }
@@ -409,7 +409,7 @@ final class UserProperties implements BaseModel
     public function withClid(?string $clid): self
     {
         $obj = clone $this;
-        $obj->clid = $clid;
+        $obj['clid'] = $clid;
 
         return $obj;
     }
@@ -417,7 +417,7 @@ final class UserProperties implements BaseModel
     public function withCompanyName(?string $companyName): self
     {
         $obj = clone $this;
-        $obj->company_name = $companyName;
+        $obj['company_name'] = $companyName;
 
         return $obj;
     }
@@ -428,7 +428,7 @@ final class UserProperties implements BaseModel
     public function withConsent(?array $consent): self
     {
         $obj = clone $this;
-        $obj->consent = $consent;
+        $obj['consent'] = $consent;
 
         return $obj;
     }
@@ -436,7 +436,7 @@ final class UserProperties implements BaseModel
     public function withCountry(?string $country): self
     {
         $obj = clone $this;
-        $obj->country = $country;
+        $obj['country'] = $country;
 
         return $obj;
     }
@@ -447,7 +447,7 @@ final class UserProperties implements BaseModel
     public function withCustomProperties(?array $customProperties): self
     {
         $obj = clone $this;
-        $obj->custom_properties = $customProperties;
+        $obj['custom_properties'] = $customProperties;
 
         return $obj;
     }
@@ -455,7 +455,7 @@ final class UserProperties implements BaseModel
     public function withDateOfBirth(?string $dateOfBirth): self
     {
         $obj = clone $this;
-        $obj->date_of_birth = $dateOfBirth;
+        $obj['date_of_birth'] = $dateOfBirth;
 
         return $obj;
     }
@@ -463,7 +463,7 @@ final class UserProperties implements BaseModel
     public function withDclid(?string $dclid): self
     {
         $obj = clone $this;
-        $obj->dclid = $dclid;
+        $obj['dclid'] = $dclid;
 
         return $obj;
     }
@@ -471,7 +471,7 @@ final class UserProperties implements BaseModel
     public function withEmail(?string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -479,7 +479,7 @@ final class UserProperties implements BaseModel
     public function withEpik(?string $epik): self
     {
         $obj = clone $this;
-        $obj->epik = $epik;
+        $obj['epik'] = $epik;
 
         return $obj;
     }
@@ -487,7 +487,7 @@ final class UserProperties implements BaseModel
     public function withExternalID(?string $externalID): self
     {
         $obj = clone $this;
-        $obj->external_id = $externalID;
+        $obj['external_id'] = $externalID;
 
         return $obj;
     }
@@ -495,7 +495,7 @@ final class UserProperties implements BaseModel
     public function withFbc(?string $fbc): self
     {
         $obj = clone $this;
-        $obj->fbc = $fbc;
+        $obj['fbc'] = $fbc;
 
         return $obj;
     }
@@ -503,7 +503,7 @@ final class UserProperties implements BaseModel
     public function withFbclid(?string $fbclid): self
     {
         $obj = clone $this;
-        $obj->fbclid = $fbclid;
+        $obj['fbclid'] = $fbclid;
 
         return $obj;
     }
@@ -511,7 +511,7 @@ final class UserProperties implements BaseModel
     public function withFbp(?string $fbp): self
     {
         $obj = clone $this;
-        $obj->fbp = $fbp;
+        $obj['fbp'] = $fbp;
 
         return $obj;
     }
@@ -519,7 +519,7 @@ final class UserProperties implements BaseModel
     public function withFirstName(?string $firstName): self
     {
         $obj = clone $this;
-        $obj->first_name = $firstName;
+        $obj['first_name'] = $firstName;
 
         return $obj;
     }
@@ -527,7 +527,7 @@ final class UserProperties implements BaseModel
     public function withGadSource(?string $gadSource): self
     {
         $obj = clone $this;
-        $obj->gad_source = $gadSource;
+        $obj['gad_source'] = $gadSource;
 
         return $obj;
     }
@@ -535,7 +535,7 @@ final class UserProperties implements BaseModel
     public function withGbraid(?string $gbraid): self
     {
         $obj = clone $this;
-        $obj->gbraid = $gbraid;
+        $obj['gbraid'] = $gbraid;
 
         return $obj;
     }
@@ -543,7 +543,7 @@ final class UserProperties implements BaseModel
     public function withGclid(?string $gclid): self
     {
         $obj = clone $this;
-        $obj->gclid = $gclid;
+        $obj['gclid'] = $gclid;
 
         return $obj;
     }
@@ -551,7 +551,7 @@ final class UserProperties implements BaseModel
     public function withGender(?string $gender): self
     {
         $obj = clone $this;
-        $obj->gender = $gender;
+        $obj['gender'] = $gender;
 
         return $obj;
     }
@@ -562,7 +562,7 @@ final class UserProperties implements BaseModel
     public function withIP(?string $ip): self
     {
         $obj = clone $this;
-        $obj->ip = $ip;
+        $obj['ip'] = $ip;
 
         return $obj;
     }
@@ -570,7 +570,7 @@ final class UserProperties implements BaseModel
     public function withIrclickid(?string $irclickid): self
     {
         $obj = clone $this;
-        $obj->irclickid = $irclickid;
+        $obj['irclickid'] = $irclickid;
 
         return $obj;
     }
@@ -578,7 +578,7 @@ final class UserProperties implements BaseModel
     public function withIsBot(mixed $isBot): self
     {
         $obj = clone $this;
-        $obj->is_bot = $isBot;
+        $obj['is_bot'] = $isBot;
 
         return $obj;
     }
@@ -586,7 +586,7 @@ final class UserProperties implements BaseModel
     public function withJobTitle(?string $jobTitle): self
     {
         $obj = clone $this;
-        $obj->job_title = $jobTitle;
+        $obj['job_title'] = $jobTitle;
 
         return $obj;
     }
@@ -594,7 +594,7 @@ final class UserProperties implements BaseModel
     public function withLastName(?string $lastName): self
     {
         $obj = clone $this;
-        $obj->last_name = $lastName;
+        $obj['last_name'] = $lastName;
 
         return $obj;
     }
@@ -602,7 +602,7 @@ final class UserProperties implements BaseModel
     public function withLiFatID(?string $liFatID): self
     {
         $obj = clone $this;
-        $obj->li_fat_id = $liFatID;
+        $obj['li_fat_id'] = $liFatID;
 
         return $obj;
     }
@@ -610,7 +610,7 @@ final class UserProperties implements BaseModel
     public function withMsclkid(?string $msclkid): self
     {
         $obj = clone $this;
-        $obj->msclkid = $msclkid;
+        $obj['msclkid'] = $msclkid;
 
         return $obj;
     }
@@ -618,7 +618,7 @@ final class UserProperties implements BaseModel
     public function withNdclid(?string $ndclid): self
     {
         $obj = clone $this;
-        $obj->ndclid = $ndclid;
+        $obj['ndclid'] = $ndclid;
 
         return $obj;
     }
@@ -626,7 +626,7 @@ final class UserProperties implements BaseModel
     public function withPhoneNumber(mixed $phoneNumber): self
     {
         $obj = clone $this;
-        $obj->phone_number = $phoneNumber;
+        $obj['phone_number'] = $phoneNumber;
 
         return $obj;
     }
@@ -634,7 +634,7 @@ final class UserProperties implements BaseModel
     public function withQclid(?string $qclid): self
     {
         $obj = clone $this;
-        $obj->qclid = $qclid;
+        $obj['qclid'] = $qclid;
 
         return $obj;
     }
@@ -642,7 +642,7 @@ final class UserProperties implements BaseModel
     public function withRdtCid(?string $rdtCid): self
     {
         $obj = clone $this;
-        $obj->rdt_cid = $rdtCid;
+        $obj['rdt_cid'] = $rdtCid;
 
         return $obj;
     }
@@ -650,7 +650,7 @@ final class UserProperties implements BaseModel
     public function withReferrer(?string $referrer): self
     {
         $obj = clone $this;
-        $obj->referrer = $referrer;
+        $obj['referrer'] = $referrer;
 
         return $obj;
     }
@@ -658,7 +658,7 @@ final class UserProperties implements BaseModel
     public function withReferringDomain(?string $referringDomain): self
     {
         $obj = clone $this;
-        $obj->referring_domain = $referringDomain;
+        $obj['referring_domain'] = $referringDomain;
 
         return $obj;
     }
@@ -666,7 +666,7 @@ final class UserProperties implements BaseModel
     public function withSacid(?string $sacid): self
     {
         $obj = clone $this;
-        $obj->sacid = $sacid;
+        $obj['sacid'] = $sacid;
 
         return $obj;
     }
@@ -674,7 +674,7 @@ final class UserProperties implements BaseModel
     public function withSccid(?string $sccid): self
     {
         $obj = clone $this;
-        $obj->sccid = $sccid;
+        $obj['sccid'] = $sccid;
 
         return $obj;
     }
@@ -682,7 +682,7 @@ final class UserProperties implements BaseModel
     public function withSid(?string $sid): self
     {
         $obj = clone $this;
-        $obj->sid = $sid;
+        $obj['sid'] = $sid;
 
         return $obj;
     }
@@ -690,7 +690,7 @@ final class UserProperties implements BaseModel
     public function withState(?string $state): self
     {
         $obj = clone $this;
-        $obj->state = $state;
+        $obj['state'] = $state;
 
         return $obj;
     }
@@ -698,7 +698,7 @@ final class UserProperties implements BaseModel
     public function withTtclid(?string $ttclid): self
     {
         $obj = clone $this;
-        $obj->ttclid = $ttclid;
+        $obj['ttclid'] = $ttclid;
 
         return $obj;
     }
@@ -706,7 +706,7 @@ final class UserProperties implements BaseModel
     public function withTwclid(?string $twclid): self
     {
         $obj = clone $this;
-        $obj->twclid = $twclid;
+        $obj['twclid'] = $twclid;
 
         return $obj;
     }
@@ -714,7 +714,7 @@ final class UserProperties implements BaseModel
     public function withUserAgent(?string $userAgent): self
     {
         $obj = clone $this;
-        $obj->user_agent = $userAgent;
+        $obj['user_agent'] = $userAgent;
 
         return $obj;
     }
@@ -722,7 +722,7 @@ final class UserProperties implements BaseModel
     public function withUserAgentFullList(?string $userAgentFullList): self
     {
         $obj = clone $this;
-        $obj->user_agent_full_list = $userAgentFullList;
+        $obj['user_agent_full_list'] = $userAgentFullList;
 
         return $obj;
     }
@@ -730,7 +730,7 @@ final class UserProperties implements BaseModel
     public function withUtmCampaign(?string $utmCampaign): self
     {
         $obj = clone $this;
-        $obj->utm_campaign = $utmCampaign;
+        $obj['utm_campaign'] = $utmCampaign;
 
         return $obj;
     }
@@ -738,7 +738,7 @@ final class UserProperties implements BaseModel
     public function withUtmContent(?string $utmContent): self
     {
         $obj = clone $this;
-        $obj->utm_content = $utmContent;
+        $obj['utm_content'] = $utmContent;
 
         return $obj;
     }
@@ -746,7 +746,7 @@ final class UserProperties implements BaseModel
     public function withUtmMedium(?string $utmMedium): self
     {
         $obj = clone $this;
-        $obj->utm_medium = $utmMedium;
+        $obj['utm_medium'] = $utmMedium;
 
         return $obj;
     }
@@ -754,7 +754,7 @@ final class UserProperties implements BaseModel
     public function withUtmName(?string $utmName): self
     {
         $obj = clone $this;
-        $obj->utm_name = $utmName;
+        $obj['utm_name'] = $utmName;
 
         return $obj;
     }
@@ -762,7 +762,7 @@ final class UserProperties implements BaseModel
     public function withUtmSource(?string $utmSource): self
     {
         $obj = clone $this;
-        $obj->utm_source = $utmSource;
+        $obj['utm_source'] = $utmSource;
 
         return $obj;
     }
@@ -770,7 +770,7 @@ final class UserProperties implements BaseModel
     public function withUtmTerm(?string $utmTerm): self
     {
         $obj = clone $this;
-        $obj->utm_term = $utmTerm;
+        $obj['utm_term'] = $utmTerm;
 
         return $obj;
     }
@@ -778,7 +778,7 @@ final class UserProperties implements BaseModel
     public function withWbraid(?string $wbraid): self
     {
         $obj = clone $this;
-        $obj->wbraid = $wbraid;
+        $obj['wbraid'] = $wbraid;
 
         return $obj;
     }
@@ -786,7 +786,7 @@ final class UserProperties implements BaseModel
     public function withZip(mixed $zip): self
     {
         $obj = clone $this;
-        $obj->zip = $zip;
+        $obj['zip'] = $zip;
 
         return $obj;
     }

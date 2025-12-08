@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (2025-12-06)
+
+Full Changelog: [v0.4.3...v0.5.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.4.3...v0.5.0)
+
+### Features
+
+* allow both model class instances and arrays in setters ([f31766f](https://github.com/with-ours/ingest-sdk-php/commit/f31766f5ea80c0502a1dc737733f2ddb237387fc))
+
 ## 0.4.3 (2025-12-04)
 
 Full Changelog: [v0.4.2...v0.4.3](https://github.com/with-ours/ingest-sdk-php/compare/v0.4.2...v0.4.3)

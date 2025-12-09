@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OursPrivacy\Services;
 
 use OursPrivacy\Client;
+use OursPrivacy\Core\Contracts\BaseResponse;
 use OursPrivacy\Core\Exceptions\APIException;
 use OursPrivacy\RequestOptions;
 use OursPrivacy\ServiceContracts\TrackContract;
@@ -170,13 +171,15 @@ final class TrackService implements TrackContract
             ->client
             ->baseUrlOverridden ? 'track' : 'https://api.oursprivacy.com/api/v1/track';
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TrackEventResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: $path,
             body: (object) $parsed,
             options: $options,
             convert: TrackEventResponse::class,
         );
+
+        return $response->parse();
     }
 }

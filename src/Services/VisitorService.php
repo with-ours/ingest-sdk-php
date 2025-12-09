@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OursPrivacy\Services;
 
 use OursPrivacy\Client;
+use OursPrivacy\Core\Contracts\BaseResponse;
 use OursPrivacy\Core\Exceptions\APIException;
 use OursPrivacy\RequestOptions;
 use OursPrivacy\ServiceContracts\VisitorContract;
@@ -166,13 +167,15 @@ final class VisitorService implements VisitorContract
             ->client
             ->baseUrlOverridden ? 'identify' : 'https://api.oursprivacy.com/api/v1/identify';
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<VisitorUpsertResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: $path,
             body: (object) $parsed,
             options: $options,
             convert: VisitorUpsertResponse::class,
         );
+
+        return $response->parse();
     }
 }

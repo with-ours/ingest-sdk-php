@@ -6,19 +6,15 @@ namespace OursPrivacy\Visitor;
 
 use OursPrivacy\Core\Attributes\Api;
 use OursPrivacy\Core\Concerns\SdkModel;
-use OursPrivacy\Core\Concerns\SdkResponse;
 use OursPrivacy\Core\Contracts\BaseModel;
-use OursPrivacy\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type VisitorUpsertResponseShape = array{success: bool}
  */
-final class VisitorUpsertResponse implements BaseModel, ResponseConverter
+final class VisitorUpsertResponse implements BaseModel
 {
     /** @use SdkModel<VisitorUpsertResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public bool $success;

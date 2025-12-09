@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace OursPrivacy\Visitor;
 
-use OursPrivacy\Core\Attributes\Api;
+use OursPrivacy\Core\Attributes\Optional;
+use OursPrivacy\Core\Attributes\Required;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Concerns\SdkParams;
 use OursPrivacy\Core\Contracts\BaseModel;
@@ -154,37 +155,37 @@ final class VisitorUpsertParams implements BaseModel
     /**
      * The token for your Ours Privacy Source. You can find this in the Ours dashboard.
      */
-    #[Api]
+    #[Required]
     public string $token;
 
     /**
      * User properties to associate with this user. The existing user properties will be updated. And all future events will have these properties associated with them.
      */
-    #[Api]
+    #[Required]
     public UserProperties $userProperties;
 
     /**
      * These properties are used throughout the Ours app to pass known values onto destinations.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?DefaultProperties $defaultProperties;
 
     /**
      * The email address of a user. We will associate this event with the user or create a user. Used for lookup if externalId and userId are not included in the request.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $email;
 
     /**
      * The externalId (the ID in your system) of a user. We will associate this event with the user or create a user. If included in the request, email lookup is ignored.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $externalId;
 
     /**
      * The Ours user id stored in local storage and cookies on your web properties. If userId is included in the request, we do not lookup the user by email or externalId.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $userId;
 
     /**

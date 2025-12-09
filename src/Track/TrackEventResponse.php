@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OursPrivacy\Track;
 
-use OursPrivacy\Core\Attributes\Api;
+use OursPrivacy\Core\Attributes\Required;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
 
@@ -16,7 +16,7 @@ final class TrackEventResponse implements BaseModel
     /** @use SdkModel<TrackEventResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $success;
 
     /**

@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.6.0 (2025-12-09)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.5.0...v0.6.0)
+
+### ⚠ BREAKING CHANGES
+
+* use camel casing for all class properties
+
+### Features
+
+* add `BaseResponse` class for accessing raw responses ([7036ed2](https://github.com/with-ours/ingest-sdk-php/commit/7036ed24098dd3167848fbdf8c4b388b08cc21fc))
+* use camel casing for all class properties ([53006c7](https://github.com/with-ours/ingest-sdk-php/commit/53006c75b7711a52849b24f6ec664c2d8b5a59db))
+
+
+### Chores
+
+* switch from `#[Api(optional: true|false)]` to `#[Required]|#[Optional]` for annotations ([d257c06](https://github.com/with-ours/ingest-sdk-php/commit/d257c06271d3535f3f1e770b07f6a215afb26dfc))
+
 ## 0.5.0 (2025-12-06)
 
 Full Changelog: [v0.4.3...v0.5.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.4.3...v0.5.0)

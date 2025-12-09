@@ -6,19 +6,15 @@ namespace OursPrivacy\Track;
 
 use OursPrivacy\Core\Attributes\Api;
 use OursPrivacy\Core\Concerns\SdkModel;
-use OursPrivacy\Core\Concerns\SdkResponse;
 use OursPrivacy\Core\Contracts\BaseModel;
-use OursPrivacy\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type TrackEventResponseShape = array{success: bool}
  */
-final class TrackEventResponse implements BaseModel, ResponseConverter
+final class TrackEventResponse implements BaseModel
 {
     /** @use SdkModel<TrackEventResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public bool $success;

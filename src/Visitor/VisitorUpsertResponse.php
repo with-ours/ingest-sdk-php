@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OursPrivacy\Visitor;
 
-use OursPrivacy\Core\Attributes\Api;
+use OursPrivacy\Core\Attributes\Required;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
 
@@ -16,7 +16,7 @@ final class VisitorUpsertResponse implements BaseModel
     /** @use SdkModel<VisitorUpsertResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $success;
 
     /**

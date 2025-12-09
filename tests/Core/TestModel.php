@@ -2,7 +2,8 @@
 
 namespace Tests\Core;
 
-use OursPrivacy\Core\Attributes\Api;
+use OursPrivacy\Core\Attributes\Optional;
+use OursPrivacy\Core\Attributes\Required;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -14,17 +15,17 @@ class TestModel implements BaseModel
     /** @use SdkModel<array<string, mixed>> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api('age_years')]
+    #[Required('age_years')]
     public int $ageYears;
 
     /** @var list<string>|null */
-    #[Api(optional: true)]
+    #[Optional]
     public ?array $friends;
 
-    #[Api]
+    #[Required]
     public ?string $owner;
 
     /**

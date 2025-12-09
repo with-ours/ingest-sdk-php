@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OursPrivacy\Track\TrackEventParams;
 
-use OursPrivacy\Core\Attributes\Api;
+use OursPrivacy\Core\Attributes\Optional;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
 
@@ -88,394 +88,394 @@ final class DefaultProperties implements BaseModel
     /**
      * The active time in milliseconds that the user had this tab active.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?float $activeDuration;
 
     /**
      * The ad id for detected in the session. This is set by the web sdk automatically.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $ad_id;
 
     /**
      * The adset id for detected in the session. This is set by the web sdk automatically.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $adset_id;
 
     /**
      * The language of the browser. Ex: en-US.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $browser_language;
 
     /**
      * The name of the browser. Ex: Chrome.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $browser_name;
 
     /**
      * The version of the browser. Ex: 114.0.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $browser_version;
 
     /**
      * The campaign id for detected in the session. This is set by the web sdk automatically.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $campaign_id;
 
     /**
      * The Click ID. Ex: clickid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $clickid;
 
     /**
      * The Generic Click ID. Ex: clid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $clid;
 
     /**
      * The architecture of the CPU. Ex: x64.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $cpu_architecture;
 
     /**
      * The full url (including query params) of the current page.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $current_url;
 
     /**
      * The DoubleClick Click ID. Ex: dclid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $dclid;
 
     /**
      * The model of the device. Ex: iPhone 13.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $device_model;
 
     /**
      * The type of device the user is using. Ex: mobile.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $device_type;
 
     /**
      * The vendor of the device. Ex: Apple.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $device_vendor;
 
     /**
      * The time in milliseconds since the page was loaded // script was loaded.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?float $duration;
 
     /**
      * The browsers encoding. Ex: UTF-8.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $encoding;
 
     /**
      * The name of the browser engine. Ex: Blink.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $engine_name;
 
     /**
      * The version of the browser engine. Ex: 114.0.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $engine_version;
 
     /**
      * The Pinterest Click ID. Ex: epik456.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $epik;
 
     /**
      * Facebook Click ID with prefix format for Conversions API tracking. Ex: fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $fbc;
 
     /**
      * Raw Facebook Click ID query parameter without prefix from ad clicks. Ex: AbCdEfGhIjKlMnOpQrStUvWxYz1234567890.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $fbclid;
 
     /**
      * Facebook Browser ID parameter for identifying browsers and attributing events. Ex: fb.1.1554763741205.1098115397.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $fbp;
 
     /**
      * Deprecated.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?bool $fv;
 
     /**
      * The Google Ad Source. Ex: google.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $gad_source;
 
     /**
      * The Google Braid ID. Ex: gbraid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $gbraid;
 
     /**
      * The Google Click ID. Ex: gclid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $gclid;
 
     /**
      * The host of the current page. Ex: example.com.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $host;
 
     /**
      * Whether the user is in an iframe. Ex: true.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?bool $iframe;
 
     /**
      * The IP address of the user. Ex: 127.0.0.1.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $ip;
 
     /**
      * The Impact Click ID. Ex: irclickid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $irclickid;
 
     /**
      * Whether we have detected that the user is a bot. This is set automatically by the Ours server primarily for events tracked through the web SDK.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $is_bot;
 
     /**
      * The LinkedIn Click ID. Ex: li_fat_id123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $li_fat_id;
 
     /**
      * The Microsoft Click ID. Ex: msclkid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $msclkid;
 
     /**
      * The NextDoor Click ID. Ex: ndclid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $ndclid;
 
     /**
      * Deprecated.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?bool $new_s;
 
     /**
      * The name of the operating system. Ex: Windows.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $os_name;
 
     /**
      * The version of the operating system. Ex: 10.0.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $os_version;
 
     /**
      * A random set of numbers for the page load.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?float $page_hash;
 
     /**
      * The pathname of the current page. Ex: /home.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $pathname;
 
     /**
      * The Quora Click ID. Ex: qclid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $qclid;
 
     /**
      * The Reddit Click ID. Ex: rdt_cid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $rdt_cid;
 
     /**
      * The time the event was received by an Ours server in ISO format.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $received_at;
 
     /**
      * The referrer URL of the current page.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $referrer;
 
     /**
      * The referring domain of the current page.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $referring_domain;
 
     /**
      * The StackAdapt Tracking ID. Ex: sacid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $sacid;
 
     /**
      * The SnapChat Click ID. Ex: sccid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $sccid;
 
     /**
      * The height of the screen. Ex: 1080.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?float $screen_height;
 
     /**
      * The width of the screen. Ex: 1920.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?float $screen_width;
 
     /**
      * The number of sessions the user has had. Ex: 3.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?float $sessionCount;
 
     /**
      * The session ID as assigned automatically by the web SDK. This is required for session replay.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $sid;
 
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $sr;
 
     /**
      * The title of the current page.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $title;
 
     /**
      * The TikTok Click ID. Ex: ttclid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $ttclid;
 
     /**
      * The Twitter Click ID. Ex: twclid123.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $twclid;
 
     /**
      * User agent as a full list of strings.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $uafvl;
 
     /**
      * The user agent of the browser.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $user_agent;
 
     /**
      * The UTM Campaign. The web SDK automatically captures this from the query params.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $utm_campaign;
 
     /**
      * The UTM Content. The web SDK automatically captures this from the query params.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $utm_content;
 
     /**
      * The UTM Medium. The web SDK automatically captures this from the query params.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $utm_medium;
 
     /**
      * The UTM Name. The web SDK automatically captures this from the query params.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $utm_name;
 
     /**
      * The UTM Source. The web SDK automatically captures this from the query params.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $utm_source;
 
     /**
      * The UTM Term. The web SDK automatically captures this from the query params.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $utm_term;
 
     /**
      * The version of the web SDK.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $version;
 
     /**
      * The WBRAID Identifier. The web SDK automatically captures this from the query params.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $wbraid;
 
     /**
      * Whether the user is in a webview. Ex: true.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?bool $webview;
 
     public function __construct()

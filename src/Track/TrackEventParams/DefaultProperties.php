@@ -556,76 +556,76 @@ final class DefaultProperties implements BaseModel
         ?string $wbraid = null,
         ?bool $webview = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $activeDuration && $obj['activeDuration'] = $activeDuration;
-        null !== $adID && $obj['adID'] = $adID;
-        null !== $adsetID && $obj['adsetID'] = $adsetID;
-        null !== $browserLanguage && $obj['browserLanguage'] = $browserLanguage;
-        null !== $browserName && $obj['browserName'] = $browserName;
-        null !== $browserVersion && $obj['browserVersion'] = $browserVersion;
-        null !== $campaignID && $obj['campaignID'] = $campaignID;
-        null !== $clickid && $obj['clickid'] = $clickid;
-        null !== $clid && $obj['clid'] = $clid;
-        null !== $cpuArchitecture && $obj['cpuArchitecture'] = $cpuArchitecture;
-        null !== $currentURL && $obj['currentURL'] = $currentURL;
-        null !== $dclid && $obj['dclid'] = $dclid;
-        null !== $deviceModel && $obj['deviceModel'] = $deviceModel;
-        null !== $deviceType && $obj['deviceType'] = $deviceType;
-        null !== $deviceVendor && $obj['deviceVendor'] = $deviceVendor;
-        null !== $duration && $obj['duration'] = $duration;
-        null !== $encoding && $obj['encoding'] = $encoding;
-        null !== $engineName && $obj['engineName'] = $engineName;
-        null !== $engineVersion && $obj['engineVersion'] = $engineVersion;
-        null !== $epik && $obj['epik'] = $epik;
-        null !== $fbc && $obj['fbc'] = $fbc;
-        null !== $fbclid && $obj['fbclid'] = $fbclid;
-        null !== $fbp && $obj['fbp'] = $fbp;
-        null !== $fv && $obj['fv'] = $fv;
-        null !== $gadSource && $obj['gadSource'] = $gadSource;
-        null !== $gbraid && $obj['gbraid'] = $gbraid;
-        null !== $gclid && $obj['gclid'] = $gclid;
-        null !== $host && $obj['host'] = $host;
-        null !== $iframe && $obj['iframe'] = $iframe;
-        null !== $ip && $obj['ip'] = $ip;
-        null !== $irclickid && $obj['irclickid'] = $irclickid;
-        null !== $isBot && $obj['isBot'] = $isBot;
-        null !== $liFatID && $obj['liFatID'] = $liFatID;
-        null !== $msclkid && $obj['msclkid'] = $msclkid;
-        null !== $ndclid && $obj['ndclid'] = $ndclid;
-        null !== $newS && $obj['newS'] = $newS;
-        null !== $osName && $obj['osName'] = $osName;
-        null !== $osVersion && $obj['osVersion'] = $osVersion;
-        null !== $pageHash && $obj['pageHash'] = $pageHash;
-        null !== $pathname && $obj['pathname'] = $pathname;
-        null !== $qclid && $obj['qclid'] = $qclid;
-        null !== $rdtCid && $obj['rdtCid'] = $rdtCid;
-        null !== $receivedAt && $obj['receivedAt'] = $receivedAt;
-        null !== $referrer && $obj['referrer'] = $referrer;
-        null !== $referringDomain && $obj['referringDomain'] = $referringDomain;
-        null !== $sacid && $obj['sacid'] = $sacid;
-        null !== $sccid && $obj['sccid'] = $sccid;
-        null !== $screenHeight && $obj['screenHeight'] = $screenHeight;
-        null !== $screenWidth && $obj['screenWidth'] = $screenWidth;
-        null !== $sessionCount && $obj['sessionCount'] = $sessionCount;
-        null !== $sid && $obj['sid'] = $sid;
-        null !== $sr && $obj['sr'] = $sr;
-        null !== $title && $obj['title'] = $title;
-        null !== $ttclid && $obj['ttclid'] = $ttclid;
-        null !== $twclid && $obj['twclid'] = $twclid;
-        null !== $uafvl && $obj['uafvl'] = $uafvl;
-        null !== $userAgent && $obj['userAgent'] = $userAgent;
-        null !== $utmCampaign && $obj['utmCampaign'] = $utmCampaign;
-        null !== $utmContent && $obj['utmContent'] = $utmContent;
-        null !== $utmMedium && $obj['utmMedium'] = $utmMedium;
-        null !== $utmName && $obj['utmName'] = $utmName;
-        null !== $utmSource && $obj['utmSource'] = $utmSource;
-        null !== $utmTerm && $obj['utmTerm'] = $utmTerm;
-        null !== $version && $obj['version'] = $version;
-        null !== $wbraid && $obj['wbraid'] = $wbraid;
-        null !== $webview && $obj['webview'] = $webview;
+        null !== $activeDuration && $self['activeDuration'] = $activeDuration;
+        null !== $adID && $self['adID'] = $adID;
+        null !== $adsetID && $self['adsetID'] = $adsetID;
+        null !== $browserLanguage && $self['browserLanguage'] = $browserLanguage;
+        null !== $browserName && $self['browserName'] = $browserName;
+        null !== $browserVersion && $self['browserVersion'] = $browserVersion;
+        null !== $campaignID && $self['campaignID'] = $campaignID;
+        null !== $clickid && $self['clickid'] = $clickid;
+        null !== $clid && $self['clid'] = $clid;
+        null !== $cpuArchitecture && $self['cpuArchitecture'] = $cpuArchitecture;
+        null !== $currentURL && $self['currentURL'] = $currentURL;
+        null !== $dclid && $self['dclid'] = $dclid;
+        null !== $deviceModel && $self['deviceModel'] = $deviceModel;
+        null !== $deviceType && $self['deviceType'] = $deviceType;
+        null !== $deviceVendor && $self['deviceVendor'] = $deviceVendor;
+        null !== $duration && $self['duration'] = $duration;
+        null !== $encoding && $self['encoding'] = $encoding;
+        null !== $engineName && $self['engineName'] = $engineName;
+        null !== $engineVersion && $self['engineVersion'] = $engineVersion;
+        null !== $epik && $self['epik'] = $epik;
+        null !== $fbc && $self['fbc'] = $fbc;
+        null !== $fbclid && $self['fbclid'] = $fbclid;
+        null !== $fbp && $self['fbp'] = $fbp;
+        null !== $fv && $self['fv'] = $fv;
+        null !== $gadSource && $self['gadSource'] = $gadSource;
+        null !== $gbraid && $self['gbraid'] = $gbraid;
+        null !== $gclid && $self['gclid'] = $gclid;
+        null !== $host && $self['host'] = $host;
+        null !== $iframe && $self['iframe'] = $iframe;
+        null !== $ip && $self['ip'] = $ip;
+        null !== $irclickid && $self['irclickid'] = $irclickid;
+        null !== $isBot && $self['isBot'] = $isBot;
+        null !== $liFatID && $self['liFatID'] = $liFatID;
+        null !== $msclkid && $self['msclkid'] = $msclkid;
+        null !== $ndclid && $self['ndclid'] = $ndclid;
+        null !== $newS && $self['newS'] = $newS;
+        null !== $osName && $self['osName'] = $osName;
+        null !== $osVersion && $self['osVersion'] = $osVersion;
+        null !== $pageHash && $self['pageHash'] = $pageHash;
+        null !== $pathname && $self['pathname'] = $pathname;
+        null !== $qclid && $self['qclid'] = $qclid;
+        null !== $rdtCid && $self['rdtCid'] = $rdtCid;
+        null !== $receivedAt && $self['receivedAt'] = $receivedAt;
+        null !== $referrer && $self['referrer'] = $referrer;
+        null !== $referringDomain && $self['referringDomain'] = $referringDomain;
+        null !== $sacid && $self['sacid'] = $sacid;
+        null !== $sccid && $self['sccid'] = $sccid;
+        null !== $screenHeight && $self['screenHeight'] = $screenHeight;
+        null !== $screenWidth && $self['screenWidth'] = $screenWidth;
+        null !== $sessionCount && $self['sessionCount'] = $sessionCount;
+        null !== $sid && $self['sid'] = $sid;
+        null !== $sr && $self['sr'] = $sr;
+        null !== $title && $self['title'] = $title;
+        null !== $ttclid && $self['ttclid'] = $ttclid;
+        null !== $twclid && $self['twclid'] = $twclid;
+        null !== $uafvl && $self['uafvl'] = $uafvl;
+        null !== $userAgent && $self['userAgent'] = $userAgent;
+        null !== $utmCampaign && $self['utmCampaign'] = $utmCampaign;
+        null !== $utmContent && $self['utmContent'] = $utmContent;
+        null !== $utmMedium && $self['utmMedium'] = $utmMedium;
+        null !== $utmName && $self['utmName'] = $utmName;
+        null !== $utmSource && $self['utmSource'] = $utmSource;
+        null !== $utmTerm && $self['utmTerm'] = $utmTerm;
+        null !== $version && $self['version'] = $version;
+        null !== $wbraid && $self['wbraid'] = $wbraid;
+        null !== $webview && $self['webview'] = $webview;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -633,10 +633,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withActiveDuration(?float $activeDuration): self
     {
-        $obj = clone $this;
-        $obj['activeDuration'] = $activeDuration;
+        $self = clone $this;
+        $self['activeDuration'] = $activeDuration;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -644,10 +644,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withAdID(?string $adID): self
     {
-        $obj = clone $this;
-        $obj['adID'] = $adID;
+        $self = clone $this;
+        $self['adID'] = $adID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -655,10 +655,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withAdsetID(?string $adsetID): self
     {
-        $obj = clone $this;
-        $obj['adsetID'] = $adsetID;
+        $self = clone $this;
+        $self['adsetID'] = $adsetID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -666,10 +666,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withBrowserLanguage(?string $browserLanguage): self
     {
-        $obj = clone $this;
-        $obj['browserLanguage'] = $browserLanguage;
+        $self = clone $this;
+        $self['browserLanguage'] = $browserLanguage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -677,10 +677,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withBrowserName(?string $browserName): self
     {
-        $obj = clone $this;
-        $obj['browserName'] = $browserName;
+        $self = clone $this;
+        $self['browserName'] = $browserName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -688,10 +688,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withBrowserVersion(?string $browserVersion): self
     {
-        $obj = clone $this;
-        $obj['browserVersion'] = $browserVersion;
+        $self = clone $this;
+        $self['browserVersion'] = $browserVersion;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -699,10 +699,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withCampaignID(?string $campaignID): self
     {
-        $obj = clone $this;
-        $obj['campaignID'] = $campaignID;
+        $self = clone $this;
+        $self['campaignID'] = $campaignID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -710,10 +710,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withClickid(?string $clickid): self
     {
-        $obj = clone $this;
-        $obj['clickid'] = $clickid;
+        $self = clone $this;
+        $self['clickid'] = $clickid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -721,10 +721,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withClid(?string $clid): self
     {
-        $obj = clone $this;
-        $obj['clid'] = $clid;
+        $self = clone $this;
+        $self['clid'] = $clid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -732,10 +732,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withCPUArchitecture(?string $cpuArchitecture): self
     {
-        $obj = clone $this;
-        $obj['cpuArchitecture'] = $cpuArchitecture;
+        $self = clone $this;
+        $self['cpuArchitecture'] = $cpuArchitecture;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -743,10 +743,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withCurrentURL(?string $currentURL): self
     {
-        $obj = clone $this;
-        $obj['currentURL'] = $currentURL;
+        $self = clone $this;
+        $self['currentURL'] = $currentURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -754,10 +754,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withDclid(?string $dclid): self
     {
-        $obj = clone $this;
-        $obj['dclid'] = $dclid;
+        $self = clone $this;
+        $self['dclid'] = $dclid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -765,10 +765,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withDeviceModel(?string $deviceModel): self
     {
-        $obj = clone $this;
-        $obj['deviceModel'] = $deviceModel;
+        $self = clone $this;
+        $self['deviceModel'] = $deviceModel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -776,10 +776,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withDeviceType(?string $deviceType): self
     {
-        $obj = clone $this;
-        $obj['deviceType'] = $deviceType;
+        $self = clone $this;
+        $self['deviceType'] = $deviceType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -787,10 +787,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withDeviceVendor(?string $deviceVendor): self
     {
-        $obj = clone $this;
-        $obj['deviceVendor'] = $deviceVendor;
+        $self = clone $this;
+        $self['deviceVendor'] = $deviceVendor;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -798,10 +798,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withDuration(?float $duration): self
     {
-        $obj = clone $this;
-        $obj['duration'] = $duration;
+        $self = clone $this;
+        $self['duration'] = $duration;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -809,10 +809,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withEncoding(?string $encoding): self
     {
-        $obj = clone $this;
-        $obj['encoding'] = $encoding;
+        $self = clone $this;
+        $self['encoding'] = $encoding;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -820,10 +820,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withEngineName(?string $engineName): self
     {
-        $obj = clone $this;
-        $obj['engineName'] = $engineName;
+        $self = clone $this;
+        $self['engineName'] = $engineName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -831,10 +831,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withEngineVersion(?string $engineVersion): self
     {
-        $obj = clone $this;
-        $obj['engineVersion'] = $engineVersion;
+        $self = clone $this;
+        $self['engineVersion'] = $engineVersion;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -842,10 +842,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withEpik(?string $epik): self
     {
-        $obj = clone $this;
-        $obj['epik'] = $epik;
+        $self = clone $this;
+        $self['epik'] = $epik;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -853,10 +853,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withFbc(?string $fbc): self
     {
-        $obj = clone $this;
-        $obj['fbc'] = $fbc;
+        $self = clone $this;
+        $self['fbc'] = $fbc;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -864,10 +864,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withFbclid(?string $fbclid): self
     {
-        $obj = clone $this;
-        $obj['fbclid'] = $fbclid;
+        $self = clone $this;
+        $self['fbclid'] = $fbclid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -875,10 +875,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withFbp(?string $fbp): self
     {
-        $obj = clone $this;
-        $obj['fbp'] = $fbp;
+        $self = clone $this;
+        $self['fbp'] = $fbp;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -886,10 +886,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withFv(?bool $fv): self
     {
-        $obj = clone $this;
-        $obj['fv'] = $fv;
+        $self = clone $this;
+        $self['fv'] = $fv;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -897,10 +897,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withGadSource(?string $gadSource): self
     {
-        $obj = clone $this;
-        $obj['gadSource'] = $gadSource;
+        $self = clone $this;
+        $self['gadSource'] = $gadSource;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -908,10 +908,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withGbraid(?string $gbraid): self
     {
-        $obj = clone $this;
-        $obj['gbraid'] = $gbraid;
+        $self = clone $this;
+        $self['gbraid'] = $gbraid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -919,10 +919,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withGclid(?string $gclid): self
     {
-        $obj = clone $this;
-        $obj['gclid'] = $gclid;
+        $self = clone $this;
+        $self['gclid'] = $gclid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -930,10 +930,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withHost(?string $host): self
     {
-        $obj = clone $this;
-        $obj['host'] = $host;
+        $self = clone $this;
+        $self['host'] = $host;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -941,10 +941,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withIframe(?bool $iframe): self
     {
-        $obj = clone $this;
-        $obj['iframe'] = $iframe;
+        $self = clone $this;
+        $self['iframe'] = $iframe;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -952,10 +952,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withIP(?string $ip): self
     {
-        $obj = clone $this;
-        $obj['ip'] = $ip;
+        $self = clone $this;
+        $self['ip'] = $ip;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -963,10 +963,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withIrclickid(?string $irclickid): self
     {
-        $obj = clone $this;
-        $obj['irclickid'] = $irclickid;
+        $self = clone $this;
+        $self['irclickid'] = $irclickid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -974,10 +974,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withIsBot(mixed $isBot): self
     {
-        $obj = clone $this;
-        $obj['isBot'] = $isBot;
+        $self = clone $this;
+        $self['isBot'] = $isBot;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -985,10 +985,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withLiFatID(?string $liFatID): self
     {
-        $obj = clone $this;
-        $obj['liFatID'] = $liFatID;
+        $self = clone $this;
+        $self['liFatID'] = $liFatID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -996,10 +996,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withMsclkid(?string $msclkid): self
     {
-        $obj = clone $this;
-        $obj['msclkid'] = $msclkid;
+        $self = clone $this;
+        $self['msclkid'] = $msclkid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1007,10 +1007,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withNdclid(?string $ndclid): self
     {
-        $obj = clone $this;
-        $obj['ndclid'] = $ndclid;
+        $self = clone $this;
+        $self['ndclid'] = $ndclid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1018,10 +1018,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withNewS(?bool $newS): self
     {
-        $obj = clone $this;
-        $obj['newS'] = $newS;
+        $self = clone $this;
+        $self['newS'] = $newS;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1029,10 +1029,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withOsName(?string $osName): self
     {
-        $obj = clone $this;
-        $obj['osName'] = $osName;
+        $self = clone $this;
+        $self['osName'] = $osName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1040,10 +1040,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withOsVersion(?string $osVersion): self
     {
-        $obj = clone $this;
-        $obj['osVersion'] = $osVersion;
+        $self = clone $this;
+        $self['osVersion'] = $osVersion;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1051,10 +1051,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withPageHash(?float $pageHash): self
     {
-        $obj = clone $this;
-        $obj['pageHash'] = $pageHash;
+        $self = clone $this;
+        $self['pageHash'] = $pageHash;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1062,10 +1062,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withPathname(?string $pathname): self
     {
-        $obj = clone $this;
-        $obj['pathname'] = $pathname;
+        $self = clone $this;
+        $self['pathname'] = $pathname;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1073,10 +1073,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withQclid(?string $qclid): self
     {
-        $obj = clone $this;
-        $obj['qclid'] = $qclid;
+        $self = clone $this;
+        $self['qclid'] = $qclid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1084,10 +1084,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withRdtCid(?string $rdtCid): self
     {
-        $obj = clone $this;
-        $obj['rdtCid'] = $rdtCid;
+        $self = clone $this;
+        $self['rdtCid'] = $rdtCid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1095,10 +1095,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withReceivedAt(?string $receivedAt): self
     {
-        $obj = clone $this;
-        $obj['receivedAt'] = $receivedAt;
+        $self = clone $this;
+        $self['receivedAt'] = $receivedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1106,10 +1106,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withReferrer(?string $referrer): self
     {
-        $obj = clone $this;
-        $obj['referrer'] = $referrer;
+        $self = clone $this;
+        $self['referrer'] = $referrer;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1117,10 +1117,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withReferringDomain(?string $referringDomain): self
     {
-        $obj = clone $this;
-        $obj['referringDomain'] = $referringDomain;
+        $self = clone $this;
+        $self['referringDomain'] = $referringDomain;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1128,10 +1128,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withSacid(?string $sacid): self
     {
-        $obj = clone $this;
-        $obj['sacid'] = $sacid;
+        $self = clone $this;
+        $self['sacid'] = $sacid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1139,10 +1139,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withSccid(?string $sccid): self
     {
-        $obj = clone $this;
-        $obj['sccid'] = $sccid;
+        $self = clone $this;
+        $self['sccid'] = $sccid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1150,10 +1150,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withScreenHeight(?float $screenHeight): self
     {
-        $obj = clone $this;
-        $obj['screenHeight'] = $screenHeight;
+        $self = clone $this;
+        $self['screenHeight'] = $screenHeight;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1161,10 +1161,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withScreenWidth(?float $screenWidth): self
     {
-        $obj = clone $this;
-        $obj['screenWidth'] = $screenWidth;
+        $self = clone $this;
+        $self['screenWidth'] = $screenWidth;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1172,10 +1172,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withSessionCount(?float $sessionCount): self
     {
-        $obj = clone $this;
-        $obj['sessionCount'] = $sessionCount;
+        $self = clone $this;
+        $self['sessionCount'] = $sessionCount;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1183,18 +1183,18 @@ final class DefaultProperties implements BaseModel
      */
     public function withSid(?string $sid): self
     {
-        $obj = clone $this;
-        $obj['sid'] = $sid;
+        $self = clone $this;
+        $self['sid'] = $sid;
 
-        return $obj;
+        return $self;
     }
 
     public function withSr(?string $sr): self
     {
-        $obj = clone $this;
-        $obj['sr'] = $sr;
+        $self = clone $this;
+        $self['sr'] = $sr;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1202,10 +1202,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withTitle(?string $title): self
     {
-        $obj = clone $this;
-        $obj['title'] = $title;
+        $self = clone $this;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1213,10 +1213,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withTtclid(?string $ttclid): self
     {
-        $obj = clone $this;
-        $obj['ttclid'] = $ttclid;
+        $self = clone $this;
+        $self['ttclid'] = $ttclid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1224,10 +1224,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withTwclid(?string $twclid): self
     {
-        $obj = clone $this;
-        $obj['twclid'] = $twclid;
+        $self = clone $this;
+        $self['twclid'] = $twclid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1235,10 +1235,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withUafvl(?string $uafvl): self
     {
-        $obj = clone $this;
-        $obj['uafvl'] = $uafvl;
+        $self = clone $this;
+        $self['uafvl'] = $uafvl;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1246,10 +1246,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withUserAgent(?string $userAgent): self
     {
-        $obj = clone $this;
-        $obj['userAgent'] = $userAgent;
+        $self = clone $this;
+        $self['userAgent'] = $userAgent;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1257,10 +1257,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withUtmCampaign(?string $utmCampaign): self
     {
-        $obj = clone $this;
-        $obj['utmCampaign'] = $utmCampaign;
+        $self = clone $this;
+        $self['utmCampaign'] = $utmCampaign;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1268,10 +1268,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withUtmContent(?string $utmContent): self
     {
-        $obj = clone $this;
-        $obj['utmContent'] = $utmContent;
+        $self = clone $this;
+        $self['utmContent'] = $utmContent;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1279,10 +1279,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withUtmMedium(?string $utmMedium): self
     {
-        $obj = clone $this;
-        $obj['utmMedium'] = $utmMedium;
+        $self = clone $this;
+        $self['utmMedium'] = $utmMedium;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1290,10 +1290,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withUtmName(?string $utmName): self
     {
-        $obj = clone $this;
-        $obj['utmName'] = $utmName;
+        $self = clone $this;
+        $self['utmName'] = $utmName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1301,10 +1301,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withUtmSource(?string $utmSource): self
     {
-        $obj = clone $this;
-        $obj['utmSource'] = $utmSource;
+        $self = clone $this;
+        $self['utmSource'] = $utmSource;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1312,10 +1312,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withUtmTerm(?string $utmTerm): self
     {
-        $obj = clone $this;
-        $obj['utmTerm'] = $utmTerm;
+        $self = clone $this;
+        $self['utmTerm'] = $utmTerm;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1323,10 +1323,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withVersion(?string $version): self
     {
-        $obj = clone $this;
-        $obj['version'] = $version;
+        $self = clone $this;
+        $self['version'] = $version;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1334,10 +1334,10 @@ final class DefaultProperties implements BaseModel
      */
     public function withWbraid(?string $wbraid): self
     {
-        $obj = clone $this;
-        $obj['wbraid'] = $wbraid;
+        $self = clone $this;
+        $self['wbraid'] = $wbraid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1345,9 +1345,9 @@ final class DefaultProperties implements BaseModel
      */
     public function withWebview(?bool $webview): self
     {
-        $obj = clone $this;
-        $obj['webview'] = $webview;
+        $self = clone $this;
+        $self['webview'] = $webview;
 
-        return $obj;
+        return $self;
     }
 }

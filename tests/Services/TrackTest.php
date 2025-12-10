@@ -34,7 +34,7 @@ final class TrackTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->track->event(['token' => 'x', 'event' => 'x']);
+        $result = $this->client->track->event(token: 'x', event: 'x');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TrackEventResponse::class, $result);
@@ -47,10 +47,10 @@ final class TrackTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->track->event([
-            'token' => 'x',
-            'event' => 'x',
-            'defaultProperties' => [
+        $result = $this->client->track->event(
+            token: 'x',
+            event: 'x',
+            defaultProperties: [
                 'activeDuration' => 0,
                 'adID' => 'ad_id',
                 'adsetID' => 'adset_id',
@@ -118,13 +118,13 @@ final class TrackTest extends TestCase
                 'wbraid' => 'wbraid',
                 'webview' => true,
             ],
-            'distinctID' => 'x',
-            'email' => 'x',
-            'eventProperties' => ['foo' => 'bar'],
-            'externalID' => 'x',
-            'time' => 0,
-            'userID' => 'x',
-            'userProperties' => [
+            distinctID: 'x',
+            email: 'x',
+            eventProperties: ['foo' => 'bar'],
+            externalID: 'x',
+            time: 0,
+            userID: 'x',
+            userProperties: [
                 'adID' => 'ad_id',
                 'adsetID' => 'adset_id',
                 'campaignID' => 'campaign_id',
@@ -178,7 +178,7 @@ final class TrackTest extends TestCase
                 'wbraid' => 'wbraid',
                 'zip' => [],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TrackEventResponse::class, $result);

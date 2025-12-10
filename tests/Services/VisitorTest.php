@@ -34,9 +34,7 @@ final class VisitorTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->visitor->upsert([
-            'token' => 'x', 'userProperties' => [],
-        ]);
+        $result = $this->client->visitor->upsert(token: 'x', userProperties: []);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(VisitorUpsertResponse::class, $result);
@@ -49,9 +47,9 @@ final class VisitorTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->visitor->upsert([
-            'token' => 'x',
-            'userProperties' => [
+        $result = $this->client->visitor->upsert(
+            token: 'x',
+            userProperties: [
                 'adID' => 'ad_id',
                 'adsetID' => 'adset_id',
                 'campaignID' => 'campaign_id',
@@ -105,7 +103,7 @@ final class VisitorTest extends TestCase
                 'wbraid' => 'wbraid',
                 'zip' => [],
             ],
-            'defaultProperties' => [
+            defaultProperties: [
                 'activeDuration' => 0,
                 'adID' => 'ad_id',
                 'adsetID' => 'adset_id',
@@ -173,10 +171,10 @@ final class VisitorTest extends TestCase
                 'wbraid' => 'wbraid',
                 'webview' => true,
             ],
-            'email' => 'x',
-            'externalID' => 'x',
-            'userID' => 'x',
-        ]);
+            email: 'x',
+            externalID: 'x',
+            userID: 'x',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(VisitorUpsertResponse::class, $result);

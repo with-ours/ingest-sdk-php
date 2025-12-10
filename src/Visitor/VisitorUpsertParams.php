@@ -343,17 +343,17 @@ final class VisitorUpsertParams implements BaseModel
         ?string $externalID = null,
         ?string $userID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['token'] = $token;
-        $obj['userProperties'] = $userProperties;
+        $self['token'] = $token;
+        $self['userProperties'] = $userProperties;
 
-        null !== $defaultProperties && $obj['defaultProperties'] = $defaultProperties;
-        null !== $email && $obj['email'] = $email;
-        null !== $externalID && $obj['externalID'] = $externalID;
-        null !== $userID && $obj['userID'] = $userID;
+        null !== $defaultProperties && $self['defaultProperties'] = $defaultProperties;
+        null !== $email && $self['email'] = $email;
+        null !== $externalID && $self['externalID'] = $externalID;
+        null !== $userID && $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -361,10 +361,10 @@ final class VisitorUpsertParams implements BaseModel
      */
     public function withToken(string $token): self
     {
-        $obj = clone $this;
-        $obj['token'] = $token;
+        $self = clone $this;
+        $self['token'] = $token;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -428,10 +428,10 @@ final class VisitorUpsertParams implements BaseModel
     public function withUserProperties(
         UserProperties|array $userProperties
     ): self {
-        $obj = clone $this;
-        $obj['userProperties'] = $userProperties;
+        $self = clone $this;
+        $self['userProperties'] = $userProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -509,10 +509,10 @@ final class VisitorUpsertParams implements BaseModel
     public function withDefaultProperties(
         DefaultProperties|array|null $defaultProperties
     ): self {
-        $obj = clone $this;
-        $obj['defaultProperties'] = $defaultProperties;
+        $self = clone $this;
+        $self['defaultProperties'] = $defaultProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -520,10 +520,10 @@ final class VisitorUpsertParams implements BaseModel
      */
     public function withEmail(?string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -531,10 +531,10 @@ final class VisitorUpsertParams implements BaseModel
      */
     public function withExternalID(?string $externalID): self
     {
-        $obj = clone $this;
-        $obj['externalID'] = $externalID;
+        $self = clone $this;
+        $self['externalID'] = $externalID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -542,9 +542,9 @@ final class VisitorUpsertParams implements BaseModel
      */
     public function withUserID(?string $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 }

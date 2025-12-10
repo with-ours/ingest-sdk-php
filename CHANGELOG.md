@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.7.0 (2025-12-10)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* split out services into normal & raw types ([bb68040](https://github.com/with-ours/ingest-sdk-php/commit/bb6804028209b69fa56994357820c474972d42c3))
+
+
+### Chores
+
+* use `$self = clone $this;` instead of `$obj = clone $this;` ([c92998d](https://github.com/with-ours/ingest-sdk-php/commit/c92998dadd0deb2cbcb6bf9cab71c10f436cf8cc))
+
 ## 0.6.0 (2025-12-09)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.5.0...v0.6.0)

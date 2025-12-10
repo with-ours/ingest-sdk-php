@@ -379,21 +379,21 @@ final class TrackEventParams implements BaseModel
         ?string $userID = null,
         UserProperties|array|null $userProperties = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['token'] = $token;
-        $obj['event'] = $event;
+        $self['token'] = $token;
+        $self['event'] = $event;
 
-        null !== $defaultProperties && $obj['defaultProperties'] = $defaultProperties;
-        null !== $distinctID && $obj['distinctID'] = $distinctID;
-        null !== $email && $obj['email'] = $email;
-        null !== $eventProperties && $obj['eventProperties'] = $eventProperties;
-        null !== $externalID && $obj['externalID'] = $externalID;
-        null !== $time && $obj['time'] = $time;
-        null !== $userID && $obj['userID'] = $userID;
-        null !== $userProperties && $obj['userProperties'] = $userProperties;
+        null !== $defaultProperties && $self['defaultProperties'] = $defaultProperties;
+        null !== $distinctID && $self['distinctID'] = $distinctID;
+        null !== $email && $self['email'] = $email;
+        null !== $eventProperties && $self['eventProperties'] = $eventProperties;
+        null !== $externalID && $self['externalID'] = $externalID;
+        null !== $time && $self['time'] = $time;
+        null !== $userID && $self['userID'] = $userID;
+        null !== $userProperties && $self['userProperties'] = $userProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -401,10 +401,10 @@ final class TrackEventParams implements BaseModel
      */
     public function withToken(string $token): self
     {
-        $obj = clone $this;
-        $obj['token'] = $token;
+        $self = clone $this;
+        $self['token'] = $token;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -412,10 +412,10 @@ final class TrackEventParams implements BaseModel
      */
     public function withEvent(string $event): self
     {
-        $obj = clone $this;
-        $obj['event'] = $event;
+        $self = clone $this;
+        $self['event'] = $event;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -493,10 +493,10 @@ final class TrackEventParams implements BaseModel
     public function withDefaultProperties(
         DefaultProperties|array|null $defaultProperties
     ): self {
-        $obj = clone $this;
-        $obj['defaultProperties'] = $defaultProperties;
+        $self = clone $this;
+        $self['defaultProperties'] = $defaultProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -504,10 +504,10 @@ final class TrackEventParams implements BaseModel
      */
     public function withDistinctID(?string $distinctID): self
     {
-        $obj = clone $this;
-        $obj['distinctID'] = $distinctID;
+        $self = clone $this;
+        $self['distinctID'] = $distinctID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -515,10 +515,10 @@ final class TrackEventParams implements BaseModel
      */
     public function withEmail(?string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -528,10 +528,10 @@ final class TrackEventParams implements BaseModel
      */
     public function withEventProperties(?array $eventProperties): self
     {
-        $obj = clone $this;
-        $obj['eventProperties'] = $eventProperties;
+        $self = clone $this;
+        $self['eventProperties'] = $eventProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -539,10 +539,10 @@ final class TrackEventParams implements BaseModel
      */
     public function withExternalID(?string $externalID): self
     {
-        $obj = clone $this;
-        $obj['externalID'] = $externalID;
+        $self = clone $this;
+        $self['externalID'] = $externalID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -550,10 +550,10 @@ final class TrackEventParams implements BaseModel
      */
     public function withTime(?float $time): self
     {
-        $obj = clone $this;
-        $obj['time'] = $time;
+        $self = clone $this;
+        $self['time'] = $time;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -561,10 +561,10 @@ final class TrackEventParams implements BaseModel
      */
     public function withUserID(?string $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -628,9 +628,9 @@ final class TrackEventParams implements BaseModel
     public function withUserProperties(
         UserProperties|array|null $userProperties
     ): self {
-        $obj = clone $this;
-        $obj['userProperties'] = $userProperties;
+        $self = clone $this;
+        $self['userProperties'] = $userProperties;
 
-        return $obj;
+        return $self;
     }
 }

@@ -304,118 +304,118 @@ final class UserProperties implements BaseModel
         ?string $wbraid = null,
         mixed $zip = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $adID && $obj['adID'] = $adID;
-        null !== $adsetID && $obj['adsetID'] = $adsetID;
-        null !== $campaignID && $obj['campaignID'] = $campaignID;
-        null !== $city && $obj['city'] = $city;
-        null !== $clickid && $obj['clickid'] = $clickid;
-        null !== $clid && $obj['clid'] = $clid;
-        null !== $companyName && $obj['companyName'] = $companyName;
-        null !== $consent && $obj['consent'] = $consent;
-        null !== $country && $obj['country'] = $country;
-        null !== $customProperties && $obj['customProperties'] = $customProperties;
-        null !== $dateOfBirth && $obj['dateOfBirth'] = $dateOfBirth;
-        null !== $dclid && $obj['dclid'] = $dclid;
-        null !== $email && $obj['email'] = $email;
-        null !== $epik && $obj['epik'] = $epik;
-        null !== $externalID && $obj['externalID'] = $externalID;
-        null !== $fbc && $obj['fbc'] = $fbc;
-        null !== $fbclid && $obj['fbclid'] = $fbclid;
-        null !== $fbp && $obj['fbp'] = $fbp;
-        null !== $firstName && $obj['firstName'] = $firstName;
-        null !== $gadSource && $obj['gadSource'] = $gadSource;
-        null !== $gbraid && $obj['gbraid'] = $gbraid;
-        null !== $gclid && $obj['gclid'] = $gclid;
-        null !== $gender && $obj['gender'] = $gender;
-        null !== $ip && $obj['ip'] = $ip;
-        null !== $irclickid && $obj['irclickid'] = $irclickid;
-        null !== $isBot && $obj['isBot'] = $isBot;
-        null !== $jobTitle && $obj['jobTitle'] = $jobTitle;
-        null !== $lastName && $obj['lastName'] = $lastName;
-        null !== $liFatID && $obj['liFatID'] = $liFatID;
-        null !== $msclkid && $obj['msclkid'] = $msclkid;
-        null !== $ndclid && $obj['ndclid'] = $ndclid;
-        null !== $phoneNumber && $obj['phoneNumber'] = $phoneNumber;
-        null !== $qclid && $obj['qclid'] = $qclid;
-        null !== $rdtCid && $obj['rdtCid'] = $rdtCid;
-        null !== $referrer && $obj['referrer'] = $referrer;
-        null !== $referringDomain && $obj['referringDomain'] = $referringDomain;
-        null !== $sacid && $obj['sacid'] = $sacid;
-        null !== $sccid && $obj['sccid'] = $sccid;
-        null !== $sid && $obj['sid'] = $sid;
-        null !== $state && $obj['state'] = $state;
-        null !== $ttclid && $obj['ttclid'] = $ttclid;
-        null !== $twclid && $obj['twclid'] = $twclid;
-        null !== $userAgent && $obj['userAgent'] = $userAgent;
-        null !== $userAgentFullList && $obj['userAgentFullList'] = $userAgentFullList;
-        null !== $utmCampaign && $obj['utmCampaign'] = $utmCampaign;
-        null !== $utmContent && $obj['utmContent'] = $utmContent;
-        null !== $utmMedium && $obj['utmMedium'] = $utmMedium;
-        null !== $utmName && $obj['utmName'] = $utmName;
-        null !== $utmSource && $obj['utmSource'] = $utmSource;
-        null !== $utmTerm && $obj['utmTerm'] = $utmTerm;
-        null !== $wbraid && $obj['wbraid'] = $wbraid;
-        null !== $zip && $obj['zip'] = $zip;
+        null !== $adID && $self['adID'] = $adID;
+        null !== $adsetID && $self['adsetID'] = $adsetID;
+        null !== $campaignID && $self['campaignID'] = $campaignID;
+        null !== $city && $self['city'] = $city;
+        null !== $clickid && $self['clickid'] = $clickid;
+        null !== $clid && $self['clid'] = $clid;
+        null !== $companyName && $self['companyName'] = $companyName;
+        null !== $consent && $self['consent'] = $consent;
+        null !== $country && $self['country'] = $country;
+        null !== $customProperties && $self['customProperties'] = $customProperties;
+        null !== $dateOfBirth && $self['dateOfBirth'] = $dateOfBirth;
+        null !== $dclid && $self['dclid'] = $dclid;
+        null !== $email && $self['email'] = $email;
+        null !== $epik && $self['epik'] = $epik;
+        null !== $externalID && $self['externalID'] = $externalID;
+        null !== $fbc && $self['fbc'] = $fbc;
+        null !== $fbclid && $self['fbclid'] = $fbclid;
+        null !== $fbp && $self['fbp'] = $fbp;
+        null !== $firstName && $self['firstName'] = $firstName;
+        null !== $gadSource && $self['gadSource'] = $gadSource;
+        null !== $gbraid && $self['gbraid'] = $gbraid;
+        null !== $gclid && $self['gclid'] = $gclid;
+        null !== $gender && $self['gender'] = $gender;
+        null !== $ip && $self['ip'] = $ip;
+        null !== $irclickid && $self['irclickid'] = $irclickid;
+        null !== $isBot && $self['isBot'] = $isBot;
+        null !== $jobTitle && $self['jobTitle'] = $jobTitle;
+        null !== $lastName && $self['lastName'] = $lastName;
+        null !== $liFatID && $self['liFatID'] = $liFatID;
+        null !== $msclkid && $self['msclkid'] = $msclkid;
+        null !== $ndclid && $self['ndclid'] = $ndclid;
+        null !== $phoneNumber && $self['phoneNumber'] = $phoneNumber;
+        null !== $qclid && $self['qclid'] = $qclid;
+        null !== $rdtCid && $self['rdtCid'] = $rdtCid;
+        null !== $referrer && $self['referrer'] = $referrer;
+        null !== $referringDomain && $self['referringDomain'] = $referringDomain;
+        null !== $sacid && $self['sacid'] = $sacid;
+        null !== $sccid && $self['sccid'] = $sccid;
+        null !== $sid && $self['sid'] = $sid;
+        null !== $state && $self['state'] = $state;
+        null !== $ttclid && $self['ttclid'] = $ttclid;
+        null !== $twclid && $self['twclid'] = $twclid;
+        null !== $userAgent && $self['userAgent'] = $userAgent;
+        null !== $userAgentFullList && $self['userAgentFullList'] = $userAgentFullList;
+        null !== $utmCampaign && $self['utmCampaign'] = $utmCampaign;
+        null !== $utmContent && $self['utmContent'] = $utmContent;
+        null !== $utmMedium && $self['utmMedium'] = $utmMedium;
+        null !== $utmName && $self['utmName'] = $utmName;
+        null !== $utmSource && $self['utmSource'] = $utmSource;
+        null !== $utmTerm && $self['utmTerm'] = $utmTerm;
+        null !== $wbraid && $self['wbraid'] = $wbraid;
+        null !== $zip && $self['zip'] = $zip;
 
-        return $obj;
+        return $self;
     }
 
     public function withAdID(?string $adID): self
     {
-        $obj = clone $this;
-        $obj['adID'] = $adID;
+        $self = clone $this;
+        $self['adID'] = $adID;
 
-        return $obj;
+        return $self;
     }
 
     public function withAdsetID(?string $adsetID): self
     {
-        $obj = clone $this;
-        $obj['adsetID'] = $adsetID;
+        $self = clone $this;
+        $self['adsetID'] = $adsetID;
 
-        return $obj;
+        return $self;
     }
 
     public function withCampaignID(?string $campaignID): self
     {
-        $obj = clone $this;
-        $obj['campaignID'] = $campaignID;
+        $self = clone $this;
+        $self['campaignID'] = $campaignID;
 
-        return $obj;
+        return $self;
     }
 
     public function withCity(?string $city): self
     {
-        $obj = clone $this;
-        $obj['city'] = $city;
+        $self = clone $this;
+        $self['city'] = $city;
 
-        return $obj;
+        return $self;
     }
 
     public function withClickid(?string $clickid): self
     {
-        $obj = clone $this;
-        $obj['clickid'] = $clickid;
+        $self = clone $this;
+        $self['clickid'] = $clickid;
 
-        return $obj;
+        return $self;
     }
 
     public function withClid(?string $clid): self
     {
-        $obj = clone $this;
-        $obj['clid'] = $clid;
+        $self = clone $this;
+        $self['clid'] = $clid;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompanyName(?string $companyName): self
     {
-        $obj = clone $this;
-        $obj['companyName'] = $companyName;
+        $self = clone $this;
+        $self['companyName'] = $companyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -423,18 +423,18 @@ final class UserProperties implements BaseModel
      */
     public function withConsent(?array $consent): self
     {
-        $obj = clone $this;
-        $obj['consent'] = $consent;
+        $self = clone $this;
+        $self['consent'] = $consent;
 
-        return $obj;
+        return $self;
     }
 
     public function withCountry(?string $country): self
     {
-        $obj = clone $this;
-        $obj['country'] = $country;
+        $self = clone $this;
+        $self['country'] = $country;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -442,114 +442,114 @@ final class UserProperties implements BaseModel
      */
     public function withCustomProperties(?array $customProperties): self
     {
-        $obj = clone $this;
-        $obj['customProperties'] = $customProperties;
+        $self = clone $this;
+        $self['customProperties'] = $customProperties;
 
-        return $obj;
+        return $self;
     }
 
     public function withDateOfBirth(?string $dateOfBirth): self
     {
-        $obj = clone $this;
-        $obj['dateOfBirth'] = $dateOfBirth;
+        $self = clone $this;
+        $self['dateOfBirth'] = $dateOfBirth;
 
-        return $obj;
+        return $self;
     }
 
     public function withDclid(?string $dclid): self
     {
-        $obj = clone $this;
-        $obj['dclid'] = $dclid;
+        $self = clone $this;
+        $self['dclid'] = $dclid;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmail(?string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     public function withEpik(?string $epik): self
     {
-        $obj = clone $this;
-        $obj['epik'] = $epik;
+        $self = clone $this;
+        $self['epik'] = $epik;
 
-        return $obj;
+        return $self;
     }
 
     public function withExternalID(?string $externalID): self
     {
-        $obj = clone $this;
-        $obj['externalID'] = $externalID;
+        $self = clone $this;
+        $self['externalID'] = $externalID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFbc(?string $fbc): self
     {
-        $obj = clone $this;
-        $obj['fbc'] = $fbc;
+        $self = clone $this;
+        $self['fbc'] = $fbc;
 
-        return $obj;
+        return $self;
     }
 
     public function withFbclid(?string $fbclid): self
     {
-        $obj = clone $this;
-        $obj['fbclid'] = $fbclid;
+        $self = clone $this;
+        $self['fbclid'] = $fbclid;
 
-        return $obj;
+        return $self;
     }
 
     public function withFbp(?string $fbp): self
     {
-        $obj = clone $this;
-        $obj['fbp'] = $fbp;
+        $self = clone $this;
+        $self['fbp'] = $fbp;
 
-        return $obj;
+        return $self;
     }
 
     public function withFirstName(?string $firstName): self
     {
-        $obj = clone $this;
-        $obj['firstName'] = $firstName;
+        $self = clone $this;
+        $self['firstName'] = $firstName;
 
-        return $obj;
+        return $self;
     }
 
     public function withGadSource(?string $gadSource): self
     {
-        $obj = clone $this;
-        $obj['gadSource'] = $gadSource;
+        $self = clone $this;
+        $self['gadSource'] = $gadSource;
 
-        return $obj;
+        return $self;
     }
 
     public function withGbraid(?string $gbraid): self
     {
-        $obj = clone $this;
-        $obj['gbraid'] = $gbraid;
+        $self = clone $this;
+        $self['gbraid'] = $gbraid;
 
-        return $obj;
+        return $self;
     }
 
     public function withGclid(?string $gclid): self
     {
-        $obj = clone $this;
-        $obj['gclid'] = $gclid;
+        $self = clone $this;
+        $self['gclid'] = $gclid;
 
-        return $obj;
+        return $self;
     }
 
     public function withGender(?string $gender): self
     {
-        $obj = clone $this;
-        $obj['gender'] = $gender;
+        $self = clone $this;
+        $self['gender'] = $gender;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -557,233 +557,233 @@ final class UserProperties implements BaseModel
      */
     public function withIP(?string $ip): self
     {
-        $obj = clone $this;
-        $obj['ip'] = $ip;
+        $self = clone $this;
+        $self['ip'] = $ip;
 
-        return $obj;
+        return $self;
     }
 
     public function withIrclickid(?string $irclickid): self
     {
-        $obj = clone $this;
-        $obj['irclickid'] = $irclickid;
+        $self = clone $this;
+        $self['irclickid'] = $irclickid;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsBot(mixed $isBot): self
     {
-        $obj = clone $this;
-        $obj['isBot'] = $isBot;
+        $self = clone $this;
+        $self['isBot'] = $isBot;
 
-        return $obj;
+        return $self;
     }
 
     public function withJobTitle(?string $jobTitle): self
     {
-        $obj = clone $this;
-        $obj['jobTitle'] = $jobTitle;
+        $self = clone $this;
+        $self['jobTitle'] = $jobTitle;
 
-        return $obj;
+        return $self;
     }
 
     public function withLastName(?string $lastName): self
     {
-        $obj = clone $this;
-        $obj['lastName'] = $lastName;
+        $self = clone $this;
+        $self['lastName'] = $lastName;
 
-        return $obj;
+        return $self;
     }
 
     public function withLiFatID(?string $liFatID): self
     {
-        $obj = clone $this;
-        $obj['liFatID'] = $liFatID;
+        $self = clone $this;
+        $self['liFatID'] = $liFatID;
 
-        return $obj;
+        return $self;
     }
 
     public function withMsclkid(?string $msclkid): self
     {
-        $obj = clone $this;
-        $obj['msclkid'] = $msclkid;
+        $self = clone $this;
+        $self['msclkid'] = $msclkid;
 
-        return $obj;
+        return $self;
     }
 
     public function withNdclid(?string $ndclid): self
     {
-        $obj = clone $this;
-        $obj['ndclid'] = $ndclid;
+        $self = clone $this;
+        $self['ndclid'] = $ndclid;
 
-        return $obj;
+        return $self;
     }
 
     public function withPhoneNumber(mixed $phoneNumber): self
     {
-        $obj = clone $this;
-        $obj['phoneNumber'] = $phoneNumber;
+        $self = clone $this;
+        $self['phoneNumber'] = $phoneNumber;
 
-        return $obj;
+        return $self;
     }
 
     public function withQclid(?string $qclid): self
     {
-        $obj = clone $this;
-        $obj['qclid'] = $qclid;
+        $self = clone $this;
+        $self['qclid'] = $qclid;
 
-        return $obj;
+        return $self;
     }
 
     public function withRdtCid(?string $rdtCid): self
     {
-        $obj = clone $this;
-        $obj['rdtCid'] = $rdtCid;
+        $self = clone $this;
+        $self['rdtCid'] = $rdtCid;
 
-        return $obj;
+        return $self;
     }
 
     public function withReferrer(?string $referrer): self
     {
-        $obj = clone $this;
-        $obj['referrer'] = $referrer;
+        $self = clone $this;
+        $self['referrer'] = $referrer;
 
-        return $obj;
+        return $self;
     }
 
     public function withReferringDomain(?string $referringDomain): self
     {
-        $obj = clone $this;
-        $obj['referringDomain'] = $referringDomain;
+        $self = clone $this;
+        $self['referringDomain'] = $referringDomain;
 
-        return $obj;
+        return $self;
     }
 
     public function withSacid(?string $sacid): self
     {
-        $obj = clone $this;
-        $obj['sacid'] = $sacid;
+        $self = clone $this;
+        $self['sacid'] = $sacid;
 
-        return $obj;
+        return $self;
     }
 
     public function withSccid(?string $sccid): self
     {
-        $obj = clone $this;
-        $obj['sccid'] = $sccid;
+        $self = clone $this;
+        $self['sccid'] = $sccid;
 
-        return $obj;
+        return $self;
     }
 
     public function withSid(?string $sid): self
     {
-        $obj = clone $this;
-        $obj['sid'] = $sid;
+        $self = clone $this;
+        $self['sid'] = $sid;
 
-        return $obj;
+        return $self;
     }
 
     public function withState(?string $state): self
     {
-        $obj = clone $this;
-        $obj['state'] = $state;
+        $self = clone $this;
+        $self['state'] = $state;
 
-        return $obj;
+        return $self;
     }
 
     public function withTtclid(?string $ttclid): self
     {
-        $obj = clone $this;
-        $obj['ttclid'] = $ttclid;
+        $self = clone $this;
+        $self['ttclid'] = $ttclid;
 
-        return $obj;
+        return $self;
     }
 
     public function withTwclid(?string $twclid): self
     {
-        $obj = clone $this;
-        $obj['twclid'] = $twclid;
+        $self = clone $this;
+        $self['twclid'] = $twclid;
 
-        return $obj;
+        return $self;
     }
 
     public function withUserAgent(?string $userAgent): self
     {
-        $obj = clone $this;
-        $obj['userAgent'] = $userAgent;
+        $self = clone $this;
+        $self['userAgent'] = $userAgent;
 
-        return $obj;
+        return $self;
     }
 
     public function withUserAgentFullList(?string $userAgentFullList): self
     {
-        $obj = clone $this;
-        $obj['userAgentFullList'] = $userAgentFullList;
+        $self = clone $this;
+        $self['userAgentFullList'] = $userAgentFullList;
 
-        return $obj;
+        return $self;
     }
 
     public function withUtmCampaign(?string $utmCampaign): self
     {
-        $obj = clone $this;
-        $obj['utmCampaign'] = $utmCampaign;
+        $self = clone $this;
+        $self['utmCampaign'] = $utmCampaign;
 
-        return $obj;
+        return $self;
     }
 
     public function withUtmContent(?string $utmContent): self
     {
-        $obj = clone $this;
-        $obj['utmContent'] = $utmContent;
+        $self = clone $this;
+        $self['utmContent'] = $utmContent;
 
-        return $obj;
+        return $self;
     }
 
     public function withUtmMedium(?string $utmMedium): self
     {
-        $obj = clone $this;
-        $obj['utmMedium'] = $utmMedium;
+        $self = clone $this;
+        $self['utmMedium'] = $utmMedium;
 
-        return $obj;
+        return $self;
     }
 
     public function withUtmName(?string $utmName): self
     {
-        $obj = clone $this;
-        $obj['utmName'] = $utmName;
+        $self = clone $this;
+        $self['utmName'] = $utmName;
 
-        return $obj;
+        return $self;
     }
 
     public function withUtmSource(?string $utmSource): self
     {
-        $obj = clone $this;
-        $obj['utmSource'] = $utmSource;
+        $self = clone $this;
+        $self['utmSource'] = $utmSource;
 
-        return $obj;
+        return $self;
     }
 
     public function withUtmTerm(?string $utmTerm): self
     {
-        $obj = clone $this;
-        $obj['utmTerm'] = $utmTerm;
+        $self = clone $this;
+        $self['utmTerm'] = $utmTerm;
 
-        return $obj;
+        return $self;
     }
 
     public function withWbraid(?string $wbraid): self
     {
-        $obj = clone $this;
-        $obj['wbraid'] = $wbraid;
+        $self = clone $this;
+        $self['wbraid'] = $wbraid;
 
-        return $obj;
+        return $self;
     }
 
     public function withZip(mixed $zip): self
     {
-        $obj = clone $this;
-        $obj['zip'] = $zip;
+        $self = clone $this;
+        $self['zip'] = $zip;
 
-        return $obj;
+        return $self;
     }
 }

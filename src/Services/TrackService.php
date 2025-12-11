@@ -6,6 +6,7 @@ namespace OursPrivacy\Services;
 
 use OursPrivacy\Client;
 use OursPrivacy\Core\Exceptions\APIException;
+use OursPrivacy\Core\Util;
 use OursPrivacy\RequestOptions;
 use OursPrivacy\ServiceContracts\TrackContract;
 use OursPrivacy\Track\TrackEventResponse;
@@ -176,20 +177,20 @@ final class TrackService implements TrackContract
         ?array $userProperties = null,
         ?RequestOptions $requestOptions = null,
     ): TrackEventResponse {
-        $params = [
-            'token' => $token,
-            'event' => $event,
-            'defaultProperties' => $defaultProperties,
-            'distinctID' => $distinctID,
-            'email' => $email,
-            'eventProperties' => $eventProperties,
-            'externalID' => $externalID,
-            'time' => $time,
-            'userID' => $userID,
-            'userProperties' => $userProperties,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'token' => $token,
+                'event' => $event,
+                'defaultProperties' => $defaultProperties,
+                'distinctID' => $distinctID,
+                'email' => $email,
+                'eventProperties' => $eventProperties,
+                'externalID' => $externalID,
+                'time' => $time,
+                'userID' => $userID,
+                'userProperties' => $userProperties,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->event(params: $params, requestOptions: $requestOptions);

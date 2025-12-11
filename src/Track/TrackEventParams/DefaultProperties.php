@@ -15,6 +15,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   activeDuration?: float|null,
  *   adID?: string|null,
  *   adsetID?: string|null,
+ *   basisCid?: string|null,
  *   browserLanguage?: string|null,
  *   browserName?: string|null,
  *   browserVersion?: string|null,
@@ -41,6 +42,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   gclid?: string|null,
  *   host?: string|null,
  *   iframe?: bool|null,
+ *   imRef?: string|null,
  *   ip?: string|null,
  *   irclickid?: string|null,
  *   isBot?: mixed,
@@ -102,6 +104,12 @@ final class DefaultProperties implements BaseModel
      */
     #[Optional('adset_id', nullable: true)]
     public ?string $adsetID;
+
+    /**
+     * The Basis DSP Click ID. Ex: basis_cid123.
+     */
+    #[Optional('basis_cid', nullable: true)]
+    public ?string $basisCid;
 
     /**
      * The language of the browser. Ex: en-US.
@@ -258,6 +266,12 @@ final class DefaultProperties implements BaseModel
      */
     #[Optional(nullable: true)]
     public ?bool $iframe;
+
+    /**
+     * The Impact Click ID reference. Ex: im_ref123.
+     */
+    #[Optional('im_ref', nullable: true)]
+    public ?string $imRef;
 
     /**
      * The IP address of the user. Ex: 127.0.0.1.
@@ -492,6 +506,7 @@ final class DefaultProperties implements BaseModel
         ?float $activeDuration = null,
         ?string $adID = null,
         ?string $adsetID = null,
+        ?string $basisCid = null,
         ?string $browserLanguage = null,
         ?string $browserName = null,
         ?string $browserVersion = null,
@@ -518,6 +533,7 @@ final class DefaultProperties implements BaseModel
         ?string $gclid = null,
         ?string $host = null,
         ?bool $iframe = null,
+        ?string $imRef = null,
         ?string $ip = null,
         ?string $irclickid = null,
         mixed $isBot = null,
@@ -561,6 +577,7 @@ final class DefaultProperties implements BaseModel
         null !== $activeDuration && $self['activeDuration'] = $activeDuration;
         null !== $adID && $self['adID'] = $adID;
         null !== $adsetID && $self['adsetID'] = $adsetID;
+        null !== $basisCid && $self['basisCid'] = $basisCid;
         null !== $browserLanguage && $self['browserLanguage'] = $browserLanguage;
         null !== $browserName && $self['browserName'] = $browserName;
         null !== $browserVersion && $self['browserVersion'] = $browserVersion;
@@ -587,6 +604,7 @@ final class DefaultProperties implements BaseModel
         null !== $gclid && $self['gclid'] = $gclid;
         null !== $host && $self['host'] = $host;
         null !== $iframe && $self['iframe'] = $iframe;
+        null !== $imRef && $self['imRef'] = $imRef;
         null !== $ip && $self['ip'] = $ip;
         null !== $irclickid && $self['irclickid'] = $irclickid;
         null !== $isBot && $self['isBot'] = $isBot;
@@ -657,6 +675,17 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['adsetID'] = $adsetID;
+
+        return $self;
+    }
+
+    /**
+     * The Basis DSP Click ID. Ex: basis_cid123.
+     */
+    public function withBasisCid(?string $basisCid): self
+    {
+        $self = clone $this;
+        $self['basisCid'] = $basisCid;
 
         return $self;
     }
@@ -943,6 +972,17 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['iframe'] = $iframe;
+
+        return $self;
+    }
+
+    /**
+     * The Impact Click ID reference. Ex: im_ref123.
+     */
+    public function withImRef(?string $imRef): self
+    {
+        $self = clone $this;
+        $self['imRef'] = $imRef;
 
         return $self;
     }

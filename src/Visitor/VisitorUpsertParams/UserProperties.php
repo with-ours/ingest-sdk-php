@@ -15,6 +15,7 @@ use OursPrivacy\Core\Conversion\MapOf;
  * @phpstan-type UserPropertiesShape = array{
  *   adID?: string|null,
  *   adsetID?: string|null,
+ *   basisCid?: string|null,
  *   campaignID?: string|null,
  *   city?: string|null,
  *   clickid?: string|null,
@@ -36,6 +37,7 @@ use OursPrivacy\Core\Conversion\MapOf;
  *   gbraid?: string|null,
  *   gclid?: string|null,
  *   gender?: string|null,
+ *   imRef?: string|null,
  *   ip?: string|null,
  *   irclickid?: string|null,
  *   isBot?: mixed,
@@ -77,6 +79,9 @@ final class UserProperties implements BaseModel
 
     #[Optional('adset_id', nullable: true)]
     public ?string $adsetID;
+
+    #[Optional('basis_cid', nullable: true)]
+    public ?string $basisCid;
 
     #[Optional('campaign_id', nullable: true)]
     public ?string $campaignID;
@@ -146,6 +151,9 @@ final class UserProperties implements BaseModel
 
     #[Optional(nullable: true)]
     public ?string $gender;
+
+    #[Optional('im_ref', nullable: true)]
+    public ?string $imRef;
 
     /**
      * The IP address of the user.
@@ -253,6 +261,7 @@ final class UserProperties implements BaseModel
     public static function with(
         ?string $adID = null,
         ?string $adsetID = null,
+        ?string $basisCid = null,
         ?string $campaignID = null,
         ?string $city = null,
         ?string $clickid = null,
@@ -274,6 +283,7 @@ final class UserProperties implements BaseModel
         ?string $gbraid = null,
         ?string $gclid = null,
         ?string $gender = null,
+        ?string $imRef = null,
         ?string $ip = null,
         ?string $irclickid = null,
         mixed $isBot = null,
@@ -308,6 +318,7 @@ final class UserProperties implements BaseModel
 
         null !== $adID && $self['adID'] = $adID;
         null !== $adsetID && $self['adsetID'] = $adsetID;
+        null !== $basisCid && $self['basisCid'] = $basisCid;
         null !== $campaignID && $self['campaignID'] = $campaignID;
         null !== $city && $self['city'] = $city;
         null !== $clickid && $self['clickid'] = $clickid;
@@ -329,6 +340,7 @@ final class UserProperties implements BaseModel
         null !== $gbraid && $self['gbraid'] = $gbraid;
         null !== $gclid && $self['gclid'] = $gclid;
         null !== $gender && $self['gender'] = $gender;
+        null !== $imRef && $self['imRef'] = $imRef;
         null !== $ip && $self['ip'] = $ip;
         null !== $irclickid && $self['irclickid'] = $irclickid;
         null !== $isBot && $self['isBot'] = $isBot;
@@ -374,6 +386,14 @@ final class UserProperties implements BaseModel
     {
         $self = clone $this;
         $self['adsetID'] = $adsetID;
+
+        return $self;
+    }
+
+    public function withBasisCid(?string $basisCid): self
+    {
+        $self = clone $this;
+        $self['basisCid'] = $basisCid;
 
         return $self;
     }
@@ -548,6 +568,14 @@ final class UserProperties implements BaseModel
     {
         $self = clone $this;
         $self['gender'] = $gender;
+
+        return $self;
+    }
+
+    public function withImRef(?string $imRef): self
+    {
+        $self = clone $this;
+        $self['imRef'] = $imRef;
 
         return $self;
     }

@@ -21,9 +21,9 @@ use OursPrivacy\Core\Conversion\MapOf;
  *   clickid?: string|null,
  *   clid?: string|null,
  *   companyName?: string|null,
- *   consent?: array<string,mixed>|null,
+ *   consent?: array<string,string|null>|null,
  *   country?: string|null,
- *   customProperties?: array<string,mixed>|null,
+ *   customProperties?: array<string,string|null>|null,
  *   dateOfBirth?: string|null,
  *   dclid?: string|null,
  *   email?: string|null,
@@ -40,13 +40,13 @@ use OursPrivacy\Core\Conversion\MapOf;
  *   imRef?: string|null,
  *   ip?: string|null,
  *   irclickid?: string|null,
- *   isBot?: mixed,
+ *   isBot?: string|null,
  *   jobTitle?: string|null,
  *   lastName?: string|null,
  *   liFatID?: string|null,
  *   msclkid?: string|null,
  *   ndclid?: string|null,
- *   phoneNumber?: mixed,
+ *   phoneNumber?: string|null,
  *   qclid?: string|null,
  *   rdtCid?: string|null,
  *   referrer?: string|null,
@@ -66,7 +66,7 @@ use OursPrivacy\Core\Conversion\MapOf;
  *   utmSource?: string|null,
  *   utmTerm?: string|null,
  *   wbraid?: string|null,
- *   zip?: mixed,
+ *   zip?: string|null,
  * }
  */
 final class UserProperties implements BaseModel
@@ -98,17 +98,17 @@ final class UserProperties implements BaseModel
     #[Optional('company_name', nullable: true)]
     public ?string $companyName;
 
-    /** @var array<string,mixed>|null $consent */
-    #[Optional(type: new MapOf('mixed', nullable: true), nullable: true)]
+    /** @var array<string,string|null>|null $consent */
+    #[Optional(type: new MapOf('string', nullable: true), nullable: true)]
     public ?array $consent;
 
     #[Optional(nullable: true)]
     public ?string $country;
 
-    /** @var array<string,mixed>|null $customProperties */
+    /** @var array<string,string|null>|null $customProperties */
     #[Optional(
         'custom_properties',
-        type: new MapOf('mixed', nullable: true),
+        type: new MapOf('string', nullable: true),
         nullable: true,
     )]
     public ?array $customProperties;
@@ -164,8 +164,8 @@ final class UserProperties implements BaseModel
     #[Optional(nullable: true)]
     public ?string $irclickid;
 
-    #[Optional('is_bot')]
-    public mixed $isBot;
+    #[Optional('is_bot', nullable: true)]
+    public ?string $isBot;
 
     #[Optional('job_title', nullable: true)]
     public ?string $jobTitle;
@@ -182,8 +182,8 @@ final class UserProperties implements BaseModel
     #[Optional(nullable: true)]
     public ?string $ndclid;
 
-    #[Optional('phone_number')]
-    public mixed $phoneNumber;
+    #[Optional('phone_number', nullable: true)]
+    public ?string $phoneNumber;
 
     #[Optional(nullable: true)]
     public ?string $qclid;
@@ -242,8 +242,8 @@ final class UserProperties implements BaseModel
     #[Optional(nullable: true)]
     public ?string $wbraid;
 
-    #[Optional]
-    public mixed $zip;
+    #[Optional(nullable: true)]
+    public ?string $zip;
 
     public function __construct()
     {
@@ -255,8 +255,8 @@ final class UserProperties implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,mixed>|null $consent
-     * @param array<string,mixed>|null $customProperties
+     * @param array<string,string|null>|null $consent
+     * @param array<string,string|null>|null $customProperties
      */
     public static function with(
         ?string $adID = null,
@@ -286,13 +286,13 @@ final class UserProperties implements BaseModel
         ?string $imRef = null,
         ?string $ip = null,
         ?string $irclickid = null,
-        mixed $isBot = null,
+        ?string $isBot = null,
         ?string $jobTitle = null,
         ?string $lastName = null,
         ?string $liFatID = null,
         ?string $msclkid = null,
         ?string $ndclid = null,
-        mixed $phoneNumber = null,
+        ?string $phoneNumber = null,
         ?string $qclid = null,
         ?string $rdtCid = null,
         ?string $referrer = null,
@@ -312,7 +312,7 @@ final class UserProperties implements BaseModel
         ?string $utmSource = null,
         ?string $utmTerm = null,
         ?string $wbraid = null,
-        mixed $zip = null,
+        ?string $zip = null,
     ): self {
         $self = new self;
 
@@ -439,7 +439,7 @@ final class UserProperties implements BaseModel
     }
 
     /**
-     * @param array<string,mixed>|null $consent
+     * @param array<string,string|null>|null $consent
      */
     public function withConsent(?array $consent): self
     {
@@ -458,7 +458,7 @@ final class UserProperties implements BaseModel
     }
 
     /**
-     * @param array<string,mixed>|null $customProperties
+     * @param array<string,string|null>|null $customProperties
      */
     public function withCustomProperties(?array $customProperties): self
     {
@@ -599,7 +599,7 @@ final class UserProperties implements BaseModel
         return $self;
     }
 
-    public function withIsBot(mixed $isBot): self
+    public function withIsBot(?string $isBot): self
     {
         $self = clone $this;
         $self['isBot'] = $isBot;
@@ -647,7 +647,7 @@ final class UserProperties implements BaseModel
         return $self;
     }
 
-    public function withPhoneNumber(mixed $phoneNumber): self
+    public function withPhoneNumber(?string $phoneNumber): self
     {
         $self = clone $this;
         $self['phoneNumber'] = $phoneNumber;
@@ -807,7 +807,7 @@ final class UserProperties implements BaseModel
         return $self;
     }
 
-    public function withZip(mixed $zip): self
+    public function withZip(?string $zip): self
     {
         $self = clone $this;
         $self['zip'] = $zip;

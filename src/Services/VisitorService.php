@@ -6,6 +6,7 @@ namespace OursPrivacy\Services;
 
 use OursPrivacy\Client;
 use OursPrivacy\Core\Exceptions\APIException;
+use OursPrivacy\Core\Util;
 use OursPrivacy\RequestOptions;
 use OursPrivacy\ServiceContracts\VisitorContract;
 use OursPrivacy\Visitor\VisitorUpsertResponse;
@@ -168,16 +169,16 @@ final class VisitorService implements VisitorContract
         ?string $userID = null,
         ?RequestOptions $requestOptions = null,
     ): VisitorUpsertResponse {
-        $params = [
-            'token' => $token,
-            'userProperties' => $userProperties,
-            'defaultProperties' => $defaultProperties,
-            'email' => $email,
-            'externalID' => $externalID,
-            'userID' => $userID,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'token' => $token,
+                'userProperties' => $userProperties,
+                'defaultProperties' => $defaultProperties,
+                'email' => $email,
+                'externalID' => $externalID,
+                'userID' => $userID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->upsert(params: $params, requestOptions: $requestOptions);

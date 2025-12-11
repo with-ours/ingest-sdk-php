@@ -67,7 +67,7 @@ final class TrackService implements TrackContract
      *   imRef?: string|null,
      *   ip?: string|null,
      *   irclickid?: string|null,
-     *   isBot?: mixed,
+     *   isBot?: string|null,
      *   liFatID?: string|null,
      *   msclkid?: string|null,
      *   ndclid?: string|null,
@@ -105,7 +105,7 @@ final class TrackService implements TrackContract
      * }|null $defaultProperties These properties are used throughout the Ours app to pass known values onto destinations
      * @param string|null $distinctID A unique identifier for the event. This helps prevent duplicate events.
      * @param string|null $email The email address of a user. We will associate this event with the user or create a user. Used for lookup if externalId and userId are not included in the request.
-     * @param array<string,mixed>|null $eventProperties any additional event properties you want to pass along
+     * @param array<string,string|null>|null $eventProperties any additional event properties you want to pass along
      * @param string|null $externalID The externalId (the ID in your system) of a user. We will associate this event with the user or create a user. If included in the request, email lookup is ignored.
      * @param float|null $time The time at which the event occurred in milliseconds since UTC epoch. The time must be in the past and within the last 7 days.
      * @param string|null $userID The Ours user id stored in local storage and cookies on your web properties. If userId is included in the request, we do not lookup the user by email or externalId.
@@ -118,9 +118,9 @@ final class TrackService implements TrackContract
      *   clickid?: string|null,
      *   clid?: string|null,
      *   companyName?: string|null,
-     *   consent?: array<string,mixed>|null,
+     *   consent?: array<string,string|null>|null,
      *   country?: string|null,
-     *   customProperties?: array<string,mixed>|null,
+     *   customProperties?: array<string,string|null>|null,
      *   dateOfBirth?: string|null,
      *   dclid?: string|null,
      *   email?: string|null,
@@ -137,13 +137,13 @@ final class TrackService implements TrackContract
      *   imRef?: string|null,
      *   ip?: string|null,
      *   irclickid?: string|null,
-     *   isBot?: mixed,
+     *   isBot?: string|null,
      *   jobTitle?: string|null,
      *   lastName?: string|null,
      *   liFatID?: string|null,
      *   msclkid?: string|null,
      *   ndclid?: string|null,
-     *   phoneNumber?: mixed,
+     *   phoneNumber?: string|null,
      *   qclid?: string|null,
      *   rdtCid?: string|null,
      *   referrer?: string|null,
@@ -163,7 +163,7 @@ final class TrackService implements TrackContract
      *   utmSource?: string|null,
      *   utmTerm?: string|null,
      *   wbraid?: string|null,
-     *   zip?: mixed,
+     *   zip?: string|null,
      * }|null $userProperties Properties to set on the visitor. (optional) You can also update these properties via the identify endpoint.
      *
      * @throws APIException

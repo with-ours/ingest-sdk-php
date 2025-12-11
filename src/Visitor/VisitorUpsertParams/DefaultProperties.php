@@ -45,7 +45,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   imRef?: string|null,
  *   ip?: string|null,
  *   irclickid?: string|null,
- *   isBot?: mixed,
+ *   isBot?: string|null,
  *   liFatID?: string|null,
  *   msclkid?: string|null,
  *   ndclid?: string|null,
@@ -288,8 +288,8 @@ final class DefaultProperties implements BaseModel
     /**
      * Whether we have detected that the user is a bot. This is set automatically by the Ours server primarily for events tracked through the web SDK.
      */
-    #[Optional('is_bot')]
-    public mixed $isBot;
+    #[Optional('is_bot', nullable: true)]
+    public ?string $isBot;
 
     /**
      * The LinkedIn Click ID. Ex: li_fat_id123.
@@ -536,7 +536,7 @@ final class DefaultProperties implements BaseModel
         ?string $imRef = null,
         ?string $ip = null,
         ?string $irclickid = null,
-        mixed $isBot = null,
+        ?string $isBot = null,
         ?string $liFatID = null,
         ?string $msclkid = null,
         ?string $ndclid = null,
@@ -1012,7 +1012,7 @@ final class DefaultProperties implements BaseModel
     /**
      * Whether we have detected that the user is a bot. This is set automatically by the Ours server primarily for events tracked through the web SDK.
      */
-    public function withIsBot(mixed $isBot): self
+    public function withIsBot(?string $isBot): self
     {
         $self = clone $this;
         $self['isBot'] = $isBot;

@@ -55,7 +55,7 @@ use OursPrivacy\Track\TrackEventParams\UserProperties;
  *     imRef?: string|null,
  *     ip?: string|null,
  *     irclickid?: string|null,
- *     isBot?: mixed,
+ *     isBot?: string|null,
  *     liFatID?: string|null,
  *     msclkid?: string|null,
  *     ndclid?: string|null,
@@ -93,7 +93,7 @@ use OursPrivacy\Track\TrackEventParams\UserProperties;
  *   },
  *   distinctID?: string|null,
  *   email?: string|null,
- *   eventProperties?: array<string,mixed>|null,
+ *   eventProperties?: array<string,string|null>|null,
  *   externalID?: string|null,
  *   time?: float|null,
  *   userID?: string|null,
@@ -106,9 +106,9 @@ use OursPrivacy\Track\TrackEventParams\UserProperties;
  *     clickid?: string|null,
  *     clid?: string|null,
  *     companyName?: string|null,
- *     consent?: array<string,mixed>|null,
+ *     consent?: array<string,string|null>|null,
  *     country?: string|null,
- *     customProperties?: array<string,mixed>|null,
+ *     customProperties?: array<string,string|null>|null,
  *     dateOfBirth?: string|null,
  *     dclid?: string|null,
  *     email?: string|null,
@@ -125,13 +125,13 @@ use OursPrivacy\Track\TrackEventParams\UserProperties;
  *     imRef?: string|null,
  *     ip?: string|null,
  *     irclickid?: string|null,
- *     isBot?: mixed,
+ *     isBot?: string|null,
  *     jobTitle?: string|null,
  *     lastName?: string|null,
  *     liFatID?: string|null,
  *     msclkid?: string|null,
  *     ndclid?: string|null,
- *     phoneNumber?: mixed,
+ *     phoneNumber?: string|null,
  *     qclid?: string|null,
  *     rdtCid?: string|null,
  *     referrer?: string|null,
@@ -151,7 +151,7 @@ use OursPrivacy\Track\TrackEventParams\UserProperties;
  *     utmSource?: string|null,
  *     utmTerm?: string|null,
  *     wbraid?: string|null,
- *     zip?: mixed,
+ *     zip?: string|null,
  *   },
  * }
  */
@@ -194,9 +194,9 @@ final class TrackEventParams implements BaseModel
     /**
      * Any additional event properties you want to pass along.
      *
-     * @var array<string,mixed>|null $eventProperties
+     * @var array<string,string|null>|null $eventProperties
      */
-    #[Optional(type: new MapOf('mixed', nullable: true), nullable: true)]
+    #[Optional(type: new MapOf('string', nullable: true), nullable: true)]
     public ?array $eventProperties;
 
     /**
@@ -281,7 +281,7 @@ final class TrackEventParams implements BaseModel
      *   imRef?: string|null,
      *   ip?: string|null,
      *   irclickid?: string|null,
-     *   isBot?: mixed,
+     *   isBot?: string|null,
      *   liFatID?: string|null,
      *   msclkid?: string|null,
      *   ndclid?: string|null,
@@ -317,7 +317,7 @@ final class TrackEventParams implements BaseModel
      *   wbraid?: string|null,
      *   webview?: bool|null,
      * }|null $defaultProperties
-     * @param array<string,mixed>|null $eventProperties
+     * @param array<string,string|null>|null $eventProperties
      * @param UserProperties|array{
      *   adID?: string|null,
      *   adsetID?: string|null,
@@ -327,9 +327,9 @@ final class TrackEventParams implements BaseModel
      *   clickid?: string|null,
      *   clid?: string|null,
      *   companyName?: string|null,
-     *   consent?: array<string,mixed>|null,
+     *   consent?: array<string,string|null>|null,
      *   country?: string|null,
-     *   customProperties?: array<string,mixed>|null,
+     *   customProperties?: array<string,string|null>|null,
      *   dateOfBirth?: string|null,
      *   dclid?: string|null,
      *   email?: string|null,
@@ -346,13 +346,13 @@ final class TrackEventParams implements BaseModel
      *   imRef?: string|null,
      *   ip?: string|null,
      *   irclickid?: string|null,
-     *   isBot?: mixed,
+     *   isBot?: string|null,
      *   jobTitle?: string|null,
      *   lastName?: string|null,
      *   liFatID?: string|null,
      *   msclkid?: string|null,
      *   ndclid?: string|null,
-     *   phoneNumber?: mixed,
+     *   phoneNumber?: string|null,
      *   qclid?: string|null,
      *   rdtCid?: string|null,
      *   referrer?: string|null,
@@ -372,7 +372,7 @@ final class TrackEventParams implements BaseModel
      *   utmSource?: string|null,
      *   utmTerm?: string|null,
      *   wbraid?: string|null,
-     *   zip?: mixed,
+     *   zip?: string|null,
      * }|null $userProperties
      */
     public static function with(
@@ -463,7 +463,7 @@ final class TrackEventParams implements BaseModel
      *   imRef?: string|null,
      *   ip?: string|null,
      *   irclickid?: string|null,
-     *   isBot?: mixed,
+     *   isBot?: string|null,
      *   liFatID?: string|null,
      *   msclkid?: string|null,
      *   ndclid?: string|null,
@@ -534,7 +534,7 @@ final class TrackEventParams implements BaseModel
     /**
      * Any additional event properties you want to pass along.
      *
-     * @param array<string,mixed>|null $eventProperties
+     * @param array<string,string|null>|null $eventProperties
      */
     public function withEventProperties(?array $eventProperties): self
     {
@@ -589,9 +589,9 @@ final class TrackEventParams implements BaseModel
      *   clickid?: string|null,
      *   clid?: string|null,
      *   companyName?: string|null,
-     *   consent?: array<string,mixed>|null,
+     *   consent?: array<string,string|null>|null,
      *   country?: string|null,
-     *   customProperties?: array<string,mixed>|null,
+     *   customProperties?: array<string,string|null>|null,
      *   dateOfBirth?: string|null,
      *   dclid?: string|null,
      *   email?: string|null,
@@ -608,13 +608,13 @@ final class TrackEventParams implements BaseModel
      *   imRef?: string|null,
      *   ip?: string|null,
      *   irclickid?: string|null,
-     *   isBot?: mixed,
+     *   isBot?: string|null,
      *   jobTitle?: string|null,
      *   lastName?: string|null,
      *   liFatID?: string|null,
      *   msclkid?: string|null,
      *   ndclid?: string|null,
-     *   phoneNumber?: mixed,
+     *   phoneNumber?: string|null,
      *   qclid?: string|null,
      *   rdtCid?: string|null,
      *   referrer?: string|null,
@@ -634,7 +634,7 @@ final class TrackEventParams implements BaseModel
      *   utmSource?: string|null,
      *   utmTerm?: string|null,
      *   wbraid?: string|null,
-     *   zip?: mixed,
+     *   zip?: string|null,
      * }|null $userProperties
      */
     public function withUserProperties(

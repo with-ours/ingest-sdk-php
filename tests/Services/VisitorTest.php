@@ -52,6 +52,8 @@ final class VisitorTest extends TestCase
             userProperties: [
                 'adID' => 'ad_id',
                 'adsetID' => 'adset_id',
+                'alart' => 'alart',
+                'aleid' => 'aleid',
                 'basisCid' => 'basis_cid',
                 'campaignID' => 'campaign_id',
                 'city' => 'city',
@@ -109,6 +111,8 @@ final class VisitorTest extends TestCase
                 'activeDuration' => 0,
                 'adID' => 'ad_id',
                 'adsetID' => 'adset_id',
+                'alart' => 'alart',
+                'aleid' => 'aleid',
                 'basisCid' => 'basis_cid',
                 'browserLanguage' => 'browser_language',
                 'browserName' => 'browser_name',

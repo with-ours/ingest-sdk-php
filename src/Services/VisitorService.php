@@ -35,6 +35,8 @@ final class VisitorService implements VisitorContract
      * @param array{
      *   adID?: string|null,
      *   adsetID?: string|null,
+     *   alart?: string|null,
+     *   aleid?: string|null,
      *   basisCid?: string|null,
      *   campaignID?: string|null,
      *   city?: string|null,
@@ -92,6 +94,8 @@ final class VisitorService implements VisitorContract
      *   activeDuration?: float|null,
      *   adID?: string|null,
      *   adsetID?: string|null,
+     *   alart?: string|null,
+     *   aleid?: string|null,
      *   basisCid?: string|null,
      *   browserLanguage?: string|null,
      *   browserName?: string|null,

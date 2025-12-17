@@ -15,7 +15,7 @@ interface VisitorRawContract
     /**
      * @api
      *
-     * @param array<mixed>|VisitorUpsertParams $params
+     * @param array<string,mixed>|VisitorUpsertParams $params
      *
      * @return BaseResponse<VisitorUpsertResponse>
      *

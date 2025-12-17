@@ -15,6 +15,8 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   activeDuration?: float|null,
  *   adID?: string|null,
  *   adsetID?: string|null,
+ *   alart?: string|null,
+ *   aleid?: string|null,
  *   basisCid?: string|null,
  *   browserLanguage?: string|null,
  *   browserName?: string|null,
@@ -104,6 +106,18 @@ final class DefaultProperties implements BaseModel
      */
     #[Optional('adset_id', nullable: true)]
     public ?string $adsetID;
+
+    /**
+     * The AppLovin alart query parameter. Ex: alart123.
+     */
+    #[Optional(nullable: true)]
+    public ?string $alart;
+
+    /**
+     * The AppLovin aleid query parameter. Ex: aleid123.
+     */
+    #[Optional(nullable: true)]
+    public ?string $aleid;
 
     /**
      * The Basis DSP Click ID. Ex: basis_cid123.
@@ -506,6 +520,8 @@ final class DefaultProperties implements BaseModel
         ?float $activeDuration = null,
         ?string $adID = null,
         ?string $adsetID = null,
+        ?string $alart = null,
+        ?string $aleid = null,
         ?string $basisCid = null,
         ?string $browserLanguage = null,
         ?string $browserName = null,
@@ -577,6 +593,8 @@ final class DefaultProperties implements BaseModel
         null !== $activeDuration && $self['activeDuration'] = $activeDuration;
         null !== $adID && $self['adID'] = $adID;
         null !== $adsetID && $self['adsetID'] = $adsetID;
+        null !== $alart && $self['alart'] = $alart;
+        null !== $aleid && $self['aleid'] = $aleid;
         null !== $basisCid && $self['basisCid'] = $basisCid;
         null !== $browserLanguage && $self['browserLanguage'] = $browserLanguage;
         null !== $browserName && $self['browserName'] = $browserName;
@@ -675,6 +693,28 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['adsetID'] = $adsetID;
+
+        return $self;
+    }
+
+    /**
+     * The AppLovin alart query parameter. Ex: alart123.
+     */
+    public function withAlart(?string $alart): self
+    {
+        $self = clone $this;
+        $self['alart'] = $alart;
+
+        return $self;
+    }
+
+    /**
+     * The AppLovin aleid query parameter. Ex: aleid123.
+     */
+    public function withAleid(?string $aleid): self
+    {
+        $self = clone $this;
+        $self['aleid'] = $aleid;
 
         return $self;
     }

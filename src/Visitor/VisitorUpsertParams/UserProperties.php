@@ -15,6 +15,8 @@ use OursPrivacy\Core\Conversion\MapOf;
  * @phpstan-type UserPropertiesShape = array{
  *   adID?: string|null,
  *   adsetID?: string|null,
+ *   alart?: string|null,
+ *   aleid?: string|null,
  *   basisCid?: string|null,
  *   campaignID?: string|null,
  *   city?: string|null,
@@ -79,6 +81,12 @@ final class UserProperties implements BaseModel
 
     #[Optional('adset_id', nullable: true)]
     public ?string $adsetID;
+
+    #[Optional(nullable: true)]
+    public ?string $alart;
+
+    #[Optional(nullable: true)]
+    public ?string $aleid;
 
     #[Optional('basis_cid', nullable: true)]
     public ?string $basisCid;
@@ -261,6 +269,8 @@ final class UserProperties implements BaseModel
     public static function with(
         ?string $adID = null,
         ?string $adsetID = null,
+        ?string $alart = null,
+        ?string $aleid = null,
         ?string $basisCid = null,
         ?string $campaignID = null,
         ?string $city = null,
@@ -318,6 +328,8 @@ final class UserProperties implements BaseModel
 
         null !== $adID && $self['adID'] = $adID;
         null !== $adsetID && $self['adsetID'] = $adsetID;
+        null !== $alart && $self['alart'] = $alart;
+        null !== $aleid && $self['aleid'] = $aleid;
         null !== $basisCid && $self['basisCid'] = $basisCid;
         null !== $campaignID && $self['campaignID'] = $campaignID;
         null !== $city && $self['city'] = $city;
@@ -386,6 +398,22 @@ final class UserProperties implements BaseModel
     {
         $self = clone $this;
         $self['adsetID'] = $adsetID;
+
+        return $self;
+    }
+
+    public function withAlart(?string $alart): self
+    {
+        $self = clone $this;
+        $self['alart'] = $alart;
+
+        return $self;
+    }
+
+    public function withAleid(?string $aleid): self
+    {
+        $self = clone $this;
+        $self['aleid'] = $aleid;
 
         return $self;
     }

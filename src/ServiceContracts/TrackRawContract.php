@@ -15,7 +15,7 @@ interface TrackRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TrackEventParams $params
+     * @param array<string,mixed>|TrackEventParams $params
      *
      * @return BaseResponse<TrackEventResponse>
      *

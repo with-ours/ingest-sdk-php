@@ -54,6 +54,8 @@ final class TrackTest extends TestCase
                 'activeDuration' => 0,
                 'adID' => 'ad_id',
                 'adsetID' => 'adset_id',
+                'alart' => 'alart',
+                'aleid' => 'aleid',
                 'basisCid' => 'basis_cid',
                 'browserLanguage' => 'browser_language',
                 'browserName' => 'browser_name',
@@ -129,6 +131,8 @@ final class TrackTest extends TestCase
             userProperties: [
                 'adID' => 'ad_id',
                 'adsetID' => 'adset_id',
+                'alart' => 'alart',
+                'aleid' => 'aleid',
                 'basisCid' => 'basis_cid',
                 'campaignID' => 'campaign_id',
                 'city' => 'city',

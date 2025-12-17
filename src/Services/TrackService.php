@@ -37,6 +37,8 @@ final class TrackService implements TrackContract
      *   activeDuration?: float|null,
      *   adID?: string|null,
      *   adsetID?: string|null,
+     *   alart?: string|null,
+     *   aleid?: string|null,
      *   basisCid?: string|null,
      *   browserLanguage?: string|null,
      *   browserName?: string|null,
@@ -112,6 +114,8 @@ final class TrackService implements TrackContract
      * @param array{
      *   adID?: string|null,
      *   adsetID?: string|null,
+     *   alart?: string|null,
+     *   aleid?: string|null,
      *   basisCid?: string|null,
      *   campaignID?: string|null,
      *   city?: string|null,

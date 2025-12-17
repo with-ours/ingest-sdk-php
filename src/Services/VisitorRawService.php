@@ -30,6 +30,8 @@ final class VisitorRawService implements VisitorRawContract
      *   userProperties: array{
      *     adID?: string|null,
      *     adsetID?: string|null,
+     *     alart?: string|null,
+     *     aleid?: string|null,
      *     basisCid?: string|null,
      *     campaignID?: string|null,
      *     city?: string|null,
@@ -87,6 +89,8 @@ final class VisitorRawService implements VisitorRawContract
      *     activeDuration?: float|null,
      *     adID?: string|null,
      *     adsetID?: string|null,
+     *     alart?: string|null,
+     *     aleid?: string|null,
      *     basisCid?: string|null,
      *     browserLanguage?: string|null,
      *     browserName?: string|null,

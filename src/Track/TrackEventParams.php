@@ -24,14 +24,14 @@ use OursPrivacy\Track\TrackEventParams\UserProperties;
  * @phpstan-type TrackEventParamsShape = array{
  *   token: string,
  *   event: string,
- *   defaultProperties?: DefaultPropertiesShape|null,
+ *   defaultProperties?: null|DefaultProperties|DefaultPropertiesShape,
  *   distinctID?: string|null,
  *   email?: string|null,
  *   eventProperties?: array<string,string|null>|null,
  *   externalID?: string|null,
  *   time?: float|null,
  *   userID?: string|null,
- *   userProperties?: UserPropertiesShape|null,
+ *   userProperties?: null|UserProperties|UserPropertiesShape,
  * }
  */
 final class TrackEventParams implements BaseModel
@@ -126,9 +126,9 @@ final class TrackEventParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param DefaultPropertiesShape|null $defaultProperties
+     * @param DefaultProperties|DefaultPropertiesShape|null $defaultProperties
      * @param array<string,string|null>|null $eventProperties
-     * @param UserPropertiesShape|null $userProperties
+     * @param UserProperties|UserPropertiesShape|null $userProperties
      */
     public static function with(
         string $token,
@@ -184,7 +184,7 @@ final class TrackEventParams implements BaseModel
     /**
      * These properties are used throughout the Ours app to pass known values onto destinations.
      *
-     * @param DefaultPropertiesShape|null $defaultProperties
+     * @param DefaultProperties|DefaultPropertiesShape|null $defaultProperties
      */
     public function withDefaultProperties(
         DefaultProperties|array|null $defaultProperties
@@ -266,7 +266,7 @@ final class TrackEventParams implements BaseModel
     /**
      * Properties to set on the visitor. (optional) You can also update these properties via the identify endpoint.
      *
-     * @param UserPropertiesShape|null $userProperties
+     * @param UserProperties|UserPropertiesShape|null $userProperties
      */
     public function withUserProperties(
         UserProperties|array|null $userProperties

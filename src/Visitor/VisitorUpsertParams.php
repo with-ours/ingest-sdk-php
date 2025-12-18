@@ -22,8 +22,8 @@ use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
  *
  * @phpstan-type VisitorUpsertParamsShape = array{
  *   token: string,
- *   userProperties: UserPropertiesShape,
- *   defaultProperties?: DefaultPropertiesShape|null,
+ *   userProperties: UserProperties|UserPropertiesShape,
+ *   defaultProperties?: null|DefaultProperties|DefaultPropertiesShape,
  *   email?: string|null,
  *   externalID?: string|null,
  *   userID?: string|null,
@@ -95,8 +95,8 @@ final class VisitorUpsertParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param UserPropertiesShape $userProperties
-     * @param DefaultPropertiesShape|null $defaultProperties
+     * @param UserProperties|UserPropertiesShape $userProperties
+     * @param DefaultProperties|DefaultPropertiesShape|null $defaultProperties
      */
     public static function with(
         string $token,
@@ -133,7 +133,7 @@ final class VisitorUpsertParams implements BaseModel
     /**
      * User properties to associate with this user. The existing user properties will be updated. And all future events will have these properties associated with them.
      *
-     * @param UserPropertiesShape $userProperties
+     * @param UserProperties|UserPropertiesShape $userProperties
      */
     public function withUserProperties(
         UserProperties|array $userProperties
@@ -147,7 +147,7 @@ final class VisitorUpsertParams implements BaseModel
     /**
      * These properties are used throughout the Ours app to pass known values onto destinations.
      *
-     * @param DefaultPropertiesShape|null $defaultProperties
+     * @param DefaultProperties|DefaultPropertiesShape|null $defaultProperties
      */
     public function withDefaultProperties(
         DefaultProperties|array|null $defaultProperties

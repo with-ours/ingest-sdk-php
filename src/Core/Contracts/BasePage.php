@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace OursPrivacy\Core\Contracts;
 
 /**
- * @internal
+ * @phpstan-import-type NormalizedRequest from \OursPrivacy\Core\BaseClient
  *
- * @phpstan-import-type normalized_request from \OursPrivacy\Core\BaseClient
+ * @internal
  *
  * @template Item
  *

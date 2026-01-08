@@ -11,10 +11,6 @@ use OursPrivacy\Core\Util;
 use OursPrivacy\Services\TrackService;
 use OursPrivacy\Services\VisitorService;
 
-/**
- * @phpstan-import-type NormalizedRequest from \OursPrivacy\Core\BaseClient
- * @phpstan-import-type RequestOpts from \OursPrivacy\RequestOptions
- */
 class Client extends BaseClient
 {
     public bool $baseUrlOverridden;

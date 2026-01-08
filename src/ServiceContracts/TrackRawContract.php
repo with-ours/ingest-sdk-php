@@ -10,12 +10,16 @@ use OursPrivacy\RequestOptions;
 use OursPrivacy\Track\TrackEventParams;
 use OursPrivacy\Track\TrackEventResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \OursPrivacy\RequestOptions
+ */
 interface TrackRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|TrackEventParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TrackEventResponse>
      *
@@ -23,6 +27,6 @@ interface TrackRawContract
      */
     public function event(
         array|TrackEventParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

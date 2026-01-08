@@ -11,6 +11,9 @@ use OursPrivacy\Core\Util;
 use OursPrivacy\Services\TrackService;
 use OursPrivacy\Services\VisitorService;
 
+/**
+ * @phpstan-import-type RequestOpts from \OursPrivacy\RequestOptions
+ */
 class Client extends BaseClient
 {
     public bool $baseUrlOverridden;
@@ -25,19 +28,27 @@ class Client extends BaseClient
      */
     public VisitorService $visitor;
 
-    public function __construct(?string $baseUrl = null)
-    {
+    /**
+     * @param RequestOpts|null $requestOptions
+     */
+    public function __construct(
+        ?string $baseUrl = null,
+        RequestOptions|array|null $requestOptions = null
+    ) {
         $this->baseUrlOverridden = !is_null($baseUrl);
 
         $baseUrl ??= getenv(
             'OURS_PRIVACY_BASE_URL'
         ) ?: 'https://api.oursprivacy.com/api/v1';
 
-        $options = RequestOptions::with(
-            uriFactory: Psr17FactoryDiscovery::findUriFactory(),
-            streamFactory: Psr17FactoryDiscovery::findStreamFactory(),
-            requestFactory: Psr17FactoryDiscovery::findRequestFactory(),
-            transporter: Psr18ClientDiscovery::find(),
+        $options = RequestOptions::parse(
+            RequestOptions::with(
+                uriFactory: Psr17FactoryDiscovery::findUriFactory(),
+                streamFactory: Psr17FactoryDiscovery::findStreamFactory(),
+                requestFactory: Psr17FactoryDiscovery::findRequestFactory(),
+                transporter: Psr18ClientDiscovery::find(),
+            ),
+            $requestOptions,
         );
 
         parent::__construct(

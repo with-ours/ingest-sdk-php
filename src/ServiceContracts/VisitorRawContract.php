@@ -10,12 +10,16 @@ use OursPrivacy\RequestOptions;
 use OursPrivacy\Visitor\VisitorUpsertParams;
 use OursPrivacy\Visitor\VisitorUpsertResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \OursPrivacy\RequestOptions
+ */
 interface VisitorRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|VisitorUpsertParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VisitorUpsertResponse>
      *
@@ -23,6 +27,6 @@ interface VisitorRawContract
      */
     public function upsert(
         array|VisitorUpsertParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

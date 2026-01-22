@@ -7,6 +7,7 @@ namespace OursPrivacy;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use OursPrivacy\Core\BaseClient;
+use OursPrivacy\Core\Util;
 use OursPrivacy\Services\TrackService;
 use OursPrivacy\Services\VisitorService;
 

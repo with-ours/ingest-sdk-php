@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.2 (2026-01-30)
+
+Full Changelog: [v0.8.1...v0.8.2](https://github.com/with-ours/ingest-sdk-php/compare/v0.8.1...v0.8.2)
+
+### Chores
+
+* **internal:** ignore stainless-internal artifacts ([b1eb23d](https://github.com/with-ours/ingest-sdk-php/commit/b1eb23d82eb8e66b57b0f21489715b404c717c92))
+
 ## 0.8.1 (2026-01-28)
 
 Full Changelog: [v0.8.0...v0.8.1](https://github.com/with-ours/ingest-sdk-php/compare/v0.8.0...v0.8.1)

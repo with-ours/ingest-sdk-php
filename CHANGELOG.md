@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.3 (2026-01-31)
+
+Full Changelog: [v0.8.2...v0.8.3](https://github.com/with-ours/ingest-sdk-php/compare/v0.8.2...v0.8.3)
+
+### Bug Fixes
+
+* used redirect count instead of retry count in base client ([af96aca](https://github.com/with-ours/ingest-sdk-php/commit/af96aca60d0aa650f113889f8216ffc93d24a8b9))
+
 ## 0.8.2 (2026-01-30)
 
 Full Changelog: [v0.8.1...v0.8.2](https://github.com/with-ours/ingest-sdk-php/compare/v0.8.1...v0.8.2)

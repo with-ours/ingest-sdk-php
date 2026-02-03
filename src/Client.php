@@ -37,7 +37,7 @@ class Client extends BaseClient
     ) {
         $this->baseUrlOverridden = !is_null($baseUrl);
 
-        $baseUrl ??= getenv(
+        $baseUrl ??= Util::getenv(
             'OURS_PRIVACY_BASE_URL'
         ) ?: 'https://api.oursprivacy.com/api/v1';
 

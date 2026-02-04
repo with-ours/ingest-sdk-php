@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.9.0 (2026-02-04)
+
+Full Changelog: [v0.8.3...v0.9.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.8.3...v0.9.0)
+
+### Features
+
+* **api:** api update ([e3c6ba9](https://github.com/with-ours/ingest-sdk-php/commit/e3c6ba989026637cc754b81ec65f2789fb6d68e8))
+* use `$_ENV` aware getenv helper ([fc2a55e](https://github.com/with-ours/ingest-sdk-php/commit/fc2a55e23ab2e7ad5e8d2ffa5f6131871a9a600b))
+
+
+### Chores
+
+* **internal:** php cs fixer should not be memory limited ([43c1ef9](https://github.com/with-ours/ingest-sdk-php/commit/43c1ef9b796280ff240288ea2ce64c938638a014))
+
 ## 0.8.3 (2026-01-31)
 
 Full Changelog: [v0.8.2...v0.8.3](https://github.com/with-ours/ingest-sdk-php/compare/v0.8.2...v0.8.3)

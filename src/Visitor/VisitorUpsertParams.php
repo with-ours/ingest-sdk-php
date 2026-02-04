@@ -36,7 +36,7 @@ final class VisitorUpsertParams implements BaseModel
     use SdkParams;
 
     /**
-     * The token for your Ours Privacy Source. You can find this in the Ours dashboard.
+     * The token for your Source. You can find this in the dashboard.
      */
     #[Required]
     public string $token;
@@ -120,7 +120,7 @@ final class VisitorUpsertParams implements BaseModel
     }
 
     /**
-     * The token for your Ours Privacy Source. You can find this in the Ours dashboard.
+     * The token for your Source. You can find this in the dashboard.
      */
     public function withToken(string $token): self
     {

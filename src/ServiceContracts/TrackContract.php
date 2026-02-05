@@ -20,7 +20,7 @@ interface TrackContract
     /**
      * @api
      *
-     * @param string $token The token for your Ours Privacy Source. You can find this in the Ours dashboard.
+     * @param string $token The token for your Source. You can find this in the dashboard.
      * @param string $event The name of the event you're tracking. This must be whitelisted in the Ours dashboard.
      * @param DefaultProperties|DefaultPropertiesShape|null $defaultProperties These properties are used throughout the Ours app to pass known values onto destinations
      * @param string|null $distinctID A unique identifier for the event. This helps prevent duplicate events.

@@ -38,7 +38,7 @@ final class VisitorService implements VisitorContract
      *
      * Define visitor properties on an existing visitor or create a new visitor. Note: This does not fire an event. If you want to fire an event, use the track method and include properties for the visitor.
      *
-     * @param string $token The token for your Ours Privacy Source. You can find this in the Ours dashboard.
+     * @param string $token The token for your Source. You can find this in the dashboard.
      * @param UserProperties|UserPropertiesShape $userProperties User properties to associate with this user. The existing user properties will be updated. And all future events will have these properties associated with them.
      * @param DefaultProperties|DefaultPropertiesShape|null $defaultProperties These properties are used throughout the Ours app to pass known values onto destinations
      * @param string|null $email The email address of a user. We will associate this event with the user or create a user. Used for lookup if externalId and userId are not included in the request.

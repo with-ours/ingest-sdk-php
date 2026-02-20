@@ -32,7 +32,7 @@ final class VisitorTest extends TestCase
     public function testUpsert(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->visitor->upsert(token: 'x', userProperties: []);
@@ -45,7 +45,7 @@ final class VisitorTest extends TestCase
     public function testUpsertWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->visitor->upsert(

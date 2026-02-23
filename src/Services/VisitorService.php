@@ -36,7 +36,7 @@ final class VisitorService implements VisitorContract
     /**
      * @api
      *
-     * Define visitor properties on an existing visitor or create a new visitor. Note: This does not fire an event. If you want to fire an event, use the track method and include properties for the visitor.
+     * Define visitor properties on an existing visitor or create a new visitor. This fires a $identify event, making the call visible in the event stream.
      *
      * @param string $token The token for your Source. You can find this in the dashboard.
      * @param UserProperties|UserPropertiesShape $userProperties User properties to associate with this user. The existing user properties will be updated. And all future events will have these properties associated with them.

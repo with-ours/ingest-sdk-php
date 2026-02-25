@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.0.0 (2026-02-25)
+
+Full Changelog: [v0.9.0...v1.0.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.9.0...v1.0.0)
+
+### Features
+
+* **api:** api update ([88b4086](https://github.com/with-ours/ingest-sdk-php/commit/88b40869cb69fcd6b928881bd33a1ea197b27812))
+
+
+### Chores
+
+* **internal:** remove mock server code ([fb4bec1](https://github.com/with-ours/ingest-sdk-php/commit/fb4bec188e9c005bba74a9e339ed7acb9b5f130d))
+* **release:** add packagist trigger on published release ([9ee4fdc](https://github.com/with-ours/ingest-sdk-php/commit/9ee4fdc39ba85f937391abacc68304258b972e9e))
+* update mock server docs ([589e43c](https://github.com/with-ours/ingest-sdk-php/commit/589e43c778e6ec9c543294164d2c3bb013dea8dc))
+
 ## 0.9.0 (2026-02-04)
 
 Full Changelog: [v0.8.3...v0.9.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.8.3...v0.9.0)

@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.1 (2026-02-27)
+
+Full Changelog: [v1.0.0...v1.0.1](https://github.com/with-ours/ingest-sdk-php/compare/v1.0.0...v1.0.1)
+
+### Chores
+
+* **internal:** upgrade phpunit ([9904f91](https://github.com/with-ours/ingest-sdk-php/commit/9904f91bfe8e282bab82a26fb9b97e1ee78df495))
+
 ## 1.0.0 (2026-02-25)
 
 Full Changelog: [v0.9.0...v1.0.0](https://github.com/with-ours/ingest-sdk-php/compare/v0.9.0...v1.0.0)

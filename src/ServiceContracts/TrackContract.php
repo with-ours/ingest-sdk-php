@@ -7,11 +7,13 @@ namespace OursPrivacy\ServiceContracts;
 use OursPrivacy\Core\Exceptions\APIException;
 use OursPrivacy\RequestOptions;
 use OursPrivacy\Track\TrackEventParams\DefaultProperties;
+use OursPrivacy\Track\TrackEventParams\IdentityContext;
 use OursPrivacy\Track\TrackEventParams\UserProperties;
 use OursPrivacy\Track\TrackEventResponse;
 
 /**
  * @phpstan-import-type DefaultPropertiesShape from \OursPrivacy\Track\TrackEventParams\DefaultProperties
+ * @phpstan-import-type IdentityContextShape from \OursPrivacy\Track\TrackEventParams\IdentityContext
  * @phpstan-import-type UserPropertiesShape from \OursPrivacy\Track\TrackEventParams\UserProperties
  * @phpstan-import-type RequestOpts from \OursPrivacy\RequestOptions
  */
@@ -27,6 +29,7 @@ interface TrackContract
      * @param string|null $email The email address of a user. We will associate this event with the user or create a user. Used for lookup if externalId and userId are not included in the request.
      * @param array<string,string|null>|null $eventProperties any additional event properties you want to pass along
      * @param string|null $externalID The externalId (the ID in your system) of a user. We will associate this event with the user or create a user. If included in the request, email lookup is ignored.
+     * @param IdentityContext|IdentityContextShape|null $identityContext End-user network context for server-side calls. Required for probabilistic identity resolution when the caller is a backend server rather than an end-user browser.
      * @param float|null $time The time at which the event occurred in milliseconds since UTC epoch. The time must be in the past and within the last 7 days.
      * @param string|null $userID The Ours user id stored in local storage and cookies on your web properties. If userId is included in the request, we do not lookup the user by email or externalId.
      * @param UserProperties|UserPropertiesShape|null $userProperties Properties to set on the visitor. (optional) You can also update these properties via the identify endpoint.
@@ -42,6 +45,7 @@ interface TrackContract
         ?string $email = null,
         ?array $eventProperties = null,
         ?string $externalID = null,
+        IdentityContext|array|null $identityContext = null,
         ?float $time = null,
         ?string $userID = null,
         UserProperties|array|null $userProperties = null,

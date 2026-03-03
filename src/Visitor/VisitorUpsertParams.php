@@ -10,6 +10,7 @@ use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Concerns\SdkParams;
 use OursPrivacy\Core\Contracts\BaseModel;
 use OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties;
+use OursPrivacy\Visitor\VisitorUpsertParams\IdentityContext;
 use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
 
 /**
@@ -19,6 +20,7 @@ use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
  *
  * @phpstan-import-type UserPropertiesShape from \OursPrivacy\Visitor\VisitorUpsertParams\UserProperties
  * @phpstan-import-type DefaultPropertiesShape from \OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties
+ * @phpstan-import-type IdentityContextShape from \OursPrivacy\Visitor\VisitorUpsertParams\IdentityContext
  *
  * @phpstan-type VisitorUpsertParamsShape = array{
  *   token: string,
@@ -26,6 +28,7 @@ use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
  *   defaultProperties?: null|DefaultProperties|DefaultPropertiesShape,
  *   email?: string|null,
  *   externalID?: string|null,
+ *   identityContext?: null|IdentityContext|IdentityContextShape,
  *   userID?: string|null,
  * }
  */
@@ -66,6 +69,12 @@ final class VisitorUpsertParams implements BaseModel
     public ?string $externalID;
 
     /**
+     * End-user network context for server-side calls. Required for probabilistic identity resolution when the caller is a backend server rather than an end-user browser.
+     */
+    #[Optional(nullable: true)]
+    public ?IdentityContext $identityContext;
+
+    /**
      * The Ours user id stored in local storage and cookies on your web properties. If userId is included in the request, we do not lookup the user by email or externalId.
      */
     #[Optional('userId', nullable: true)]
@@ -97,6 +106,7 @@ final class VisitorUpsertParams implements BaseModel
      *
      * @param UserProperties|UserPropertiesShape $userProperties
      * @param DefaultProperties|DefaultPropertiesShape|null $defaultProperties
+     * @param IdentityContext|IdentityContextShape|null $identityContext
      */
     public static function with(
         string $token,
@@ -104,6 +114,7 @@ final class VisitorUpsertParams implements BaseModel
         DefaultProperties|array|null $defaultProperties = null,
         ?string $email = null,
         ?string $externalID = null,
+        IdentityContext|array|null $identityContext = null,
         ?string $userID = null,
     ): self {
         $self = new self;
@@ -114,6 +125,7 @@ final class VisitorUpsertParams implements BaseModel
         null !== $defaultProperties && $self['defaultProperties'] = $defaultProperties;
         null !== $email && $self['email'] = $email;
         null !== $externalID && $self['externalID'] = $externalID;
+        null !== $identityContext && $self['identityContext'] = $identityContext;
         null !== $userID && $self['userID'] = $userID;
 
         return $self;
@@ -176,6 +188,20 @@ final class VisitorUpsertParams implements BaseModel
     {
         $self = clone $this;
         $self['externalID'] = $externalID;
+
+        return $self;
+    }
+
+    /**
+     * End-user network context for server-side calls. Required for probabilistic identity resolution when the caller is a backend server rather than an end-user browser.
+     *
+     * @param IdentityContext|IdentityContextShape|null $identityContext
+     */
+    public function withIdentityContext(
+        IdentityContext|array|null $identityContext
+    ): self {
+        $self = clone $this;
+        $self['identityContext'] = $identityContext;
 
         return $self;
     }

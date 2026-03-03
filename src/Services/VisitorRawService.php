@@ -11,12 +11,14 @@ use OursPrivacy\RequestOptions;
 use OursPrivacy\ServiceContracts\VisitorRawContract;
 use OursPrivacy\Visitor\VisitorUpsertParams;
 use OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties;
+use OursPrivacy\Visitor\VisitorUpsertParams\IdentityContext;
 use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
 use OursPrivacy\Visitor\VisitorUpsertResponse;
 
 /**
  * @phpstan-import-type UserPropertiesShape from \OursPrivacy\Visitor\VisitorUpsertParams\UserProperties
  * @phpstan-import-type DefaultPropertiesShape from \OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties
+ * @phpstan-import-type IdentityContextShape from \OursPrivacy\Visitor\VisitorUpsertParams\IdentityContext
  * @phpstan-import-type RequestOpts from \OursPrivacy\RequestOptions
  */
 final class VisitorRawService implements VisitorRawContract
@@ -38,6 +40,7 @@ final class VisitorRawService implements VisitorRawContract
      *   defaultProperties?: DefaultProperties|DefaultPropertiesShape|null,
      *   email?: string|null,
      *   externalID?: string|null,
+     *   identityContext?: IdentityContext|IdentityContextShape|null,
      *   userID?: string|null,
      * }|VisitorUpsertParams $params
      * @param RequestOpts|null $requestOptions

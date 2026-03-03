@@ -7,12 +7,14 @@ namespace OursPrivacy\ServiceContracts;
 use OursPrivacy\Core\Exceptions\APIException;
 use OursPrivacy\RequestOptions;
 use OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties;
+use OursPrivacy\Visitor\VisitorUpsertParams\IdentityContext;
 use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
 use OursPrivacy\Visitor\VisitorUpsertResponse;
 
 /**
  * @phpstan-import-type UserPropertiesShape from \OursPrivacy\Visitor\VisitorUpsertParams\UserProperties
  * @phpstan-import-type DefaultPropertiesShape from \OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties
+ * @phpstan-import-type IdentityContextShape from \OursPrivacy\Visitor\VisitorUpsertParams\IdentityContext
  * @phpstan-import-type RequestOpts from \OursPrivacy\RequestOptions
  */
 interface VisitorContract
@@ -25,6 +27,7 @@ interface VisitorContract
      * @param DefaultProperties|DefaultPropertiesShape|null $defaultProperties These properties are used throughout the Ours app to pass known values onto destinations
      * @param string|null $email The email address of a user. We will associate this event with the user or create a user. Used for lookup if externalId and userId are not included in the request.
      * @param string|null $externalID The externalId (the ID in your system) of a user. We will associate this event with the user or create a user. If included in the request, email lookup is ignored.
+     * @param IdentityContext|IdentityContextShape|null $identityContext End-user network context for server-side calls. Required for probabilistic identity resolution when the caller is a backend server rather than an end-user browser.
      * @param string|null $userID The Ours user id stored in local storage and cookies on your web properties. If userId is included in the request, we do not lookup the user by email or externalId.
      * @param RequestOpts|null $requestOptions
      *
@@ -36,6 +39,7 @@ interface VisitorContract
         DefaultProperties|array|null $defaultProperties = null,
         ?string $email = null,
         ?string $externalID = null,
+        IdentityContext|array|null $identityContext = null,
         ?string $userID = null,
         RequestOptions|array|null $requestOptions = null,
     ): VisitorUpsertResponse;

@@ -11,6 +11,7 @@ use OursPrivacy\Core\Concerns\SdkParams;
 use OursPrivacy\Core\Contracts\BaseModel;
 use OursPrivacy\Core\Conversion\MapOf;
 use OursPrivacy\Track\TrackEventParams\DefaultProperties;
+use OursPrivacy\Track\TrackEventParams\IdentityContext;
 use OursPrivacy\Track\TrackEventParams\UserProperties;
 
 /**
@@ -19,6 +20,7 @@ use OursPrivacy\Track\TrackEventParams\UserProperties;
  * @see OursPrivacy\Services\TrackService::event()
  *
  * @phpstan-import-type DefaultPropertiesShape from \OursPrivacy\Track\TrackEventParams\DefaultProperties
+ * @phpstan-import-type IdentityContextShape from \OursPrivacy\Track\TrackEventParams\IdentityContext
  * @phpstan-import-type UserPropertiesShape from \OursPrivacy\Track\TrackEventParams\UserProperties
  *
  * @phpstan-type TrackEventParamsShape = array{
@@ -29,6 +31,7 @@ use OursPrivacy\Track\TrackEventParams\UserProperties;
  *   email?: string|null,
  *   eventProperties?: array<string,string|null>|null,
  *   externalID?: string|null,
+ *   identityContext?: null|IdentityContext|IdentityContextShape,
  *   time?: float|null,
  *   userID?: string|null,
  *   userProperties?: null|UserProperties|UserPropertiesShape,
@@ -85,6 +88,12 @@ final class TrackEventParams implements BaseModel
     public ?string $externalID;
 
     /**
+     * End-user network context for server-side calls. Required for probabilistic identity resolution when the caller is a backend server rather than an end-user browser.
+     */
+    #[Optional(nullable: true)]
+    public ?IdentityContext $identityContext;
+
+    /**
      * The time at which the event occurred in milliseconds since UTC epoch. The time must be in the past and within the last 7 days.
      */
     #[Optional(nullable: true)]
@@ -128,6 +137,7 @@ final class TrackEventParams implements BaseModel
      *
      * @param DefaultProperties|DefaultPropertiesShape|null $defaultProperties
      * @param array<string,string|null>|null $eventProperties
+     * @param IdentityContext|IdentityContextShape|null $identityContext
      * @param UserProperties|UserPropertiesShape|null $userProperties
      */
     public static function with(
@@ -138,6 +148,7 @@ final class TrackEventParams implements BaseModel
         ?string $email = null,
         ?array $eventProperties = null,
         ?string $externalID = null,
+        IdentityContext|array|null $identityContext = null,
         ?float $time = null,
         ?string $userID = null,
         UserProperties|array|null $userProperties = null,
@@ -152,6 +163,7 @@ final class TrackEventParams implements BaseModel
         null !== $email && $self['email'] = $email;
         null !== $eventProperties && $self['eventProperties'] = $eventProperties;
         null !== $externalID && $self['externalID'] = $externalID;
+        null !== $identityContext && $self['identityContext'] = $identityContext;
         null !== $time && $self['time'] = $time;
         null !== $userID && $self['userID'] = $userID;
         null !== $userProperties && $self['userProperties'] = $userProperties;
@@ -237,6 +249,20 @@ final class TrackEventParams implements BaseModel
     {
         $self = clone $this;
         $self['externalID'] = $externalID;
+
+        return $self;
+    }
+
+    /**
+     * End-user network context for server-side calls. Required for probabilistic identity resolution when the caller is a backend server rather than an end-user browser.
+     *
+     * @param IdentityContext|IdentityContextShape|null $identityContext
+     */
+    public function withIdentityContext(
+        IdentityContext|array|null $identityContext
+    ): self {
+        $self = clone $this;
+        $self['identityContext'] = $identityContext;
 
         return $self;
     }

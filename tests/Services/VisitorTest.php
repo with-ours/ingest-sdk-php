@@ -182,6 +182,7 @@ final class VisitorTest extends TestCase
             ],
             email: 'x',
             externalID: 'x',
+            identityContext: ['ip' => 'ip', 'userAgent' => 'userAgent'],
             userID: 'x',
         );
 

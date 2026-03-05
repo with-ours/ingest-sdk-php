@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.1.0 (2026-03-05)
+
+Full Changelog: [v1.0.1...v1.1.0](https://github.com/with-ours/ingest-sdk-php/compare/v1.0.1...v1.1.0)
+
+### Features
+
+* **api:** api update ([b311442](https://github.com/with-ours/ingest-sdk-php/commit/b3114420731acf79de8ab2b4453d1342d33b21b5))
+
+
+### Chores
+
+* **internal:** codegen related update ([58147c8](https://github.com/with-ours/ingest-sdk-php/commit/58147c8d55e5b2596e7869ece7be0f3ea5b5609a))
+
 ## 1.0.1 (2026-02-27)
 
 Full Changelog: [v1.0.0...v1.0.1](https://github.com/with-ours/ingest-sdk-php/compare/v1.0.0...v1.0.1)

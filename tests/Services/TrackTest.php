@@ -127,6 +127,7 @@ final class TrackTest extends TestCase
             email: 'x',
             eventProperties: ['foo' => 'string'],
             externalID: 'x',
+            identityContext: ['ip' => 'ip', 'userAgent' => 'userAgent'],
             time: 0,
             userID: 'x',
             userProperties: [

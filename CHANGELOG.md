@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.1 (2026-03-17)
+
+Full Changelog: [v1.1.0...v1.1.1](https://github.com/with-ours/ingest-sdk-php/compare/v1.1.0...v1.1.1)
+
+### Chores
+
+* **internal:** tweak CI branches ([edeeb5f](https://github.com/with-ours/ingest-sdk-php/commit/edeeb5f50f162cc7cefe1de825dbcf9b2157045e))
+
 ## 1.1.0 (2026-03-05)
 
 Full Changelog: [v1.0.1...v1.1.0](https://github.com/with-ours/ingest-sdk-php/compare/v1.0.1...v1.1.0)

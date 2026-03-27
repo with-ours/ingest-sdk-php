@@ -17,6 +17,7 @@ use OursPrivacy\Core\Conversion\MapOf;
  *   adsetID?: string|null,
  *   alart?: string|null,
  *   aleid?: string|null,
+ *   axwrt?: string|null,
  *   basisCid?: string|null,
  *   campaignID?: string|null,
  *   city?: string|null,
@@ -87,6 +88,9 @@ final class UserProperties implements BaseModel
 
     #[Optional(nullable: true)]
     public ?string $aleid;
+
+    #[Optional(nullable: true)]
+    public ?string $axwrt;
 
     #[Optional('basis_cid', nullable: true)]
     public ?string $basisCid;
@@ -271,6 +275,7 @@ final class UserProperties implements BaseModel
         ?string $adsetID = null,
         ?string $alart = null,
         ?string $aleid = null,
+        ?string $axwrt = null,
         ?string $basisCid = null,
         ?string $campaignID = null,
         ?string $city = null,
@@ -330,6 +335,7 @@ final class UserProperties implements BaseModel
         null !== $adsetID && $self['adsetID'] = $adsetID;
         null !== $alart && $self['alart'] = $alart;
         null !== $aleid && $self['aleid'] = $aleid;
+        null !== $axwrt && $self['axwrt'] = $axwrt;
         null !== $basisCid && $self['basisCid'] = $basisCid;
         null !== $campaignID && $self['campaignID'] = $campaignID;
         null !== $city && $self['city'] = $city;
@@ -414,6 +420,14 @@ final class UserProperties implements BaseModel
     {
         $self = clone $this;
         $self['aleid'] = $aleid;
+
+        return $self;
+    }
+
+    public function withAxwrt(?string $axwrt): self
+    {
+        $self = clone $this;
+        $self['axwrt'] = $axwrt;
 
         return $self;
     }

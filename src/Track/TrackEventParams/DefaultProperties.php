@@ -17,6 +17,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   adsetID?: string|null,
  *   alart?: string|null,
  *   aleid?: string|null,
+ *   axwrt?: string|null,
  *   basisCid?: string|null,
  *   browserLanguage?: string|null,
  *   browserName?: string|null,
@@ -118,6 +119,12 @@ final class DefaultProperties implements BaseModel
      */
     #[Optional(nullable: true)]
     public ?string $aleid;
+
+    /**
+     * The AppLovin Axon pixel cookie value (_axwrt). Web-only.
+     */
+    #[Optional(nullable: true)]
+    public ?string $axwrt;
 
     /**
      * The Basis DSP Click ID. Ex: basis_cid123.
@@ -522,6 +529,7 @@ final class DefaultProperties implements BaseModel
         ?string $adsetID = null,
         ?string $alart = null,
         ?string $aleid = null,
+        ?string $axwrt = null,
         ?string $basisCid = null,
         ?string $browserLanguage = null,
         ?string $browserName = null,
@@ -595,6 +603,7 @@ final class DefaultProperties implements BaseModel
         null !== $adsetID && $self['adsetID'] = $adsetID;
         null !== $alart && $self['alart'] = $alart;
         null !== $aleid && $self['aleid'] = $aleid;
+        null !== $axwrt && $self['axwrt'] = $axwrt;
         null !== $basisCid && $self['basisCid'] = $basisCid;
         null !== $browserLanguage && $self['browserLanguage'] = $browserLanguage;
         null !== $browserName && $self['browserName'] = $browserName;
@@ -715,6 +724,17 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['aleid'] = $aleid;
+
+        return $self;
+    }
+
+    /**
+     * The AppLovin Axon pixel cookie value (_axwrt). Web-only.
+     */
+    public function withAxwrt(?string $axwrt): self
+    {
+        $self = clone $this;
+        $self['axwrt'] = $axwrt;
 
         return $self;
     }

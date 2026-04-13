@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.1 (2026-04-11)
+
+Full Changelog: [v1.2.0...v1.2.1](https://github.com/with-ours/ingest-sdk-php/compare/v1.2.0...v1.2.1)
+
+### Bug Fixes
+
+* **client:** properly generate file params ([d70ae3e](https://github.com/with-ours/ingest-sdk-php/commit/d70ae3e701853213c79bc8192f0e91eeb12265aa))
+
 ## 1.2.0 (2026-03-27)
 
 Full Changelog: [v1.1.1...v1.2.0](https://github.com/with-ours/ingest-sdk-php/compare/v1.1.1...v1.2.0)

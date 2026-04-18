@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.2 (2026-04-18)
+
+Full Changelog: [v1.2.1...v1.2.2](https://github.com/with-ours/ingest-sdk-php/compare/v1.2.1...v1.2.2)
+
+### Bug Fixes
+
+* **client:** resolve serialization issue with unions and enums ([7699a0b](https://github.com/with-ours/ingest-sdk-php/commit/7699a0ba70ebadecfb392feb3e045625f14c225b))
+* populate enum-typed properties with enum instances ([17cb270](https://github.com/with-ours/ingest-sdk-php/commit/17cb270747ccb410023f49067a4223380b6708e7))
+
 ## 1.2.1 (2026-04-11)
 
 Full Changelog: [v1.2.0...v1.2.1](https://github.com/with-ours/ingest-sdk-php/compare/v1.2.0...v1.2.1)

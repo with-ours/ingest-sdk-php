@@ -54,6 +54,7 @@ final class TrackTest extends TestCase
             defaultProperties: [
                 'activeDuration' => 0,
                 'adID' => 'ad_id',
+                'admitadUid' => 'admitad_uid',
                 'adsetID' => 'adset_id',
                 'alart' => 'alart',
                 'aleid' => 'aleid',
@@ -133,6 +134,7 @@ final class TrackTest extends TestCase
             userID: 'x',
             userProperties: [
                 'adID' => 'ad_id',
+                'admitadUid' => 'admitad_uid',
                 'adsetID' => 'adset_id',
                 'alart' => 'alart',
                 'aleid' => 'aleid',

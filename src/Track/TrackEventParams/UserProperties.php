@@ -14,6 +14,7 @@ use OursPrivacy\Core\Conversion\MapOf;
  *
  * @phpstan-type UserPropertiesShape = array{
  *   adID?: string|null,
+ *   admitadUid?: string|null,
  *   adsetID?: string|null,
  *   alart?: string|null,
  *   aleid?: string|null,
@@ -79,6 +80,9 @@ final class UserProperties implements BaseModel
 
     #[Optional('ad_id', nullable: true)]
     public ?string $adID;
+
+    #[Optional('admitad_uid', nullable: true)]
+    public ?string $admitadUid;
 
     #[Optional('adset_id', nullable: true)]
     public ?string $adsetID;
@@ -272,6 +276,7 @@ final class UserProperties implements BaseModel
      */
     public static function with(
         ?string $adID = null,
+        ?string $admitadUid = null,
         ?string $adsetID = null,
         ?string $alart = null,
         ?string $aleid = null,
@@ -332,6 +337,7 @@ final class UserProperties implements BaseModel
         $self = new self;
 
         null !== $adID && $self['adID'] = $adID;
+        null !== $admitadUid && $self['admitadUid'] = $admitadUid;
         null !== $adsetID && $self['adsetID'] = $adsetID;
         null !== $alart && $self['alart'] = $alart;
         null !== $aleid && $self['aleid'] = $aleid;
@@ -396,6 +402,14 @@ final class UserProperties implements BaseModel
     {
         $self = clone $this;
         $self['adID'] = $adID;
+
+        return $self;
+    }
+
+    public function withAdmitadUid(?string $admitadUid): self
+    {
+        $self = clone $this;
+        $self['admitadUid'] = $admitadUid;
 
         return $self;
     }

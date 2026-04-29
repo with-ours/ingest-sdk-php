@@ -38,7 +38,7 @@ final class TrackService implements TrackContract
     /**
      * @api
      *
-     * Track events from your server. Please include at least one of: userId, externalId, or email. These properties help us associate events with existing users. For all fields, null values unset the property and undefined values do not unset existing properties.
+     * Track events from your server. Please include at least one of: userId, externalId, or email. These properties help us associate events with existing users. For top-level visitor properties: null clears the existing value, while undefined, omitted fields, and empty strings are ignored. For entries inside custom_properties: null, undefined, and empty strings are all ignored (custom_properties use merge semantics). See https://docs.oursprivacy.com/docs/data-types for details and common pitfalls.
      *
      * @param string $token The token for your Source. You can find this in the dashboard.
      * @param string $event The name of the event you're tracking. This must be whitelisted in the Ours dashboard.

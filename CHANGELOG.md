@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.1 (2026-04-30)
+
+Full Changelog: [v1.3.0...v1.3.1](https://github.com/with-ours/ingest-sdk-php/compare/v1.3.0...v1.3.1)
+
+### Bug Fixes
+
+* revert enum parsing change that lead to unconditional failure ([2e11f24](https://github.com/with-ours/ingest-sdk-php/commit/2e11f246ed31642ccb8ff0ce0a149b9c8e99dad5))
+
 ## 1.3.0 (2026-04-27)
 
 Full Changelog: [v1.2.2...v1.3.0](https://github.com/with-ours/ingest-sdk-php/compare/v1.2.2...v1.3.0)

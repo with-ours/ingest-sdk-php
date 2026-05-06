@@ -8,6 +8,7 @@ use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use OursPrivacy\Core\BaseClient;
 use OursPrivacy\Core\Util;
+use OursPrivacy\Services\BatchService;
 use OursPrivacy\Services\TrackService;
 use OursPrivacy\Services\VisitorService;
 
@@ -27,6 +28,11 @@ class Client extends BaseClient
      * @api
      */
     public VisitorService $visitor;
+
+    /**
+     * @api
+     */
+    public BatchService $batch;
 
     /**
      * @param RequestOpts|null $requestOptions
@@ -82,5 +88,6 @@ class Client extends BaseClient
 
         $this->track = new TrackService($this);
         $this->visitor = new VisitorService($this);
+        $this->batch = new BatchService($this);
     }
 }

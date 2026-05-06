@@ -22,17 +22,17 @@ class Client extends BaseClient
     /**
      * @api
      */
+    public BatchService $batch;
+
+    /**
+     * @api
+     */
     public TrackService $track;
 
     /**
      * @api
      */
     public VisitorService $visitor;
-
-    /**
-     * @api
-     */
-    public BatchService $batch;
 
     /**
      * @param RequestOpts|null $requestOptions
@@ -86,8 +86,8 @@ class Client extends BaseClient
             options: $options
         );
 
+        $this->batch = new BatchService($this);
         $this->track = new TrackService($this);
         $this->visitor = new VisitorService($this);
-        $this->batch = new BatchService($this);
     }
 }

@@ -1,0 +1,208 @@
+<?php
+
+namespace Tests\Services;
+
+use OursPrivacy\Batch\BatchNewResponse;
+use OursPrivacy\Client;
+use OursPrivacy\Core\Util;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
+use Tests\UnsupportedMockTests;
+
+/**
+ * @internal
+ */
+#[CoversNothing]
+final class BatchTest extends TestCase
+{
+    protected Client $client;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $testUrl = Util::getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
+        $client = new Client(baseUrl: $testUrl);
+
+        $this->client = $client;
+    }
+
+    #[Test]
+    public function testCreate(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->batch->create(
+            token: 'x',
+            events: [['event' => 'x']]
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchNewResponse::class, $result);
+    }
+
+    #[Test]
+    public function testCreateWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->batch->create(
+            token: 'x',
+            events: [
+                [
+                    'event' => 'x',
+                    'token' => 'x',
+                    'defaultProperties' => [
+                        'activeDuration' => 0,
+                        'adID' => 'ad_id',
+                        'admitadUid' => 'admitad_uid',
+                        'adsetID' => 'adset_id',
+                        'alart' => 'alart',
+                        'aleid' => 'aleid',
+                        'axwrt' => 'axwrt',
+                        'basisCid' => 'basis_cid',
+                        'browserLanguage' => 'browser_language',
+                        'browserName' => 'browser_name',
+                        'browserVersion' => 'browser_version',
+                        'campaignID' => 'campaign_id',
+                        'clickid' => 'clickid',
+                        'clid' => 'clid',
+                        'cpuArchitecture' => 'cpu_architecture',
+                        'currentURL' => 'current_url',
+                        'dclid' => 'dclid',
+                        'deviceModel' => 'device_model',
+                        'deviceType' => 'device_type',
+                        'deviceVendor' => 'device_vendor',
+                        'duration' => 0,
+                        'encoding' => 'encoding',
+                        'engineName' => 'engine_name',
+                        'engineVersion' => 'engine_version',
+                        'epik' => 'epik',
+                        'fbc' => 'fbc',
+                        'fbclid' => 'fbclid',
+                        'fbp' => 'fbp',
+                        'fv' => true,
+                        'gadSource' => 'gad_source',
+                        'gbraid' => 'gbraid',
+                        'gclid' => 'gclid',
+                        'host' => 'host',
+                        'iframe' => true,
+                        'imRef' => 'im_ref',
+                        'ip' => 'ip',
+                        'irclickid' => 'irclickid',
+                        'isBot' => 'is_bot',
+                        'liFatID' => 'li_fat_id',
+                        'msclkid' => 'msclkid',
+                        'ndclid' => 'ndclid',
+                        'newS' => true,
+                        'osName' => 'os_name',
+                        'osVersion' => 'os_version',
+                        'pageHash' => 0,
+                        'pathname' => 'pathname',
+                        'qclid' => 'qclid',
+                        'rdtCid' => 'rdt_cid',
+                        'receivedAt' => 'received_at',
+                        'referrer' => 'referrer',
+                        'referringDomain' => 'referring_domain',
+                        'sacid' => 'sacid',
+                        'sccid' => 'sccid',
+                        'screenHeight' => 0,
+                        'screenWidth' => 0,
+                        'sessionCount' => 0,
+                        'sid' => 'sid',
+                        'sr' => 'sr',
+                        'title' => 'title',
+                        'ttclid' => 'ttclid',
+                        'twclid' => 'twclid',
+                        'uafvl' => 'uafvl',
+                        'userAgent' => 'user_agent',
+                        'utmCampaign' => 'utm_campaign',
+                        'utmContent' => 'utm_content',
+                        'utmMedium' => 'utm_medium',
+                        'utmName' => 'utm_name',
+                        'utmSource' => 'utm_source',
+                        'utmTerm' => 'utm_term',
+                        'version' => 'version',
+                        'wbraid' => 'wbraid',
+                        'webview' => true,
+                    ],
+                    'distinctID' => 'x',
+                    'email' => 'x',
+                    'eventProperties' => ['foo' => 'string'],
+                    'externalID' => 'x',
+                    'identityContext' => ['ip' => 'ip', 'userAgent' => 'userAgent'],
+                    'time' => 0,
+                    'userID' => 'x',
+                    'userProperties' => [
+                        'adID' => 'ad_id',
+                        'admitadUid' => 'admitad_uid',
+                        'adsetID' => 'adset_id',
+                        'alart' => 'alart',
+                        'aleid' => 'aleid',
+                        'axwrt' => 'axwrt',
+                        'basisCid' => 'basis_cid',
+                        'campaignID' => 'campaign_id',
+                        'city' => 'city',
+                        'clickid' => 'clickid',
+                        'clid' => 'clid',
+                        'companyName' => 'company_name',
+                        'consent' => ['foo' => 'string'],
+                        'country' => 'country',
+                        'customProperties' => ['foo' => 'string'],
+                        'dateOfBirth' => 'date_of_birth',
+                        'dclid' => 'dclid',
+                        'email' => 'email',
+                        'epik' => 'epik',
+                        'externalID' => 'external_id',
+                        'fbc' => 'fbc',
+                        'fbclid' => 'fbclid',
+                        'fbp' => 'fbp',
+                        'firstName' => 'first_name',
+                        'gadSource' => 'gad_source',
+                        'gbraid' => 'gbraid',
+                        'gclid' => 'gclid',
+                        'gender' => 'gender',
+                        'imRef' => 'im_ref',
+                        'ip' => 'ip',
+                        'irclickid' => 'irclickid',
+                        'isBot' => 'is_bot',
+                        'jobTitle' => 'job_title',
+                        'lastName' => 'last_name',
+                        'liFatID' => 'li_fat_id',
+                        'msclkid' => 'msclkid',
+                        'ndclid' => 'ndclid',
+                        'phoneNumber' => 'phone_number',
+                        'qclid' => 'qclid',
+                        'rdtCid' => 'rdt_cid',
+                        'referrer' => 'referrer',
+                        'referringDomain' => 'referring_domain',
+                        'sacid' => 'sacid',
+                        'sccid' => 'sccid',
+                        'sid' => 'sid',
+                        'state' => 'state',
+                        'ttclid' => 'ttclid',
+                        'twclid' => 'twclid',
+                        'userAgent' => 'user_agent',
+                        'userAgentFullList' => 'user_agent_full_list',
+                        'utmCampaign' => 'utm_campaign',
+                        'utmContent' => 'utm_content',
+                        'utmMedium' => 'utm_medium',
+                        'utmName' => 'utm_name',
+                        'utmSource' => 'utm_source',
+                        'utmTerm' => 'utm_term',
+                        'wbraid' => 'wbraid',
+                        'zip' => 'zip',
+                    ],
+                ],
+            ],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchNewResponse::class, $result);
+    }
+}

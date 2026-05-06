@@ -37,7 +37,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->batch->create(
             token: 'x',
-            events: [['event' => 'x']]
+            events: [['distinctID' => 'x', 'event' => 'x']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -55,8 +55,8 @@ final class BatchTest extends TestCase
             token: 'x',
             events: [
                 [
+                    'distinctID' => 'x',
                     'event' => 'x',
-                    'token' => 'x',
                     'defaultProperties' => [
                         'activeDuration' => 0,
                         'adID' => 'ad_id',
@@ -131,7 +131,6 @@ final class BatchTest extends TestCase
                         'wbraid' => 'wbraid',
                         'webview' => true,
                     ],
-                    'distinctID' => 'x',
                     'email' => 'x',
                     'eventProperties' => ['foo' => 'string'],
                     'externalID' => 'x',

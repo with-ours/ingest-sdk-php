@@ -10,10 +10,11 @@ use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ResultVariants from \OursPrivacy\Batch\BatchNewResponse\Result
  * @phpstan-import-type ResultShape from \OursPrivacy\Batch\BatchNewResponse\Result
  *
  * @phpstan-type BatchNewResponseShape = array{
- *   accepted: int, failed: float, results: list<Result|ResultShape>, success: bool
+ *   accepted: int, failed: int, results: list<ResultShape>, success: bool
  * }
  */
 final class BatchNewResponse implements BaseModel
@@ -25,9 +26,9 @@ final class BatchNewResponse implements BaseModel
     public int $accepted;
 
     #[Required]
-    public float $failed;
+    public int $failed;
 
-    /** @var list<Result> $results */
+    /** @var list<ResultVariants> $results */
     #[Required(list: Result::class)]
     public array $results;
 
@@ -62,11 +63,11 @@ final class BatchNewResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Result|ResultShape> $results
+     * @param list<ResultShape> $results
      */
     public static function with(
         int $accepted,
-        float $failed,
+        int $failed,
         array $results,
         bool $success
     ): self {
@@ -88,7 +89,7 @@ final class BatchNewResponse implements BaseModel
         return $self;
     }
 
-    public function withFailed(float $failed): self
+    public function withFailed(int $failed): self
     {
         $self = clone $this;
         $self['failed'] = $failed;
@@ -97,7 +98,7 @@ final class BatchNewResponse implements BaseModel
     }
 
     /**
-     * @param list<Result|ResultShape> $results
+     * @param list<ResultShape> $results
      */
     public function withResults(array $results): self
     {

@@ -19,10 +19,9 @@ use OursPrivacy\Core\Conversion\MapOf;
  * @phpstan-import-type UserPropertiesShape from \OursPrivacy\Batch\BatchCreateParams\Event\UserProperties
  *
  * @phpstan-type EventShape = array{
+ *   distinctID: string,
  *   event: string,
- *   token?: string|null,
  *   defaultProperties?: null|DefaultProperties|DefaultPropertiesShape,
- *   distinctID?: string|null,
  *   email?: string|null,
  *   eventProperties?: array<string,string|null>|null,
  *   externalID?: string|null,
@@ -38,28 +37,22 @@ final class Event implements BaseModel
     use SdkModel;
 
     /**
+     * A unique identifier for the event. This helps prevent duplicate events.
+     */
+    #[Required('distinctId')]
+    public string $distinctID;
+
+    /**
      * The name of the event you're tracking. This must be whitelisted in the Ours dashboard.
      */
     #[Required]
     public string $event;
 
     /**
-     * The token for your Source. You can find this in the dashboard.
-     */
-    #[Optional]
-    public ?string $token;
-
-    /**
      * These properties are used throughout the Ours app to pass known values onto destinations.
      */
     #[Optional(nullable: true)]
     public ?DefaultProperties $defaultProperties;
-
-    /**
-     * A unique identifier for the event. This helps prevent duplicate events.
-     */
-    #[Optional('distinctId', nullable: true)]
-    public ?string $distinctID;
 
     /**
      * The email address of a user. We will associate this event with the user or create a user. Used for lookup if externalId and userId are not included in the request.
@@ -110,13 +103,13 @@ final class Event implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * Event::with(event: ...)
+     * Event::with(distinctID: ..., event: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new Event)->withEvent(...)
+     * (new Event)->withDistinctID(...)->withEvent(...)
      * ```
      */
     public function __construct()
@@ -135,10 +128,9 @@ final class Event implements BaseModel
      * @param UserProperties|UserPropertiesShape|null $userProperties
      */
     public static function with(
+        string $distinctID,
         string $event,
-        ?string $token = null,
         DefaultProperties|array|null $defaultProperties = null,
-        ?string $distinctID = null,
         ?string $email = null,
         ?array $eventProperties = null,
         ?string $externalID = null,
@@ -149,11 +141,10 @@ final class Event implements BaseModel
     ): self {
         $self = new self;
 
+        $self['distinctID'] = $distinctID;
         $self['event'] = $event;
 
-        null !== $token && $self['token'] = $token;
         null !== $defaultProperties && $self['defaultProperties'] = $defaultProperties;
-        null !== $distinctID && $self['distinctID'] = $distinctID;
         null !== $email && $self['email'] = $email;
         null !== $eventProperties && $self['eventProperties'] = $eventProperties;
         null !== $externalID && $self['externalID'] = $externalID;
@@ -161,6 +152,17 @@ final class Event implements BaseModel
         null !== $time && $self['time'] = $time;
         null !== $userID && $self['userID'] = $userID;
         null !== $userProperties && $self['userProperties'] = $userProperties;
+
+        return $self;
+    }
+
+    /**
+     * A unique identifier for the event. This helps prevent duplicate events.
+     */
+    public function withDistinctID(string $distinctID): self
+    {
+        $self = clone $this;
+        $self['distinctID'] = $distinctID;
 
         return $self;
     }
@@ -177,17 +179,6 @@ final class Event implements BaseModel
     }
 
     /**
-     * The token for your Source. You can find this in the dashboard.
-     */
-    public function withToken(string $token): self
-    {
-        $self = clone $this;
-        $self['token'] = $token;
-
-        return $self;
-    }
-
-    /**
      * These properties are used throughout the Ours app to pass known values onto destinations.
      *
      * @param DefaultProperties|DefaultPropertiesShape|null $defaultProperties
@@ -197,17 +188,6 @@ final class Event implements BaseModel
     ): self {
         $self = clone $this;
         $self['defaultProperties'] = $defaultProperties;
-
-        return $self;
-    }
-
-    /**
-     * A unique identifier for the event. This helps prevent duplicate events.
-     */
-    public function withDistinctID(?string $distinctID): self
-    {
-        $self = clone $this;
-        $self['distinctID'] = $distinctID;
 
         return $self;
     }

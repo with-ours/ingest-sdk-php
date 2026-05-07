@@ -37,7 +37,7 @@ final class Event implements BaseModel
     use SdkModel;
 
     /**
-     * A unique identifier for the event. This helps prevent duplicate events.
+     * A unique identifier for this event used for deduplication. Highly recommended — if omitted, Ours will generate one for you, but supplying your own gives you stronger idempotency guarantees (e.g. a Stripe payment intent ID or your internal order ID).
      */
     #[Required('distinctId')]
     public string $distinctID;
@@ -55,7 +55,7 @@ final class Event implements BaseModel
     public ?DefaultProperties $defaultProperties;
 
     /**
-     * The email address of a user. We will associate this event with the user or create a user. Used for lookup if externalId and userId are not included in the request.
+     * The email address of a user. Used as a fallback lookup when neither userId nor externalId is provided. We search your account for a visitor with this email and attach the event to them. If no match is found, a new visitor is created.
      */
     #[Optional(nullable: true)]
     public ?string $email;
@@ -69,7 +69,7 @@ final class Event implements BaseModel
     public ?array $eventProperties;
 
     /**
-     * The externalId (the ID in your system) of a user. We will associate this event with the user or create a user. If included in the request, email lookup is ignored.
+     * Your system's unique identifier for this user. We search your account for an existing visitor with this externalId and attach the event to them (resolving to their Ours Visitor ID). If no match is found, a new visitor is created. When present, email lookup is skipped. If you also have the userId from cookies or local storage, send both — it removes the lookup round-trip.
      */
     #[Optional('externalId', nullable: true)]
     public ?string $externalID;
@@ -87,7 +87,7 @@ final class Event implements BaseModel
     public ?float $time;
 
     /**
-     * The Ours user id stored in local storage and cookies on your web properties. If userId is included in the request, we do not lookup the user by email or externalId.
+     * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId or email is performed. If you have both a userId and an externalId, send both so the event is attached to the right visitor without any lookup overhead.
      */
     #[Optional('userId', nullable: true)]
     public ?string $userID;
@@ -157,7 +157,7 @@ final class Event implements BaseModel
     }
 
     /**
-     * A unique identifier for the event. This helps prevent duplicate events.
+     * A unique identifier for this event used for deduplication. Highly recommended — if omitted, Ours will generate one for you, but supplying your own gives you stronger idempotency guarantees (e.g. a Stripe payment intent ID or your internal order ID).
      */
     public function withDistinctID(string $distinctID): self
     {
@@ -193,7 +193,7 @@ final class Event implements BaseModel
     }
 
     /**
-     * The email address of a user. We will associate this event with the user or create a user. Used for lookup if externalId and userId are not included in the request.
+     * The email address of a user. Used as a fallback lookup when neither userId nor externalId is provided. We search your account for a visitor with this email and attach the event to them. If no match is found, a new visitor is created.
      */
     public function withEmail(?string $email): self
     {
@@ -217,7 +217,7 @@ final class Event implements BaseModel
     }
 
     /**
-     * The externalId (the ID in your system) of a user. We will associate this event with the user or create a user. If included in the request, email lookup is ignored.
+     * Your system's unique identifier for this user. We search your account for an existing visitor with this externalId and attach the event to them (resolving to their Ours Visitor ID). If no match is found, a new visitor is created. When present, email lookup is skipped. If you also have the userId from cookies or local storage, send both — it removes the lookup round-trip.
      */
     public function withExternalID(?string $externalID): self
     {
@@ -253,7 +253,7 @@ final class Event implements BaseModel
     }
 
     /**
-     * The Ours user id stored in local storage and cookies on your web properties. If userId is included in the request, we do not lookup the user by email or externalId.
+     * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId or email is performed. If you have both a userId and an externalId, send both so the event is attached to the right visitor without any lookup overhead.
      */
     public function withUserID(?string $userID): self
     {

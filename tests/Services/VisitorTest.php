@@ -51,6 +51,7 @@ final class VisitorTest extends TestCase
         $result = $this->client->visitor->upsert(
             token: 'x',
             userProperties: [
+                '_efTransactionID' => '_ef_transaction_id',
                 'adID' => 'ad_id',
                 'admitadUid' => 'admitad_uid',
                 'adsetID' => 'adset_id',
@@ -111,6 +112,7 @@ final class VisitorTest extends TestCase
                 'zip' => 'zip',
             ],
             defaultProperties: [
+                '_efTransactionID' => '_ef_transaction_id',
                 'activeDuration' => 0,
                 'adID' => 'ad_id',
                 'admitadUid' => 'admitad_uid',

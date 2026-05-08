@@ -12,6 +12,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  * These properties are used throughout the Ours app to pass known values onto destinations.
  *
  * @phpstan-type DefaultPropertiesShape = array{
+ *   _efTransactionID?: string|null,
  *   activeDuration?: float|null,
  *   adID?: string|null,
  *   admitadUid?: string|null,
@@ -90,6 +91,12 @@ final class DefaultProperties implements BaseModel
 {
     /** @use SdkModel<DefaultPropertiesShape> */
     use SdkModel;
+
+    /**
+     * The Everflow affiliate Click (Transaction) ID, captured from the `_ef_transaction_id` URL parameter. Ex: ef_click_abc123.
+     */
+    #[Optional('_ef_transaction_id', nullable: true)]
+    public ?string $_efTransactionID;
 
     /**
      * The active time in milliseconds that the user had this tab active.
@@ -531,6 +538,7 @@ final class DefaultProperties implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
+        ?string $_efTransactionID = null,
         ?float $activeDuration = null,
         ?string $adID = null,
         ?string $admitadUid = null,
@@ -606,6 +614,7 @@ final class DefaultProperties implements BaseModel
     ): self {
         $self = new self;
 
+        null !== $_efTransactionID && $self['_efTransactionID'] = $_efTransactionID;
         null !== $activeDuration && $self['activeDuration'] = $activeDuration;
         null !== $adID && $self['adID'] = $adID;
         null !== $admitadUid && $self['admitadUid'] = $admitadUid;
@@ -678,6 +687,17 @@ final class DefaultProperties implements BaseModel
         null !== $version && $self['version'] = $version;
         null !== $wbraid && $self['wbraid'] = $wbraid;
         null !== $webview && $self['webview'] = $webview;
+
+        return $self;
+    }
+
+    /**
+     * The Everflow affiliate Click (Transaction) ID, captured from the `_ef_transaction_id` URL parameter. Ex: ef_click_abc123.
+     */
+    public function withEfTransactionID(?string $_efTransactionID): self
+    {
+        $self = clone $this;
+        $self['_efTransactionID'] = $_efTransactionID;
 
         return $self;
     }

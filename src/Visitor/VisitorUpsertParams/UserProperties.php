@@ -13,6 +13,7 @@ use OursPrivacy\Core\Conversion\MapOf;
  * User properties to associate with this user. The existing user properties will be updated. And all future events will have these properties associated with them.
  *
  * @phpstan-type UserPropertiesShape = array{
+ *   _efTransactionID?: string|null,
  *   adID?: string|null,
  *   admitadUid?: string|null,
  *   adsetID?: string|null,
@@ -77,6 +78,9 @@ final class UserProperties implements BaseModel
 {
     /** @use SdkModel<UserPropertiesShape> */
     use SdkModel;
+
+    #[Optional('_ef_transaction_id', nullable: true)]
+    public ?string $_efTransactionID;
 
     #[Optional('ad_id', nullable: true)]
     public ?string $adID;
@@ -275,6 +279,7 @@ final class UserProperties implements BaseModel
      * @param array<string,string|null>|null $customProperties
      */
     public static function with(
+        ?string $_efTransactionID = null,
         ?string $adID = null,
         ?string $admitadUid = null,
         ?string $adsetID = null,
@@ -336,6 +341,7 @@ final class UserProperties implements BaseModel
     ): self {
         $self = new self;
 
+        null !== $_efTransactionID && $self['_efTransactionID'] = $_efTransactionID;
         null !== $adID && $self['adID'] = $adID;
         null !== $admitadUid && $self['admitadUid'] = $admitadUid;
         null !== $adsetID && $self['adsetID'] = $adsetID;
@@ -394,6 +400,14 @@ final class UserProperties implements BaseModel
         null !== $utmTerm && $self['utmTerm'] = $utmTerm;
         null !== $wbraid && $self['wbraid'] = $wbraid;
         null !== $zip && $self['zip'] = $zip;
+
+        return $self;
+    }
+
+    public function withEfTransactionID(?string $_efTransactionID): self
+    {
+        $self = clone $this;
+        $self['_efTransactionID'] = $_efTransactionID;
 
         return $self;
     }

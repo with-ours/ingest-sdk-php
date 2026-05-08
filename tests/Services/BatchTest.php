@@ -58,6 +58,7 @@ final class BatchTest extends TestCase
                     'distinctID' => 'x',
                     'event' => 'x',
                     'defaultProperties' => [
+                        '_efTransactionID' => '_ef_transaction_id',
                         'activeDuration' => 0,
                         'adID' => 'ad_id',
                         'admitadUid' => 'admitad_uid',
@@ -138,6 +139,7 @@ final class BatchTest extends TestCase
                     'time' => 0,
                     'userID' => 'x',
                     'userProperties' => [
+                        '_efTransactionID' => '_ef_transaction_id',
                         'adID' => 'ad_id',
                         'admitadUid' => 'admitad_uid',
                         'adsetID' => 'adset_id',

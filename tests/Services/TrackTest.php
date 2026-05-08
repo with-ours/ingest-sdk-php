@@ -52,6 +52,7 @@ final class TrackTest extends TestCase
             token: 'x',
             event: 'x',
             defaultProperties: [
+                '_efTransactionID' => '_ef_transaction_id',
                 'activeDuration' => 0,
                 'adID' => 'ad_id',
                 'admitadUid' => 'admitad_uid',
@@ -133,6 +134,7 @@ final class TrackTest extends TestCase
             time: 0,
             userID: 'x',
             userProperties: [
+                '_efTransactionID' => '_ef_transaction_id',
                 'adID' => 'ad_id',
                 'admitadUid' => 'admitad_uid',
                 'adsetID' => 'adset_id',

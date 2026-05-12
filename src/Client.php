@@ -7,6 +7,7 @@ namespace OursPrivacy;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use OursPrivacy\Core\BaseClient;
+use OursPrivacy\Core\Implementation\StreamingHttpClient;
 use OursPrivacy\Core\Util;
 use OursPrivacy\Services\BatchService;
 use OursPrivacy\Services\TrackService;
@@ -56,6 +57,11 @@ class Client extends BaseClient
             ),
             $requestOptions,
         );
+
+        if (is_null($options->streamingTransporter)) {
+            assert(!is_null($options->transporter));
+            $options->streamingTransporter = new StreamingHttpClient($options->transporter);
+        }
 
         /** @var array<string, string|null> $headers */
         $headers = [

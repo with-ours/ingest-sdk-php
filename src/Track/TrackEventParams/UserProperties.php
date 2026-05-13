@@ -21,6 +21,7 @@ use OursPrivacy\Core\Conversion\MapOf;
  *   aleid?: string|null,
  *   axwrt?: string|null,
  *   basisCid?: string|null,
+ *   beeswaxAuctionID?: string|null,
  *   campaignID?: string|null,
  *   city?: string|null,
  *   clickid?: string|null,
@@ -102,6 +103,9 @@ final class UserProperties implements BaseModel
 
     #[Optional('basis_cid', nullable: true)]
     public ?string $basisCid;
+
+    #[Optional('beeswax_auction_id', nullable: true)]
+    public ?string $beeswaxAuctionID;
 
     #[Optional('campaign_id', nullable: true)]
     public ?string $campaignID;
@@ -287,6 +291,7 @@ final class UserProperties implements BaseModel
         ?string $aleid = null,
         ?string $axwrt = null,
         ?string $basisCid = null,
+        ?string $beeswaxAuctionID = null,
         ?string $campaignID = null,
         ?string $city = null,
         ?string $clickid = null,
@@ -349,6 +354,7 @@ final class UserProperties implements BaseModel
         null !== $aleid && $self['aleid'] = $aleid;
         null !== $axwrt && $self['axwrt'] = $axwrt;
         null !== $basisCid && $self['basisCid'] = $basisCid;
+        null !== $beeswaxAuctionID && $self['beeswaxAuctionID'] = $beeswaxAuctionID;
         null !== $campaignID && $self['campaignID'] = $campaignID;
         null !== $city && $self['city'] = $city;
         null !== $clickid && $self['clickid'] = $clickid;
@@ -464,6 +470,14 @@ final class UserProperties implements BaseModel
     {
         $self = clone $this;
         $self['basisCid'] = $basisCid;
+
+        return $self;
+    }
+
+    public function withBeeswaxAuctionID(?string $beeswaxAuctionID): self
+    {
+        $self = clone $this;
+        $self['beeswaxAuctionID'] = $beeswaxAuctionID;
 
         return $self;
     }

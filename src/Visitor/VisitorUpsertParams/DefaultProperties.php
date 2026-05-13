@@ -21,6 +21,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   aleid?: string|null,
  *   axwrt?: string|null,
  *   basisCid?: string|null,
+ *   beeswaxAuctionID?: string|null,
  *   browserLanguage?: string|null,
  *   browserName?: string|null,
  *   browserVersion?: string|null,
@@ -145,6 +146,12 @@ final class DefaultProperties implements BaseModel
      */
     #[Optional('basis_cid', nullable: true)]
     public ?string $basisCid;
+
+    /**
+     * The Beeswax (FreeWheel Buyer Cloud) auction ID, captured from the `{{AUCTION_ID}}` macro on creative click URLs. Ex: bx-auc-abc123.
+     */
+    #[Optional('beeswax_auction_id', nullable: true)]
+    public ?string $beeswaxAuctionID;
 
     /**
      * The language of the browser. Ex: en-US.
@@ -547,6 +554,7 @@ final class DefaultProperties implements BaseModel
         ?string $aleid = null,
         ?string $axwrt = null,
         ?string $basisCid = null,
+        ?string $beeswaxAuctionID = null,
         ?string $browserLanguage = null,
         ?string $browserName = null,
         ?string $browserVersion = null,
@@ -623,6 +631,7 @@ final class DefaultProperties implements BaseModel
         null !== $aleid && $self['aleid'] = $aleid;
         null !== $axwrt && $self['axwrt'] = $axwrt;
         null !== $basisCid && $self['basisCid'] = $basisCid;
+        null !== $beeswaxAuctionID && $self['beeswaxAuctionID'] = $beeswaxAuctionID;
         null !== $browserLanguage && $self['browserLanguage'] = $browserLanguage;
         null !== $browserName && $self['browserName'] = $browserName;
         null !== $browserVersion && $self['browserVersion'] = $browserVersion;
@@ -786,6 +795,17 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['basisCid'] = $basisCid;
+
+        return $self;
+    }
+
+    /**
+     * The Beeswax (FreeWheel Buyer Cloud) auction ID, captured from the `{{AUCTION_ID}}` macro on creative click URLs. Ex: bx-auc-abc123.
+     */
+    public function withBeeswaxAuctionID(?string $beeswaxAuctionID): self
+    {
+        $self = clone $this;
+        $self['beeswaxAuctionID'] = $beeswaxAuctionID;
 
         return $self;
     }

@@ -1,0 +1,73 @@
+<?php
+
+declare(strict_types=1);
+
+namespace OursPrivacy\Services;
+
+use OursPrivacy\Client;
+use OursPrivacy\Core\Contracts\BaseResponse;
+use OursPrivacy\Core\Exceptions\APIException;
+use OursPrivacy\RequestOptions;
+use OursPrivacy\ServiceContracts\VisitorRawContract;
+use OursPrivacy\Visitor\VisitorUpsertParams;
+use OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties;
+use OursPrivacy\Visitor\VisitorUpsertParams\IdentityContext;
+use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
+use OursPrivacy\Visitor\VisitorUpsertResponse;
+
+/**
+ * @phpstan-import-type UserPropertiesShape from \OursPrivacy\Visitor\VisitorUpsertParams\UserProperties
+ * @phpstan-import-type DefaultPropertiesShape from \OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties
+ * @phpstan-import-type IdentityContextShape from \OursPrivacy\Visitor\VisitorUpsertParams\IdentityContext
+ * @phpstan-import-type RequestOpts from \OursPrivacy\RequestOptions
+ */
+final class VisitorRawService implements VisitorRawContract
+{
+    // @phpstan-ignore-next-line
+    /**
+     * @internal
+     */
+    public function __construct(private Client $client) {}
+
+    /**
+     * @api
+     *
+     * Define visitor properties on an existing visitor or create a new visitor. This fires a $identify event, making the call visible in the event stream. For top-level visitor properties: null clears the existing value, while undefined, omitted fields, and empty strings are ignored. For entries inside custom_properties: null, undefined, and empty strings are all ignored (custom_properties use merge semantics). See https://docs.oursprivacy.com/docs/data-types for details and common pitfalls.
+     *
+     * @param array{
+     *   token: string,
+     *   userProperties: UserProperties|UserPropertiesShape,
+     *   defaultProperties?: DefaultProperties|DefaultPropertiesShape|null,
+     *   email?: string|null,
+     *   externalID?: string|null,
+     *   identityContext?: IdentityContext|IdentityContextShape|null,
+     *   userID?: string|null,
+     * }|VisitorUpsertParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<VisitorUpsertResponse>
+     *
+     * @throws APIException
+     */
+    public function upsert(
+        array|VisitorUpsertParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = VisitorUpsertParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $path = $this
+            ->client
+            ->baseUrlOverridden ? 'identify' : 'https://api.oursprivacy.com/api/v1/identify';
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: $path,
+            body: (object) $parsed,
+            options: $options,
+            convert: VisitorUpsertResponse::class,
+        );
+    }
+}

@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.4.0 (2026-05-14)
+
+Full Changelog: [v1.3.1...v1.4.0](https://github.com/with-ours/ingest-sdk-php/compare/v1.3.1...v1.4.0)
+
+### Features
+
+* **api:** api update ([00e6e9e](https://github.com/with-ours/ingest-sdk-php/commit/00e6e9ecd2d32e7910de0d5bcb755368c54937e7))
+* **api:** api update ([27cc3f5](https://github.com/with-ours/ingest-sdk-php/commit/27cc3f598cd311ba08b29209e8c1f7cd047e86f4))
+* **api:** api update ([447d556](https://github.com/with-ours/ingest-sdk-php/commit/447d556cb213615e32890aa77b378ea08d47db4c))
+* **api:** api update ([29da7eb](https://github.com/with-ours/ingest-sdk-php/commit/29da7ebd0ad03e241087e4f4023ef41ebf829387))
+* **api:** api update ([5d72b88](https://github.com/with-ours/ingest-sdk-php/commit/5d72b8893803728084df1c1da3435d068e22ec31))
+* **api:** api update ([90fb26c](https://github.com/with-ours/ingest-sdk-php/commit/90fb26ccb9f29fde366b2fc3befdde24a535618c))
+* **api:** manual updates ([25f5821](https://github.com/with-ours/ingest-sdk-php/commit/25f58217a95a16ff2224df71fe16b856aa0fc22d))
+* support setting headers via env ([95acd33](https://github.com/with-ours/ingest-sdk-php/commit/95acd33c6329258da8f944d25b0e66c7d75f0b90))
+
+
+### Bug Fixes
+
+* guzzle requires special handling to enable streaming ([5dae7b4](https://github.com/with-ours/ingest-sdk-php/commit/5dae7b4652e86ac3697a8dfd7759ac615df2825f))
+* **release:** use canonical GitHub URL in Packagist publish script ([ef81ffd](https://github.com/with-ours/ingest-sdk-php/commit/ef81ffd048749a87727223a4787626b80f1d1838))
+
+
+### Chores
+
+* fix release please manifest ([72205b4](https://github.com/with-ours/ingest-sdk-php/commit/72205b41930343f8d180bb14b4ac6b48e8144553))
+* **internal:** version bump ([e8b405b](https://github.com/with-ours/ingest-sdk-php/commit/e8b405bd59f7d7a26f255105f8923f85f46eb9e2))
+* **internal:** version bump ([d9748f8](https://github.com/with-ours/ingest-sdk-php/commit/d9748f84e333c7fdf2e59a8947805b1bae06678b))
+
 ## 1.3.1 (2026-04-30)
 
 Full Changelog: [v1.3.0...v1.3.1](https://github.com/with-ours/ingest-sdk-php/compare/v1.3.0...v1.3.1)

@@ -2,53 +2,51 @@
 
 declare(strict_types=1);
 
-namespace OursPrivacy\Visitor;
+namespace OursPrivacy\Batch\BatchCreateParams;
 
+use OursPrivacy\Batch\BatchCreateParams\Event\DefaultProperties;
+use OursPrivacy\Batch\BatchCreateParams\Event\IdentityContext;
+use OursPrivacy\Batch\BatchCreateParams\Event\UserProperties;
 use OursPrivacy\Core\Attributes\Optional;
 use OursPrivacy\Core\Attributes\Required;
 use OursPrivacy\Core\Concerns\SdkModel;
-use OursPrivacy\Core\Concerns\SdkParams;
 use OursPrivacy\Core\Contracts\BaseModel;
-use OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties;
-use OursPrivacy\Visitor\VisitorUpsertParams\IdentityContext;
-use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
+use OursPrivacy\Core\Conversion\MapOf;
 
 /**
- * Set or update properties on an existing visitor, or create a new visitor if no match is found. This fires a $identify event, making the call visible in the event stream. Identity resolution runs in priority order: userId (direct, no lookup) → externalId (lookup by your ID) → email (fallback lookup). When a visitor is found, their Ours Visitor ID is used going forward so all future events are attached to the same profile. For top-level visitor properties: null clears the existing value, while undefined, omitted fields, and empty strings are ignored. For entries inside custom_properties: null, undefined, and empty strings are all ignored (custom_properties use merge semantics). See https://docs.oursprivacy.com/docs/data-types for details and common pitfalls.
+ * @phpstan-import-type DefaultPropertiesShape from \OursPrivacy\Batch\BatchCreateParams\Event\DefaultProperties
+ * @phpstan-import-type IdentityContextShape from \OursPrivacy\Batch\BatchCreateParams\Event\IdentityContext
+ * @phpstan-import-type UserPropertiesShape from \OursPrivacy\Batch\BatchCreateParams\Event\UserProperties
  *
- * @see OursPrivacy\Services\VisitorService::upsert()
- *
- * @phpstan-import-type UserPropertiesShape from \OursPrivacy\Visitor\VisitorUpsertParams\UserProperties
- * @phpstan-import-type DefaultPropertiesShape from \OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties
- * @phpstan-import-type IdentityContextShape from \OursPrivacy\Visitor\VisitorUpsertParams\IdentityContext
- *
- * @phpstan-type VisitorUpsertParamsShape = array{
- *   token: string,
- *   userProperties: UserProperties|UserPropertiesShape,
+ * @phpstan-type EventShape = array{
+ *   distinctID: string,
+ *   event: string,
  *   defaultProperties?: null|DefaultProperties|DefaultPropertiesShape,
  *   email?: string|null,
+ *   eventProperties?: array<string,string|null>|null,
  *   externalID?: string|null,
  *   identityContext?: null|IdentityContext|IdentityContextShape,
+ *   time?: float|null,
  *   userID?: string|null,
+ *   userProperties?: null|UserProperties|UserPropertiesShape,
  * }
  */
-final class VisitorUpsertParams implements BaseModel
+final class Event implements BaseModel
 {
-    /** @use SdkModel<VisitorUpsertParamsShape> */
+    /** @use SdkModel<EventShape> */
     use SdkModel;
-    use SdkParams;
 
     /**
-     * The token for your Source. You can find this in the dashboard.
+     * A unique identifier for this event used for deduplication. Highly recommended — if omitted, Ours will generate one for you, but supplying your own gives you stronger idempotency guarantees (e.g. a Stripe payment intent ID or your internal order ID).
      */
-    #[Required]
-    public string $token;
+    #[Required('distinctId')]
+    public string $distinctID;
 
     /**
-     * User properties to associate with this user. The existing user properties will be updated. And all future events will have these properties associated with them.
+     * The name of the event you're tracking. This must be whitelisted in the Ours dashboard.
      */
     #[Required]
-    public UserProperties $userProperties;
+    public string $event;
 
     /**
      * These properties are used throughout the Ours app to pass known values onto destinations.
@@ -63,6 +61,14 @@ final class VisitorUpsertParams implements BaseModel
     public ?string $email;
 
     /**
+     * Any additional event properties you want to pass along.
+     *
+     * @var array<string,string|null>|null $eventProperties
+     */
+    #[Optional(type: new MapOf('string', nullable: true), nullable: true)]
+    public ?array $eventProperties;
+
+    /**
      * Your system's unique identifier for this user. We search your account for an existing visitor with this externalId and attach the event to them (resolving to their Ours Visitor ID). If no match is found, a new visitor is created. When present, email lookup is skipped. If you also have the userId from cookies or local storage, send both — it removes the lookup round-trip.
      */
     #[Optional('externalId', nullable: true)]
@@ -75,23 +81,35 @@ final class VisitorUpsertParams implements BaseModel
     public ?IdentityContext $identityContext;
 
     /**
+     * The time at which the event occurred in milliseconds since UTC epoch. The time must be in the past and within the last 7 days.
+     */
+    #[Optional(nullable: true)]
+    public ?float $time;
+
+    /**
      * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId or email is performed. If you have both a userId and an externalId, send both so the event is attached to the right visitor without any lookup overhead.
      */
     #[Optional('userId', nullable: true)]
     public ?string $userID;
 
     /**
-     * `new VisitorUpsertParams()` is missing required properties by the API.
+     * Properties to set on the visitor. (optional) You can also update these properties via the identify endpoint.
+     */
+    #[Optional(nullable: true)]
+    public ?UserProperties $userProperties;
+
+    /**
+     * `new Event()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * VisitorUpsertParams::with(token: ..., userProperties: ...)
+     * Event::with(distinctID: ..., event: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new VisitorUpsertParams)->withToken(...)->withUserProperties(...)
+     * (new Event)->withDistinctID(...)->withEvent(...)
      * ```
      */
     public function __construct()
@@ -104,54 +122,58 @@ final class VisitorUpsertParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param UserProperties|UserPropertiesShape $userProperties
      * @param DefaultProperties|DefaultPropertiesShape|null $defaultProperties
+     * @param array<string,string|null>|null $eventProperties
      * @param IdentityContext|IdentityContextShape|null $identityContext
+     * @param UserProperties|UserPropertiesShape|null $userProperties
      */
     public static function with(
-        string $token,
-        UserProperties|array $userProperties,
+        string $distinctID,
+        string $event,
         DefaultProperties|array|null $defaultProperties = null,
         ?string $email = null,
+        ?array $eventProperties = null,
         ?string $externalID = null,
         IdentityContext|array|null $identityContext = null,
+        ?float $time = null,
         ?string $userID = null,
+        UserProperties|array|null $userProperties = null,
     ): self {
         $self = new self;
 
-        $self['token'] = $token;
-        $self['userProperties'] = $userProperties;
+        $self['distinctID'] = $distinctID;
+        $self['event'] = $event;
 
         null !== $defaultProperties && $self['defaultProperties'] = $defaultProperties;
         null !== $email && $self['email'] = $email;
+        null !== $eventProperties && $self['eventProperties'] = $eventProperties;
         null !== $externalID && $self['externalID'] = $externalID;
         null !== $identityContext && $self['identityContext'] = $identityContext;
+        null !== $time && $self['time'] = $time;
         null !== $userID && $self['userID'] = $userID;
+        null !== $userProperties && $self['userProperties'] = $userProperties;
 
         return $self;
     }
 
     /**
-     * The token for your Source. You can find this in the dashboard.
+     * A unique identifier for this event used for deduplication. Highly recommended — if omitted, Ours will generate one for you, but supplying your own gives you stronger idempotency guarantees (e.g. a Stripe payment intent ID or your internal order ID).
      */
-    public function withToken(string $token): self
+    public function withDistinctID(string $distinctID): self
     {
         $self = clone $this;
-        $self['token'] = $token;
+        $self['distinctID'] = $distinctID;
 
         return $self;
     }
 
     /**
-     * User properties to associate with this user. The existing user properties will be updated. And all future events will have these properties associated with them.
-     *
-     * @param UserProperties|UserPropertiesShape $userProperties
+     * The name of the event you're tracking. This must be whitelisted in the Ours dashboard.
      */
-    public function withUserProperties(
-        UserProperties|array $userProperties
-    ): self {
+    public function withEvent(string $event): self
+    {
         $self = clone $this;
-        $self['userProperties'] = $userProperties;
+        $self['event'] = $event;
 
         return $self;
     }
@@ -182,6 +204,19 @@ final class VisitorUpsertParams implements BaseModel
     }
 
     /**
+     * Any additional event properties you want to pass along.
+     *
+     * @param array<string,string|null>|null $eventProperties
+     */
+    public function withEventProperties(?array $eventProperties): self
+    {
+        $self = clone $this;
+        $self['eventProperties'] = $eventProperties;
+
+        return $self;
+    }
+
+    /**
      * Your system's unique identifier for this user. We search your account for an existing visitor with this externalId and attach the event to them (resolving to their Ours Visitor ID). If no match is found, a new visitor is created. When present, email lookup is skipped. If you also have the userId from cookies or local storage, send both — it removes the lookup round-trip.
      */
     public function withExternalID(?string $externalID): self
@@ -207,12 +242,37 @@ final class VisitorUpsertParams implements BaseModel
     }
 
     /**
+     * The time at which the event occurred in milliseconds since UTC epoch. The time must be in the past and within the last 7 days.
+     */
+    public function withTime(?float $time): self
+    {
+        $self = clone $this;
+        $self['time'] = $time;
+
+        return $self;
+    }
+
+    /**
      * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId or email is performed. If you have both a userId and an externalId, send both so the event is attached to the right visitor without any lookup overhead.
      */
     public function withUserID(?string $userID): self
     {
         $self = clone $this;
         $self['userID'] = $userID;
+
+        return $self;
+    }
+
+    /**
+     * Properties to set on the visitor. (optional) You can also update these properties via the identify endpoint.
+     *
+     * @param UserProperties|UserPropertiesShape|null $userProperties
+     */
+    public function withUserProperties(
+        UserProperties|array|null $userProperties
+    ): self {
+        $self = clone $this;
+        $self['userProperties'] = $userProperties;
 
         return $self;
     }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OursPrivacy\Visitor\VisitorUpsertParams;
+namespace OursPrivacy\Batch\BatchCreateParams\Event;
 
 use OursPrivacy\Core\Attributes\Optional;
 use OursPrivacy\Core\Concerns\SdkModel;
@@ -10,7 +10,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
 use OursPrivacy\Core\Conversion\MapOf;
 
 /**
- * User properties to associate with this user. The existing user properties will be updated. And all future events will have these properties associated with them.
+ * Properties to set on the visitor. (optional) You can also update these properties via the identify endpoint.
  *
  * @phpstan-type UserPropertiesShape = array{
  *   _efTransactionID?: string|null,

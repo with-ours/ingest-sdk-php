@@ -12,13 +12,16 @@ use OursPrivacy\Core\Contracts\BaseModel;
  * These properties are used throughout the Ours app to pass known values onto destinations.
  *
  * @phpstan-type DefaultPropertiesShape = array{
+ *   _efTransactionID?: string|null,
  *   activeDuration?: float|null,
  *   adID?: string|null,
+ *   admitadUid?: string|null,
  *   adsetID?: string|null,
  *   alart?: string|null,
  *   aleid?: string|null,
  *   axwrt?: string|null,
  *   basisCid?: string|null,
+ *   beeswaxAuctionID?: string|null,
  *   browserLanguage?: string|null,
  *   browserName?: string|null,
  *   browserVersion?: string|null,
@@ -91,6 +94,12 @@ final class DefaultProperties implements BaseModel
     use SdkModel;
 
     /**
+     * The Everflow affiliate Click (Transaction) ID, captured from the `_ef_transaction_id` URL parameter. Ex: ef_click_abc123.
+     */
+    #[Optional('_ef_transaction_id', nullable: true)]
+    public ?string $_efTransactionID;
+
+    /**
      * The active time in milliseconds that the user had this tab active.
      */
     #[Optional(nullable: true)]
@@ -101,6 +110,12 @@ final class DefaultProperties implements BaseModel
      */
     #[Optional('ad_id', nullable: true)]
     public ?string $adID;
+
+    /**
+     * The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123.
+     */
+    #[Optional('admitad_uid', nullable: true)]
+    public ?string $admitadUid;
 
     /**
      * The adset id for detected in the session. This is set by the web sdk automatically.
@@ -131,6 +146,12 @@ final class DefaultProperties implements BaseModel
      */
     #[Optional('basis_cid', nullable: true)]
     public ?string $basisCid;
+
+    /**
+     * The Beeswax (FreeWheel Buyer Cloud) auction ID, captured from the `{{AUCTION_ID}}` macro on creative click URLs. Ex: bx-auc-abc123.
+     */
+    #[Optional('beeswax_auction_id', nullable: true)]
+    public ?string $beeswaxAuctionID;
 
     /**
      * The language of the browser. Ex: en-US.
@@ -524,13 +545,16 @@ final class DefaultProperties implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
+        ?string $_efTransactionID = null,
         ?float $activeDuration = null,
         ?string $adID = null,
+        ?string $admitadUid = null,
         ?string $adsetID = null,
         ?string $alart = null,
         ?string $aleid = null,
         ?string $axwrt = null,
         ?string $basisCid = null,
+        ?string $beeswaxAuctionID = null,
         ?string $browserLanguage = null,
         ?string $browserName = null,
         ?string $browserVersion = null,
@@ -598,13 +622,16 @@ final class DefaultProperties implements BaseModel
     ): self {
         $self = new self;
 
+        null !== $_efTransactionID && $self['_efTransactionID'] = $_efTransactionID;
         null !== $activeDuration && $self['activeDuration'] = $activeDuration;
         null !== $adID && $self['adID'] = $adID;
+        null !== $admitadUid && $self['admitadUid'] = $admitadUid;
         null !== $adsetID && $self['adsetID'] = $adsetID;
         null !== $alart && $self['alart'] = $alart;
         null !== $aleid && $self['aleid'] = $aleid;
         null !== $axwrt && $self['axwrt'] = $axwrt;
         null !== $basisCid && $self['basisCid'] = $basisCid;
+        null !== $beeswaxAuctionID && $self['beeswaxAuctionID'] = $beeswaxAuctionID;
         null !== $browserLanguage && $self['browserLanguage'] = $browserLanguage;
         null !== $browserName && $self['browserName'] = $browserName;
         null !== $browserVersion && $self['browserVersion'] = $browserVersion;
@@ -674,6 +701,17 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
+     * The Everflow affiliate Click (Transaction) ID, captured from the `_ef_transaction_id` URL parameter. Ex: ef_click_abc123.
+     */
+    public function withEfTransactionID(?string $_efTransactionID): self
+    {
+        $self = clone $this;
+        $self['_efTransactionID'] = $_efTransactionID;
+
+        return $self;
+    }
+
+    /**
      * The active time in milliseconds that the user had this tab active.
      */
     public function withActiveDuration(?float $activeDuration): self
@@ -691,6 +729,17 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['adID'] = $adID;
+
+        return $self;
+    }
+
+    /**
+     * The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123.
+     */
+    public function withAdmitadUid(?string $admitadUid): self
+    {
+        $self = clone $this;
+        $self['admitadUid'] = $admitadUid;
 
         return $self;
     }
@@ -746,6 +795,17 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['basisCid'] = $basisCid;
+
+        return $self;
+    }
+
+    /**
+     * The Beeswax (FreeWheel Buyer Cloud) auction ID, captured from the `{{AUCTION_ID}}` macro on creative click URLs. Ex: bx-auc-abc123.
+     */
+    public function withBeeswaxAuctionID(?string $beeswaxAuctionID): self
+    {
+        $self = clone $this;
+        $self['beeswaxAuctionID'] = $beeswaxAuctionID;
 
         return $self;
     }

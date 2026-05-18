@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OursPrivacy\Track\TrackEventParams;
+namespace OursPrivacy\Batch\BatchCreateParams\Event;
 
 use OursPrivacy\Core\Attributes\Optional;
 use OursPrivacy\Core\Concerns\SdkModel;

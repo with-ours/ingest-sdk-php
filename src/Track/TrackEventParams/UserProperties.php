@@ -13,12 +13,15 @@ use OursPrivacy\Core\Conversion\MapOf;
  * Properties to set on the visitor. (optional) You can also update these properties via the identify endpoint.
  *
  * @phpstan-type UserPropertiesShape = array{
+ *   _efTransactionID?: string|null,
  *   adID?: string|null,
+ *   admitadUid?: string|null,
  *   adsetID?: string|null,
  *   alart?: string|null,
  *   aleid?: string|null,
  *   axwrt?: string|null,
  *   basisCid?: string|null,
+ *   beeswaxAuctionID?: string|null,
  *   campaignID?: string|null,
  *   city?: string|null,
  *   clickid?: string|null,
@@ -77,8 +80,14 @@ final class UserProperties implements BaseModel
     /** @use SdkModel<UserPropertiesShape> */
     use SdkModel;
 
+    #[Optional('_ef_transaction_id', nullable: true)]
+    public ?string $_efTransactionID;
+
     #[Optional('ad_id', nullable: true)]
     public ?string $adID;
+
+    #[Optional('admitad_uid', nullable: true)]
+    public ?string $admitadUid;
 
     #[Optional('adset_id', nullable: true)]
     public ?string $adsetID;
@@ -94,6 +103,9 @@ final class UserProperties implements BaseModel
 
     #[Optional('basis_cid', nullable: true)]
     public ?string $basisCid;
+
+    #[Optional('beeswax_auction_id', nullable: true)]
+    public ?string $beeswaxAuctionID;
 
     #[Optional('campaign_id', nullable: true)]
     public ?string $campaignID;
@@ -271,12 +283,15 @@ final class UserProperties implements BaseModel
      * @param array<string,string|null>|null $customProperties
      */
     public static function with(
+        ?string $_efTransactionID = null,
         ?string $adID = null,
+        ?string $admitadUid = null,
         ?string $adsetID = null,
         ?string $alart = null,
         ?string $aleid = null,
         ?string $axwrt = null,
         ?string $basisCid = null,
+        ?string $beeswaxAuctionID = null,
         ?string $campaignID = null,
         ?string $city = null,
         ?string $clickid = null,
@@ -331,12 +346,15 @@ final class UserProperties implements BaseModel
     ): self {
         $self = new self;
 
+        null !== $_efTransactionID && $self['_efTransactionID'] = $_efTransactionID;
         null !== $adID && $self['adID'] = $adID;
+        null !== $admitadUid && $self['admitadUid'] = $admitadUid;
         null !== $adsetID && $self['adsetID'] = $adsetID;
         null !== $alart && $self['alart'] = $alart;
         null !== $aleid && $self['aleid'] = $aleid;
         null !== $axwrt && $self['axwrt'] = $axwrt;
         null !== $basisCid && $self['basisCid'] = $basisCid;
+        null !== $beeswaxAuctionID && $self['beeswaxAuctionID'] = $beeswaxAuctionID;
         null !== $campaignID && $self['campaignID'] = $campaignID;
         null !== $city && $self['city'] = $city;
         null !== $clickid && $self['clickid'] = $clickid;
@@ -392,10 +410,26 @@ final class UserProperties implements BaseModel
         return $self;
     }
 
+    public function withEfTransactionID(?string $_efTransactionID): self
+    {
+        $self = clone $this;
+        $self['_efTransactionID'] = $_efTransactionID;
+
+        return $self;
+    }
+
     public function withAdID(?string $adID): self
     {
         $self = clone $this;
         $self['adID'] = $adID;
+
+        return $self;
+    }
+
+    public function withAdmitadUid(?string $admitadUid): self
+    {
+        $self = clone $this;
+        $self['admitadUid'] = $admitadUid;
 
         return $self;
     }
@@ -436,6 +470,14 @@ final class UserProperties implements BaseModel
     {
         $self = clone $this;
         $self['basisCid'] = $basisCid;
+
+        return $self;
+    }
+
+    public function withBeeswaxAuctionID(?string $beeswaxAuctionID): self
+    {
+        $self = clone $this;
+        $self['beeswaxAuctionID'] = $beeswaxAuctionID;
 
         return $self;
     }

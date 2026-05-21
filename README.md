@@ -13,7 +13,7 @@ The REST API documentation can be found on [docs.oursprivacy.com](https://docs.o
 <!-- x-release-please-start-version -->
 
 ```
-composer require "oursprivacy/ingest-sdk 1.4.0"
+composer require "oursprivacy/ingest-sdk 1.5.0"
 ```
 
 <!-- x-release-please-end -->

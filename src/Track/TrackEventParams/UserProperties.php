@@ -71,6 +71,8 @@ use OursPrivacy\Core\Conversion\MapOf;
  *   utmName?: string|null,
  *   utmSource?: string|null,
  *   utmTerm?: string|null,
+ *   viantClickID?: string|null,
+ *   viantImpressionID?: string|null,
  *   wbraid?: string|null,
  *   zip?: string|null,
  * }
@@ -263,6 +265,12 @@ final class UserProperties implements BaseModel
     #[Optional('utm_term', nullable: true)]
     public ?string $utmTerm;
 
+    #[Optional('viant_click_id', nullable: true)]
+    public ?string $viantClickID;
+
+    #[Optional('viant_impression_id', nullable: true)]
+    public ?string $viantImpressionID;
+
     #[Optional(nullable: true)]
     public ?string $wbraid;
 
@@ -341,6 +349,8 @@ final class UserProperties implements BaseModel
         ?string $utmName = null,
         ?string $utmSource = null,
         ?string $utmTerm = null,
+        ?string $viantClickID = null,
+        ?string $viantImpressionID = null,
         ?string $wbraid = null,
         ?string $zip = null,
     ): self {
@@ -404,6 +414,8 @@ final class UserProperties implements BaseModel
         null !== $utmName && $self['utmName'] = $utmName;
         null !== $utmSource && $self['utmSource'] = $utmSource;
         null !== $utmTerm && $self['utmTerm'] = $utmTerm;
+        null !== $viantClickID && $self['viantClickID'] = $viantClickID;
+        null !== $viantImpressionID && $self['viantImpressionID'] = $viantImpressionID;
         null !== $wbraid && $self['wbraid'] = $wbraid;
         null !== $zip && $self['zip'] = $zip;
 
@@ -879,6 +891,22 @@ final class UserProperties implements BaseModel
     {
         $self = clone $this;
         $self['utmTerm'] = $utmTerm;
+
+        return $self;
+    }
+
+    public function withViantClickID(?string $viantClickID): self
+    {
+        $self = clone $this;
+        $self['viantClickID'] = $viantClickID;
+
+        return $self;
+    }
+
+    public function withViantImpressionID(?string $viantImpressionID): self
+    {
+        $self = clone $this;
+        $self['viantImpressionID'] = $viantImpressionID;
 
         return $self;
     }

@@ -84,6 +84,8 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   utmSource?: string|null,
  *   utmTerm?: string|null,
  *   version?: string|null,
+ *   viantClickID?: string|null,
+ *   viantImpressionID?: string|null,
  *   wbraid?: string|null,
  *   webview?: bool|null,
  * }
@@ -523,6 +525,18 @@ final class DefaultProperties implements BaseModel
     public ?string $version;
 
     /**
+     * The Viant (Adelphic) Click ID, captured from the `viant_click_id` URL parameter (Viant `${ADELPHIC_CLICKID}` macro). Sent as `xid` on Viant postbacks. Ex: viant_click_abc123.
+     */
+    #[Optional('viant_click_id', nullable: true)]
+    public ?string $viantClickID;
+
+    /**
+     * The Viant (Adelphic) Impression ID, captured from the `viant_impression_id` URL parameter (Viant `${ADELPHIC_IMPRESSIONID}` macro). Sent as `imp_id` on Viant postbacks for post-view attribution. Ex: viant_imp_abc123.
+     */
+    #[Optional('viant_impression_id', nullable: true)]
+    public ?string $viantImpressionID;
+
+    /**
      * The WBRAID Identifier. The web SDK automatically captures this from the query params.
      */
     #[Optional(nullable: true)]
@@ -617,6 +631,8 @@ final class DefaultProperties implements BaseModel
         ?string $utmSource = null,
         ?string $utmTerm = null,
         ?string $version = null,
+        ?string $viantClickID = null,
+        ?string $viantImpressionID = null,
         ?string $wbraid = null,
         ?bool $webview = null,
     ): self {
@@ -694,6 +710,8 @@ final class DefaultProperties implements BaseModel
         null !== $utmSource && $self['utmSource'] = $utmSource;
         null !== $utmTerm && $self['utmTerm'] = $utmTerm;
         null !== $version && $self['version'] = $version;
+        null !== $viantClickID && $self['viantClickID'] = $viantClickID;
+        null !== $viantImpressionID && $self['viantImpressionID'] = $viantImpressionID;
         null !== $wbraid && $self['wbraid'] = $wbraid;
         null !== $webview && $self['webview'] = $webview;
 
@@ -1485,6 +1503,28 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['version'] = $version;
+
+        return $self;
+    }
+
+    /**
+     * The Viant (Adelphic) Click ID, captured from the `viant_click_id` URL parameter (Viant `${ADELPHIC_CLICKID}` macro). Sent as `xid` on Viant postbacks. Ex: viant_click_abc123.
+     */
+    public function withViantClickID(?string $viantClickID): self
+    {
+        $self = clone $this;
+        $self['viantClickID'] = $viantClickID;
+
+        return $self;
+    }
+
+    /**
+     * The Viant (Adelphic) Impression ID, captured from the `viant_impression_id` URL parameter (Viant `${ADELPHIC_IMPRESSIONID}` macro). Sent as `imp_id` on Viant postbacks for post-view attribution. Ex: viant_imp_abc123.
+     */
+    public function withViantImpressionID(?string $viantImpressionID): self
+    {
+        $self = clone $this;
+        $self['viantImpressionID'] = $viantImpressionID;
 
         return $self;
     }

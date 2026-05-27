@@ -56,6 +56,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   msclkid?: string|null,
  *   ndclid?: string|null,
  *   newS?: bool|null,
+ *   oppref?: string|null,
  *   osName?: string|null,
  *   osVersion?: string|null,
  *   pageHash?: float|null,
@@ -360,6 +361,12 @@ final class DefaultProperties implements BaseModel
     public ?bool $newS;
 
     /**
+     * The OpenAI Ads privacy-preserving reference, captured from the `oppref` URL parameter on landing pages (the OpenAI Pixel also stores it in a `__oppref` cookie). Sent to OpenAI Ads on Conversions API events for attribution. Ex: oppref_abc.
+     */
+    #[Optional(nullable: true)]
+    public ?string $oppref;
+
+    /**
      * The name of the operating system. Ex: Windows.
      */
     #[Optional('os_name', nullable: true)]
@@ -603,6 +610,7 @@ final class DefaultProperties implements BaseModel
         ?string $msclkid = null,
         ?string $ndclid = null,
         ?bool $newS = null,
+        ?string $oppref = null,
         ?string $osName = null,
         ?string $osVersion = null,
         ?float $pageHash = null,
@@ -682,6 +690,7 @@ final class DefaultProperties implements BaseModel
         null !== $msclkid && $self['msclkid'] = $msclkid;
         null !== $ndclid && $self['ndclid'] = $ndclid;
         null !== $newS && $self['newS'] = $newS;
+        null !== $oppref && $self['oppref'] = $oppref;
         null !== $osName && $self['osName'] = $osName;
         null !== $osVersion && $self['osVersion'] = $osVersion;
         null !== $pageHash && $self['pageHash'] = $pageHash;
@@ -1198,6 +1207,17 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['newS'] = $newS;
+
+        return $self;
+    }
+
+    /**
+     * The OpenAI Ads privacy-preserving reference, captured from the `oppref` URL parameter on landing pages (the OpenAI Pixel also stores it in a `__oppref` cookie). Sent to OpenAI Ads on Conversions API events for attribution. Ex: oppref_abc.
+     */
+    public function withOppref(?string $oppref): self
+    {
+        $self = clone $this;
+        $self['oppref'] = $oppref;
 
         return $self;
     }

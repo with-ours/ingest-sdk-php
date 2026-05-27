@@ -52,6 +52,7 @@ use OursPrivacy\Core\Conversion\MapOf;
  *   liFatID?: string|null,
  *   msclkid?: string|null,
  *   ndclid?: string|null,
+ *   oppref?: string|null,
  *   phoneNumber?: string|null,
  *   qclid?: string|null,
  *   rdtCid?: string|null,
@@ -208,6 +209,9 @@ final class UserProperties implements BaseModel
     #[Optional(nullable: true)]
     public ?string $ndclid;
 
+    #[Optional(nullable: true)]
+    public ?string $oppref;
+
     #[Optional('phone_number', nullable: true)]
     public ?string $phoneNumber;
 
@@ -330,6 +334,7 @@ final class UserProperties implements BaseModel
         ?string $liFatID = null,
         ?string $msclkid = null,
         ?string $ndclid = null,
+        ?string $oppref = null,
         ?string $phoneNumber = null,
         ?string $qclid = null,
         ?string $rdtCid = null,
@@ -395,6 +400,7 @@ final class UserProperties implements BaseModel
         null !== $liFatID && $self['liFatID'] = $liFatID;
         null !== $msclkid && $self['msclkid'] = $msclkid;
         null !== $ndclid && $self['ndclid'] = $ndclid;
+        null !== $oppref && $self['oppref'] = $oppref;
         null !== $phoneNumber && $self['phoneNumber'] = $phoneNumber;
         null !== $qclid && $self['qclid'] = $qclid;
         null !== $rdtCid && $self['rdtCid'] = $rdtCid;
@@ -739,6 +745,14 @@ final class UserProperties implements BaseModel
     {
         $self = clone $this;
         $self['ndclid'] = $ndclid;
+
+        return $self;
+    }
+
+    public function withOppref(?string $oppref): self
+    {
+        $self = clone $this;
+        $self['oppref'] = $oppref;
 
         return $self;
     }

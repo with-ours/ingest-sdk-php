@@ -10,6 +10,7 @@ use OursPrivacy\Core\BaseClient;
 use OursPrivacy\Core\Implementation\StreamingHttpClient;
 use OursPrivacy\Core\Util;
 use OursPrivacy\Services\BatchService;
+use OursPrivacy\Services\ExperimentsService;
 use OursPrivacy\Services\TrackService;
 use OursPrivacy\Services\VisitorService;
 
@@ -34,6 +35,11 @@ class Client extends BaseClient
      * @api
      */
     public VisitorService $visitor;
+
+    /**
+     * @api
+     */
+    public ExperimentsService $experiments;
 
     /**
      * @param RequestOpts|null $requestOptions
@@ -95,5 +101,6 @@ class Client extends BaseClient
         $this->batch = new BatchService($this);
         $this->track = new TrackService($this);
         $this->visitor = new VisitorService($this);
+        $this->experiments = new ExperimentsService($this);
     }
 }

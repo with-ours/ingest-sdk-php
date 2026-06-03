@@ -56,6 +56,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   msclkid?: string|null,
  *   ndclid?: string|null,
  *   newS?: bool|null,
+ *   obClickID?: string|null,
  *   oppref?: string|null,
  *   osName?: string|null,
  *   osVersion?: string|null,
@@ -361,6 +362,12 @@ final class DefaultProperties implements BaseModel
     public ?bool $newS;
 
     /**
+     * The Outbrain click ID, captured from the `ob_click_id` URL parameter (Outbrain `{{ob_click_id}}` macro) on the landing page. Ex: ob_click_abc123.
+     */
+    #[Optional('ob_click_id', nullable: true)]
+    public ?string $obClickID;
+
+    /**
      * The OpenAI Ads privacy-preserving reference, captured from the `oppref` URL parameter on landing pages (the OpenAI Pixel also stores it in a `__oppref` cookie). Sent to OpenAI Ads on Conversions API events for attribution. Ex: oppref_abc.
      */
     #[Optional(nullable: true)]
@@ -610,6 +617,7 @@ final class DefaultProperties implements BaseModel
         ?string $msclkid = null,
         ?string $ndclid = null,
         ?bool $newS = null,
+        ?string $obClickID = null,
         ?string $oppref = null,
         ?string $osName = null,
         ?string $osVersion = null,
@@ -690,6 +698,7 @@ final class DefaultProperties implements BaseModel
         null !== $msclkid && $self['msclkid'] = $msclkid;
         null !== $ndclid && $self['ndclid'] = $ndclid;
         null !== $newS && $self['newS'] = $newS;
+        null !== $obClickID && $self['obClickID'] = $obClickID;
         null !== $oppref && $self['oppref'] = $oppref;
         null !== $osName && $self['osName'] = $osName;
         null !== $osVersion && $self['osVersion'] = $osVersion;
@@ -1207,6 +1216,17 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['newS'] = $newS;
+
+        return $self;
+    }
+
+    /**
+     * The Outbrain click ID, captured from the `ob_click_id` URL parameter (Outbrain `{{ob_click_id}}` macro) on the landing page. Ex: ob_click_abc123.
+     */
+    public function withObClickID(?string $obClickID): self
+    {
+        $self = clone $this;
+        $self['obClickID'] = $obClickID;
 
         return $self;
     }

@@ -52,6 +52,7 @@ use OursPrivacy\Core\Conversion\MapOf;
  *   liFatID?: string|null,
  *   msclkid?: string|null,
  *   ndclid?: string|null,
+ *   obClickID?: string|null,
  *   oppref?: string|null,
  *   phoneNumber?: string|null,
  *   qclid?: string|null,
@@ -209,6 +210,9 @@ final class UserProperties implements BaseModel
     #[Optional(nullable: true)]
     public ?string $ndclid;
 
+    #[Optional('ob_click_id', nullable: true)]
+    public ?string $obClickID;
+
     #[Optional(nullable: true)]
     public ?string $oppref;
 
@@ -334,6 +338,7 @@ final class UserProperties implements BaseModel
         ?string $liFatID = null,
         ?string $msclkid = null,
         ?string $ndclid = null,
+        ?string $obClickID = null,
         ?string $oppref = null,
         ?string $phoneNumber = null,
         ?string $qclid = null,
@@ -400,6 +405,7 @@ final class UserProperties implements BaseModel
         null !== $liFatID && $self['liFatID'] = $liFatID;
         null !== $msclkid && $self['msclkid'] = $msclkid;
         null !== $ndclid && $self['ndclid'] = $ndclid;
+        null !== $obClickID && $self['obClickID'] = $obClickID;
         null !== $oppref && $self['oppref'] = $oppref;
         null !== $phoneNumber && $self['phoneNumber'] = $phoneNumber;
         null !== $qclid && $self['qclid'] = $qclid;
@@ -745,6 +751,14 @@ final class UserProperties implements BaseModel
     {
         $self = clone $this;
         $self['ndclid'] = $ndclid;
+
+        return $self;
+    }
+
+    public function withObClickID(?string $obClickID): self
+    {
+        $self = clone $this;
+        $self['obClickID'] = $obClickID;
 
         return $self;
     }

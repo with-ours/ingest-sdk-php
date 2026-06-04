@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.0 (2026-06-03)
+
+Full Changelog: [v1.7.0...v1.8.0](https://github.com/with-ours/ingest-sdk-php/compare/v1.7.0...v1.8.0)
+
+### Features
+
+* **api:** api update ([8c5e2f4](https://github.com/with-ours/ingest-sdk-php/commit/8c5e2f4b185cd734ef4e984e811f929594ac2c5d))
+
 ## 1.7.0 (2026-05-28)
 
 Full Changelog: [v1.6.0...v1.7.0](https://github.com/with-ours/ingest-sdk-php/compare/v1.6.0...v1.7.0)

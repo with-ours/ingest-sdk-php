@@ -140,7 +140,7 @@ final class DefaultProperties implements BaseModel
     public ?string $aleid;
 
     /**
-     * The AppLovin Axon pixel cookie value (_axwrt). Web-only.
+     * The AppLovin pixel cookie value (_axwrt). Web-only.
      */
     #[Optional(nullable: true)]
     public ?string $axwrt;
@@ -814,7 +814,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The AppLovin Axon pixel cookie value (_axwrt). Web-only.
+     * The AppLovin pixel cookie value (_axwrt). Web-only.
      */
     public function withAxwrt(?string $axwrt): self
     {

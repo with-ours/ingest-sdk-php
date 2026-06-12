@@ -533,7 +533,7 @@ final class DefaultProperties implements BaseModel
     public ?string $utmTerm;
 
     /**
-     * The version of the web SDK.
+     * The SDK version (e.g., web SDK or ingest-sdk-* via Stainless headers).
      */
     #[Optional(nullable: true)]
     public ?string $version;
@@ -1537,7 +1537,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The version of the web SDK.
+     * The SDK version (e.g., web SDK or ingest-sdk-* via Stainless headers).
      */
     public function withVersion(?string $version): self
     {

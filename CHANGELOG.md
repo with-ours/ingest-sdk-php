@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.10.0 (2026-06-15)
+
+Full Changelog: [v1.9.0...v1.10.0](https://github.com/with-ours/ingest-sdk-php/compare/v1.9.0...v1.10.0)
+
+### Features
+
+* **api:** api update ([9d6af35](https://github.com/with-ours/ingest-sdk-php/commit/9d6af35f316b959b87bca3bedc285f5007501fe8))
+
+
+### Build System
+
+* **deps-dev:** bump guzzlehttp/psr7 from 2.9.0 to 2.11.0 ([#31](https://github.com/with-ours/ingest-sdk-php/issues/31)) ([fb64348](https://github.com/with-ours/ingest-sdk-php/commit/fb6434878399bd529a3f7c0209dc62ba4e285177))
+
 ## 1.9.0 (2026-06-05)
 
 Full Changelog: [v1.8.0...v1.9.0](https://github.com/with-ours/ingest-sdk-php/compare/v1.8.0...v1.9.0)

@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.10.1 (2026-06-22)
+
+Full Changelog: [v1.10.0...v1.10.1](https://github.com/with-ours/ingest-sdk-php/compare/v1.10.0...v1.10.1)
+
+### Build System
+
+* **deps-dev:** bump guzzlehttp/guzzle from 7.10.0 to 7.12.1 ([#33](https://github.com/with-ours/ingest-sdk-php/issues/33)) ([d92767a](https://github.com/with-ours/ingest-sdk-php/commit/d92767a567a400efb5334fbebb1bb3e84c50c18b))
+
 ## 1.10.0 (2026-06-15)
 
 Full Changelog: [v1.9.0...v1.10.0](https://github.com/with-ours/ingest-sdk-php/compare/v1.9.0...v1.10.0)

@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.11.0 (2026-07-18)
+
+Full Changelog: [v1.10.1...v1.11.0](https://github.com/with-ours/ingest-sdk-php/compare/v1.10.1...v1.11.0)
+
+### Features
+
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([0a3573f](https://github.com/with-ours/ingest-sdk-php/commit/0a3573fe96647bbb38aeaa1cdc1019aad5623af6))
+
 ## 1.10.1 (2026-06-22)
 
 Full Changelog: [v1.10.0...v1.10.1](https://github.com/with-ours/ingest-sdk-php/compare/v1.10.0...v1.10.1)

@@ -5,5 +5,5 @@ declare(strict_types=1);
 namespace OursPrivacy;
 
 // x-release-please-start-version
-const VERSION = '1.11.0';
+const VERSION = '1.11.1';
 // x-release-please-end

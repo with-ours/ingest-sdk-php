@@ -18,6 +18,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   experimentKey?: string|null,
  *   experimentName?: string|null,
  *   isControl?: bool|null,
+ *   redirect?: string|null,
  *   type?: string|null,
  *   variantName?: string|null,
  * }
@@ -47,6 +48,12 @@ final class UnionMember0 implements BaseModel
 
     #[Optional('is_control', nullable: true)]
     public ?bool $isControl;
+
+    /**
+     * Redirect destination for redirect (split-URL) variants — a same-domain relative path or an absolute https:// URL. Present only when the assigned variant is a redirect; absent for on-page (DOM-modification) variants. Read it straight off the payload and issue the redirect server-side.
+     */
+    #[Optional(nullable: true)]
+    public ?string $redirect;
 
     #[Optional(nullable: true)]
     public ?string $type;
@@ -92,6 +99,7 @@ final class UnionMember0 implements BaseModel
         ?string $experimentKey = null,
         ?string $experimentName = null,
         ?bool $isControl = null,
+        ?string $redirect = null,
         ?string $type = null,
         ?string $variantName = null,
     ): self {
@@ -105,6 +113,7 @@ final class UnionMember0 implements BaseModel
         null !== $experimentKey && $self['experimentKey'] = $experimentKey;
         null !== $experimentName && $self['experimentName'] = $experimentName;
         null !== $isControl && $self['isControl'] = $isControl;
+        null !== $redirect && $self['redirect'] = $redirect;
         null !== $type && $self['type'] = $type;
         null !== $variantName && $self['variantName'] = $variantName;
 
@@ -163,6 +172,17 @@ final class UnionMember0 implements BaseModel
     {
         $self = clone $this;
         $self['isControl'] = $isControl;
+
+        return $self;
+    }
+
+    /**
+     * Redirect destination for redirect (split-URL) variants — a same-domain relative path or an absolute https:// URL. Present only when the assigned variant is a redirect; absent for on-page (DOM-modification) variants. Read it straight off the payload and issue the redirect server-side.
+     */
+    public function withRedirect(?string $redirect): self
+    {
+        $self = clone $this;
+        $self['redirect'] = $redirect;
 
         return $self;
     }

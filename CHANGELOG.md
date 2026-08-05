@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.12.1 (2026-08-05)
+
+Full Changelog: [v1.12.0...v1.12.1](https://github.com/with-ours/ingest-sdk-php/compare/v1.12.0...v1.12.1)
+
+### Chores
+
+* add CODEOWNERS ([#39](https://github.com/with-ours/ingest-sdk-php/issues/39)) ([34e551d](https://github.com/with-ours/ingest-sdk-php/commit/34e551d15264ecd536f3f02b279b9884f902c80d))
+
+
+### Build System
+
+* **deps-dev:** bump guzzlehttp/guzzle from 7.15.1 to 7.15.2 ([#41](https://github.com/with-ours/ingest-sdk-php/issues/41)) ([0149410](https://github.com/with-ours/ingest-sdk-php/commit/0149410245b89553f3048d757307423ea7dbea32))
+
 ## 1.12.0 (2026-07-21)
 
 Full Changelog: [v1.11.1...v1.12.0](https://github.com/with-ours/ingest-sdk-php/compare/v1.11.1...v1.12.0)

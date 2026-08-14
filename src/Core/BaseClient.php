@@ -12,6 +12,7 @@ use OursPrivacy\Core\Conversion\Contracts\ConverterSource;
 use OursPrivacy\Core\Exceptions\APIConnectionException;
 use OursPrivacy\Core\Exceptions\APIStatusException;
 use OursPrivacy\Core\Implementation\RawResponse;
+use OursPrivacy\Core\Implementation\StreamingHttpClient;
 use OursPrivacy\RequestOptions;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Message\RequestInterface;
@@ -249,7 +250,13 @@ abstract class BaseClient
         $err = null;
 
         try {
-            $rsp = $transporter->sendRequest($req);
+            if ($transporter instanceof StreamingHttpClient) {
+                $rsp = $transporter->sendRequest($req, timeout: $opts->timeout);
+            } elseif (is_a($transporter, '\GuzzleHttp\Client')) {
+                $rsp = $transporter->send($req, ['timeout' => $opts->timeout]);
+            } else {
+                $rsp = $transporter->sendRequest($req);
+            }
         } catch (ClientExceptionInterface $e) {
             $err = $e;
         }

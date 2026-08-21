@@ -34,7 +34,7 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Send multiple `/track`-shaped events in a single request. The top-level token is authorized once for the full batch. Each batch row must include `distinctId`, and mixed validation or queue outcomes are reported per row.
+     * Send multiple `/track`-shaped events in a single request. This endpoint is intended for replay, backfill, and asynchronous bulk delivery. The top-level token is authorized once for the full batch. Each batch row must include `distinctId`, and mixed validation or queue outcomes are reported per row.
      *
      * @param string $token The token for your Source. You can find this in the dashboard.
      * @param list<Event|EventShape> $events a list of `/track`-shaped events to validate and enqueue together

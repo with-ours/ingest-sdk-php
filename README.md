@@ -2,6 +2,8 @@
 
 The Ours Privacy PHP library provides convenient access to the Ours Privacy REST API from any PHP 8.1.0+ application.
 
+It is generated with [Stainless](https://www.stainless.com/).
+
 ## Documentation
 
 The REST API documentation can be found on [docs.oursprivacy.com](https://docs.oursprivacy.com).

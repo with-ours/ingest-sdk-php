@@ -34,6 +34,7 @@ class ClientTest extends TestCase
         $client->track->event(token: 'x', event: 'x');
 
         $this->assertNotFalse($requested = $transporter->getRequests()[0] ?? false);
+        $this->assertSame(\OursPrivacy\VERSION, $requested->getHeaderLine('X-Stainless-Package-Version'));
 
         foreach (['accept', 'content-type'] as $header) {
             $sent = $requested->getHeaderLine($header);

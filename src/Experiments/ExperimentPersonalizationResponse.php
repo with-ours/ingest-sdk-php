@@ -8,6 +8,7 @@ use OursPrivacy\Core\Attributes\Optional;
 use OursPrivacy\Core\Attributes\Required;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
+use OursPrivacy\Core\Conversion\MapOf;
 use OursPrivacy\Experiments\ExperimentPersonalizationResponse\Personalization;
 use OursPrivacy\Experiments\ExperimentPersonalizationResponse\Property;
 
@@ -17,7 +18,7 @@ use OursPrivacy\Experiments\ExperimentPersonalizationResponse\Property;
  * @phpstan-import-type PersonalizationShape from \OursPrivacy\Experiments\ExperimentPersonalizationResponse\Personalization
  *
  * @phpstan-type ExperimentPersonalizationResponseShape = array{
- *   properties: array<string,PropertyShape>,
+ *   properties: array<string,PropertyShape|null>,
  *   success: bool,
  *   personalizations?: list<Personalization|PersonalizationShape>|null,
  * }
@@ -30,9 +31,9 @@ final class ExperimentPersonalizationResponse implements BaseModel
     /**
      * The visitor traits accumulated by your personalization property rules, keyed by property key. Values are always scalars — a string, number, or boolean, or null when the captured field was itself empty. Empty for a visitor who has not matched any rule yet. These same values are delivered to the visitor's browser and are readable by anyone who knows the visitor_id, so never accumulate secrets, credentials, PHI, or confidential data into a property.
      *
-     * @var array<string,PropertyVariants> $properties
+     * @var array<string,PropertyVariants|null> $properties
      */
-    #[Required(map: Property::class)]
+    #[Required(type: new MapOf(Property::class, nullable: true))]
     public array $properties;
 
     #[Required]
@@ -72,7 +73,7 @@ final class ExperimentPersonalizationResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,PropertyShape> $properties
+     * @param array<string,PropertyShape|null> $properties
      * @param list<Personalization|PersonalizationShape>|null $personalizations
      */
     public static function with(
@@ -93,7 +94,7 @@ final class ExperimentPersonalizationResponse implements BaseModel
     /**
      * The visitor traits accumulated by your personalization property rules, keyed by property key. Values are always scalars — a string, number, or boolean, or null when the captured field was itself empty. Empty for a visitor who has not matched any rule yet. These same values are delivered to the visitor's browser and are readable by anyone who knows the visitor_id, so never accumulate secrets, credentials, PHI, or confidential data into a property.
      *
-     * @param array<string,PropertyShape> $properties
+     * @param array<string,PropertyShape|null> $properties
      */
     public function withProperties(array $properties): self
     {

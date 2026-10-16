@@ -134,6 +134,27 @@ final class Util
     }
 
     /**
+     * Drops top-level `null` entries, which represent omitted optional arguments, except
+     * for the keys in `$explicitNulls`. Nested values are left intact, so `null`s within
+     * maps, lists, and JSON values are sent as provided.
+     *
+     * @param array<string,mixed> $params
+     * @param list<string> $explicitNulls
+     *
+     * @return array<string,mixed>
+     */
+    public static function removeOmitted(
+        array $params,
+        array $explicitNulls = []
+    ): array {
+        return array_filter(
+            $params,
+            callback: static fn ($v, $k) => !is_null($v) || in_array($k, $explicitNulls, strict: true),
+            mode: ARRAY_FILTER_USE_BOTH,
+        );
+    }
+
+    /**
      * @param string|int|list<string|int>|callable $key
      */
     public static function dig(

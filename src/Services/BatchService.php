@@ -47,7 +47,7 @@ final class BatchService implements BatchContract
         array $events,
         RequestOptions|array|null $requestOptions = null,
     ): BatchNewResponse {
-        $params = Util::removeNulls(['token' => $token, 'events' => $events]);
+        $params = Util::removeOmitted(['token' => $token, 'events' => $events]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);

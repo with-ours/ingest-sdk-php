@@ -55,7 +55,7 @@ final class ExperimentsService implements ExperimentsContract
         ?bool $trackImpression = null,
         RequestOptions|array|null $requestOptions = null,
     ): UnionMember0|UnionMember1 {
-        $params = Util::removeNulls(
+        $params = Util::removeOmitted(
             [
                 'token' => $token,
                 'visitorID' => $visitorID,
@@ -85,7 +85,9 @@ final class ExperimentsService implements ExperimentsContract
         string $visitorID,
         RequestOptions|array|null $requestOptions = null,
     ): ExperimentPersonalizationResponse {
-        $params = Util::removeNulls(['token' => $token, 'visitorID' => $visitorID]);
+        $params = Util::removeOmitted(
+            ['token' => $token, 'visitorID' => $visitorID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->personalization(params: $params, requestOptions: $requestOptions);

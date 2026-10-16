@@ -61,7 +61,7 @@ final class VisitorService implements VisitorContract
         ?string $userID = null,
         RequestOptions|array|null $requestOptions = null,
     ): VisitorUpsertResponse {
-        $params = Util::removeNulls(
+        $params = Util::removeOmitted(
             [
                 'token' => $token,
                 'userProperties' => $userProperties,

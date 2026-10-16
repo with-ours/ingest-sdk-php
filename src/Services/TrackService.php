@@ -70,7 +70,7 @@ final class TrackService implements TrackContract
         UserProperties|array|null $userProperties = null,
         RequestOptions|array|null $requestOptions = null,
     ): TrackEventResponse {
-        $params = Util::removeNulls(
+        $params = Util::removeOmitted(
             [
                 'token' => $token,
                 'event' => $event,

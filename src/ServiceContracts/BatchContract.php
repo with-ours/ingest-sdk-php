@@ -18,7 +18,7 @@ interface BatchContract
     /**
      * @api
      *
-     * @param string $token The token for your Source. You can find this in the dashboard.
+     * @param string $token The token for your Source. You can find this in the dashboard. Leading and trailing whitespace is removed before validation.
      * @param list<Event|EventShape> $events a list of `/track`-shaped events to validate and enqueue together
      * @param RequestOpts|null $requestOptions
      *

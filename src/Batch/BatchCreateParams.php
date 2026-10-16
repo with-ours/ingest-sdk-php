@@ -28,7 +28,7 @@ final class BatchCreateParams implements BaseModel
     use SdkParams;
 
     /**
-     * The token for your Source. You can find this in the dashboard.
+     * The token for your Source. You can find this in the dashboard. Leading and trailing whitespace is removed before validation.
      */
     #[Required]
     public string $token;
@@ -78,7 +78,7 @@ final class BatchCreateParams implements BaseModel
     }
 
     /**
-     * The token for your Source. You can find this in the dashboard.
+     * The token for your Source. You can find this in the dashboard. Leading and trailing whitespace is removed before validation.
      */
     public function withToken(string $token): self
     {

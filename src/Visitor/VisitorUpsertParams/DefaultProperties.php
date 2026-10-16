@@ -7,9 +7,13 @@ namespace OursPrivacy\Visitor\VisitorUpsertParams;
 use OursPrivacy\Core\Attributes\Optional;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
+use OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties\IsBot;
 
 /**
  * These properties are used throughout the Ours app to pass known values onto destinations.
+ *
+ * @phpstan-import-type IsBotVariants from \OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties\IsBot
+ * @phpstan-import-type IsBotShape from \OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties\IsBot
  *
  * @phpstan-type DefaultPropertiesShape = array{
  *   _efTransactionID?: string|null,
@@ -46,12 +50,14 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   gadSource?: string|null,
  *   gbraid?: string|null,
  *   gclid?: string|null,
+ *   graid?: string|null,
+ *   grclid?: string|null,
  *   host?: string|null,
  *   iframe?: bool|null,
  *   imRef?: string|null,
  *   ip?: string|null,
  *   irclickid?: string|null,
- *   isBot?: string|null,
+ *   isBot?: IsBotShape|null,
  *   liFatID?: string|null,
  *   msclkid?: string|null,
  *   ndclid?: string|null,
@@ -98,7 +104,7 @@ final class DefaultProperties implements BaseModel
     use SdkModel;
 
     /**
-     * The Everflow affiliate Click (Transaction) ID, captured from the `_ef_transaction_id` URL parameter. Ex: ef_click_abc123.
+     * The Everflow affiliate Click (Transaction) ID, captured from the `_ef_transaction_id` URL parameter. Ex: ef_click_abc123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('_ef_transaction_id', nullable: true)]
     public ?string $_efTransactionID;
@@ -110,121 +116,121 @@ final class DefaultProperties implements BaseModel
     public ?float $activeDuration;
 
     /**
-     * The ad id for detected in the session. This is set by the web sdk automatically.
+     * The ad id for detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('ad_id', nullable: true)]
     public ?string $adID;
 
     /**
-     * The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123.
+     * The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('admitad_uid', nullable: true)]
     public ?string $admitadUid;
 
     /**
-     * The adset id for detected in the session. This is set by the web sdk automatically.
+     * The adset id for detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('adset_id', nullable: true)]
     public ?string $adsetID;
 
     /**
-     * The AppLovin alart query parameter. Ex: alart123.
+     * The AppLovin alart query parameter. Ex: alart123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $alart;
 
     /**
-     * The AppLovin aleid query parameter. Ex: aleid123.
+     * The AppLovin aleid query parameter. Ex: aleid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $aleid;
 
     /**
-     * The AppLovin pixel cookie value (_axwrt). Web-only.
+     * The AppLovin pixel cookie value (_axwrt). Web-only. Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $axwrt;
 
     /**
-     * The Basis DSP Click ID. Ex: basis_cid123.
+     * The Basis DSP Click ID. Ex: basis_cid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('basis_cid', nullable: true)]
     public ?string $basisCid;
 
     /**
-     * The Beeswax (FreeWheel Buyer Cloud) auction ID, captured from the `{{AUCTION_ID}}` macro on creative click URLs. Ex: bx-auc-abc123.
+     * The Beeswax (FreeWheel Buyer Cloud) auction ID, captured from the `{{AUCTION_ID}}` macro on creative click URLs. Ex: bx-auc-abc123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('beeswax_auction_id', nullable: true)]
     public ?string $beeswaxAuctionID;
 
     /**
-     * The language of the browser. Ex: en-US.
+     * The language of the browser. Ex: en-US Leading and trailing whitespace is removed before validation.
      */
     #[Optional('browser_language', nullable: true)]
     public ?string $browserLanguage;
 
     /**
-     * The name of the browser. Ex: Chrome.
+     * The name of the browser. Ex: Chrome Leading and trailing whitespace is removed before validation.
      */
     #[Optional('browser_name', nullable: true)]
     public ?string $browserName;
 
     /**
-     * The version of the browser. Ex: 114.0.
+     * The version of the browser. Ex: 114.0 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('browser_version', nullable: true)]
     public ?string $browserVersion;
 
     /**
-     * The campaign id for detected in the session. This is set by the web sdk automatically.
+     * The campaign id for detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('campaign_id', nullable: true)]
     public ?string $campaignID;
 
     /**
-     * The Click ID. Ex: clickid123.
+     * The Click ID. Ex: clickid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $clickid;
 
     /**
-     * The Generic Click ID. Ex: clid123.
+     * The Generic Click ID. Ex: clid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $clid;
 
     /**
-     * The architecture of the CPU. Ex: x64.
+     * The architecture of the CPU. Ex: x64 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('cpu_architecture', nullable: true)]
     public ?string $cpuArchitecture;
 
     /**
-     * The full url (including query params) of the current page.
+     * The full url (including query params) of the current page Leading and trailing whitespace is removed before validation.
      */
     #[Optional('current_url', nullable: true)]
     public ?string $currentURL;
 
     /**
-     * The DoubleClick Click ID. Ex: dclid123.
+     * The DoubleClick Click ID. Ex: dclid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $dclid;
 
     /**
-     * The model of the device. Ex: iPhone 13.
+     * The model of the device. Ex: iPhone 13 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('device_model', nullable: true)]
     public ?string $deviceModel;
 
     /**
-     * The type of device the user is using. Ex: mobile.
+     * The type of device the user is using. Ex: mobile Leading and trailing whitespace is removed before validation.
      */
     #[Optional('device_type', nullable: true)]
     public ?string $deviceType;
 
     /**
-     * The vendor of the device. Ex: Apple.
+     * The vendor of the device. Ex: Apple Leading and trailing whitespace is removed before validation.
      */
     #[Optional('device_vendor', nullable: true)]
     public ?string $deviceVendor;
@@ -236,43 +242,43 @@ final class DefaultProperties implements BaseModel
     public ?float $duration;
 
     /**
-     * The browsers encoding. Ex: UTF-8.
+     * The browsers encoding. Ex: UTF-8 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $encoding;
 
     /**
-     * The name of the browser engine. Ex: Blink.
+     * The name of the browser engine. Ex: Blink Leading and trailing whitespace is removed before validation.
      */
     #[Optional('engine_name', nullable: true)]
     public ?string $engineName;
 
     /**
-     * The version of the browser engine. Ex: 114.0.
+     * The version of the browser engine. Ex: 114.0 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('engine_version', nullable: true)]
     public ?string $engineVersion;
 
     /**
-     * The Pinterest Click ID. Ex: epik456.
+     * The Pinterest Click ID. Ex: epik456 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $epik;
 
     /**
-     * Facebook Click ID with prefix format for Conversions API tracking. Ex: fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890.
+     * Facebook Click ID with prefix format for Conversions API tracking. Ex: fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $fbc;
 
     /**
-     * Raw Facebook Click ID query parameter without prefix from ad clicks. Ex: AbCdEfGhIjKlMnOpQrStUvWxYz1234567890.
+     * Raw Facebook Click ID query parameter without prefix from ad clicks. Ex: AbCdEfGhIjKlMnOpQrStUvWxYz1234567890 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $fbclid;
 
     /**
-     * Facebook Browser ID parameter for identifying browsers and attributing events. Ex: fb.1.1554763741205.1098115397.
+     * Facebook Browser ID parameter for identifying browsers and attributing events. Ex: fb.1.1554763741205.1098115397 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $fbp;
@@ -284,25 +290,37 @@ final class DefaultProperties implements BaseModel
     public ?bool $fv;
 
     /**
-     * The Google Ad Source. Ex: google.
+     * The Google Ad Source. Ex: google Leading and trailing whitespace is removed before validation.
      */
     #[Optional('gad_source', nullable: true)]
     public ?string $gadSource;
 
     /**
-     * The Google Braid ID. Ex: gbraid123.
+     * The Google Braid ID. Ex: gbraid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $gbraid;
 
     /**
-     * The Google Click ID. Ex: gclid123.
+     * The Google Click ID. Ex: gclid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $gclid;
 
     /**
-     * The host of the current page. Ex: example.com.
+     * The Gravity attribution ID, captured from the `graid` URL parameter on the landing page. Gravity resolves it to the campaign, publisher, and ad IDs server-side. Ex: graid-abc123 Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional(nullable: true)]
+    public ?string $graid;
+
+    /**
+     * The Gravity click ID, captured from the `grclid` URL parameter that Gravity (trygravity.com) appends to ad click-through URLs on the landing page. Ex: grclid-abc123 Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional(nullable: true)]
+    public ?string $grclid;
+
+    /**
+     * The host of the current page. Ex: example.com Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $host;
@@ -314,43 +332,45 @@ final class DefaultProperties implements BaseModel
     public ?bool $iframe;
 
     /**
-     * The Impact Click ID reference. Ex: im_ref123.
+     * The Impact Click ID reference. Ex: im_ref123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('im_ref', nullable: true)]
     public ?string $imRef;
 
     /**
-     * The IP address of the user. Ex: 127.0.0.1.
+     * The IP address of the user. Ex: 127.0.0.1 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $ip;
 
     /**
-     * The Impact Click ID. Ex: irclickid123.
+     * The Impact Click ID. Ex: irclickid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $irclickid;
 
     /**
-     * Whether we have detected that the user is a bot. This is set automatically by the Ours server primarily for events tracked through the web SDK.
+     * Any JSON value: string, number, boolean, array, object, or null.
+     *
+     * @var IsBotVariants|null $isBot
      */
-    #[Optional('is_bot', nullable: true)]
-    public ?string $isBot;
+    #[Optional('is_bot', union: IsBot::class, nullable: true)]
+    public string|float|bool|array|null $isBot;
 
     /**
-     * The LinkedIn Click ID. Ex: li_fat_id123.
+     * The LinkedIn Click ID. Ex: li_fat_id123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('li_fat_id', nullable: true)]
     public ?string $liFatID;
 
     /**
-     * The Microsoft Click ID. Ex: msclkid123.
+     * The Microsoft Click ID. Ex: msclkid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $msclkid;
 
     /**
-     * The NextDoor Click ID. Ex: ndclid123.
+     * The NextDoor Click ID. Ex: ndclid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $ndclid;
@@ -362,25 +382,25 @@ final class DefaultProperties implements BaseModel
     public ?bool $newS;
 
     /**
-     * The Outbrain click ID, captured from the `ob_click_id` URL parameter (Outbrain `{{ob_click_id}}` macro) on the landing page. Ex: ob_click_abc123.
+     * The Outbrain click ID, captured from the `ob_click_id` URL parameter (Outbrain `{{ob_click_id}}` macro) on the landing page. Ex: ob_click_abc123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('ob_click_id', nullable: true)]
     public ?string $obClickID;
 
     /**
-     * The OpenAI Ads privacy-preserving reference, captured from the `oppref` URL parameter on landing pages (the OpenAI Pixel also stores it in a `__oppref` cookie). Sent to OpenAI Ads on Conversions API events for attribution. Ex: oppref_abc.
+     * The OpenAI Ads privacy-preserving reference, captured from the `oppref` URL parameter on landing pages (the OpenAI Pixel also stores it in a `__oppref` cookie). Sent to OpenAI Ads on Conversions API events for attribution. Ex: oppref_abc Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $oppref;
 
     /**
-     * The name of the operating system. Ex: Windows.
+     * The name of the operating system. Ex: Windows Leading and trailing whitespace is removed before validation.
      */
     #[Optional('os_name', nullable: true)]
     public ?string $osName;
 
     /**
-     * The version of the operating system. Ex: 10.0.
+     * The version of the operating system. Ex: 10.0 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('os_version', nullable: true)]
     public ?string $osVersion;
@@ -392,19 +412,19 @@ final class DefaultProperties implements BaseModel
     public ?float $pageHash;
 
     /**
-     * The pathname of the current page. Ex: /home.
+     * The pathname of the current page. Ex: /home Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $pathname;
 
     /**
-     * The Quora Click ID. Ex: qclid123.
+     * The Quora Click ID. Ex: qclid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $qclid;
 
     /**
-     * The Reddit Click ID. Ex: rdt_cid123.
+     * The Reddit Click ID. Ex: rdt_cid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('rdt_cid', nullable: true)]
     public ?string $rdtCid;
@@ -416,25 +436,25 @@ final class DefaultProperties implements BaseModel
     public ?string $receivedAt;
 
     /**
-     * The referrer URL of the current page.
+     * The referrer URL of the current page Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $referrer;
 
     /**
-     * The referring domain of the current page.
+     * The referring domain of the current page Leading and trailing whitespace is removed before validation.
      */
     #[Optional('referring_domain', nullable: true)]
     public ?string $referringDomain;
 
     /**
-     * The StackAdapt Tracking ID. Ex: sacid123.
+     * The StackAdapt Tracking ID. Ex: sacid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $sacid;
 
     /**
-     * The SnapChat Click ID. Ex: sccid123.
+     * The SnapChat Click ID. Ex: sccid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $sccid;
@@ -458,100 +478,103 @@ final class DefaultProperties implements BaseModel
     public ?float $sessionCount;
 
     /**
-     * The session ID as assigned automatically by the web SDK. This is required for session replay.
+     * The session ID as assigned automatically by the web SDK. This is required for session replay Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $sid;
 
+    /**
+     * Leading and trailing whitespace is removed before validation.
+     */
     #[Optional(nullable: true)]
     public ?string $sr;
 
     /**
-     * The title of the current page.
+     * The title of the current page Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $title;
 
     /**
-     * The TikTok Click ID. Ex: ttclid123.
+     * The TikTok Click ID. Ex: ttclid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $ttclid;
 
     /**
-     * The Twitter Click ID. Ex: twclid123.
+     * The Twitter Click ID. Ex: twclid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $twclid;
 
     /**
-     * User agent as a full list of strings.
+     * User agent as a full list of strings. Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $uafvl;
 
     /**
-     * The user agent of the browser.
+     * The user agent of the browser Leading and trailing whitespace is removed before validation.
      */
     #[Optional('user_agent', nullable: true)]
     public ?string $userAgent;
 
     /**
-     * The UTM Campaign. The web SDK automatically captures this from the query params.
+     * The UTM Campaign. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('utm_campaign', nullable: true)]
     public ?string $utmCampaign;
 
     /**
-     * The UTM Content. The web SDK automatically captures this from the query params.
+     * The UTM Content. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('utm_content', nullable: true)]
     public ?string $utmContent;
 
     /**
-     * The UTM Medium. The web SDK automatically captures this from the query params.
+     * The UTM Medium. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('utm_medium', nullable: true)]
     public ?string $utmMedium;
 
     /**
-     * The UTM Name. The web SDK automatically captures this from the query params.
+     * The UTM Name. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('utm_name', nullable: true)]
     public ?string $utmName;
 
     /**
-     * The UTM Source. The web SDK automatically captures this from the query params.
+     * The UTM Source. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('utm_source', nullable: true)]
     public ?string $utmSource;
 
     /**
-     * The UTM Term. The web SDK automatically captures this from the query params.
+     * The UTM Term. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('utm_term', nullable: true)]
     public ?string $utmTerm;
 
     /**
-     * The SDK version (e.g., web SDK or ingest-sdk-* via generated SDK headers).
+     * The SDK version (e.g., web SDK or ingest-sdk-* via generated SDK headers) Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $version;
 
     /**
-     * The Viant (Adelphic) Click ID, captured from the `viant_click_id` URL parameter (Viant `${ADELPHIC_CLICKID}` macro). Sent as `xid` on Viant postbacks. Ex: viant_click_abc123.
+     * The Viant (Adelphic) Click ID, captured from the `viant_click_id` URL parameter (Viant `${ADELPHIC_CLICKID}` macro). Sent as `xid` on Viant postbacks. Ex: viant_click_abc123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('viant_click_id', nullable: true)]
     public ?string $viantClickID;
 
     /**
-     * The Viant (Adelphic) Impression ID, captured from the `viant_impression_id` URL parameter (Viant `${ADELPHIC_IMPRESSIONID}` macro). Sent as `imp_id` on Viant postbacks for post-view attribution. Ex: viant_imp_abc123.
+     * The Viant (Adelphic) Impression ID, captured from the `viant_impression_id` URL parameter (Viant `${ADELPHIC_IMPRESSIONID}` macro). Sent as `imp_id` on Viant postbacks for post-view attribution. Ex: viant_imp_abc123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('viant_impression_id', nullable: true)]
     public ?string $viantImpressionID;
 
     /**
-     * The WBRAID Identifier. The web SDK automatically captures this from the query params.
+     * The WBRAID Identifier. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $wbraid;
@@ -571,6 +594,8 @@ final class DefaultProperties implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param IsBotShape|null $isBot
      */
     public static function with(
         ?string $_efTransactionID = null,
@@ -607,12 +632,14 @@ final class DefaultProperties implements BaseModel
         ?string $gadSource = null,
         ?string $gbraid = null,
         ?string $gclid = null,
+        ?string $graid = null,
+        ?string $grclid = null,
         ?string $host = null,
         ?bool $iframe = null,
         ?string $imRef = null,
         ?string $ip = null,
         ?string $irclickid = null,
-        ?string $isBot = null,
+        string|float|bool|array|null $isBot = null,
         ?string $liFatID = null,
         ?string $msclkid = null,
         ?string $ndclid = null,
@@ -688,6 +715,8 @@ final class DefaultProperties implements BaseModel
         null !== $gadSource && $self['gadSource'] = $gadSource;
         null !== $gbraid && $self['gbraid'] = $gbraid;
         null !== $gclid && $self['gclid'] = $gclid;
+        null !== $graid && $self['graid'] = $graid;
+        null !== $grclid && $self['grclid'] = $grclid;
         null !== $host && $self['host'] = $host;
         null !== $iframe && $self['iframe'] = $iframe;
         null !== $imRef && $self['imRef'] = $imRef;
@@ -737,7 +766,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Everflow affiliate Click (Transaction) ID, captured from the `_ef_transaction_id` URL parameter. Ex: ef_click_abc123.
+     * The Everflow affiliate Click (Transaction) ID, captured from the `_ef_transaction_id` URL parameter. Ex: ef_click_abc123 Leading and trailing whitespace is removed before validation.
      */
     public function withEfTransactionID(?string $_efTransactionID): self
     {
@@ -759,7 +788,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The ad id for detected in the session. This is set by the web sdk automatically.
+     * The ad id for detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
      */
     public function withAdID(?string $adID): self
     {
@@ -770,7 +799,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123.
+     * The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123 Leading and trailing whitespace is removed before validation.
      */
     public function withAdmitadUid(?string $admitadUid): self
     {
@@ -781,7 +810,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The adset id for detected in the session. This is set by the web sdk automatically.
+     * The adset id for detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
      */
     public function withAdsetID(?string $adsetID): self
     {
@@ -792,7 +821,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The AppLovin alart query parameter. Ex: alart123.
+     * The AppLovin alart query parameter. Ex: alart123 Leading and trailing whitespace is removed before validation.
      */
     public function withAlart(?string $alart): self
     {
@@ -803,7 +832,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The AppLovin aleid query parameter. Ex: aleid123.
+     * The AppLovin aleid query parameter. Ex: aleid123 Leading and trailing whitespace is removed before validation.
      */
     public function withAleid(?string $aleid): self
     {
@@ -814,7 +843,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The AppLovin pixel cookie value (_axwrt). Web-only.
+     * The AppLovin pixel cookie value (_axwrt). Web-only. Leading and trailing whitespace is removed before validation.
      */
     public function withAxwrt(?string $axwrt): self
     {
@@ -825,7 +854,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Basis DSP Click ID. Ex: basis_cid123.
+     * The Basis DSP Click ID. Ex: basis_cid123 Leading and trailing whitespace is removed before validation.
      */
     public function withBasisCid(?string $basisCid): self
     {
@@ -836,7 +865,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Beeswax (FreeWheel Buyer Cloud) auction ID, captured from the `{{AUCTION_ID}}` macro on creative click URLs. Ex: bx-auc-abc123.
+     * The Beeswax (FreeWheel Buyer Cloud) auction ID, captured from the `{{AUCTION_ID}}` macro on creative click URLs. Ex: bx-auc-abc123 Leading and trailing whitespace is removed before validation.
      */
     public function withBeeswaxAuctionID(?string $beeswaxAuctionID): self
     {
@@ -847,7 +876,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The language of the browser. Ex: en-US.
+     * The language of the browser. Ex: en-US Leading and trailing whitespace is removed before validation.
      */
     public function withBrowserLanguage(?string $browserLanguage): self
     {
@@ -858,7 +887,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The name of the browser. Ex: Chrome.
+     * The name of the browser. Ex: Chrome Leading and trailing whitespace is removed before validation.
      */
     public function withBrowserName(?string $browserName): self
     {
@@ -869,7 +898,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The version of the browser. Ex: 114.0.
+     * The version of the browser. Ex: 114.0 Leading and trailing whitespace is removed before validation.
      */
     public function withBrowserVersion(?string $browserVersion): self
     {
@@ -880,7 +909,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The campaign id for detected in the session. This is set by the web sdk automatically.
+     * The campaign id for detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
      */
     public function withCampaignID(?string $campaignID): self
     {
@@ -891,7 +920,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Click ID. Ex: clickid123.
+     * The Click ID. Ex: clickid123 Leading and trailing whitespace is removed before validation.
      */
     public function withClickid(?string $clickid): self
     {
@@ -902,7 +931,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Generic Click ID. Ex: clid123.
+     * The Generic Click ID. Ex: clid123 Leading and trailing whitespace is removed before validation.
      */
     public function withClid(?string $clid): self
     {
@@ -913,7 +942,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The architecture of the CPU. Ex: x64.
+     * The architecture of the CPU. Ex: x64 Leading and trailing whitespace is removed before validation.
      */
     public function withCPUArchitecture(?string $cpuArchitecture): self
     {
@@ -924,7 +953,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The full url (including query params) of the current page.
+     * The full url (including query params) of the current page Leading and trailing whitespace is removed before validation.
      */
     public function withCurrentURL(?string $currentURL): self
     {
@@ -935,7 +964,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The DoubleClick Click ID. Ex: dclid123.
+     * The DoubleClick Click ID. Ex: dclid123 Leading and trailing whitespace is removed before validation.
      */
     public function withDclid(?string $dclid): self
     {
@@ -946,7 +975,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The model of the device. Ex: iPhone 13.
+     * The model of the device. Ex: iPhone 13 Leading and trailing whitespace is removed before validation.
      */
     public function withDeviceModel(?string $deviceModel): self
     {
@@ -957,7 +986,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The type of device the user is using. Ex: mobile.
+     * The type of device the user is using. Ex: mobile Leading and trailing whitespace is removed before validation.
      */
     public function withDeviceType(?string $deviceType): self
     {
@@ -968,7 +997,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The vendor of the device. Ex: Apple.
+     * The vendor of the device. Ex: Apple Leading and trailing whitespace is removed before validation.
      */
     public function withDeviceVendor(?string $deviceVendor): self
     {
@@ -990,7 +1019,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The browsers encoding. Ex: UTF-8.
+     * The browsers encoding. Ex: UTF-8 Leading and trailing whitespace is removed before validation.
      */
     public function withEncoding(?string $encoding): self
     {
@@ -1001,7 +1030,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The name of the browser engine. Ex: Blink.
+     * The name of the browser engine. Ex: Blink Leading and trailing whitespace is removed before validation.
      */
     public function withEngineName(?string $engineName): self
     {
@@ -1012,7 +1041,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The version of the browser engine. Ex: 114.0.
+     * The version of the browser engine. Ex: 114.0 Leading and trailing whitespace is removed before validation.
      */
     public function withEngineVersion(?string $engineVersion): self
     {
@@ -1023,7 +1052,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Pinterest Click ID. Ex: epik456.
+     * The Pinterest Click ID. Ex: epik456 Leading and trailing whitespace is removed before validation.
      */
     public function withEpik(?string $epik): self
     {
@@ -1034,7 +1063,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * Facebook Click ID with prefix format for Conversions API tracking. Ex: fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890.
+     * Facebook Click ID with prefix format for Conversions API tracking. Ex: fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890 Leading and trailing whitespace is removed before validation.
      */
     public function withFbc(?string $fbc): self
     {
@@ -1045,7 +1074,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * Raw Facebook Click ID query parameter without prefix from ad clicks. Ex: AbCdEfGhIjKlMnOpQrStUvWxYz1234567890.
+     * Raw Facebook Click ID query parameter without prefix from ad clicks. Ex: AbCdEfGhIjKlMnOpQrStUvWxYz1234567890 Leading and trailing whitespace is removed before validation.
      */
     public function withFbclid(?string $fbclid): self
     {
@@ -1056,7 +1085,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * Facebook Browser ID parameter for identifying browsers and attributing events. Ex: fb.1.1554763741205.1098115397.
+     * Facebook Browser ID parameter for identifying browsers and attributing events. Ex: fb.1.1554763741205.1098115397 Leading and trailing whitespace is removed before validation.
      */
     public function withFbp(?string $fbp): self
     {
@@ -1078,7 +1107,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Google Ad Source. Ex: google.
+     * The Google Ad Source. Ex: google Leading and trailing whitespace is removed before validation.
      */
     public function withGadSource(?string $gadSource): self
     {
@@ -1089,7 +1118,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Google Braid ID. Ex: gbraid123.
+     * The Google Braid ID. Ex: gbraid123 Leading and trailing whitespace is removed before validation.
      */
     public function withGbraid(?string $gbraid): self
     {
@@ -1100,7 +1129,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Google Click ID. Ex: gclid123.
+     * The Google Click ID. Ex: gclid123 Leading and trailing whitespace is removed before validation.
      */
     public function withGclid(?string $gclid): self
     {
@@ -1111,7 +1140,29 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The host of the current page. Ex: example.com.
+     * The Gravity attribution ID, captured from the `graid` URL parameter on the landing page. Gravity resolves it to the campaign, publisher, and ad IDs server-side. Ex: graid-abc123 Leading and trailing whitespace is removed before validation.
+     */
+    public function withGraid(?string $graid): self
+    {
+        $self = clone $this;
+        $self['graid'] = $graid;
+
+        return $self;
+    }
+
+    /**
+     * The Gravity click ID, captured from the `grclid` URL parameter that Gravity (trygravity.com) appends to ad click-through URLs on the landing page. Ex: grclid-abc123 Leading and trailing whitespace is removed before validation.
+     */
+    public function withGrclid(?string $grclid): self
+    {
+        $self = clone $this;
+        $self['grclid'] = $grclid;
+
+        return $self;
+    }
+
+    /**
+     * The host of the current page. Ex: example.com Leading and trailing whitespace is removed before validation.
      */
     public function withHost(?string $host): self
     {
@@ -1133,7 +1184,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Impact Click ID reference. Ex: im_ref123.
+     * The Impact Click ID reference. Ex: im_ref123 Leading and trailing whitespace is removed before validation.
      */
     public function withImRef(?string $imRef): self
     {
@@ -1144,7 +1195,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The IP address of the user. Ex: 127.0.0.1.
+     * The IP address of the user. Ex: 127.0.0.1 Leading and trailing whitespace is removed before validation.
      */
     public function withIP(?string $ip): self
     {
@@ -1155,7 +1206,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Impact Click ID. Ex: irclickid123.
+     * The Impact Click ID. Ex: irclickid123 Leading and trailing whitespace is removed before validation.
      */
     public function withIrclickid(?string $irclickid): self
     {
@@ -1166,9 +1217,11 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * Whether we have detected that the user is a bot. This is set automatically by the Ours server primarily for events tracked through the web SDK.
+     * Any JSON value: string, number, boolean, array, object, or null.
+     *
+     * @param IsBotShape|null $isBot
      */
-    public function withIsBot(?string $isBot): self
+    public function withIsBot(string|float|bool|array|null $isBot): self
     {
         $self = clone $this;
         $self['isBot'] = $isBot;
@@ -1177,7 +1230,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The LinkedIn Click ID. Ex: li_fat_id123.
+     * The LinkedIn Click ID. Ex: li_fat_id123 Leading and trailing whitespace is removed before validation.
      */
     public function withLiFatID(?string $liFatID): self
     {
@@ -1188,7 +1241,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Microsoft Click ID. Ex: msclkid123.
+     * The Microsoft Click ID. Ex: msclkid123 Leading and trailing whitespace is removed before validation.
      */
     public function withMsclkid(?string $msclkid): self
     {
@@ -1199,7 +1252,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The NextDoor Click ID. Ex: ndclid123.
+     * The NextDoor Click ID. Ex: ndclid123 Leading and trailing whitespace is removed before validation.
      */
     public function withNdclid(?string $ndclid): self
     {
@@ -1221,7 +1274,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Outbrain click ID, captured from the `ob_click_id` URL parameter (Outbrain `{{ob_click_id}}` macro) on the landing page. Ex: ob_click_abc123.
+     * The Outbrain click ID, captured from the `ob_click_id` URL parameter (Outbrain `{{ob_click_id}}` macro) on the landing page. Ex: ob_click_abc123 Leading and trailing whitespace is removed before validation.
      */
     public function withObClickID(?string $obClickID): self
     {
@@ -1232,7 +1285,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The OpenAI Ads privacy-preserving reference, captured from the `oppref` URL parameter on landing pages (the OpenAI Pixel also stores it in a `__oppref` cookie). Sent to OpenAI Ads on Conversions API events for attribution. Ex: oppref_abc.
+     * The OpenAI Ads privacy-preserving reference, captured from the `oppref` URL parameter on landing pages (the OpenAI Pixel also stores it in a `__oppref` cookie). Sent to OpenAI Ads on Conversions API events for attribution. Ex: oppref_abc Leading and trailing whitespace is removed before validation.
      */
     public function withOppref(?string $oppref): self
     {
@@ -1243,7 +1296,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The name of the operating system. Ex: Windows.
+     * The name of the operating system. Ex: Windows Leading and trailing whitespace is removed before validation.
      */
     public function withOsName(?string $osName): self
     {
@@ -1254,7 +1307,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The version of the operating system. Ex: 10.0.
+     * The version of the operating system. Ex: 10.0 Leading and trailing whitespace is removed before validation.
      */
     public function withOsVersion(?string $osVersion): self
     {
@@ -1276,7 +1329,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The pathname of the current page. Ex: /home.
+     * The pathname of the current page. Ex: /home Leading and trailing whitespace is removed before validation.
      */
     public function withPathname(?string $pathname): self
     {
@@ -1287,7 +1340,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Quora Click ID. Ex: qclid123.
+     * The Quora Click ID. Ex: qclid123 Leading and trailing whitespace is removed before validation.
      */
     public function withQclid(?string $qclid): self
     {
@@ -1298,7 +1351,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Reddit Click ID. Ex: rdt_cid123.
+     * The Reddit Click ID. Ex: rdt_cid123 Leading and trailing whitespace is removed before validation.
      */
     public function withRdtCid(?string $rdtCid): self
     {
@@ -1320,7 +1373,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The referrer URL of the current page.
+     * The referrer URL of the current page Leading and trailing whitespace is removed before validation.
      */
     public function withReferrer(?string $referrer): self
     {
@@ -1331,7 +1384,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The referring domain of the current page.
+     * The referring domain of the current page Leading and trailing whitespace is removed before validation.
      */
     public function withReferringDomain(?string $referringDomain): self
     {
@@ -1342,7 +1395,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The StackAdapt Tracking ID. Ex: sacid123.
+     * The StackAdapt Tracking ID. Ex: sacid123 Leading and trailing whitespace is removed before validation.
      */
     public function withSacid(?string $sacid): self
     {
@@ -1353,7 +1406,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The SnapChat Click ID. Ex: sccid123.
+     * The SnapChat Click ID. Ex: sccid123 Leading and trailing whitespace is removed before validation.
      */
     public function withSccid(?string $sccid): self
     {
@@ -1397,7 +1450,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The session ID as assigned automatically by the web SDK. This is required for session replay.
+     * The session ID as assigned automatically by the web SDK. This is required for session replay Leading and trailing whitespace is removed before validation.
      */
     public function withSid(?string $sid): self
     {
@@ -1407,6 +1460,9 @@ final class DefaultProperties implements BaseModel
         return $self;
     }
 
+    /**
+     * Leading and trailing whitespace is removed before validation.
+     */
     public function withSr(?string $sr): self
     {
         $self = clone $this;
@@ -1416,7 +1472,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The title of the current page.
+     * The title of the current page Leading and trailing whitespace is removed before validation.
      */
     public function withTitle(?string $title): self
     {
@@ -1427,7 +1483,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The TikTok Click ID. Ex: ttclid123.
+     * The TikTok Click ID. Ex: ttclid123 Leading and trailing whitespace is removed before validation.
      */
     public function withTtclid(?string $ttclid): self
     {
@@ -1438,7 +1494,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Twitter Click ID. Ex: twclid123.
+     * The Twitter Click ID. Ex: twclid123 Leading and trailing whitespace is removed before validation.
      */
     public function withTwclid(?string $twclid): self
     {
@@ -1449,7 +1505,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * User agent as a full list of strings.
+     * User agent as a full list of strings. Leading and trailing whitespace is removed before validation.
      */
     public function withUafvl(?string $uafvl): self
     {
@@ -1460,7 +1516,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The user agent of the browser.
+     * The user agent of the browser Leading and trailing whitespace is removed before validation.
      */
     public function withUserAgent(?string $userAgent): self
     {
@@ -1471,7 +1527,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The UTM Campaign. The web SDK automatically captures this from the query params.
+     * The UTM Campaign. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     public function withUtmCampaign(?string $utmCampaign): self
     {
@@ -1482,7 +1538,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The UTM Content. The web SDK automatically captures this from the query params.
+     * The UTM Content. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     public function withUtmContent(?string $utmContent): self
     {
@@ -1493,7 +1549,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The UTM Medium. The web SDK automatically captures this from the query params.
+     * The UTM Medium. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     public function withUtmMedium(?string $utmMedium): self
     {
@@ -1504,7 +1560,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The UTM Name. The web SDK automatically captures this from the query params.
+     * The UTM Name. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     public function withUtmName(?string $utmName): self
     {
@@ -1515,7 +1571,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The UTM Source. The web SDK automatically captures this from the query params.
+     * The UTM Source. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     public function withUtmSource(?string $utmSource): self
     {
@@ -1526,7 +1582,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The UTM Term. The web SDK automatically captures this from the query params.
+     * The UTM Term. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     public function withUtmTerm(?string $utmTerm): self
     {
@@ -1537,7 +1593,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The SDK version (e.g., web SDK or ingest-sdk-* via generated SDK headers).
+     * The SDK version (e.g., web SDK or ingest-sdk-* via generated SDK headers) Leading and trailing whitespace is removed before validation.
      */
     public function withVersion(?string $version): self
     {
@@ -1548,7 +1604,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Viant (Adelphic) Click ID, captured from the `viant_click_id` URL parameter (Viant `${ADELPHIC_CLICKID}` macro). Sent as `xid` on Viant postbacks. Ex: viant_click_abc123.
+     * The Viant (Adelphic) Click ID, captured from the `viant_click_id` URL parameter (Viant `${ADELPHIC_CLICKID}` macro). Sent as `xid` on Viant postbacks. Ex: viant_click_abc123 Leading and trailing whitespace is removed before validation.
      */
     public function withViantClickID(?string $viantClickID): self
     {
@@ -1559,7 +1615,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Viant (Adelphic) Impression ID, captured from the `viant_impression_id` URL parameter (Viant `${ADELPHIC_IMPRESSIONID}` macro). Sent as `imp_id` on Viant postbacks for post-view attribution. Ex: viant_imp_abc123.
+     * The Viant (Adelphic) Impression ID, captured from the `viant_impression_id` URL parameter (Viant `${ADELPHIC_IMPRESSIONID}` macro). Sent as `imp_id` on Viant postbacks for post-view attribution. Ex: viant_imp_abc123 Leading and trailing whitespace is removed before validation.
      */
     public function withViantImpressionID(?string $viantImpressionID): self
     {
@@ -1570,7 +1626,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The WBRAID Identifier. The web SDK automatically captures this from the query params.
+     * The WBRAID Identifier. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     public function withWbraid(?string $wbraid): self
     {

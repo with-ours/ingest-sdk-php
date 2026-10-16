@@ -22,13 +22,13 @@ interface VisitorContract
     /**
      * @api
      *
-     * @param string $token The token for your Source. You can find this in the dashboard.
+     * @param string $token The token for your Source. You can find this in the dashboard. Leading and trailing whitespace is removed before validation.
      * @param UserProperties|UserPropertiesShape $userProperties User properties to associate with this user. The existing user properties will be updated. And all future events will have these properties associated with them.
      * @param DefaultProperties|DefaultPropertiesShape|null $defaultProperties These properties are used throughout the Ours app to pass known values onto destinations
-     * @param string|null $email The email address of a user. When userId is absent and externalId does not resolve a visitor, we search your account for a visitor with this email. If no match is found, we try userProperties.phone_number before creating a new visitor.
-     * @param string|null $externalID Your system's unique identifier for this user. When userId is absent, we search your account for an existing visitor with this externalId. If no match is found, we try email and then userProperties.phone_number before creating a new visitor. If you also have the userId from cookies or local storage, send both — it removes the lookup round-trip.
+     * @param string|null $email The email address of a user. When userId is absent and externalId does not resolve a visitor, we search your account for a visitor with this email. If no match is found, we try userProperties.phone_number before creating a new visitor. Leading and trailing whitespace is removed before validation.
+     * @param string|null $externalID Your system's unique identifier for this user. When userId is absent, we search your account for an existing visitor with this externalId. If no match is found, we try email and then userProperties.phone_number before creating a new visitor. If you also have the userId from cookies or local storage, send both — it removes the lookup round-trip. Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      * @param IdentityContext|IdentityContextShape|null $identityContext End-user network context for server-side calls. Required for probabilistic identity resolution when the caller is a backend server rather than an end-user browser.
-     * @param string|null $userID The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId, email, or phone is performed. If you have both a userId and an externalId, send both so the event is attached to the right visitor without any lookup overhead.
+     * @param string|null $userID The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId, email, or phone is performed. If you have both a userId and an externalId, send both so the event is attached to the right visitor without any lookup overhead. Leading and trailing whitespace is removed before validation.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

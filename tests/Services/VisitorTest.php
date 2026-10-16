@@ -35,7 +35,7 @@ final class VisitorTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->visitor->upsert(token: 'x', userProperties: []);
+        $result = $this->client->visitor->upsert(token: 'P', userProperties: []);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(VisitorUpsertResponse::class, $result);
@@ -49,7 +49,7 @@ final class VisitorTest extends TestCase
         }
 
         $result = $this->client->visitor->upsert(
-            token: 'x',
+            token: 'P',
             userProperties: [
                 '_efTransactionID' => '_ef_transaction_id',
                 'adID' => 'ad_id',
@@ -81,10 +81,12 @@ final class VisitorTest extends TestCase
                 'gbraid' => 'gbraid',
                 'gclid' => 'gclid',
                 'gender' => 'gender',
+                'graid' => 'graid',
+                'grclid' => 'grclid',
                 'imRef' => 'im_ref',
                 'ip' => 'ip',
                 'irclickid' => 'irclickid',
-                'isBot' => 'is_bot',
+                'isBot' => 'string',
                 'jobTitle' => 'job_title',
                 'lastName' => 'last_name',
                 'liFatID' => 'li_fat_id',
@@ -92,7 +94,7 @@ final class VisitorTest extends TestCase
                 'ndclid' => 'ndclid',
                 'obClickID' => 'ob_click_id',
                 'oppref' => 'oppref',
-                'phoneNumber' => 'phone_number',
+                'phoneNumber' => 'string',
                 'qclid' => 'qclid',
                 'rdtCid' => 'rdt_cid',
                 'referrer' => 'referrer',
@@ -114,7 +116,7 @@ final class VisitorTest extends TestCase
                 'viantClickID' => 'viant_click_id',
                 'viantImpressionID' => 'viant_impression_id',
                 'wbraid' => 'wbraid',
-                'zip' => 'zip',
+                'zip' => 'string',
             ],
             defaultProperties: [
                 '_efTransactionID' => '_ef_transaction_id',
@@ -151,12 +153,14 @@ final class VisitorTest extends TestCase
                 'gadSource' => 'gad_source',
                 'gbraid' => 'gbraid',
                 'gclid' => 'gclid',
+                'graid' => 'graid',
+                'grclid' => 'grclid',
                 'host' => 'host',
                 'iframe' => true,
                 'imRef' => 'im_ref',
                 'ip' => 'ip',
                 'irclickid' => 'irclickid',
-                'isBot' => 'is_bot',
+                'isBot' => 'string',
                 'liFatID' => 'li_fat_id',
                 'msclkid' => 'msclkid',
                 'ndclid' => 'ndclid',
@@ -196,10 +200,10 @@ final class VisitorTest extends TestCase
                 'wbraid' => 'wbraid',
                 'webview' => true,
             ],
-            email: 'x',
-            externalID: 'x',
+            email: 'P',
+            externalID: 'P',
             identityContext: ['ip' => 'ip', 'userAgent' => 'userAgent'],
-            userID: 'x',
+            userID: 'P',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

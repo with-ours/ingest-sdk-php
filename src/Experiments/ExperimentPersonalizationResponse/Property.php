@@ -9,7 +9,7 @@ use OursPrivacy\Core\Conversion\Contracts\Converter;
 use OursPrivacy\Core\Conversion\Contracts\ConverterSource;
 
 /**
- * @phpstan-type PropertyVariants = string|float|bool
+ * @phpstan-type PropertyVariants = string|null|float|bool
  * @phpstan-type PropertyShape = PropertyVariants
  */
 final class Property implements ConverterSource

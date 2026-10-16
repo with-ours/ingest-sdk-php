@@ -36,8 +36,8 @@ final class BatchTest extends TestCase
         }
 
         $result = $this->client->batch->create(
-            token: 'x',
-            events: [['distinctID' => 'x', 'event' => 'x']]
+            token: 'P',
+            events: [['distinctID' => 'P', 'event' => 'P']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -52,11 +52,11 @@ final class BatchTest extends TestCase
         }
 
         $result = $this->client->batch->create(
-            token: 'x',
+            token: 'P',
             events: [
                 [
-                    'distinctID' => 'x',
-                    'event' => 'x',
+                    'distinctID' => 'P',
+                    'event' => 'P',
                     'defaultProperties' => [
                         '_efTransactionID' => '_ef_transaction_id',
                         'activeDuration' => 0,
@@ -92,12 +92,14 @@ final class BatchTest extends TestCase
                         'gadSource' => 'gad_source',
                         'gbraid' => 'gbraid',
                         'gclid' => 'gclid',
+                        'graid' => 'graid',
+                        'grclid' => 'grclid',
                         'host' => 'host',
                         'iframe' => true,
                         'imRef' => 'im_ref',
                         'ip' => 'ip',
                         'irclickid' => 'irclickid',
-                        'isBot' => 'is_bot',
+                        'isBot' => 'string',
                         'liFatID' => 'li_fat_id',
                         'msclkid' => 'msclkid',
                         'ndclid' => 'ndclid',
@@ -137,12 +139,12 @@ final class BatchTest extends TestCase
                         'wbraid' => 'wbraid',
                         'webview' => true,
                     ],
-                    'email' => 'x',
+                    'email' => 'P',
                     'eventProperties' => ['foo' => 'string'],
-                    'externalID' => 'x',
+                    'externalID' => 'P',
                     'identityContext' => ['ip' => 'ip', 'userAgent' => 'userAgent'],
                     'time' => 0,
-                    'userID' => 'x',
+                    'userID' => 'P',
                     'userProperties' => [
                         '_efTransactionID' => '_ef_transaction_id',
                         'adID' => 'ad_id',
@@ -174,10 +176,12 @@ final class BatchTest extends TestCase
                         'gbraid' => 'gbraid',
                         'gclid' => 'gclid',
                         'gender' => 'gender',
+                        'graid' => 'graid',
+                        'grclid' => 'grclid',
                         'imRef' => 'im_ref',
                         'ip' => 'ip',
                         'irclickid' => 'irclickid',
-                        'isBot' => 'is_bot',
+                        'isBot' => 'string',
                         'jobTitle' => 'job_title',
                         'lastName' => 'last_name',
                         'liFatID' => 'li_fat_id',
@@ -185,7 +189,7 @@ final class BatchTest extends TestCase
                         'ndclid' => 'ndclid',
                         'obClickID' => 'ob_click_id',
                         'oppref' => 'oppref',
-                        'phoneNumber' => 'phone_number',
+                        'phoneNumber' => 'string',
                         'qclid' => 'qclid',
                         'rdtCid' => 'rdt_cid',
                         'referrer' => 'referrer',
@@ -207,7 +211,7 @@ final class BatchTest extends TestCase
                         'viantClickID' => 'viant_click_id',
                         'viantImpressionID' => 'viant_impression_id',
                         'wbraid' => 'wbraid',
-                        'zip' => 'zip',
+                        'zip' => 'string',
                     ],
                 ],
             ],

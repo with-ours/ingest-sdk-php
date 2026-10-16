@@ -44,6 +44,39 @@ class UtilTest extends TestCase
     }
 
     #[Test]
+    public function testRemoveOmitted(): void
+    {
+        $input = [
+            'omitted' => null,
+            'map' => ['a' => null, 'b' => ['c' => null, 'd' => 0]],
+            'list' => [null, 1],
+            'empty' => [],
+            'false' => false,
+            'explicit' => null,
+        ];
+
+        $this->assertSame(
+            [
+                'map' => ['a' => null, 'b' => ['c' => null, 'd' => 0]],
+                'list' => [null, 1],
+                'empty' => [],
+                'false' => false,
+            ],
+            Util::removeOmitted($input),
+        );
+        $this->assertSame(
+            [
+                'map' => ['a' => null, 'b' => ['c' => null, 'd' => 0]],
+                'list' => [null, 1],
+                'empty' => [],
+                'false' => false,
+                'explicit' => null,
+            ],
+            Util::removeOmitted($input, explicitNulls: ['explicit']),
+        );
+    }
+
+    #[Test]
     public function testJoinUri(): void
     {
         $factory = Psr17FactoryDiscovery::findUriFactory();

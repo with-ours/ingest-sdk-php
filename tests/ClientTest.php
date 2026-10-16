@@ -31,7 +31,7 @@ class ClientTest extends TestCase
             requestOptions: ['transporter' => $transporter],
         );
 
-        $client->track->event(token: 'x', event: 'x');
+        $client->track->event(token: 'P', event: 'P');
 
         $this->assertNotFalse($requested = $transporter->getRequests()[0] ?? false);
         $this->assertSame(\OursPrivacy\VERSION, $requested->getHeaderLine('X-Stainless-Package-Version'));

@@ -11,6 +11,7 @@ use OursPrivacy\Core\Concerns\SdkParams;
 use OursPrivacy\Core\Contracts\BaseModel;
 use OursPrivacy\Core\Conversion\MapOf;
 use OursPrivacy\Track\TrackEventParams\DefaultProperties;
+use OursPrivacy\Track\TrackEventParams\EventProperty;
 use OursPrivacy\Track\TrackEventParams\IdentityContext;
 use OursPrivacy\Track\TrackEventParams\UserProperties;
 
@@ -19,7 +20,9 @@ use OursPrivacy\Track\TrackEventParams\UserProperties;
  *
  * @see OursPrivacy\Services\TrackService::event()
  *
+ * @phpstan-import-type EventPropertyVariants from \OursPrivacy\Track\TrackEventParams\EventProperty
  * @phpstan-import-type DefaultPropertiesShape from \OursPrivacy\Track\TrackEventParams\DefaultProperties
+ * @phpstan-import-type EventPropertyShape from \OursPrivacy\Track\TrackEventParams\EventProperty
  * @phpstan-import-type IdentityContextShape from \OursPrivacy\Track\TrackEventParams\IdentityContext
  * @phpstan-import-type UserPropertiesShape from \OursPrivacy\Track\TrackEventParams\UserProperties
  *
@@ -29,7 +32,7 @@ use OursPrivacy\Track\TrackEventParams\UserProperties;
  *   defaultProperties?: null|DefaultProperties|DefaultPropertiesShape,
  *   distinctID?: string|null,
  *   email?: string|null,
- *   eventProperties?: array<string,string|null>|null,
+ *   eventProperties?: array<string,EventPropertyShape|null>|null,
  *   externalID?: string|null,
  *   identityContext?: null|IdentityContext|IdentityContextShape,
  *   time?: float|null,
@@ -44,13 +47,13 @@ final class TrackEventParams implements BaseModel
     use SdkParams;
 
     /**
-     * The token for your Source. You can find this in the dashboard.
+     * The token for your Source. You can find this in the dashboard. Leading and trailing whitespace is removed before validation.
      */
     #[Required]
     public string $token;
 
     /**
-     * The name of the event you're tracking. This must be whitelisted in the Ours dashboard.
+     * The name of the event you're tracking. This must be whitelisted in the Ours dashboard. Leading and trailing whitespace is removed before validation.
      */
     #[Required]
     public string $event;
@@ -62,27 +65,30 @@ final class TrackEventParams implements BaseModel
     public ?DefaultProperties $defaultProperties;
 
     /**
-     * A unique identifier for this event used for deduplication. Highly recommended — if omitted, Ours will generate one for you, but supplying your own gives you stronger idempotency guarantees (e.g. a Stripe payment intent ID or your internal order ID).
+     * A unique identifier for this event used for deduplication. Highly recommended — if omitted, Ours will generate one for you, but supplying your own gives you stronger idempotency guarantees (e.g. a Stripe payment intent ID or your internal order ID). Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('distinctId', nullable: true)]
     public ?string $distinctID;
 
     /**
-     * The email address of a user. When userId is absent and externalId does not resolve a visitor, we search your account for a visitor with this email. If no match is found, we try userProperties.phone_number before creating a new visitor.
+     * The email address of a user. When userId is absent and externalId does not resolve a visitor, we search your account for a visitor with this email. If no match is found, we try userProperties.phone_number before creating a new visitor. Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $email;
 
     /**
-     * Any additional event properties you want to pass along.
+     * Any additional event properties you want to pass along. Use at most 200 nonempty property keys and five object levels. Array contents do not count toward the object-depth limit. Empty keys are removed recursively, arrays are truncated to 250 entries, and top-level numbers outside the safe integer range become strings. After normalization, the serialized JSON must be shorter than 1,048,576 UTF-16 code units.
      *
-     * @var array<string,string|null>|null $eventProperties
+     * @var array<string,EventPropertyVariants|null>|null $eventProperties
      */
-    #[Optional(type: new MapOf('string', nullable: true), nullable: true)]
+    #[Optional(
+        type: new MapOf(EventProperty::class, nullable: true),
+        nullable: true
+    )]
     public ?array $eventProperties;
 
     /**
-     * Your system's unique identifier for this user. When userId is absent, we search your account for an existing visitor with this externalId. If no match is found, we try email and then userProperties.phone_number before creating a new visitor. If you also have the userId from cookies or local storage, send both — it removes the lookup round-trip.
+     * Your system's unique identifier for this user. When userId is absent, we search your account for an existing visitor with this externalId. If no match is found, we try email and then userProperties.phone_number before creating a new visitor. If you also have the userId from cookies or local storage, send both — it removes the lookup round-trip. Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('externalId', nullable: true)]
     public ?string $externalID;
@@ -100,7 +106,7 @@ final class TrackEventParams implements BaseModel
     public ?float $time;
 
     /**
-     * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId, email, or phone is performed. If you have both a userId and an externalId, send both so the event is attached to the right visitor without any lookup overhead.
+     * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId, email, or phone is performed. If you have both a userId and an externalId, send both so the event is attached to the right visitor without any lookup overhead. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('userId', nullable: true)]
     public ?string $userID;
@@ -136,7 +142,7 @@ final class TrackEventParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param DefaultProperties|DefaultPropertiesShape|null $defaultProperties
-     * @param array<string,string|null>|null $eventProperties
+     * @param array<string,EventPropertyShape|null>|null $eventProperties
      * @param IdentityContext|IdentityContextShape|null $identityContext
      * @param UserProperties|UserPropertiesShape|null $userProperties
      */
@@ -172,7 +178,7 @@ final class TrackEventParams implements BaseModel
     }
 
     /**
-     * The token for your Source. You can find this in the dashboard.
+     * The token for your Source. You can find this in the dashboard. Leading and trailing whitespace is removed before validation.
      */
     public function withToken(string $token): self
     {
@@ -183,7 +189,7 @@ final class TrackEventParams implements BaseModel
     }
 
     /**
-     * The name of the event you're tracking. This must be whitelisted in the Ours dashboard.
+     * The name of the event you're tracking. This must be whitelisted in the Ours dashboard. Leading and trailing whitespace is removed before validation.
      */
     public function withEvent(string $event): self
     {
@@ -208,7 +214,7 @@ final class TrackEventParams implements BaseModel
     }
 
     /**
-     * A unique identifier for this event used for deduplication. Highly recommended — if omitted, Ours will generate one for you, but supplying your own gives you stronger idempotency guarantees (e.g. a Stripe payment intent ID or your internal order ID).
+     * A unique identifier for this event used for deduplication. Highly recommended — if omitted, Ours will generate one for you, but supplying your own gives you stronger idempotency guarantees (e.g. a Stripe payment intent ID or your internal order ID). Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     public function withDistinctID(?string $distinctID): self
     {
@@ -219,7 +225,7 @@ final class TrackEventParams implements BaseModel
     }
 
     /**
-     * The email address of a user. When userId is absent and externalId does not resolve a visitor, we search your account for a visitor with this email. If no match is found, we try userProperties.phone_number before creating a new visitor.
+     * The email address of a user. When userId is absent and externalId does not resolve a visitor, we search your account for a visitor with this email. If no match is found, we try userProperties.phone_number before creating a new visitor. Leading and trailing whitespace is removed before validation.
      */
     public function withEmail(?string $email): self
     {
@@ -230,9 +236,9 @@ final class TrackEventParams implements BaseModel
     }
 
     /**
-     * Any additional event properties you want to pass along.
+     * Any additional event properties you want to pass along. Use at most 200 nonempty property keys and five object levels. Array contents do not count toward the object-depth limit. Empty keys are removed recursively, arrays are truncated to 250 entries, and top-level numbers outside the safe integer range become strings. After normalization, the serialized JSON must be shorter than 1,048,576 UTF-16 code units.
      *
-     * @param array<string,string|null>|null $eventProperties
+     * @param array<string,EventPropertyShape|null>|null $eventProperties
      */
     public function withEventProperties(?array $eventProperties): self
     {
@@ -243,7 +249,7 @@ final class TrackEventParams implements BaseModel
     }
 
     /**
-     * Your system's unique identifier for this user. When userId is absent, we search your account for an existing visitor with this externalId. If no match is found, we try email and then userProperties.phone_number before creating a new visitor. If you also have the userId from cookies or local storage, send both — it removes the lookup round-trip.
+     * Your system's unique identifier for this user. When userId is absent, we search your account for an existing visitor with this externalId. If no match is found, we try email and then userProperties.phone_number before creating a new visitor. If you also have the userId from cookies or local storage, send both — it removes the lookup round-trip. Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     public function withExternalID(?string $externalID): self
     {
@@ -279,7 +285,7 @@ final class TrackEventParams implements BaseModel
     }
 
     /**
-     * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId, email, or phone is performed. If you have both a userId and an externalId, send both so the event is attached to the right visitor without any lookup overhead.
+     * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId, email, or phone is performed. If you have both a userId and an externalId, send both so the event is attached to the right visitor without any lookup overhead. Leading and trailing whitespace is removed before validation.
      */
     public function withUserID(?string $userID): self
     {

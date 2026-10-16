@@ -17,6 +17,7 @@ use OursPrivacy\Track\TrackEventResponse;
 
 /**
  * @phpstan-import-type DefaultPropertiesShape from \OursPrivacy\Track\TrackEventParams\DefaultProperties
+ * @phpstan-import-type EventPropertyShape from \OursPrivacy\Track\TrackEventParams\EventProperty
  * @phpstan-import-type IdentityContextShape from \OursPrivacy\Track\TrackEventParams\IdentityContext
  * @phpstan-import-type UserPropertiesShape from \OursPrivacy\Track\TrackEventParams\UserProperties
  * @phpstan-import-type RequestOpts from \OursPrivacy\RequestOptions
@@ -40,7 +41,7 @@ final class TrackRawService implements TrackRawContract
      *   defaultProperties?: DefaultProperties|DefaultPropertiesShape|null,
      *   distinctID?: string|null,
      *   email?: string|null,
-     *   eventProperties?: array<string,string|null>|null,
+     *   eventProperties?: array<string,EventPropertyShape|null>|null,
      *   externalID?: string|null,
      *   identityContext?: IdentityContext|IdentityContextShape|null,
      *   time?: float|null,

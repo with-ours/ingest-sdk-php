@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.19.1 (2026-10-19)
+
+Full Changelog: [v1.19.0...v1.19.1](https://github.com/with-ours/ingest-sdk-php/compare/v1.19.0...v1.19.1)
+
+### Chores
+
+* Preserve model offset validation and validate string stream chunks with PHPStan 2.3.
 ## 1.19.0 (2026-10-16)
 
 Full Changelog: [v1.18.0...v1.19.0](https://github.com/with-ours/ingest-sdk-php/compare/v1.18.0...v1.19.0)

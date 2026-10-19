@@ -135,10 +135,7 @@ trait SdkModel
      */
     public function offsetExists(mixed $offset): bool
     {
-        // @phpstan-ignore-next-line function.alreadyNarrowedType
-        if (!is_string($offset)) {
-            throw new \InvalidArgumentException;
-        }
+        self::validateOffset($offset);
 
         if (array_key_exists($offset, array: $this->_data)) {
             return true;
@@ -164,10 +161,7 @@ trait SdkModel
      */
     public function &offsetGet(mixed $offset): mixed
     {
-        // @phpstan-ignore-next-line function.alreadyNarrowedType
-        if (!is_string($offset)) {
-            throw new \InvalidArgumentException;
-        }
+        self::validateOffset($offset);
 
         // @phpstan-ignore-next-line function.alreadyNarrowedType
         if (!$this->offsetExists($offset)) {
@@ -191,10 +185,7 @@ trait SdkModel
      */
     public function offsetSet(mixed $offset, mixed $value): void
     {
-        // @phpstan-ignore-next-line function.alreadyNarrowedType
-        if (!is_string($offset)) {
-            throw new \InvalidArgumentException;
-        }
+        self::validateOffset($offset);
 
         $type = array_key_exists($offset, array: self::$converter->properties)
             ? self::$converter->properties[$offset]->type
@@ -226,10 +217,7 @@ trait SdkModel
      */
     public function offsetUnset(mixed $offset): void
     {
-        // @phpstan-ignore-next-line function.alreadyNarrowedType
-        if (!is_string($offset)) {
-            throw new \InvalidArgumentException;
-        }
+        self::validateOffset($offset);
 
         // @phpstan-ignore-next-line function.alreadyNarrowedType
         if (property_exists($this, property: $offset)) {
@@ -271,6 +259,13 @@ trait SdkModel
         $class = new \ReflectionClass(static::class);
 
         return self::$converter = new ModelOf($class);
+    }
+
+    private static function validateOffset(mixed $offset): void
+    {
+        if (!is_string($offset)) {
+            throw new \InvalidArgumentException;
+        }
     }
 
     /**

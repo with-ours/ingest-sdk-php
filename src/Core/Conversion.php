@@ -182,7 +182,13 @@ final class Conversion
                 }
 
                 if ($value instanceof \Generator) {
-                    return implode('', iterator_to_array($value));
+                    return implode('', array_map(static function (mixed $chunk): string {
+                        if (is_scalar($chunk) || is_null($chunk) || is_resource($chunk) || $chunk instanceof \Stringable) {
+                            return (string) $chunk;
+                        }
+
+                        throw new \UnexpectedValueException('String stream chunks must be scalar, null, a resource, or Stringable');
+                    }, iterator_to_array($value)));
                 }
 
                 ++$state->no;

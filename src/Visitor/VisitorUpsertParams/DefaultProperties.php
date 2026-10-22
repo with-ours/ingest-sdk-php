@@ -82,6 +82,7 @@ use OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties\IsBot;
  *   sr?: string|null,
  *   title?: string|null,
  *   ttclid?: string|null,
+ *   ttdImpressionID?: string|null,
  *   twclid?: string|null,
  *   uafvl?: string|null,
  *   userAgent?: string|null,
@@ -96,6 +97,7 @@ use OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties\IsBot;
  *   viantImpressionID?: string|null,
  *   wbraid?: string|null,
  *   webview?: bool|null,
+ *   ylpcid?: string|null,
  * }
  */
 final class DefaultProperties implements BaseModel
@@ -502,6 +504,12 @@ final class DefaultProperties implements BaseModel
     public ?string $ttclid;
 
     /**
+     * The Trade Desk impression ID, captured from a configured ttd_impression_id URL parameter using the %%TTD_IMPRESSIONID%% creative macro. Sent as imp on conversions. Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional('ttd_impression_id', nullable: true)]
+    public ?string $ttdImpressionID;
+
+    /**
      * The Twitter Click ID. Ex: twclid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
@@ -585,6 +593,12 @@ final class DefaultProperties implements BaseModel
     #[Optional(nullable: true)]
     public ?bool $webview;
 
+    /**
+     * The Yelp Click ID from the landing URL, sent unchanged and unhashed.
+     */
+    #[Optional(nullable: true)]
+    public ?string $ylpcid;
+
     public function __construct()
     {
         $this->initialize();
@@ -664,6 +678,7 @@ final class DefaultProperties implements BaseModel
         ?string $sr = null,
         ?string $title = null,
         ?string $ttclid = null,
+        ?string $ttdImpressionID = null,
         ?string $twclid = null,
         ?string $uafvl = null,
         ?string $userAgent = null,
@@ -678,6 +693,7 @@ final class DefaultProperties implements BaseModel
         ?string $viantImpressionID = null,
         ?string $wbraid = null,
         ?bool $webview = null,
+        ?string $ylpcid = null,
     ): self {
         $self = new self;
 
@@ -747,6 +763,7 @@ final class DefaultProperties implements BaseModel
         null !== $sr && $self['sr'] = $sr;
         null !== $title && $self['title'] = $title;
         null !== $ttclid && $self['ttclid'] = $ttclid;
+        null !== $ttdImpressionID && $self['ttdImpressionID'] = $ttdImpressionID;
         null !== $twclid && $self['twclid'] = $twclid;
         null !== $uafvl && $self['uafvl'] = $uafvl;
         null !== $userAgent && $self['userAgent'] = $userAgent;
@@ -761,6 +778,7 @@ final class DefaultProperties implements BaseModel
         null !== $viantImpressionID && $self['viantImpressionID'] = $viantImpressionID;
         null !== $wbraid && $self['wbraid'] = $wbraid;
         null !== $webview && $self['webview'] = $webview;
+        null !== $ylpcid && $self['ylpcid'] = $ylpcid;
 
         return $self;
     }
@@ -1494,6 +1512,17 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
+     * The Trade Desk impression ID, captured from a configured ttd_impression_id URL parameter using the %%TTD_IMPRESSIONID%% creative macro. Sent as imp on conversions. Leading and trailing whitespace is removed before validation.
+     */
+    public function withTtdImpressionID(?string $ttdImpressionID): self
+    {
+        $self = clone $this;
+        $self['ttdImpressionID'] = $ttdImpressionID;
+
+        return $self;
+    }
+
+    /**
      * The Twitter Click ID. Ex: twclid123 Leading and trailing whitespace is removed before validation.
      */
     public function withTwclid(?string $twclid): self
@@ -1643,6 +1672,17 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['webview'] = $webview;
+
+        return $self;
+    }
+
+    /**
+     * The Yelp Click ID from the landing URL, sent unchanged and unhashed.
+     */
+    public function withYlpcid(?string $ylpcid): self
+    {
+        $self = clone $this;
+        $self['ylpcid'] = $ylpcid;
 
         return $self;
     }

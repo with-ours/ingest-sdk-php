@@ -82,6 +82,7 @@ use OursPrivacy\Track\TrackEventParams\UserProperties\Zip;
  *   sid?: string|null,
  *   state?: string|null,
  *   ttclid?: string|null,
+ *   ttdImpressionID?: string|null,
  *   twclid?: string|null,
  *   userAgent?: string|null,
  *   userAgentFullList?: string|null,
@@ -94,6 +95,7 @@ use OursPrivacy\Track\TrackEventParams\UserProperties\Zip;
  *   viantClickID?: string|null,
  *   viantImpressionID?: string|null,
  *   wbraid?: string|null,
+ *   ylpcid?: string|null,
  *   zip?: ZipShape|null,
  * }
  */
@@ -351,6 +353,12 @@ final class UserProperties implements BaseModel
     #[Optional(nullable: true)]
     public ?string $ttclid;
 
+    /**
+     * Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional('ttd_impression_id', nullable: true)]
+    public ?string $ttdImpressionID;
+
     #[Optional(nullable: true)]
     public ?string $twclid;
 
@@ -410,6 +418,9 @@ final class UserProperties implements BaseModel
 
     #[Optional(nullable: true)]
     public ?string $wbraid;
+
+    #[Optional(nullable: true)]
+    public ?string $ylpcid;
 
     /**
      * Any JSON value: string, number, boolean, array, object, or null.
@@ -489,6 +500,7 @@ final class UserProperties implements BaseModel
         ?string $sid = null,
         ?string $state = null,
         ?string $ttclid = null,
+        ?string $ttdImpressionID = null,
         ?string $twclid = null,
         ?string $userAgent = null,
         ?string $userAgentFullList = null,
@@ -501,6 +513,7 @@ final class UserProperties implements BaseModel
         ?string $viantClickID = null,
         ?string $viantImpressionID = null,
         ?string $wbraid = null,
+        ?string $ylpcid = null,
         string|float|bool|array|null $zip = null,
     ): self {
         $self = new self;
@@ -558,6 +571,7 @@ final class UserProperties implements BaseModel
         null !== $sid && $self['sid'] = $sid;
         null !== $state && $self['state'] = $state;
         null !== $ttclid && $self['ttclid'] = $ttclid;
+        null !== $ttdImpressionID && $self['ttdImpressionID'] = $ttdImpressionID;
         null !== $twclid && $self['twclid'] = $twclid;
         null !== $userAgent && $self['userAgent'] = $userAgent;
         null !== $userAgentFullList && $self['userAgentFullList'] = $userAgentFullList;
@@ -570,6 +584,7 @@ final class UserProperties implements BaseModel
         null !== $viantClickID && $self['viantClickID'] = $viantClickID;
         null !== $viantImpressionID && $self['viantImpressionID'] = $viantImpressionID;
         null !== $wbraid && $self['wbraid'] = $wbraid;
+        null !== $ylpcid && $self['ylpcid'] = $ylpcid;
         null !== $zip && $self['zip'] = $zip;
 
         return $self;
@@ -1086,6 +1101,17 @@ final class UserProperties implements BaseModel
         return $self;
     }
 
+    /**
+     * Leading and trailing whitespace is removed before validation.
+     */
+    public function withTtdImpressionID(?string $ttdImpressionID): self
+    {
+        $self = clone $this;
+        $self['ttdImpressionID'] = $ttdImpressionID;
+
+        return $self;
+    }
+
     public function withTwclid(?string $twclid): self
     {
         $self = clone $this;
@@ -1202,6 +1228,14 @@ final class UserProperties implements BaseModel
     {
         $self = clone $this;
         $self['wbraid'] = $wbraid;
+
+        return $self;
+    }
+
+    public function withYlpcid(?string $ylpcid): self
+    {
+        $self = clone $this;
+        $self['ylpcid'] = $ylpcid;
 
         return $self;
     }

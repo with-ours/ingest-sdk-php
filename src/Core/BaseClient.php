@@ -207,14 +207,14 @@ abstract class BaseClient
 
             try {
                 $date = new \DateTimeImmutable($header);
-                $span = time() - $date->getTimestamp();
+                $span = $date->getTimestamp() - time();
 
                 return max(0.0, $span);
             } catch (\DateMalformedStringException) {
             }
         }
 
-        $scale = $retryCount ** 2;
+        $scale = 2 ** $retryCount;
         $jitter = 1 - (0.25 * mt_rand() / mt_getrandmax());
         $naive = $opts->initialRetryDelay * $scale * $jitter;
 
@@ -280,7 +280,7 @@ abstract class BaseClient
 
             $seconds = $this->retryDelay($opts, retryCount: $retryCount, rsp: $rsp);
             $floor = floor($seconds);
-            time_nanosleep((int) $floor, nanoseconds: (int) ($seconds - $floor) * 10 ** 9);
+            time_nanosleep((int) $floor, nanoseconds: (int) (($seconds - $floor) * 10 ** 9));
 
             return $this->sendRequest($opts, req: $req, data: $data, retryCount: ++$retryCount, redirectCount: $redirectCount);
         }

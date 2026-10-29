@@ -112,13 +112,13 @@ final class DefaultProperties implements BaseModel
     public ?string $_efTransactionID;
 
     /**
-     * The active time in milliseconds that the user had this tab active.
+     * The total time in milliseconds this tab has been visible since the page loaded.
      */
     #[Optional(nullable: true)]
     public ?float $activeDuration;
 
     /**
-     * The ad id for detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
+     * The ad id detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('ad_id', nullable: true)]
     public ?string $adID;
@@ -130,7 +130,7 @@ final class DefaultProperties implements BaseModel
     public ?string $admitadUid;
 
     /**
-     * The adset id for detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
+     * The adset id detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('adset_id', nullable: true)]
     public ?string $adsetID;
@@ -166,7 +166,7 @@ final class DefaultProperties implements BaseModel
     public ?string $beeswaxAuctionID;
 
     /**
-     * The language of the browser. Ex: en-US Leading and trailing whitespace is removed before validation.
+     * The language of the browser, lowercased. Ex: en-us Leading and trailing whitespace is removed before validation.
      */
     #[Optional('browser_language', nullable: true)]
     public ?string $browserLanguage;
@@ -184,7 +184,7 @@ final class DefaultProperties implements BaseModel
     public ?string $browserVersion;
 
     /**
-     * The campaign id for detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
+     * The campaign id detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('campaign_id', nullable: true)]
     public ?string $campaignID;
@@ -202,7 +202,7 @@ final class DefaultProperties implements BaseModel
     public ?string $clid;
 
     /**
-     * The architecture of the CPU. Ex: x64 Leading and trailing whitespace is removed before validation.
+     * The architecture of the CPU. Ex: amd64 Leading and trailing whitespace is removed before validation.
      */
     #[Optional('cpu_architecture', nullable: true)]
     public ?string $cpuArchitecture;
@@ -220,7 +220,7 @@ final class DefaultProperties implements BaseModel
     public ?string $dclid;
 
     /**
-     * The model of the device. Ex: iPhone 13 Leading and trailing whitespace is removed before validation.
+     * The model of the device. Ex: iPhone Leading and trailing whitespace is removed before validation.
      */
     #[Optional('device_model', nullable: true)]
     public ?string $deviceModel;
@@ -238,13 +238,13 @@ final class DefaultProperties implements BaseModel
     public ?string $deviceVendor;
 
     /**
-     * The time in milliseconds since the page was loaded // script was loaded.
+     * The time in milliseconds since the previous event on this page, or since the web SDK loaded for the first event. Restarts when a hidden tab becomes visible again.
      */
     #[Optional(nullable: true)]
     public ?float $duration;
 
     /**
-     * The browsers encoding. Ex: UTF-8 Leading and trailing whitespace is removed before validation.
+     * The browser's encoding. Ex: UTF-8 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $encoding;
@@ -432,7 +432,7 @@ final class DefaultProperties implements BaseModel
     public ?string $rdtCid;
 
     /**
-     * The time the event was received by an Ours server in ISO format.
+     * The time an Ours server received the event, in ISO 8601 UTC.
      */
     #[Optional('received_at', nullable: true)]
     public ?string $receivedAt;
@@ -456,7 +456,7 @@ final class DefaultProperties implements BaseModel
     public ?string $sacid;
 
     /**
-     * The SnapChat Click ID. Ex: sccid123 Leading and trailing whitespace is removed before validation.
+     * The Snapchat Click ID. Ex: sccid123 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $sccid;
@@ -486,7 +486,7 @@ final class DefaultProperties implements BaseModel
     public ?string $sid;
 
     /**
-     * Leading and trailing whitespace is removed before validation.
+     * The screen resolution as width x height in pixels. Ex: 1920x1080 Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $sr;
@@ -516,7 +516,7 @@ final class DefaultProperties implements BaseModel
     public ?string $twclid;
 
     /**
-     * User agent as a full list of strings. Leading and trailing whitespace is removed before validation.
+     * The browser brands and full versions from User-Agent Client Hints, as brand;version pairs separated by |. Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $uafvl;
@@ -795,7 +795,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The active time in milliseconds that the user had this tab active.
+     * The total time in milliseconds this tab has been visible since the page loaded.
      */
     public function withActiveDuration(?float $activeDuration): self
     {
@@ -806,7 +806,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The ad id for detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
+     * The ad id detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
      */
     public function withAdID(?string $adID): self
     {
@@ -828,7 +828,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The adset id for detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
+     * The adset id detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
      */
     public function withAdsetID(?string $adsetID): self
     {
@@ -894,7 +894,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The language of the browser. Ex: en-US Leading and trailing whitespace is removed before validation.
+     * The language of the browser, lowercased. Ex: en-us Leading and trailing whitespace is removed before validation.
      */
     public function withBrowserLanguage(?string $browserLanguage): self
     {
@@ -927,7 +927,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The campaign id for detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
+     * The campaign id detected in the session. This is set by the web sdk automatically. Leading and trailing whitespace is removed before validation.
      */
     public function withCampaignID(?string $campaignID): self
     {
@@ -960,7 +960,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The architecture of the CPU. Ex: x64 Leading and trailing whitespace is removed before validation.
+     * The architecture of the CPU. Ex: amd64 Leading and trailing whitespace is removed before validation.
      */
     public function withCPUArchitecture(?string $cpuArchitecture): self
     {
@@ -993,7 +993,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The model of the device. Ex: iPhone 13 Leading and trailing whitespace is removed before validation.
+     * The model of the device. Ex: iPhone Leading and trailing whitespace is removed before validation.
      */
     public function withDeviceModel(?string $deviceModel): self
     {
@@ -1026,7 +1026,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The time in milliseconds since the page was loaded // script was loaded.
+     * The time in milliseconds since the previous event on this page, or since the web SDK loaded for the first event. Restarts when a hidden tab becomes visible again.
      */
     public function withDuration(?float $duration): self
     {
@@ -1037,7 +1037,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The browsers encoding. Ex: UTF-8 Leading and trailing whitespace is removed before validation.
+     * The browser's encoding. Ex: UTF-8 Leading and trailing whitespace is removed before validation.
      */
     public function withEncoding(?string $encoding): self
     {
@@ -1380,7 +1380,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The time the event was received by an Ours server in ISO format.
+     * The time an Ours server received the event, in ISO 8601 UTC.
      */
     public function withReceivedAt(?string $receivedAt): self
     {
@@ -1424,7 +1424,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The SnapChat Click ID. Ex: sccid123 Leading and trailing whitespace is removed before validation.
+     * The Snapchat Click ID. Ex: sccid123 Leading and trailing whitespace is removed before validation.
      */
     public function withSccid(?string $sccid): self
     {
@@ -1479,7 +1479,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * Leading and trailing whitespace is removed before validation.
+     * The screen resolution as width x height in pixels. Ex: 1920x1080 Leading and trailing whitespace is removed before validation.
      */
     public function withSr(?string $sr): self
     {
@@ -1534,7 +1534,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * User agent as a full list of strings. Leading and trailing whitespace is removed before validation.
+     * The browser brands and full versions from User-Agent Client Hints, as brand;version pairs separated by |. Leading and trailing whitespace is removed before validation.
      */
     public function withUafvl(?string $uafvl): self
     {

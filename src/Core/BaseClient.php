@@ -250,7 +250,8 @@ abstract class BaseClient
             if ($transporter instanceof StreamingHttpClient) {
                 $rsp = $transporter->sendRequest($req, timeout: $opts->timeout);
             } elseif (is_a($transporter, '\GuzzleHttp\Client')) {
-                $rsp = $transporter->send($req, ['timeout' => $opts->timeout]);
+                // Match PSR-18 sendRequest(): error statuses are responses, not exceptions.
+                $rsp = $transporter->send($req, ['timeout' => $opts->timeout, 'http_errors' => false]);
             } else {
                 $rsp = $transporter->sendRequest($req);
             }

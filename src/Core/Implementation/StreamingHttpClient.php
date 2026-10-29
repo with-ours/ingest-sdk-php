@@ -21,7 +21,8 @@ final class StreamingHttpClient implements ClientInterface
     public function sendRequest(RequestInterface $request, ?float $timeout = null): ResponseInterface
     {
         if (is_a($this->inner, '\GuzzleHttp\Client')) {
-            $options = ['stream' => true];
+            // Match PSR-18 sendRequest(): error statuses are responses, not exceptions.
+            $options = ['stream' => true, 'http_errors' => false];
             if (null !== $timeout) {
                 $options['timeout'] = $timeout;
             }

@@ -11,6 +11,7 @@ use OursPrivacy\Core\Conversion\Contracts\Converter;
 use OursPrivacy\Core\Conversion\Contracts\ConverterSource;
 use OursPrivacy\Core\Exceptions\APIConnectionException;
 use OursPrivacy\Core\Exceptions\APIStatusException;
+use OursPrivacy\Core\Exceptions\APITimeoutException;
 use OursPrivacy\Core\Implementation\RawResponse;
 use OursPrivacy\Core\Implementation\StreamingHttpClient;
 use OursPrivacy\RequestOptions;
@@ -184,7 +185,12 @@ abstract class BaseClient
             return false;
         }
 
-        $code = $rsp?->getStatusCode();
+        // No response means a connection error or timeout, which are retried.
+        if (is_null($rsp)) {
+            return true;
+        }
+
+        $code = $rsp->getStatusCode();
         if (408 == $code || 409 == $code || 429 == $code || $code >= 500) {
             return true;
         }
@@ -210,7 +216,8 @@ abstract class BaseClient
                 $span = $date->getTimestamp() - time();
 
                 return max(0.0, $span);
-            } catch (\DateMalformedStringException) {
+            } catch (\Exception) {
+                // Malformed dates throw \Exception before PHP 8.3; fall back to backoff.
             }
         }
 
@@ -273,9 +280,24 @@ abstract class BaseClient
 
         if ($code >= 400 || is_null($rsp)) {
             if (!$this->shouldRetry($opts, retryCount: $retryCount, rsp: $rsp)) {
-                $exn = is_null($rsp) ? new APIConnectionException($req, previous: $err) : APIStatusException::from(request: $req, response: $rsp);
+                if (!is_null($rsp)) {
+                    throw APIStatusException::from(request: $req, response: $rsp);
+                }
 
-                throw $exn;
+                // PSR-18 has no timeout exception: check Guzzle's cURL errno 28,
+                // Symfony's TimeoutExceptionInterface, then the message.
+                for ($cause = $err; !is_null($cause); $cause = $cause->getPrevious()) {
+                    $context = method_exists($cause, 'getHandlerContext') ? $cause->getHandlerContext() : null;
+                    if (
+                        (is_array($context) && 28 === ($context['errno'] ?? null))
+                        || is_a($cause, 'Symfony\Contracts\HttpClient\Exception\TimeoutExceptionInterface')
+                        || str_contains(strtolower($cause->getMessage()), 'timed out')
+                    ) {
+                        throw new APITimeoutException($req, previous: $err);
+                    }
+                }
+
+                throw new APIConnectionException($req, previous: $err);
             }
 
             $seconds = $this->retryDelay($opts, retryCount: $retryCount, rsp: $rsp);

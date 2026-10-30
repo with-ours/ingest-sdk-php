@@ -73,6 +73,9 @@ final class RequestOptions implements BaseModel
     #[Optional]
     public ?RequestFactoryInterface $requestFactory;
 
+    /** @var list<string> defaulted options the caller set, even to their default value */
+    private array $explicit = [];
+
     public function __construct()
     {
         $this->initialize();
@@ -83,10 +86,32 @@ final class RequestOptions implements BaseModel
      */
     public static function parse(RequestOptions|array|null ...$options): self
     {
-        $parsed = array_map(static fn ($o) => $o instanceof self ? $o->toProperties() : $o ?? [], array: $options);
+        $parsed = array_map(static fn ($o) => $o instanceof self ? $o->toExplicitProperties() : $o ?? [], array: $options);
 
         // @phpstan-ignore-next-line argument.type
         return self::with(...array_merge(...$parsed));
+    }
+
+    /**
+     * @internal
+     *
+     * Like toProperties(), but omits defaulted options the caller did not set, so they do not override the client's configured options
+     *
+     * @return array<string,mixed>
+     */
+    public function toExplicitProperties(): array
+    {
+        $properties = $this->toProperties();
+        $defaults = new self;
+        foreach ([
+            'timeout', 'maxRetries', 'initialRetryDelay', 'maxRetryDelay',
+        ] as $name) {
+            if (!in_array($name, $this->explicit, true) && ($properties[$name] ?? null) === $defaults->{$name}) {
+                unset($properties[$name]);
+            }
+        }
+
+        return $properties;
     }
 
     /**
@@ -126,6 +151,11 @@ final class RequestOptions implements BaseModel
         null !== $streamFactory && $self->streamFactory = $streamFactory;
         null !== $requestFactory && $self->requestFactory = $requestFactory;
 
+        null !== $timeout && $self->explicit[] = 'timeout';
+        null !== $maxRetries && $self->explicit[] = 'maxRetries';
+        null !== $initialRetryDelay && $self->explicit[] = 'initialRetryDelay';
+        null !== $maxRetryDelay && $self->explicit[] = 'maxRetryDelay';
+
         return $self;
     }
 
@@ -133,6 +163,7 @@ final class RequestOptions implements BaseModel
     {
         $self = clone $this;
         $self->timeout = $timeout;
+        $self->explicit[] = 'timeout';
 
         return $self;
     }
@@ -141,6 +172,7 @@ final class RequestOptions implements BaseModel
     {
         $self = clone $this;
         $self->maxRetries = $maxRetries;
+        $self->explicit[] = 'maxRetries';
 
         return $self;
     }
@@ -149,6 +181,7 @@ final class RequestOptions implements BaseModel
     {
         $self = clone $this;
         $self->initialRetryDelay = $initialRetryDelay;
+        $self->explicit[] = 'initialRetryDelay';
 
         return $self;
     }
@@ -157,6 +190,7 @@ final class RequestOptions implements BaseModel
     {
         $self = clone $this;
         $self->maxRetryDelay = $maxRetryDelay;
+        $self->explicit[] = 'maxRetryDelay';
 
         return $self;
     }

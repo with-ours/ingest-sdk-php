@@ -25,7 +25,7 @@ trait SdkParams
         $dumped = (array) Conversion::dump($converter, value: $params, state: $state);
         // Keep only the caller's options so the client's configured defaults
         // (for example maxRetries or timeout) still apply to unset keys.
-        $opts = $options instanceof RequestOptions ? $options->toProperties() : ($options ?? []);
+        $opts = $options instanceof RequestOptions ? $options->toExplicitProperties() : ($options ?? []);
 
         if (!$state->canRetry) {
             $opts['maxRetries'] = 0;

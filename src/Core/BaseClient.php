@@ -50,6 +50,13 @@ abstract class BaseClient
         $this->baseUrl = $this->options->uriFactory->createUri($baseUrl);
     }
 
+    /** @return array<string,mixed> */
+    public function __debugInfo(): array
+    {
+        // @phpstan-ignore-next-line return.type
+        return Util::redactSensitive(get_object_vars($this));
+    }
+
     /**
      * @param string|list<mixed> $path
      * @param array<string,mixed> $query

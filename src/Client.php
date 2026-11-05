@@ -48,11 +48,9 @@ class Client extends BaseClient
         ?string $baseUrl = null,
         RequestOptions|array|null $requestOptions = null
     ) {
+        $baseUrl ??= Util::getenv('OURS_PRIVACY_BASE_URL') ?: null;
         $this->baseUrlOverridden = !is_null($baseUrl);
-
-        $baseUrl ??= Util::getenv(
-            'OURS_PRIVACY_BASE_URL'
-        ) ?: 'https://api.oursprivacy.com/api/v1';
+        $baseUrl ??= 'https://api.oursprivacy.com/api/v1';
 
         $options = RequestOptions::parse(
             RequestOptions::with(

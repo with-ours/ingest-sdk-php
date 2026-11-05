@@ -21,6 +21,7 @@ use OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties\IsBot;
  *   adID?: string|null,
  *   admitadUid?: string|null,
  *   adsetID?: string|null,
+ *   affiliatlyV3?: string|null,
  *   alart?: string|null,
  *   aleid?: string|null,
  *   axwrt?: string|null,
@@ -134,6 +135,12 @@ final class DefaultProperties implements BaseModel
      */
     #[Optional('adset_id', nullable: true)]
     public ?string $adsetID;
+
+    /**
+     * The raw Affiliatly tracking cookie value (affiliatly_v3), set by the Affiliatly script when a visitor lands from an affiliate link. Web-only. Ex: id_hash=abc&id_user=123&aff_uid=45 Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional('affiliatly_v3', nullable: true)]
+    public ?string $affiliatlyV3;
 
     /**
      * The AppLovin alart query parameter. Ex: alart123 Leading and trailing whitespace is removed before validation.
@@ -617,6 +624,7 @@ final class DefaultProperties implements BaseModel
         ?string $adID = null,
         ?string $admitadUid = null,
         ?string $adsetID = null,
+        ?string $affiliatlyV3 = null,
         ?string $alart = null,
         ?string $aleid = null,
         ?string $axwrt = null,
@@ -702,6 +710,7 @@ final class DefaultProperties implements BaseModel
         null !== $adID && $self['adID'] = $adID;
         null !== $admitadUid && $self['admitadUid'] = $admitadUid;
         null !== $adsetID && $self['adsetID'] = $adsetID;
+        null !== $affiliatlyV3 && $self['affiliatlyV3'] = $affiliatlyV3;
         null !== $alart && $self['alart'] = $alart;
         null !== $aleid && $self['aleid'] = $aleid;
         null !== $axwrt && $self['axwrt'] = $axwrt;
@@ -834,6 +843,17 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['adsetID'] = $adsetID;
+
+        return $self;
+    }
+
+    /**
+     * The raw Affiliatly tracking cookie value (affiliatly_v3), set by the Affiliatly script when a visitor lands from an affiliate link. Web-only. Ex: id_hash=abc&id_user=123&aff_uid=45 Leading and trailing whitespace is removed before validation.
+     */
+    public function withAffiliatlyV3(?string $affiliatlyV3): self
+    {
+        $self = clone $this;
+        $self['affiliatlyV3'] = $affiliatlyV3;
 
         return $self;
     }

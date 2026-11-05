@@ -7,6 +7,7 @@ namespace OursPrivacy\Visitor;
 use OursPrivacy\Core\Attributes\Required;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
+use OursPrivacy\Core\Conversion\EnumOf;
 
 /**
  * @phpstan-type VisitorUpsertResponseShape = array{success: bool}
@@ -16,7 +17,7 @@ final class VisitorUpsertResponse implements BaseModel
     /** @use SdkModel<VisitorUpsertResponseShape> */
     use SdkModel;
 
-    #[Required]
+    #[Required(type: new EnumOf([true]))]
     public bool $success;
 
     /**

@@ -91,9 +91,21 @@ jobs:
             gh release create "$TAG" --verify-tag --target "$RELEASE_COMMIT" --generate-notes --title "$TAG"
           fi
 
-      - name: Publish to Packagist
-        run: |-
-          curl --fail-with-body -X POST -H 'Content-Type: application/json' "https://packagist.org/api/update-package?username=${PACKAGIST_USERNAME}&apiToken=${PACKAGIST_SAFE_KEY}" -d '{"repository":"https://github.com/with-ours/ingest-sdk-php"}'
-        env:
-          PACKAGIST_USERNAME: ${{ secrets.OURS_PRIVACY_PACKAGIST_USERNAME || secrets.PACKAGIST_USERNAME }}
-          PACKAGIST_SAFE_KEY: ${{ secrets.OURS_PRIVACY_PACKAGIST_SAFE_KEY || secrets.PACKAGIST_SAFE_KEY }}
+      # Packagist pulls the tag through the repository's GitHub webhook, so this workflow holds no
+      # Packagist credential. A broken webhook fails here instead of passing silently. The steps
+      # above are safe to re-run once it's fixed.
+      - name: Wait for the release on Packagist
+        run: |
+          set -euo pipefail
+          TAG="v${RELEASE_VERSION}"
+          for _ in $(seq 40); do
+            REFERENCE="$(curl --fail --silent --show-error --max-time 30 'https://repo.packagist.org/p2/oursprivacy/ingest-sdk.json' |
+              jq -r --arg tag "$TAG" '.packages["oursprivacy/ingest-sdk"][] | select(.version == $tag) | .source.reference')" || REFERENCE=''
+            if [[ "$REFERENCE" == "$RELEASE_COMMIT" ]]; then
+              echo "Packagist serves $TAG at $RELEASE_COMMIT"
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "::error::Packagist did not serve $TAG at $RELEASE_COMMIT within 10 minutes. Check the repository's packagist.org webhook deliveries." >&2
+          exit 1

@@ -196,7 +196,15 @@ final class Util
         [$template] = $path;
         $mapped = array_map(static fn ($s) => rawurlencode(self::strVal($s)), array: array_slice($path, 1));
 
-        return sprintf($template, ...$mapped);
+        $formatted = sprintf($template, ...$mapped);
+
+        foreach (explode('/', explode('?', $formatted, limit: 2)[0]) as $segment) {
+            if ('.' === $segment || '..' === $segment) {
+                throw new \InvalidArgumentException("Path parameter can't be the dot segment '{$segment}'");
+            }
+        }
+
+        return $formatted;
     }
 
     /**
@@ -466,6 +474,28 @@ final class Util
     public static function prettyEncodeJson(mixed $obj): string
     {
         return json_encode($obj, flags: JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?: '';
+    }
+
+    public static function redactSensitive(mixed $value): mixed
+    {
+        // Field and header names in lower case, without underscores or hyphens.
+        $names = ['accesstoken', 'apikey', 'authorization', 'clientsecret', 'cookie', 'password', 'refreshtoken', 'setcookie', 'token', 'xapikey'];
+
+        $input = $value;
+        if ($input instanceof \JsonSerializable) {
+            $input = $input->jsonSerialize();
+        }
+        if (!is_array($input)) {
+            return $input;
+        }
+
+        $redacted = [];
+        foreach ($input as $key => $item) {
+            $sensitive = is_string($key) && in_array(strtolower(str_replace(['_', '-'], '', $key)), $names, strict: true);
+            $redacted[$key] = $sensitive ? '***' : self::redactSensitive($item);
+        }
+
+        return $redacted;
     }
 
     /**

@@ -55,7 +55,9 @@ final class EnumOf implements Converter
         $needle = $value instanceof \BackedEnum ? $value->value : $value;
         if (in_array($needle, haystack: $this->members, strict: true)) {
             ++$state->yes;
-        } elseif ($this->type === gettype($needle)) {
+        } elseif (count($this->members) > 1 && $this->type === gettype($needle)) {
+            // An unknown member may be one a newer API added. A single-member
+            // enum is a literal, so any other value rules it out.
             ++$state->maybe;
         } else {
             ++$state->no;

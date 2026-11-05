@@ -112,6 +112,90 @@ class ModelTest extends TestCase
     }
 
     #[Test]
+    public function testAPropertyTheModelDoesNotHaveGivesTheFallback(): void
+    {
+        $model = new Dog(name: 'Bob', ageYears: 12, owner: null);
+
+        $this->assertSame('fallback', $model->breed ?? 'fallback');
+        $this->assertFalse(isset($model->breed));
+        $this->assertTrue(empty($model->breed));
+        $this->assertNull($model['breed']);
+    }
+
+    #[Test]
+    public function testAnOmittedPropertyGivesTheFallback(): void
+    {
+        $model = new Dog(name: 'Bob', ageYears: 12, owner: null);
+
+        $this->assertSame('fallback', $model->friends ?? 'fallback');
+        $this->assertSame('fallback', $model->owner ?? 'fallback');
+    }
+
+    #[Test]
+    public function testASetPropertyIgnoresTheFallback(): void
+    {
+        $model = new Dog(name: 'Bob', ageYears: 12, owner: 'Eve', friends: ['Alice']);
+
+        $this->assertSame('Bob', $model->name ?? 'fallback');
+        $this->assertSame(['Alice'], $model->friends ?? 'fallback');
+        $this->assertTrue(isset($model->friends));
+    }
+
+    #[Test]
+    public function testReadingAPropertyTheModelDoesNotHaveStillThrows(): void
+    {
+        $model = new Dog(name: 'secret-name', ageYears: 12, owner: null);
+
+        try {
+            $model->breed; // @phpstan-ignore-line
+            $this->fail('expected an exception');
+        } catch (\RuntimeException $error) {
+            $this->assertStringContainsString("'breed'", $error->getMessage());
+            $this->assertStringContainsString(Dog::class, $error->getMessage());
+            $this->assertStringNotContainsString('secret-name', $error->getMessage());
+        }
+    }
+
+    #[Test]
+    public function testAnUndocumentedPropertyIsReadByArrayAccess(): void
+    {
+        $model = Dog::fromArray(['name' => 'Bob', 'age_years' => 12, 'owner' => null, 'breed' => 'Lab']);
+
+        $this->assertSame('Lab', $model['breed']);
+        $this->assertSame('fallback', $model->breed ?? 'fallback');
+        $this->assertFalse(isset($model->breed));
+    }
+
+    #[Test]
+    public function testAnIncongruentValueIsNotReplacedByTheFallback(): void
+    {
+        $model = new Dog(name: 'Bob', ageYears: 12, owner: null);
+        $model['friends'] = 'not a list';
+
+        $this->assertSame('not a list', $model['friends']);
+        $this->assertTrue(isset($model->friends));
+        $this->expectExceptionMessage('array access');
+        $this->assertNull($model->friends ?? null);
+    }
+
+    #[Test]
+    public function testArrayAccessOnAnAbsentPropertyRaisesNoNotice(): void
+    {
+        $model = new Dog(name: 'Bob', ageYears: 12, owner: null);
+
+        set_error_handler(static function (int $severity, string $message): never {
+            throw new \ErrorException($message, 0, $severity);
+        });
+
+        try {
+            $this->assertNull($model['breed']);
+            $this->assertNull($model['friends']);
+        } finally {
+            restore_error_handler();
+        }
+    }
+
+    #[Test]
     public function testSerializeBasicModel(): void
     {
         $model = new Dog(name: 'Bob', ageYears: 12, owner: 'Eve', friends: ['Alice', 'Charlie']);

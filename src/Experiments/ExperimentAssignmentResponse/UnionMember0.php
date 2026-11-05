@@ -8,6 +8,7 @@ use OursPrivacy\Core\Attributes\Optional;
 use OursPrivacy\Core\Attributes\Required;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
+use OursPrivacy\Core\Conversion\EnumOf;
 
 /**
  * @phpstan-type UnionMember0Shape = array{
@@ -31,10 +32,10 @@ final class UnionMember0 implements BaseModel
     #[Required('experiment_id')]
     public string $experimentID;
 
-    #[Required('in_experiment')]
+    #[Required('in_experiment', type: new EnumOf([true]))]
     public bool $inExperiment;
 
-    #[Required]
+    #[Required(type: new EnumOf([true]))]
     public bool $success;
 
     #[Required('variant_id')]

@@ -8,7 +8,6 @@ use OursPrivacy\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class BatchTest extends TestCase
     #[Test]
     public function testCreate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
         $result = $this->client->batch->create(
             token: 'P',
             events: [['distinctID' => 'P', 'event' => 'P']]
@@ -47,10 +42,6 @@ final class BatchTest extends TestCase
     #[Test]
     public function testCreateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
         $result = $this->client->batch->create(
             token: 'P',
             events: [
@@ -63,6 +54,7 @@ final class BatchTest extends TestCase
                         'adID' => 'ad_id',
                         'admitadUid' => 'admitad_uid',
                         'adsetID' => 'adset_id',
+                        'affiliatlyV3' => 'affiliatly_v3',
                         'alart' => 'alart',
                         'aleid' => 'aleid',
                         'axwrt' => 'axwrt',
@@ -152,6 +144,7 @@ final class BatchTest extends TestCase
                         'adID' => 'ad_id',
                         'admitadUid' => 'admitad_uid',
                         'adsetID' => 'adset_id',
+                        'affiliatlyV3' => 'affiliatly_v3',
                         'alart' => 'alart',
                         'aleid' => 'aleid',
                         'axwrt' => 'axwrt',

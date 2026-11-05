@@ -22,7 +22,7 @@ class APIStatusException extends APIException
         $this->response = $response;
         $this->status = $response->getStatusCode();
 
-        $summary = Util::prettyEncodeJson(['status' => $this->status, 'body' => Util::decodeJson($response->getBody())]);
+        $summary = Util::prettyEncodeJson(['status' => $this->status, 'body' => Util::redactSensitive(Util::decodeJson($response->getBody()))]);
 
         if ('' != $message) {
             $summary .= $message.PHP_EOL.$summary;

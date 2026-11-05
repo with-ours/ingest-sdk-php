@@ -33,6 +33,7 @@ use OursPrivacy\Track\TrackEventParams\UserProperties\Zip;
  *   adID?: string|null,
  *   admitadUid?: string|null,
  *   adsetID?: string|null,
+ *   affiliatlyV3?: string|null,
  *   alart?: string|null,
  *   aleid?: string|null,
  *   axwrt?: string|null,
@@ -121,6 +122,9 @@ final class UserProperties implements BaseModel
 
     #[Optional('adset_id', nullable: true)]
     public ?string $adsetID;
+
+    #[Optional('affiliatly_v3', nullable: true)]
+    public ?string $affiliatlyV3;
 
     #[Optional(nullable: true)]
     public ?string $alart;
@@ -451,6 +455,7 @@ final class UserProperties implements BaseModel
         ?string $adID = null,
         ?string $admitadUid = null,
         ?string $adsetID = null,
+        ?string $affiliatlyV3 = null,
         ?string $alart = null,
         ?string $aleid = null,
         ?string $axwrt = null,
@@ -522,6 +527,7 @@ final class UserProperties implements BaseModel
         null !== $adID && $self['adID'] = $adID;
         null !== $admitadUid && $self['admitadUid'] = $admitadUid;
         null !== $adsetID && $self['adsetID'] = $adsetID;
+        null !== $affiliatlyV3 && $self['affiliatlyV3'] = $affiliatlyV3;
         null !== $alart && $self['alart'] = $alart;
         null !== $aleid && $self['aleid'] = $aleid;
         null !== $axwrt && $self['axwrt'] = $axwrt;
@@ -624,6 +630,14 @@ final class UserProperties implements BaseModel
     {
         $self = clone $this;
         $self['adsetID'] = $adsetID;
+
+        return $self;
+    }
+
+    public function withAffiliatlyV3(?string $affiliatlyV3): self
+    {
+        $self = clone $this;
+        $self['affiliatlyV3'] = $affiliatlyV3;
 
         return $self;
     }

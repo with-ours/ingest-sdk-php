@@ -28,39 +28,39 @@ final class UnionOf implements Converter
             return Conversion::coerce($target, value: $value, state: $state);
         }
 
-        $alternatives = [];
+        // Score every variant rather than stopping at the first one without a
+        // miss: unknown keys don't count against a variant, so a variant whose
+        // properties are a subset of another's also fits the larger shape.
+        // Ties keep declaration order.
+        $best = null;
         foreach ($this->variants as $_ => $variant) {
             ++$state->branched;
-            $newState = new CoerceState;
+            $newState = new CoerceState(translateNames: $state->translateNames);
 
             $coerced = Conversion::coerce($variant, value: $value, state: $newState);
-            if (($newState->no + $newState->maybe) === 0) {
-                $state->yes += $newState->yes;
-
-                return $coerced;
+            if (($newState->yes + $newState->maybe) === 0) {
+                continue;
             }
-            if ($newState->maybe > 0) {
-                $alternatives[] = [[-$newState->yes, -$newState->maybe, $newState->no], $newState, $coerced];
+
+            $rank = [$newState->no > 0, -$newState->matched, -$newState->yes, -$newState->maybe, $newState->no];
+            if (is_null($best) || ($rank <=> $best[0]) < 0) {
+                $best = [$rank, $newState, $coerced];
             }
         }
 
-        usort(
-            $alternatives,
-            static fn (array $a, array $b): int => $a[0][0] <=> $b[0][0] ?: $a[0][1] <=> $b[0][1] ?: $a[0][2] <=> $b[0][2]
-        );
-
-        if (empty($alternatives)) {
+        if (is_null($best)) {
             ++$state->no;
 
             return $value;
         }
 
-        [[,$newState, $best]] = $alternatives;
+        [, $newState, $coerced] = $best;
         $state->yes += $newState->yes;
         $state->maybe += $newState->maybe;
         $state->no += $newState->no;
+        $state->matched += $newState->matched;
 
-        return $best;
+        return $coerced;
     }
 
     public function dump(mixed $value, DumpState $state): mixed

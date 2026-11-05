@@ -8,7 +8,6 @@ use OursPrivacy\Visitor\VisitorUpsertResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class VisitorTest extends TestCase
     #[Test]
     public function testUpsert(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
         $result = $this->client->visitor->upsert(token: 'P', userProperties: []);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -44,10 +39,6 @@ final class VisitorTest extends TestCase
     #[Test]
     public function testUpsertWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
         $result = $this->client->visitor->upsert(
             token: 'P',
             userProperties: [
@@ -55,6 +46,7 @@ final class VisitorTest extends TestCase
                 'adID' => 'ad_id',
                 'admitadUid' => 'admitad_uid',
                 'adsetID' => 'adset_id',
+                'affiliatlyV3' => 'affiliatly_v3',
                 'alart' => 'alart',
                 'aleid' => 'aleid',
                 'axwrt' => 'axwrt',
@@ -126,6 +118,7 @@ final class VisitorTest extends TestCase
                 'adID' => 'ad_id',
                 'admitadUid' => 'admitad_uid',
                 'adsetID' => 'adset_id',
+                'affiliatlyV3' => 'affiliatly_v3',
                 'alart' => 'alart',
                 'aleid' => 'aleid',
                 'axwrt' => 'axwrt',

@@ -100,7 +100,7 @@ final class TrackEventParams implements BaseModel
     public ?IdentityContext $identityContext;
 
     /**
-     * The time at which the event occurred in milliseconds since UTC epoch. The time must be in the past and within the last 7 days.
+     * The time at which the event occurred in milliseconds since UTC epoch. Times older than one year are recorded as exactly one year ago, and future times as now.
      */
     #[Optional(nullable: true)]
     public ?float $time;
@@ -274,7 +274,7 @@ final class TrackEventParams implements BaseModel
     }
 
     /**
-     * The time at which the event occurred in milliseconds since UTC epoch. The time must be in the past and within the last 7 days.
+     * The time at which the event occurred in milliseconds since UTC epoch. Times older than one year are recorded as exactly one year ago, and future times as now.
      */
     public function withTime(?float $time): self
     {

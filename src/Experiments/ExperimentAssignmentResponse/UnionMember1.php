@@ -7,6 +7,7 @@ namespace OursPrivacy\Experiments\ExperimentAssignmentResponse;
 use OursPrivacy\Core\Attributes\Required;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
+use OursPrivacy\Core\Conversion\EnumOf;
 
 /**
  * @phpstan-type UnionMember1Shape = array{inExperiment: bool, success: bool}
@@ -16,10 +17,10 @@ final class UnionMember1 implements BaseModel
     /** @use SdkModel<UnionMember1Shape> */
     use SdkModel;
 
-    #[Required('in_experiment')]
+    #[Required('in_experiment', type: new EnumOf([false]))]
     public bool $inExperiment;
 
-    #[Required]
+    #[Required(type: new EnumOf([true]))]
     public bool $success;
 
     /**

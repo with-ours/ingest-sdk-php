@@ -8,6 +8,7 @@ use OursPrivacy\Batch\BatchNewResponse\Result\UnionMember1\Code;
 use OursPrivacy\Core\Attributes\Required;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
+use OursPrivacy\Core\Conversion\EnumOf;
 
 /**
  * @phpstan-type UnionMember1Shape = array{
@@ -29,7 +30,7 @@ final class UnionMember1 implements BaseModel
     #[Required]
     public string $message;
 
-    #[Required]
+    #[Required(type: new EnumOf([false]))]
     public bool $success;
 
     /**

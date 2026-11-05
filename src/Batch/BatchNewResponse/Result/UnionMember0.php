@@ -7,6 +7,7 @@ namespace OursPrivacy\Batch\BatchNewResponse\Result;
 use OursPrivacy\Core\Attributes\Required;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
+use OursPrivacy\Core\Conversion\EnumOf;
 
 /**
  * @phpstan-type UnionMember0Shape = array{index: int, success: bool}
@@ -19,7 +20,7 @@ final class UnionMember0 implements BaseModel
     #[Required]
     public int $index;
 
-    #[Required]
+    #[Required(type: new EnumOf([true]))]
     public bool $success;
 
     /**

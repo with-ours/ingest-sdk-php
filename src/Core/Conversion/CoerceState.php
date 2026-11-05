@@ -15,5 +15,7 @@ final class CoerceState
         public int $no = 0,
         public int $maybe = 0,
         public int $branched = 0,
+        /** Declared model properties found in the value, the measure of how specific a union variant is. */
+        public int $matched = 0,
     ) {}
 }

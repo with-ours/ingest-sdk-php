@@ -57,7 +57,8 @@ trait SdkModel
      */
     public function __debugInfo(): array
     {
-        return $this->__serialize();
+        // @phpstan-ignore-next-line return.type
+        return Util::redactSensitive($this->__serialize());
     }
 
     /**
@@ -80,7 +81,10 @@ trait SdkModel
     public function __get(string $key): mixed
     {
         if (!array_key_exists($key, array: self::$converter->properties)) {
-            throw new \RuntimeException("Property '{$key}' does not exist in {$this}::class");
+            // The model holds the API's payload, so the message names only the class.
+            throw new \RuntimeException(
+                "Property '{$key}' does not exist on ".static::class.". Use `\$model->{$key} ?? null` if it may be absent, or `\$model['{$key}']` for an undocumented property.",
+            );
         }
 
         // The unset property was overridden by a value with an incongruent type.
@@ -95,6 +99,22 @@ trait SdkModel
         // Return null to match user's expectations.
         // @phpstan-ignore-next-line return.type
         return null;
+    }
+
+    /**
+     * @internal
+     *
+     * `isset()`, `empty()` and `??` ask this before {@link __get()}, so they give
+     * their usual answer for a property this model doesn't have, such as the
+     * properties of another variant of a union.
+     *
+     * A value with an incongruent type counts as set. `??` then reaches the exception
+     * in {@link __get()}, rather than replacing a value from the API with its fallback.
+     */
+    public function __isset(string $key): bool
+    {
+        return array_key_exists($key, array: self::$converter->properties)
+            && isset($this->_data[$key]);
     }
 
     /**
@@ -165,8 +185,11 @@ trait SdkModel
 
         // @phpstan-ignore-next-line function.alreadyNarrowedType
         if (!$this->offsetExists($offset)) {
+            // Returning the literal by reference raises a notice, which many frameworks throw.
+            $missing = null;
+
             // @phpstan-ignore-next-line return.type
-            return null;
+            return $missing;
         }
 
         if (array_key_exists($offset, array: $this->_data)) {

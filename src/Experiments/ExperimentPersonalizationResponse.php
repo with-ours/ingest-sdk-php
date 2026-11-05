@@ -8,6 +8,7 @@ use OursPrivacy\Core\Attributes\Optional;
 use OursPrivacy\Core\Attributes\Required;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
+use OursPrivacy\Core\Conversion\EnumOf;
 use OursPrivacy\Core\Conversion\MapOf;
 use OursPrivacy\Experiments\ExperimentPersonalizationResponse\Personalization;
 use OursPrivacy\Experiments\ExperimentPersonalizationResponse\Property;
@@ -36,7 +37,7 @@ final class ExperimentPersonalizationResponse implements BaseModel
     #[Required(type: new MapOf(Property::class, nullable: true))]
     public array $properties;
 
-    #[Required]
+    #[Required(type: new EnumOf([true]))]
     public bool $success;
 
     /**

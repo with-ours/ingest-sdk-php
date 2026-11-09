@@ -7,6 +7,7 @@ namespace OursPrivacy\Track;
 use OursPrivacy\Core\Attributes\Required;
 use OursPrivacy\Core\Concerns\SdkModel;
 use OursPrivacy\Core\Contracts\BaseModel;
+use OursPrivacy\Core\Conversion\EnumOf;
 
 /**
  * @phpstan-type TrackEventResponseShape = array{success: bool}
@@ -16,7 +17,7 @@ final class TrackEventResponse implements BaseModel
     /** @use SdkModel<TrackEventResponseShape> */
     use SdkModel;
 
-    #[Required]
+    #[Required(type: new EnumOf([true]))]
     public bool $success;
 
     /**

@@ -60,17 +60,19 @@ final class ModelOf implements Converter
         foreach ($this->properties as $name => $info) {
             $srcName = $state->translateNames ? $info->apiName : $name;
             if (!array_key_exists($srcName, array: $val)) {
-                if ($info->optional) {
-                    ++$state->yes;
-                } elseif ($info->nullable) {
-                    ++$state->maybe;
-                } else {
-                    ++$state->no;
+                // An absent optional property says nothing about the value either way.
+                if (!$info->optional) {
+                    if ($info->nullable) {
+                        ++$state->maybe;
+                    } else {
+                        ++$state->no;
+                    }
                 }
 
                 continue;
             }
 
+            ++$state->matched;
             $item = $val[$srcName];
             unset($val[$srcName]);
 

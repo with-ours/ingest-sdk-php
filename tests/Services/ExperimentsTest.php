@@ -8,7 +8,6 @@ use OursPrivacy\Experiments\ExperimentPersonalizationResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class ExperimentsTest extends TestCase
     #[Test]
     public function testAssignment(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
         $result = $this->client->experiments->assignment(
             'experiment_key',
             token: 'token',
@@ -48,10 +43,6 @@ final class ExperimentsTest extends TestCase
     #[Test]
     public function testAssignmentWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
         $result = $this->client->experiments->assignment(
             'experiment_key',
             token: 'token',
@@ -67,10 +58,6 @@ final class ExperimentsTest extends TestCase
     #[Test]
     public function testPersonalization(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
         $result = $this->client->experiments->personalization(
             token: 'token',
             visitorID: 'x'
@@ -83,10 +70,6 @@ final class ExperimentsTest extends TestCase
     #[Test]
     public function testPersonalizationWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
         $result = $this->client->experiments->personalization(
             token: 'token',
             visitorID: 'x'

@@ -8,7 +8,6 @@ use OursPrivacy\Track\TrackEventResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class TrackTest extends TestCase
     #[Test]
     public function testEvent(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
         $result = $this->client->track->event(token: 'P', event: 'P');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -44,10 +39,6 @@ final class TrackTest extends TestCase
     #[Test]
     public function testEventWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
         $result = $this->client->track->event(
             token: 'P',
             event: 'P',
@@ -57,6 +48,7 @@ final class TrackTest extends TestCase
                 'adID' => 'ad_id',
                 'admitadUid' => 'admitad_uid',
                 'adsetID' => 'adset_id',
+                'affiliatlyV3' => 'affiliatly_v3',
                 'alart' => 'alart',
                 'aleid' => 'aleid',
                 'axwrt' => 'axwrt',
@@ -147,6 +139,7 @@ final class TrackTest extends TestCase
                 'adID' => 'ad_id',
                 'admitadUid' => 'admitad_uid',
                 'adsetID' => 'adset_id',
+                'affiliatlyV3' => 'affiliatly_v3',
                 'alart' => 'alart',
                 'aleid' => 'aleid',
                 'axwrt' => 'axwrt',

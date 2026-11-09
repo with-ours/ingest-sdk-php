@@ -120,4 +120,33 @@ class UtilTest extends TestCase
             $this->assertEquals($expected, $actual);
         }
     }
+
+    #[Test]
+    public function testParsePathEncodesParamsAsOneSegment(): void
+    {
+        $cases = [
+            ['../../track?x=1', 'a/..%2F..%2Ftrack%3Fx%3D1'],
+            ['a b', 'a/a%20b'],
+            ['a/b', 'a/a%2Fb'],
+            ['...', 'a/...'],
+            ['%2E%2E', 'a/%252E%252E'],
+        ];
+
+        foreach ($cases as [$param, $expected]) {
+            $this->assertSame($expected, Util::parsePath(['a/%1$s', $param]));
+        }
+    }
+
+    #[Test]
+    public function testParsePathRejectsDotSegments(): void
+    {
+        foreach (['.', '..'] as $param) {
+            try {
+                Util::parsePath(['a/%1$s', $param]);
+                $this->fail("Expected a rejection for {$param}");
+            } catch (\InvalidArgumentException) {
+                $this->addToAssertionCount(1);
+            }
+        }
+    }
 }

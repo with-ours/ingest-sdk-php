@@ -201,6 +201,7 @@ final class VisitorTest extends TestCase
             externalID: 'P',
             identityContext: ['ip' => 'ip', 'userAgent' => 'userAgent'],
             userID: 'P',
+            visitorID: 'P',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

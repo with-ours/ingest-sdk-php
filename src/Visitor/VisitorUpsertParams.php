@@ -14,7 +14,7 @@ use OursPrivacy\Visitor\VisitorUpsertParams\IdentityContext;
 use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
 
 /**
- * Set or update properties on an existing visitor, or create a new visitor if no match is found. This fires a $identify event, making the call visible in the event stream. Identity resolution runs in priority order: userId (direct, no lookup) → externalId → email → userProperties.phone_number. Each lookup runs only if earlier identifiers did not resolve a visitor. Phone matching ignores common formatting and an international + or 00 prefix, but does not infer a country code. When a visitor is found, their Ours Visitor ID is used going forward so all future events are attached to the same profile. For top-level visitor properties: null clears the existing value, while undefined, omitted fields, and empty strings are ignored. For entries inside custom_properties: null, undefined, and empty strings are all ignored (custom_properties use merge semantics). See https://docs.oursprivacy.com/docs/data-types for details and common pitfalls.
+ * Set or update properties on an existing visitor, or create a new visitor if no match is found. This fires a $identify event, making the call visible in the event stream. Identity resolution runs in priority order: visitorId (direct, no lookup) → externalId → email → userProperties.phone_number. Each lookup runs only if earlier identifiers did not resolve a visitor. Phone matching ignores common formatting and an international + or 00 prefix, but does not infer a country code. When a visitor is found, their Ours Visitor ID is used going forward so all future events are attached to the same profile. For top-level visitor properties: null clears the existing value, while undefined, omitted fields, and empty strings are ignored. For entries inside custom_properties: null, undefined, and empty strings are all ignored (custom_properties use merge semantics). See https://docs.oursprivacy.com/docs/data-types for details and common pitfalls.
  *
  * @see OursPrivacy\Services\VisitorService::upsert()
  *
@@ -30,6 +30,7 @@ use OursPrivacy\Visitor\VisitorUpsertParams\UserProperties;
  *   externalID?: string|null,
  *   identityContext?: null|IdentityContext|IdentityContextShape,
  *   userID?: string|null,
+ *   visitorID?: string|null,
  * }
  */
 final class VisitorUpsertParams implements BaseModel
@@ -57,13 +58,13 @@ final class VisitorUpsertParams implements BaseModel
     public ?DefaultProperties $defaultProperties;
 
     /**
-     * The email address of a user. When userId is absent and externalId does not resolve a visitor, we search your account for a visitor with this email. If no match is found, we try userProperties.phone_number before creating a new visitor. Leading and trailing whitespace is removed before validation.
+     * The email address of a user. When visitorId is absent and externalId does not resolve a visitor, we search your account for a visitor with this email. If no match is found, we try userProperties.phone_number before creating a new visitor. Leading and trailing whitespace is removed before validation.
      */
     #[Optional(nullable: true)]
     public ?string $email;
 
     /**
-     * Your system's unique identifier for this user. When userId is absent, we search your account for an existing visitor with this externalId. If no match is found, we try email and then userProperties.phone_number before creating a new visitor. If you also have the userId from cookies or local storage, send both — it removes the lookup round-trip. Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
+     * Your system's unique identifier for this user. When visitorId is absent, we search your account for an existing visitor with this externalId. If no match is found, we try email and then userProperties.phone_number before creating a new visitor. If you also have the visitorId from cookies or local storage, send both — it removes the lookup round-trip. Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('externalId', nullable: true)]
     public ?string $externalID;
@@ -75,10 +76,18 @@ final class VisitorUpsertParams implements BaseModel
     public ?IdentityContext $identityContext;
 
     /**
-     * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId, email, or phone is performed. If you have both a userId and an externalId, send both so the event is attached to the right visitor without any lookup overhead. Leading and trailing whitespace is removed before validation.
+     * @deprecated
+     *
+     * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId, email, or phone is performed. If you have both a visitorId and an externalId, send both so the event is attached to the right visitor without any lookup overhead. visitorId takes precedence over the deprecated userId alias. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('userId', nullable: true)]
     public ?string $userID;
+
+    /**
+     * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId, email, or phone is performed. If you have both a visitorId and an externalId, send both so the event is attached to the right visitor without any lookup overhead. visitorId takes precedence over the deprecated userId alias. Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional('visitorId', nullable: true)]
+    public ?string $visitorID;
 
     /**
      * `new VisitorUpsertParams()` is missing required properties by the API.
@@ -116,6 +125,7 @@ final class VisitorUpsertParams implements BaseModel
         ?string $externalID = null,
         IdentityContext|array|null $identityContext = null,
         ?string $userID = null,
+        ?string $visitorID = null,
     ): self {
         $self = new self;
 
@@ -127,6 +137,7 @@ final class VisitorUpsertParams implements BaseModel
         null !== $externalID && $self['externalID'] = $externalID;
         null !== $identityContext && $self['identityContext'] = $identityContext;
         null !== $userID && $self['userID'] = $userID;
+        null !== $visitorID && $self['visitorID'] = $visitorID;
 
         return $self;
     }
@@ -171,7 +182,7 @@ final class VisitorUpsertParams implements BaseModel
     }
 
     /**
-     * The email address of a user. When userId is absent and externalId does not resolve a visitor, we search your account for a visitor with this email. If no match is found, we try userProperties.phone_number before creating a new visitor. Leading and trailing whitespace is removed before validation.
+     * The email address of a user. When visitorId is absent and externalId does not resolve a visitor, we search your account for a visitor with this email. If no match is found, we try userProperties.phone_number before creating a new visitor. Leading and trailing whitespace is removed before validation.
      */
     public function withEmail(?string $email): self
     {
@@ -182,7 +193,7 @@ final class VisitorUpsertParams implements BaseModel
     }
 
     /**
-     * Your system's unique identifier for this user. When userId is absent, we search your account for an existing visitor with this externalId. If no match is found, we try email and then userProperties.phone_number before creating a new visitor. If you also have the userId from cookies or local storage, send both — it removes the lookup round-trip. Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
+     * Your system's unique identifier for this user. When visitorId is absent, we search your account for an existing visitor with this externalId. If no match is found, we try email and then userProperties.phone_number before creating a new visitor. If you also have the visitorId from cookies or local storage, send both — it removes the lookup round-trip. Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     public function withExternalID(?string $externalID): self
     {
@@ -207,12 +218,23 @@ final class VisitorUpsertParams implements BaseModel
     }
 
     /**
-     * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId, email, or phone is performed. If you have both a userId and an externalId, send both so the event is attached to the right visitor without any lookup overhead. Leading and trailing whitespace is removed before validation.
+     * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId, email, or phone is performed. If you have both a visitorId and an externalId, send both so the event is attached to the right visitor without any lookup overhead. visitorId takes precedence over the deprecated userId alias. Leading and trailing whitespace is removed before validation.
      */
     public function withUserID(?string $userID): self
     {
         $self = clone $this;
         $self['userID'] = $userID;
+
+        return $self;
+    }
+
+    /**
+     * The Ours Visitor ID stored in local storage and cookies on your web properties. When present, this is used directly — no lookup by externalId, email, or phone is performed. If you have both a visitorId and an externalId, send both so the event is attached to the right visitor without any lookup overhead. visitorId takes precedence over the deprecated userId alias. Leading and trailing whitespace is removed before validation.
+     */
+    public function withVisitorID(?string $visitorID): self
+    {
+        $self = clone $this;
+        $self['visitorID'] = $visitorID;
 
         return $self;
     }

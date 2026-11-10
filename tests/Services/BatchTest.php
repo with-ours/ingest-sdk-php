@@ -210,6 +210,7 @@ final class BatchTest extends TestCase
                         'ylpcid' => 'ylpcid',
                         'zip' => 'string',
                     ],
+                    'visitorID' => 'P',
                 ],
             ],
         );

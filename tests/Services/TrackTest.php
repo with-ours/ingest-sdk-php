@@ -205,6 +205,7 @@ final class TrackTest extends TestCase
                 'ylpcid' => 'ylpcid',
                 'zip' => 'string',
             ],
+            visitorID: 'P',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

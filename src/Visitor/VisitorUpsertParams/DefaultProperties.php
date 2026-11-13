@@ -19,6 +19,7 @@ use OursPrivacy\Visitor\VisitorUpsertParams\DefaultProperties\IsBot;
  *   _efTransactionID?: string|null,
  *   activeDuration?: float|null,
  *   adID?: string|null,
+ *   adct?: string|null,
  *   admitadUid?: string|null,
  *   adsetID?: string|null,
  *   affiliatlyV3?: string|null,
@@ -123,6 +124,12 @@ final class DefaultProperties implements BaseModel
      */
     #[Optional('ad_id', nullable: true)]
     public ?string $adID;
+
+    /**
+     * The AdRoll Click ID (adct) from the landing URL. Ex: adct123 Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional(nullable: true)]
+    public ?string $adct;
 
     /**
      * The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123 Leading and trailing whitespace is removed before validation.
@@ -622,6 +629,7 @@ final class DefaultProperties implements BaseModel
         ?string $_efTransactionID = null,
         ?float $activeDuration = null,
         ?string $adID = null,
+        ?string $adct = null,
         ?string $admitadUid = null,
         ?string $adsetID = null,
         ?string $affiliatlyV3 = null,
@@ -708,6 +716,7 @@ final class DefaultProperties implements BaseModel
         null !== $_efTransactionID && $self['_efTransactionID'] = $_efTransactionID;
         null !== $activeDuration && $self['activeDuration'] = $activeDuration;
         null !== $adID && $self['adID'] = $adID;
+        null !== $adct && $self['adct'] = $adct;
         null !== $admitadUid && $self['admitadUid'] = $admitadUid;
         null !== $adsetID && $self['adsetID'] = $adsetID;
         null !== $affiliatlyV3 && $self['affiliatlyV3'] = $affiliatlyV3;
@@ -821,6 +830,17 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['adID'] = $adID;
+
+        return $self;
+    }
+
+    /**
+     * The AdRoll Click ID (adct) from the landing URL. Ex: adct123 Leading and trailing whitespace is removed before validation.
+     */
+    public function withAdct(?string $adct): self
+    {
+        $self = clone $this;
+        $self['adct'] = $adct;
 
         return $self;
     }

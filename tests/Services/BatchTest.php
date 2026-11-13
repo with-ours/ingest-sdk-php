@@ -52,6 +52,7 @@ final class BatchTest extends TestCase
                         '_efTransactionID' => '_ef_transaction_id',
                         'activeDuration' => 0,
                         'adID' => 'ad_id',
+                        'adct' => 'adct',
                         'admitadUid' => 'admitad_uid',
                         'adsetID' => 'adset_id',
                         'affiliatlyV3' => 'affiliatly_v3',
@@ -142,6 +143,7 @@ final class BatchTest extends TestCase
                     'userProperties' => [
                         '_efTransactionID' => '_ef_transaction_id',
                         'adID' => 'ad_id',
+                        'adct' => 'adct',
                         'admitadUid' => 'admitad_uid',
                         'adsetID' => 'adset_id',
                         'affiliatlyV3' => 'affiliatly_v3',

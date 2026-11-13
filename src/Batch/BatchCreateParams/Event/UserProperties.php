@@ -31,6 +31,7 @@ use OursPrivacy\Core\Conversion\MapOf;
  * @phpstan-type UserPropertiesShape = array{
  *   _efTransactionID?: string|null,
  *   adID?: string|null,
+ *   adct?: string|null,
  *   admitadUid?: string|null,
  *   adsetID?: string|null,
  *   affiliatlyV3?: string|null,
@@ -113,6 +114,12 @@ final class UserProperties implements BaseModel
 
     #[Optional('ad_id', nullable: true)]
     public ?string $adID;
+
+    /**
+     * Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional(nullable: true)]
+    public ?string $adct;
 
     /**
      * Leading and trailing whitespace is removed before validation.
@@ -453,6 +460,7 @@ final class UserProperties implements BaseModel
     public static function with(
         ?string $_efTransactionID = null,
         ?string $adID = null,
+        ?string $adct = null,
         ?string $admitadUid = null,
         ?string $adsetID = null,
         ?string $affiliatlyV3 = null,
@@ -525,6 +533,7 @@ final class UserProperties implements BaseModel
 
         null !== $_efTransactionID && $self['_efTransactionID'] = $_efTransactionID;
         null !== $adID && $self['adID'] = $adID;
+        null !== $adct && $self['adct'] = $adct;
         null !== $admitadUid && $self['admitadUid'] = $admitadUid;
         null !== $adsetID && $self['adsetID'] = $adsetID;
         null !== $affiliatlyV3 && $self['affiliatlyV3'] = $affiliatlyV3;
@@ -611,6 +620,17 @@ final class UserProperties implements BaseModel
     {
         $self = clone $this;
         $self['adID'] = $adID;
+
+        return $self;
+    }
+
+    /**
+     * Leading and trailing whitespace is removed before validation.
+     */
+    public function withAdct(?string $adct): self
+    {
+        $self = clone $this;
+        $self['adct'] = $adct;
 
         return $self;
     }

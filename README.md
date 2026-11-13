@@ -17,7 +17,7 @@ See the [SDK guide](https://docs.oursprivacy.com/docs/php) and the runnable code
 <!-- x-release-please-start-version -->
 
 ```
-composer require "oursprivacy/ingest-sdk 1.25.0" guzzlehttp/guzzle
+composer require "oursprivacy/ingest-sdk 1.26.0" guzzlehttp/guzzle
 ```
 
 <!-- x-release-please-end -->

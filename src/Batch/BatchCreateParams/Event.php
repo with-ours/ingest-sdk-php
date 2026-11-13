@@ -82,7 +82,9 @@ final class Event implements BaseModel
     public ?string $externalID;
 
     /**
-     * End-user network context for server-side calls. Required for probabilistic identity resolution when the caller is a backend server rather than an end-user browser.
+     * @deprecated
+     *
+     * Deprecated and ignored. Accepted so existing clients keep working.
      */
     #[Optional(nullable: true)]
     public ?IdentityContext $identityContext;
@@ -245,7 +247,7 @@ final class Event implements BaseModel
     }
 
     /**
-     * End-user network context for server-side calls. Required for probabilistic identity resolution when the caller is a backend server rather than an end-user browser.
+     * Deprecated and ignored. Accepted so existing clients keep working.
      *
      * @param IdentityContext|IdentityContextShape|null $identityContext
      */

@@ -19,6 +19,11 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   _efTransactionID?: string|null,
  *   activeDuration?: float|null,
  *   adID?: string|null,
+ *   adTouchAdID?: string|null,
+ *   adTouchAdsetID?: string|null,
+ *   adTouchCampaignID?: string|null,
+ *   adTouchPlatform?: string|null,
+ *   adTouchSource?: string|null,
  *   adct?: string|null,
  *   admitadUid?: string|null,
  *   adsetID?: string|null,
@@ -49,6 +54,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   fbclid?: string|null,
  *   fbp?: string|null,
  *   fv?: bool|null,
+ *   gadCampaignid?: string|null,
  *   gadSource?: string|null,
  *   gbraid?: string|null,
  *   gclid?: string|null,
@@ -68,6 +74,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   oppref?: string|null,
  *   osName?: string|null,
  *   osVersion?: string|null,
+ *   oursAd?: string|null,
  *   pageHash?: float|null,
  *   pathname?: string|null,
  *   qclid?: string|null,
@@ -90,6 +97,7 @@ use OursPrivacy\Core\Contracts\BaseModel;
  *   userAgent?: string|null,
  *   utmCampaign?: string|null,
  *   utmContent?: string|null,
+ *   utmID?: string|null,
  *   utmMedium?: string|null,
  *   utmName?: string|null,
  *   utmSource?: string|null,
@@ -124,6 +132,36 @@ final class DefaultProperties implements BaseModel
      */
     #[Optional('ad_id', nullable: true)]
     public ?string $adID;
+
+    /**
+     * The platform ad id resolved by the Ours server for this event. Ex: 120212 Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional('ad_touch_ad_id', nullable: true)]
+    public ?string $adTouchAdID;
+
+    /**
+     * The platform ad set or ad group id resolved by the Ours server for this event. Ex: 120211 Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional('ad_touch_adset_id', nullable: true)]
+    public ?string $adTouchAdsetID;
+
+    /**
+     * The platform campaign id resolved by the Ours server for this event. Ex: 120210 Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional('ad_touch_campaign_id', nullable: true)]
+    public ?string $adTouchCampaignID;
+
+    /**
+     * The ad platform resolved by the Ours server from the ad tag, ad ids, and click ids on this event. Ex: meta, google Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional('ad_touch_platform', nullable: true)]
+    public ?string $adTouchPlatform;
+
+    /**
+     * Which signal the Ours server used to resolve the ad touch: ours_ad, url_ids, gad_campaignid, utm_id, or click_id. Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional('ad_touch_source', nullable: true)]
+    public ?string $adTouchSource;
 
     /**
      * The AdRoll Click ID (adct) from the landing URL. Ex: adct123 Leading and trailing whitespace is removed before validation.
@@ -306,6 +344,12 @@ final class DefaultProperties implements BaseModel
     public ?bool $fv;
 
     /**
+     * The Google Ads campaign id that Google auto-tagging appends to ad clicks. Ex: 21780011223 Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional('gad_campaignid', nullable: true)]
+    public ?string $gadCampaignid;
+
+    /**
      * The Google Ad Source. Ex: google Leading and trailing whitespace is removed before validation.
      */
     #[Optional('gad_source', nullable: true)]
@@ -420,6 +464,12 @@ final class DefaultProperties implements BaseModel
      */
     #[Optional('os_version', nullable: true)]
     public ?string $osVersion;
+
+    /**
+     * The Ours ad tag from the ours_ad query parameter, as platform.campaign.adset.ad. Ex: meta.120210.120211.120212 Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional('ours_ad', nullable: true)]
+    public ?string $oursAd;
 
     /**
      * A random set of numbers for the page load.
@@ -554,6 +604,12 @@ final class DefaultProperties implements BaseModel
     public ?string $utmContent;
 
     /**
+     * The UTM ID. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
+     */
+    #[Optional('utm_id', nullable: true)]
+    public ?string $utmID;
+
+    /**
      * The UTM Medium. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('utm_medium', nullable: true)]
@@ -629,6 +685,11 @@ final class DefaultProperties implements BaseModel
         ?string $_efTransactionID = null,
         ?float $activeDuration = null,
         ?string $adID = null,
+        ?string $adTouchAdID = null,
+        ?string $adTouchAdsetID = null,
+        ?string $adTouchCampaignID = null,
+        ?string $adTouchPlatform = null,
+        ?string $adTouchSource = null,
         ?string $adct = null,
         ?string $admitadUid = null,
         ?string $adsetID = null,
@@ -659,6 +720,7 @@ final class DefaultProperties implements BaseModel
         ?string $fbclid = null,
         ?string $fbp = null,
         ?bool $fv = null,
+        ?string $gadCampaignid = null,
         ?string $gadSource = null,
         ?string $gbraid = null,
         ?string $gclid = null,
@@ -678,6 +740,7 @@ final class DefaultProperties implements BaseModel
         ?string $oppref = null,
         ?string $osName = null,
         ?string $osVersion = null,
+        ?string $oursAd = null,
         ?float $pageHash = null,
         ?string $pathname = null,
         ?string $qclid = null,
@@ -700,6 +763,7 @@ final class DefaultProperties implements BaseModel
         ?string $userAgent = null,
         ?string $utmCampaign = null,
         ?string $utmContent = null,
+        ?string $utmID = null,
         ?string $utmMedium = null,
         ?string $utmName = null,
         ?string $utmSource = null,
@@ -716,6 +780,11 @@ final class DefaultProperties implements BaseModel
         null !== $_efTransactionID && $self['_efTransactionID'] = $_efTransactionID;
         null !== $activeDuration && $self['activeDuration'] = $activeDuration;
         null !== $adID && $self['adID'] = $adID;
+        null !== $adTouchAdID && $self['adTouchAdID'] = $adTouchAdID;
+        null !== $adTouchAdsetID && $self['adTouchAdsetID'] = $adTouchAdsetID;
+        null !== $adTouchCampaignID && $self['adTouchCampaignID'] = $adTouchCampaignID;
+        null !== $adTouchPlatform && $self['adTouchPlatform'] = $adTouchPlatform;
+        null !== $adTouchSource && $self['adTouchSource'] = $adTouchSource;
         null !== $adct && $self['adct'] = $adct;
         null !== $admitadUid && $self['admitadUid'] = $admitadUid;
         null !== $adsetID && $self['adsetID'] = $adsetID;
@@ -746,6 +815,7 @@ final class DefaultProperties implements BaseModel
         null !== $fbclid && $self['fbclid'] = $fbclid;
         null !== $fbp && $self['fbp'] = $fbp;
         null !== $fv && $self['fv'] = $fv;
+        null !== $gadCampaignid && $self['gadCampaignid'] = $gadCampaignid;
         null !== $gadSource && $self['gadSource'] = $gadSource;
         null !== $gbraid && $self['gbraid'] = $gbraid;
         null !== $gclid && $self['gclid'] = $gclid;
@@ -765,6 +835,7 @@ final class DefaultProperties implements BaseModel
         null !== $oppref && $self['oppref'] = $oppref;
         null !== $osName && $self['osName'] = $osName;
         null !== $osVersion && $self['osVersion'] = $osVersion;
+        null !== $oursAd && $self['oursAd'] = $oursAd;
         null !== $pageHash && $self['pageHash'] = $pageHash;
         null !== $pathname && $self['pathname'] = $pathname;
         null !== $qclid && $self['qclid'] = $qclid;
@@ -787,6 +858,7 @@ final class DefaultProperties implements BaseModel
         null !== $userAgent && $self['userAgent'] = $userAgent;
         null !== $utmCampaign && $self['utmCampaign'] = $utmCampaign;
         null !== $utmContent && $self['utmContent'] = $utmContent;
+        null !== $utmID && $self['utmID'] = $utmID;
         null !== $utmMedium && $self['utmMedium'] = $utmMedium;
         null !== $utmName && $self['utmName'] = $utmName;
         null !== $utmSource && $self['utmSource'] = $utmSource;
@@ -830,6 +902,61 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['adID'] = $adID;
+
+        return $self;
+    }
+
+    /**
+     * The platform ad id resolved by the Ours server for this event. Ex: 120212 Leading and trailing whitespace is removed before validation.
+     */
+    public function withAdTouchAdID(?string $adTouchAdID): self
+    {
+        $self = clone $this;
+        $self['adTouchAdID'] = $adTouchAdID;
+
+        return $self;
+    }
+
+    /**
+     * The platform ad set or ad group id resolved by the Ours server for this event. Ex: 120211 Leading and trailing whitespace is removed before validation.
+     */
+    public function withAdTouchAdsetID(?string $adTouchAdsetID): self
+    {
+        $self = clone $this;
+        $self['adTouchAdsetID'] = $adTouchAdsetID;
+
+        return $self;
+    }
+
+    /**
+     * The platform campaign id resolved by the Ours server for this event. Ex: 120210 Leading and trailing whitespace is removed before validation.
+     */
+    public function withAdTouchCampaignID(?string $adTouchCampaignID): self
+    {
+        $self = clone $this;
+        $self['adTouchCampaignID'] = $adTouchCampaignID;
+
+        return $self;
+    }
+
+    /**
+     * The ad platform resolved by the Ours server from the ad tag, ad ids, and click ids on this event. Ex: meta, google Leading and trailing whitespace is removed before validation.
+     */
+    public function withAdTouchPlatform(?string $adTouchPlatform): self
+    {
+        $self = clone $this;
+        $self['adTouchPlatform'] = $adTouchPlatform;
+
+        return $self;
+    }
+
+    /**
+     * Which signal the Ours server used to resolve the ad touch: ours_ad, url_ids, gad_campaignid, utm_id, or click_id. Leading and trailing whitespace is removed before validation.
+     */
+    public function withAdTouchSource(?string $adTouchSource): self
+    {
+        $self = clone $this;
+        $self['adTouchSource'] = $adTouchSource;
 
         return $self;
     }
@@ -1165,6 +1292,17 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
+     * The Google Ads campaign id that Google auto-tagging appends to ad clicks. Ex: 21780011223 Leading and trailing whitespace is removed before validation.
+     */
+    public function withGadCampaignid(?string $gadCampaignid): self
+    {
+        $self = clone $this;
+        $self['gadCampaignid'] = $gadCampaignid;
+
+        return $self;
+    }
+
+    /**
      * The Google Ad Source. Ex: google Leading and trailing whitespace is removed before validation.
      */
     public function withGadSource(?string $gadSource): self
@@ -1371,6 +1509,17 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['osVersion'] = $osVersion;
+
+        return $self;
+    }
+
+    /**
+     * The Ours ad tag from the ours_ad query parameter, as platform.campaign.adset.ad. Ex: meta.120210.120211.120212 Leading and trailing whitespace is removed before validation.
+     */
+    public function withOursAd(?string $oursAd): self
+    {
+        $self = clone $this;
+        $self['oursAd'] = $oursAd;
 
         return $self;
     }
@@ -1613,6 +1762,17 @@ final class DefaultProperties implements BaseModel
     {
         $self = clone $this;
         $self['utmContent'] = $utmContent;
+
+        return $self;
+    }
+
+    /**
+     * The UTM ID. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
+     */
+    public function withUtmID(?string $utmID): self
+    {
+        $self = clone $this;
+        $self['utmID'] = $utmID;
 
         return $self;
     }

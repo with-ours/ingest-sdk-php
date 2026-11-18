@@ -1,6 +1,6 @@
 # Ours Privacy PHP API library
 
-The Ours Privacy PHP library provides convenient access to the Ours Privacy REST API from any PHP 8.1.0+ application.
+The Ours Privacy PHP library provides convenient access to the Ours Privacy REST API from any PHP 8.3.0+ application.
 
 ## Documentation
 
@@ -252,4 +252,4 @@ This package considers improvements to the (non-runtime) PHPDoc type definitions
 
 ## Requirements
 
-PHP 8.1.0 or higher.
+PHP 8.3.0 or higher.

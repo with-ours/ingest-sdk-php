@@ -134,31 +134,31 @@ final class DefaultProperties implements BaseModel
     public ?string $adID;
 
     /**
-     * The platform ad id resolved by the Ours server for this event. Ex: 120212 Leading and trailing whitespace is removed before validation.
+     * The platform ad id resolved by the Ours server for this event. Ex: 120212 Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('ad_touch_ad_id', nullable: true)]
     public ?string $adTouchAdID;
 
     /**
-     * The platform ad set or ad group id resolved by the Ours server for this event. Ex: 120211 Leading and trailing whitespace is removed before validation.
+     * The platform ad set or ad group id resolved by the Ours server for this event. Ex: 120211 Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('ad_touch_adset_id', nullable: true)]
     public ?string $adTouchAdsetID;
 
     /**
-     * The platform campaign id resolved by the Ours server for this event. Ex: 120210 Leading and trailing whitespace is removed before validation.
+     * The platform campaign id resolved by the Ours server for this event. Ex: 120210 Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('ad_touch_campaign_id', nullable: true)]
     public ?string $adTouchCampaignID;
 
     /**
-     * The ad platform resolved by the Ours server from the ad tag, ad ids, and click ids on this event. Ex: meta, google Leading and trailing whitespace is removed before validation.
+     * The ad platform resolved by the Ours server from the ad tag, ad ids, and click ids on this event. Ex: meta, google Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('ad_touch_platform', nullable: true)]
     public ?string $adTouchPlatform;
 
     /**
-     * Which signal the Ours server used to resolve the ad touch: ours_ad, url_ids, gad_campaignid, utm_id, or click_id. Leading and trailing whitespace is removed before validation.
+     * Which signal the Ours server used to resolve the ad touch: ours_ad, url_ids, gad_campaignid, utm_id, or click_id. Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('ad_touch_source', nullable: true)]
     public ?string $adTouchSource;
@@ -344,7 +344,7 @@ final class DefaultProperties implements BaseModel
     public ?bool $fv;
 
     /**
-     * The Google Ads campaign id that Google auto-tagging appends to ad clicks. Ex: 21780011223 Leading and trailing whitespace is removed before validation.
+     * The Google Ads campaign id that Google auto-tagging appends to ad clicks. Ex: 21780011223 Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('gad_campaignid', nullable: true)]
     public ?string $gadCampaignid;
@@ -466,7 +466,7 @@ final class DefaultProperties implements BaseModel
     public ?string $osVersion;
 
     /**
-     * The Ours ad tag from the ours_ad query parameter, as platform.campaign.adset.ad. Ex: meta.120210.120211.120212 Leading and trailing whitespace is removed before validation.
+     * The Ours ad tag from the ours_ad query parameter, as platform.campaign.adset.ad. Ex: meta.120210.120211.120212 Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('ours_ad', nullable: true)]
     public ?string $oursAd;
@@ -604,7 +604,7 @@ final class DefaultProperties implements BaseModel
     public ?string $utmContent;
 
     /**
-     * The UTM ID. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
+     * The UTM ID. The web SDK automatically captures this from the query params. Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     #[Optional('utm_id', nullable: true)]
     public ?string $utmID;
@@ -907,7 +907,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The platform ad id resolved by the Ours server for this event. Ex: 120212 Leading and trailing whitespace is removed before validation.
+     * The platform ad id resolved by the Ours server for this event. Ex: 120212 Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     public function withAdTouchAdID(?string $adTouchAdID): self
     {
@@ -918,7 +918,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The platform ad set or ad group id resolved by the Ours server for this event. Ex: 120211 Leading and trailing whitespace is removed before validation.
+     * The platform ad set or ad group id resolved by the Ours server for this event. Ex: 120211 Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     public function withAdTouchAdsetID(?string $adTouchAdsetID): self
     {
@@ -929,7 +929,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The platform campaign id resolved by the Ours server for this event. Ex: 120210 Leading and trailing whitespace is removed before validation.
+     * The platform campaign id resolved by the Ours server for this event. Ex: 120210 Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     public function withAdTouchCampaignID(?string $adTouchCampaignID): self
     {
@@ -940,7 +940,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The ad platform resolved by the Ours server from the ad tag, ad ids, and click ids on this event. Ex: meta, google Leading and trailing whitespace is removed before validation.
+     * The ad platform resolved by the Ours server from the ad tag, ad ids, and click ids on this event. Ex: meta, google Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     public function withAdTouchPlatform(?string $adTouchPlatform): self
     {
@@ -951,7 +951,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * Which signal the Ours server used to resolve the ad touch: ours_ad, url_ids, gad_campaignid, utm_id, or click_id. Leading and trailing whitespace is removed before validation.
+     * Which signal the Ours server used to resolve the ad touch: ours_ad, url_ids, gad_campaignid, utm_id, or click_id. Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     public function withAdTouchSource(?string $adTouchSource): self
     {
@@ -1292,7 +1292,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Google Ads campaign id that Google auto-tagging appends to ad clicks. Ex: 21780011223 Leading and trailing whitespace is removed before validation.
+     * The Google Ads campaign id that Google auto-tagging appends to ad clicks. Ex: 21780011223 Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     public function withGadCampaignid(?string $gadCampaignid): self
     {
@@ -1514,7 +1514,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The Ours ad tag from the ours_ad query parameter, as platform.campaign.adset.ad. Ex: meta.120210.120211.120212 Leading and trailing whitespace is removed before validation.
+     * The Ours ad tag from the ours_ad query parameter, as platform.campaign.adset.ad. Ex: meta.120210.120211.120212 Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     public function withOursAd(?string $oursAd): self
     {
@@ -1767,7 +1767,7 @@ final class DefaultProperties implements BaseModel
     }
 
     /**
-     * The UTM ID. The web SDK automatically captures this from the query params. Leading and trailing whitespace is removed before validation.
+     * The UTM ID. The web SDK automatically captures this from the query params. Non-string input is converted to text before validation; clients should send a string. Leading and trailing whitespace is removed before validation.
      */
     public function withUtmID(?string $utmID): self
     {
